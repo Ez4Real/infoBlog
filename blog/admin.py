@@ -15,4 +15,4 @@ class UserEmailAdmin(admin.ModelAdmin):
 class NewsAdmin(admin.ModelAdmin):
     list_display = ('type', 'title', 'date_of_creation')
     list_filter = ('type', 'date_of_creation')
-    fields = [('type', 'date_of_creation'), 'title', 'text_content']
+    fields = [('type', 'date_of_creation'), 'title', 'text']

@@ -3,6 +3,8 @@ import datetime
 from django.db import models
 from django.urls import reverse
 
+from ckeditor.fields import RichTextField
+from ckeditor_uploader.fields import RichTextUploadingField
 
 class NewsType(models.Model):
     
@@ -26,8 +28,8 @@ class News(models.Model):
                              help_text='Введіть заголовок новини',
                              verbose_name = 'Заголовок')
     
-    text_content = models.TextField(help_text='Введіть зміст новини',
-                                    verbose_name = 'Зміст')
+    text = RichTextUploadingField(help_text='Введіть зміст новини',
+                                  verbose_name = 'Зміст')
     
     type = models.ForeignKey(NewsType, 
                              on_delete=models.PROTECT,
