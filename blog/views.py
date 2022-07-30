@@ -12,7 +12,7 @@ def index(request):
     
     return render(
         request, 
-        'index.html',
+        'blog/index.html',
         context={
             'last_news':last_news,
             'last_opeds':last_opeds,
