@@ -1,6 +1,7 @@
-from django.shortcuts import render
+from django.shortcuts import render, redirect
 
-from .models import News
+from .forms import UserEmailForm
+from .models import News, UserEmail
 
 
 def index(request):
@@ -9,6 +10,19 @@ def index(request):
     last_opeds = News.objects.filter(type__type='Op-eds').order_by('-id')[:3]
     last_analytics = News.objects.filter(type__type='Analytics').order_by('-id')[:3]
     last_opinions = News.objects.filter(type__type='Opinion').order_by('-id')[:3]
+
+    form = UserEmailForm(request.POST or None)
+    
+    if request.method == 'POST':
+          
+        if form.is_valid():  
+            try:  
+                return redirect('/')  
+            except:  
+                pass  
+        else:  
+            form = UserEmailForm()  
+    
     
     return render(
         request, 
@@ -17,6 +31,7 @@ def index(request):
             'last_news':last_news,
             'last_opeds':last_opeds,
             'last_analytics':last_analytics,
-            'last_opinions':last_opinions
+            'last_opinions':last_opinions,
+            'form':form
             },
     )

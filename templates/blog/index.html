@@ -15,4 +15,11 @@
     <li><strong>Opinions:</strong> {{ last_opinions }}</li>
   </ul>
 
+  <form method='GET' class="post-form" enctype="multipart/form-data">
+    {% csrf_token %}
+    {{form}}
+
+    <button type="submit" class="save btn btn-default">Submit</button>
+
+  </form>
 {% endblock %}
