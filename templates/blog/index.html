@@ -15,7 +15,7 @@
     <li><strong>Opinions:</strong> {{ last_opinions }}</li>
   </ul>
 
-  <form method='GET' class="post-form" enctype="multipart/form-data">
+  <form method='POST' class="post-form" enctype="multipart/form-data" action="{% url 'index' %}">
     {% csrf_token %}
     {{form}}
 

@@ -1,3 +1,4 @@
+from django.http import HttpResponse
 from django.shortcuts import render, redirect
 
 from .forms import UserEmailForm
@@ -10,28 +11,25 @@ def index(request):
     last_opeds = News.objects.filter(type__type='Op-eds').order_by('-id')[:3]
     last_analytics = News.objects.filter(type__type='Analytics').order_by('-id')[:3]
     last_opinions = News.objects.filter(type__type='Opinion').order_by('-id')[:3]
-
-    form = UserEmailForm(request.POST or None)
     
-    if request.method == 'POST':
-          
-        if form.is_valid():  
-            try:  
-                return redirect('/')  
-            except:  
-                pass  
-        else:  
-            form = UserEmailForm()  
+    save_email(request)
     
-    
-    return render(
-        request, 
-        'blog/index.html',
-        context={
-            'last_news':last_news,
-            'last_opeds':last_opeds,
-            'last_analytics':last_analytics,
-            'last_opinions':last_opinions,
-            'form':form
-            },
+    return render(request, 'blog/index.html',
+                  {
+                  'last_news':last_news,
+                  'last_opeds':last_opeds,
+                  'last_analytics':last_analytics,
+                  'last_opinions':last_opinions,
+                  'form': UserEmailForm
+                  },
     )
+    
+def save_email(request):
+    form = UserEmailForm(request.POST)
+    if request.POST:
+        print(form.email)
+        if form.is_valid():
+            if UserEmail.objects.filter(email=form.email).exists():
+                return HttpResponse('The email already exists!')
+            else: form.save()
+        return redirect(index)  
