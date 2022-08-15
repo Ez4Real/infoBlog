@@ -46,15 +46,17 @@ class News(models.Model):
         
     def __str__(self):
         return f'{self.title}'
+    
 
-
-class UserEmail(models.Model):
-    email = models.EmailField(max_length = 254,
-                              help_text='Введіть email',
-                              unique=True)
+class Subscriber(models.Model):
+    email = models.EmailField(unique=True,
+                              max_length = 254,
+                              help_text='Введіть email')
+    conf_num = models.CharField(max_length=15)
+    confirmed = models.BooleanField(default=False)
     
     class Meta:
-        verbose_name_plural = 'Електронні пошти розсилки'
-        
+        verbose_name_plural = 'Електронні пошти підписників'
+
     def __str__(self):
-        return f'{self.email}'
+        return self.email + " (" + ("not " if not self.confirmed else "") + "confirmed)"

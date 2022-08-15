@@ -3,9 +3,7 @@
 {% block content %}
 <h1>Info Blog Home</h1>
 
-  <p>Welcome to <em>Info Blog</em>, a very basic Django website developed as a tutorial example on the Mozilla Developer Network.</p>
-
-<h2>Dynamic content</h2>
+  <p>Welcome to <em>Info Blog</em>.</p>
 
   <p>The blog has the following last news:</p>
   <ul>
@@ -15,11 +13,20 @@
     <li><strong>Opinions:</strong> {{ last_opinions }}</li>
   </ul>
 
-  <form method='POST' class="post-form" enctype="multipart/form-data" action="{% url 'index' %}">
-    {% csrf_token %}
-    {{form}}
-
-    <button type="submit" class="save btn btn-default">Submit</button>
-
-  </form>
+  <div class="col-12">
+    {% if email %}
+    <p>{{ email }} {{ action }}.</p>
+    {% endif %}
+</div>
+{% if form %}
+<div class="col-12 col-md-4">
+    <form method="post">
+        {% csrf_token %}
+        {{ form }}
+        <br>
+        <button type="submit" class="btn btn-success">Subscribe!</button>
+    </form>
+</div>
+{% endif %}
+  
 {% endblock %}

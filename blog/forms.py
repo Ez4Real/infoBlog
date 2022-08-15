@@ -1,9 +1,11 @@
-from .models import UserEmail
-from django.forms import ModelForm, EmailInput
-  
-class UserEmailForm(ModelForm):
-    email = EmailInput()
+from .models import Subscriber
+from django import forms
+
+class SubscriberForm(forms.ModelForm):
+    email = forms.EmailField(label='Ваш email',
+                             max_length=100,
+                             widget=forms.EmailInput(attrs={'class': 'form-control'}))
     
     class Meta:  
-        model = UserEmail 
-        fields = "__all__"
+        model = Subscriber 
+        fields = ['email']

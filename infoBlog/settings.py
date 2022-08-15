@@ -143,4 +143,8 @@ CKEDITOR_UPLOAD_PATH = 'uploads/'
 
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 
-EMAIL_BACKEND = 'django.core.mail.backends.console.EmailBackend'
+
+# Newsletter subscription
+FROM_EMAIL = 'butilka05roma@gmail.com'
+SENDGRID_API_KEY = str(os.getenv('API_KEY'))
+
