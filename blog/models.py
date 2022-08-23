@@ -2,8 +2,11 @@ import datetime
 
 from django.db import models
 from django.urls import reverse
+from django.conf import settings
 
 from ckeditor_uploader.fields import RichTextUploadingField
+from sendgrid import SendGridAPIClient
+from sendgrid.helpers.mail import Mail
 
 class NewsType(models.Model):
     
@@ -47,6 +50,21 @@ class News(models.Model):
     def __str__(self):
         return f'{self.title}'
     
+    def send(self, request):
+        subscribers = Subscriber.objects.filter(confirmed=True)
+        sg = SendGridAPIClient(settings.SENDGRID_API_KEY)
+        for sub in subscribers:
+            message = Mail(
+                    from_email=settings.FROM_EMAIL,
+                    to_emails=sub.email,
+                    subject=self.title,
+                    html_content=self.text + (
+                        '<br><a href="{}/delete/?email={}&conf_num={}">Unsubscribe</a>.').format(
+                            request.build_absolute_uri(),
+                            sub.email,
+                            sub.conf_num))
+            sg.send(message)
+    
 
 class Subscriber(models.Model):
     email = models.EmailField(unique=True,
@@ -60,3 +78,15 @@ class Subscriber(models.Model):
 
     def __str__(self):
         return self.email + " (" + ("not " if not self.confirmed else "") + "confirmed)"
+    
+
+class Video(models.Model):
+    video = RichTextUploadingField(help_text='Введіть зміст відео',
+                                   verbose_name = 'Зміст')
+    
+    class Meta:
+        verbose_name_plural = 'Відеоконтент'
+        
+    def __str__(self):
+        return self.video
+    

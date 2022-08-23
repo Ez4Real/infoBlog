@@ -74,6 +74,27 @@ def confirm(request):
                     'form': SubscriberForm(),
                     'email': sub.email, 
                     'action': action})
+    
+def delete(request):
+    last_news = News.objects.filter(type__type='News').order_by('-id')[:5]
+    last_opeds = News.objects.filter(type__type='Op-eds').order_by('-id')[:3]
+    last_analytics = News.objects.filter(type__type='Analytics').order_by('-id')[:3]
+    last_opinions = News.objects.filter(type__type='Opinion').order_by('-id')[:3]
+    
+    sub = Subscriber.objects.get(email=request.GET['email'])
+    action = 'has been denied'
+    if sub.conf_num == request.GET['conf_num']:
+        action = 'has been unsubscribed'
+        sub.delete()
+    return render(request, 'blog/index.html', 
+                    {'last_news':last_news,
+                    'last_opeds':last_opeds,
+                    'last_analytics':last_analytics,
+                    'last_opinions':last_opinions,
+                    
+                    'form': SubscriberForm(),
+                    'email': sub.email, 
+                    'action': action})
 
 def random_digits():
     return "%0.12d" % random.randint(0, 999999999999)

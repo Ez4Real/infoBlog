@@ -138,6 +138,17 @@ MEDIA_ROOT = BASE_DIR / 'media'
 # Ckeditor Code Snippet
 CKEDITOR_UPLOAD_PATH = 'uploads/'
 
+CKEDITOR_CONFIGS = {
+    'default': {
+        'toolbar': 'full',
+        'extraPlugins': ','.join(
+            [
+               'html5video',
+            ]
+        ),
+    },
+}
+
 # Default primary key field type
 # https://docs.djangoproject.com/en/4.0/ref/settings/#default-auto-field
 
