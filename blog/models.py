@@ -1,12 +1,16 @@
-import datetime
-
 from django.db import models
 from django.urls import reverse
 from django.conf import settings
 
+from .tokens import email_unsubscribe_token
+
+from django.template.loader import render_to_string
+from django.contrib.sites.shortcuts import get_current_site
+from django.core.mail import EmailMessage
+from django.utils.http import urlsafe_base64_encode
+from django.utils.encoding import force_bytes
+
 from ckeditor_uploader.fields import RichTextUploadingField
-from sendgrid import SendGridAPIClient
-from sendgrid.helpers.mail import Mail
 
 class NewsType(models.Model):
     
@@ -39,50 +43,54 @@ class News(models.Model):
                              verbose_name = 'Тип',
                              default='News')
     
-    date_of_creation = models.DateField(help_text = 'Введіть дату створення новини', 
-                                        default=datetime.date.today,
-                                        verbose_name = 'Дата створення')
+    date_of_creation = models.DateTimeField(auto_now_add=True,
+                                            verbose_name = 'Дата створення')
     
     class Meta:
-        ordering = ['title', 'type']
+        ordering = ['title', 'type', 'date_of_creation']
         verbose_name_plural = 'Новини'
         
     def __str__(self):
         return f'{self.title}'
     
     def send(self, request):
-        subscribers = Subscriber.objects.filter(confirmed=True)
-        sg = SendGridAPIClient(settings.SENDGRID_API_KEY)
+        subscribers = Subscriber.objects.filter(is_active=True)
         for sub in subscribers:
-            message = Mail(
-                    from_email=settings.FROM_EMAIL,
-                    to_emails=sub.email,
-                    subject=self.title,
-                    html_content=self.text + (
-                        '<br><a href="{}/delete/?email={}&conf_num={}">Unsubscribe</a>.').format(
-                            request.build_absolute_uri(),
-                            sub.email,
-                            sub.conf_num))
-            sg.send(message)
+            mail_subject = self.title
+            message = render_to_string('blog/newsletter/news.html', 
+                            {
+                             'user': sub.email,
+                             'domain': get_current_site(request).domain,
+                             'uid': urlsafe_base64_encode(force_bytes(sub.pk)),
+                             'token': email_unsubscribe_token.make_token(sub),
+                             'protocol': 'https' if request.is_secure() else 'http'
+                            })
+            print(message)
+            email = EmailMessage(mail_subject, message, to=[sub.email])
+            
+            
+
     
 
 class Subscriber(models.Model):
     email = models.EmailField(unique=True,
                               max_length = 254,
                               help_text='Введіть email')
-    conf_num = models.CharField(max_length=15)
-    confirmed = models.BooleanField(default=False)
+    is_active = models.BooleanField(default=False)
     
     class Meta:
         verbose_name_plural = 'Електронні пошти підписників'
 
     def __str__(self):
-        return self.email + " (" + ("not " if not self.confirmed else "") + "confirmed)"
+        return self.email + " (" + ("not " if not self.is_active else "") + "confirmed)"
     
 
 class Video(models.Model):
     video = RichTextUploadingField(help_text='Введіть зміст відео',
                                    verbose_name = 'Зміст')
+    date_of_creation = models.DateTimeField(auto_now_add=True,
+                                            verbose_name = 'Дата створення')
+    
     
     class Meta:
         verbose_name_plural = 'Відеоконтент'

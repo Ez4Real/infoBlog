@@ -1,0 +1,8 @@
+{% autoescape off %}
+
+{{ user }}
+Thank you for signing up for our newsletter! 
+Please complete the process by clicking here to confirm your subscription.
+{{ protocol }}://{{ domain }}{% url 'delete' uidb64=uid token=token %}
+
+{% endautoescape %}

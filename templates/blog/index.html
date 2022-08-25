@@ -13,12 +13,15 @@
     <li><strong>Opinions:</strong> {{ last_opinions }}</li>
   </ul>
 
-  <div class="col-12">
-    {% if email %}
-    <p>{{ email }} {{ action }}.</p>
-    {% endif %}
+<div class="col-12">
+  {% if messages %}
+    {% for message in messages %}
+      {{ message }}
+    {% endfor %}
+  {% endif %}
 </div>
 {% if form %}
+
 <div class="col-12 col-md-4">
     <form method="post">
         {% csrf_token %}
@@ -28,5 +31,7 @@
     </form>
 </div>
 {% endif %}
+
+
   
 {% endblock %}
