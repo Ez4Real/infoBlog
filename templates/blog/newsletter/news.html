@@ -1,8 +1,11 @@
 {% autoescape off %}
 
 {{ user }}
-Thank you for signing up for our newsletter! 
-Please complete the process by clicking here to confirm your subscription.
+This is newsletter! 
+
+Some newsletter content...
+
+Click the link below to Unsubscribe.
 {{ protocol }}://{{ domain }}{% url 'delete' uidb64=uid token=token %}
 
 {% endautoescape %}

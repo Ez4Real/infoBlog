@@ -1,6 +1,5 @@
 from django.db import models
 from django.urls import reverse
-from django.conf import settings
 
 from .tokens import email_unsubscribe_token
 
@@ -65,12 +64,9 @@ class News(models.Model):
                              'token': email_unsubscribe_token.make_token(sub),
                              'protocol': 'https' if request.is_secure() else 'http'
                             })
-            print(message)
             email = EmailMessage(mail_subject, message, to=[sub.email])
+            email.send()
             
-            
-
-    
 
 class Subscriber(models.Model):
     email = models.EmailField(unique=True,
