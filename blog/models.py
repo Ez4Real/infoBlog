@@ -3,7 +3,7 @@ from django.urls import reverse
 
 from .tokens import email_unsubscribe_token
 
-from django.template.loader import render_to_string
+from django.template.loader import get_template
 from django.contrib.sites.shortcuts import get_current_site
 from django.core.mail import EmailMessage
 from django.utils.http import urlsafe_base64_encode
@@ -56,15 +56,15 @@ class News(models.Model):
         subscribers = Subscriber.objects.filter(is_active=True)
         for sub in subscribers:
             mail_subject = self.title
-            message = render_to_string('blog/newsletter/news.html', 
-                            {
-                             'user': sub.email,
-                             'domain': get_current_site(request).domain,
-                             'uid': urlsafe_base64_encode(force_bytes(sub.pk)),
-                             'token': email_unsubscribe_token.make_token(sub),
-                             'protocol': 'https' if request.is_secure() else 'http'
-                            })
+            message = get_template('blog/newsletter/news.html').render({
+                'user': sub.email,
+                'domain': get_current_site(request).domain,
+                'uid': urlsafe_base64_encode(force_bytes(sub.pk)),
+                'token': email_unsubscribe_token.make_token(sub),
+                'protocol': 'https' if request.is_secure() else 'http' 
+            })
             email = EmailMessage(mail_subject, message, to=[sub.email])
+            email.content_subtype = 'html'
             email.send()
             
 

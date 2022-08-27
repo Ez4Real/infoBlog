@@ -4,7 +4,7 @@ from .models import News, Subscriber
 from .forms import SubscriberForm
 from .tokens import email_activation_token
 
-from django.template.loader import render_to_string
+from django.template.loader import get_template
 from django.contrib.sites.shortcuts import get_current_site
 from django.contrib import messages
 from django.utils.http import urlsafe_base64_encode, urlsafe_base64_decode
@@ -13,16 +13,18 @@ from django.core.mail import EmailMessage
 from django.shortcuts import render, redirect
 
 
+
 def activateEmail(request, sub, to_email):
     mail_subject = 'Activate your email newsletter subscription'
-    message = render_to_string('blog/email/activate_subscription.html', {
+    message = get_template('blog/email/activate_subscription.html').render({
         'user': sub.email,
         'domain': get_current_site(request).domain,
         'uid': urlsafe_base64_encode(force_bytes(sub.pk)),
         'token': email_activation_token.make_token(sub),
         'protocol': 'https' if request.is_secure() else 'http'
-    })
+        })
     email = EmailMessage(mail_subject, message, to=[to_email])
+    email.content_subtype = 'html'
     if email.send():
         messages.success(request, 'Email has been added. Please, check your email')
     else:
@@ -38,7 +40,7 @@ def activate(request, uidb64, token):
     if sub is not None and email_activation_token.check_token(sub, token):
         sub.is_active = True
         sub.save()
-        messages.success(request, 'Thank you for subscription subscription.')
+        messages.success(request, 'Thank you for subscription.')
     else:
         messages.error(request, 'Activation link is invalid!')
     return redirect('index')
@@ -52,7 +54,7 @@ def delete(request, uidb64, token):
     
     if sub is not None and email_activation_token.check_token(sub, token):
         sub.delete()
-        messages.success(request, 'Unsubscribed success')
+        messages.success(request, 'Unsubscribed successfully')
     else:
         messages.error(request, 'Activation link is invalid!')
     return redirect('index')

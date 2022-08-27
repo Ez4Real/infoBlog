@@ -1,8 +1,8 @@
 {% autoescape off %}
-Hi, {{ user }}
-Thank you for signing up for our newsletter! 
-Please complete the process by clicking here to confirm your subscription.
-{{ protocol }}://{{ domain }}{% url 'activate' uidb64=uid token=token %}
-<a href="{{ protocol }}://{{ domain }}{% url 'activate' uidb64=uid token=token %}">Home</a>
+
+<p>Hi, {{ user }}</p>
+<p>Thank you for signing up for our newsletter!</p>
+<p>Please complete the process by <a href="{{ protocol }}://{{ domain }}{% url 'activate' uidb64=uid token=token %}">clicking here</a> to confirm your subscription.</p>
+
 {% endautoescape %}
 

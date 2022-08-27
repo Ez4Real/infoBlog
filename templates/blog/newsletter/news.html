@@ -1,11 +1,11 @@
 {% autoescape off %}
 
-{{ user }}
-This is newsletter! 
+Hi, {{ user }}
+<p>This is newsletter!</p>
 
-Some newsletter content...
+<p>Some newsletter content...</p>
 
-Click the link below to Unsubscribe.
-{{ protocol }}://{{ domain }}{% url 'delete' uidb64=uid token=token %}
-
+<p>
+    <a href="{{ protocol }}://{{ domain }}{% url 'delete' uidb64=uid token=token %}">Unsubscribe.</a>
+</p>
 {% endautoescape %}
