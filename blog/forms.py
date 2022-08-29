@@ -3,7 +3,7 @@ from django import forms
 
 
 class SubscriberForm(forms.ModelForm):
-    email = forms.EmailField(label='Ваш email',
+    email = forms.EmailField(label='',
                              max_length=100,
                              widget=forms.EmailInput(attrs={'class': 'form-control'}),
                              required=True)

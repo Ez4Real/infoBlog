@@ -1,37 +1,288 @@
 {% extends "blog/base_generic.html" %}
 
 {% block content %}
-<h1>Info Blog Home</h1>
+<!--<h1>Info Blog Home</h1>-->
+<div id="cascad" class="carousel slide " data-bs-ride="carousel">
 
-  <p>Welcome to <em>Info Blog</em>.</p>
+    <!--  <p>Welcome to <em>Info Blog</em>.</p>-->
+    <div class="carousel-indicators">
+        <button type="button" data-bs-target="#cascad" data-bs-slide-to="0" class="active"></button>
+        <button type="button" data-bs-target="#cascad" data-bs-slide-to="1"></button>
+        <button type="button" data-bs-target="#cascad" data-bs-slide-to="2"></button>
+    </div>
 
-  <p>The blog has the following last news:</p>
-  <ul>
-    <li><strong>News:</strong> {{ last_news }}</li>
-    <li><strong>Op-eds:</strong> {{ last_opeds }}</li>
-    <li><strong>Analytics:</strong> {{ last_analytics }}</li>
-    <li><strong>Opinions:</strong> {{ last_opinions }}</li>
-  </ul>
+    <!--  <p>The blog has the following last news:</p>-->
+    <!--  <ul>-->
+    <!--    <li><strong>News:</strong> {{ last_news }}</li>-->
+    <!--    <li><strong>Op-eds:</strong> {{ last_opeds }}</li>-->
+    <!--    <li><strong>Analytics:</strong> {{ last_analytics }}</li>-->
+    <!--    <li><strong>Opinions:</strong> {{ last_opinions }}</li>-->
+    <!--  </ul>-->
+    <div class="carousel-inner">
+        <div class="carousel-item active " style="height: 500px;">
+            <img src="https://www.interfax.ru/ftproot/photos/photostory/2022/02/18/w/week3_700.jpg" alt="Los Angeles"
+                 class="d-block mx-auto w-100 h-100 ob-cover">
+            <div class="carousel-caption">
+                <h3>Lorem ipsum</h3>
+                <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit.</p>
+            </div>
+        </div>
+        <div class="carousel-item " style="height: 500px;">
+            <img src="https://www.interfax.ru/ftproot/photos/photostory/2022/02/18/w/week7_700.jpg" alt="Chicago"
+                 class="d-block mx-auto w-100 h-100 ob-cover">
+            <div class="carousel-caption">
+                <h3>Lorem ipsum</h3>
+                <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit.</p>
+            </div>
+        </div>
+        <div class="carousel-item " style="height: 500px;">
+            <img src="https://www.interfax.ru/ftproot/photos/photostory/2022/02/18/w/week8_700.jpg" alt="New York"
+                 class="d-block mx-auto w-100 h-100 ob-cover">
+            <div class="carousel-caption">
+                <h3>Lorem ipsum</h3>
+                <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit.</p>
+            </div>
+        </div>
+    </div>
 
-<div class="col-12">
-  {% if messages %}
-    {% for message in messages %}
-      {{ message }}
-    {% endfor %}
-  {% endif %}
+    <!--  <div class="col-12">-->
+    <!--    {% if email %}-->
+    <!--    <p>{{ email }} {{ action }}.</p>-->
+    <!--    {% endif %}-->
+    <!--</div>-->
+    <!--{% if form %}-->
+    <!--<div class="col-12 col-md-4">-->
+    <!--    <form method="post">-->
+    <!--        {% csrf_token %}-->
+    <!--        {{ form }}-->
+    <!--        <br>-->
+    <!--        <button type="submit" class="btn btn-success">Subscribe!</button>-->
+    <!--    </form>-->
+    <!--</div>-->
+    <!--{% endif %}-->
+
+    <button class="carousel-control-prev" type="button" data-bs-target="#cascad" data-bs-slide="prev">
+        <span class="carousel-control-prev-icon"></span>
+    </button>
+    <button class="carousel-control-next" type="button" data-bs-target="#cascad" data-bs-slide="next">
+        <span class="carousel-control-next-icon"></span>
+    </button>
 </div>
-{% if form %}
+<div class="container">
+    <div class="p-4"></div>
 
-<div class="col-12 col-md-4">
-    <form method="post">
-        {% csrf_token %}
-        {{ form }}
-        <br>
-        <button type="submit" class="btn btn-success">Subscribe!</button>
-    </form>
+    <div class="cronis-analitics">
+        <hr>
+        <div class="h2">
+            Analitics
+        </div>
+        <div class="row row-cols-1 row-cols-md-3 g-4">
+            <div class="col">
+                <a href="#" class="text-dark text-decoration-none">
+                    <div class="card h-100">
+                        <img src="https://www.interfax.ru/ftproot/photos/photostory/2022/02/18/w/week3_700.jpg"
+                             class="img-fluid rounded-start" alt="...">
+                        <div class="card-img-overlay">
+                            <a href="#" class="btn btn-dark">Card type</a>
+                        </div>
+                        <div class="card-body">
+                            <h5 class="card-title">Card title</h5>
+                            <p class="card-text">This is a wider card with supporting text below as a natural lead-in to
+                                additional content. This content is a little bit longer.</p>
+                        </div>
+                        <div class="card-footer d-flex justify-content-between">
+                            <small class="text-muted">Last updated 3 mins ago</small>
+                            <small>Author</small>
+                        </div>
+                    </div>
+                </a>
+            </div>
+            <div class="col">
+                <a href="#" class="text-dark text-decoration-none">
+                    <div class="card h-100">
+                        <img src="https://www.interfax.ru/ftproot/photos/photostory/2022/02/18/w/week3_700.jpg"
+                             class="img-fluid rounded-start" alt="...">
+                        <div class="card-img-overlay">
+                            <a href="#" class="btn btn-dark">Card type</a>
+                        </div>
+                        <div class="card-body">
+                            <h5 class="card-title">Card title</h5>
+                            <p class="card-text">This is a wider card with supporting text below as a natural lead-in to
+                                additional content. This content is a little bit longer.</p>
+                        </div>
+                        <div class="card-footer d-flex justify-content-between">
+                            <small class="text-muted">Last updated 3 mins ago</small>
+                            <small>Author</small>
+                        </div>
+                    </div>
+                </a>
+            </div>
+            <div class="col">
+                <a href="#" class="text-dark text-decoration-none">
+                    <div class="card h-100">
+                        <img src="https://www.interfax.ru/ftproot/photos/photostory/2022/02/18/w/week3_700.jpg"
+                             class="img-fluid rounded-start" alt="...">
+                        <div class="card-img-overlay">
+                            <a href="#" class="btn btn-dark">Card type</a>
+                        </div>
+                        <div class="card-body">
+                            <h5 class="card-title">Card title</h5>
+                            <p class="card-text">This is a wider card with supporting text below as a natural lead-in to
+                                additional content. This content is a little bit longer.</p>
+                        </div>
+                        <div class="card-footer d-flex justify-content-between">
+                            <small class="text-muted">Last updated 3 mins ago</small>
+                            <small>Author</small>
+                        </div>
+                    </div>
+                </a>
+            </div>
+        </div>
+    </div>
+
+    <div class="p-4"></div>
+
+    <div class="cronis-analitics">
+        <hr>
+        <div class="h2">
+            Op-eds
+        </div>
+        <div class="row row-cols-1 row-cols-md-3 g-4">
+            <div class="col">
+                <a href="#" class="text-dark text-decoration-none">
+                    <div class="card h-100">
+                        <img src="https://www.interfax.ru/ftproot/photos/photostory/2022/02/18/w/week3_700.jpg"
+                             class="img-fluid rounded-start" alt="...">
+                        <div class="card-img-overlay">
+                            <a href="#" class="btn btn-dark">Card type</a>
+                        </div>
+                        <div class="card-body">
+                            <h5 class="card-title">Card title</h5>
+                            <p class="card-text">This is a wider card with supporting text below as a natural lead-in to
+                                additional content. This content is a little bit longer.</p>
+                        </div>
+                        <div class="card-footer d-flex justify-content-between">
+                            <small class="text-muted">Last updated 3 mins ago</small>
+                            <small>Author</small>
+                        </div>
+                    </div>
+                </a>
+            </div>
+            <div class="col">
+                <a href="#" class="text-dark text-decoration-none">
+                    <div class="card h-100">
+                        <img src="https://www.interfax.ru/ftproot/photos/photostory/2022/02/18/w/week3_700.jpg"
+                             class="img-fluid rounded-start" alt="...">
+                        <div class="card-img-overlay">
+                            <a href="#" class="btn btn-dark">Card type</a>
+                        </div>
+                        <div class="card-body">
+                            <h5 class="card-title">Card title</h5>
+                            <p class="card-text">This is a wider card with supporting text below as a natural lead-in to
+                                additional content. This content is a little bit longer.</p>
+                        </div>
+                        <div class="card-footer d-flex justify-content-between">
+                            <small class="text-muted">Last updated 3 mins ago</small>
+                            <small>Author</small>
+                        </div>
+                    </div>
+                </a>
+            </div>
+            <div class="col">
+                <a href="#" class="text-dark text-decoration-none">
+                    <div class="card h-100">
+                        <img src="https://www.interfax.ru/ftproot/photos/photostory/2022/02/18/w/week3_700.jpg"
+                             class="img-fluid rounded-start" alt="...">
+                        <div class="card-img-overlay">
+                            <a href="#" class="btn btn-dark">Card type</a>
+                        </div>
+                        <div class="card-body">
+                            <h5 class="card-title">Card title</h5>
+                            <p class="card-text">This is a wider card with supporting text below as a natural lead-in to
+                                additional content. This content is a little bit longer.</p>
+                        </div>
+                        <div class="card-footer d-flex justify-content-between">
+                            <small class="text-muted">Last updated 3 mins ago</small>
+                            <small>Author</small>
+                        </div>
+                    </div>
+                </a>
+            </div>
+        </div>
+    </div>
+
+
+    <div class="p-4"></div>
+
+    <div class="cronis-analitics">
+        <hr>
+        <div class="h2">
+            Opinion
+        </div>
+        <div class="row row-cols-1 row-cols-md-3 g-4">
+            <div class="col">
+                <a href="#" class="text-dark text-decoration-none">
+                    <div class="card h-100">
+                        <img src="https://www.interfax.ru/ftproot/photos/photostory/2022/02/18/w/week3_700.jpg"
+                             class="img-fluid rounded-start" alt="...">
+                        <div class="card-img-overlay">
+                            <a href="#" class="btn btn-dark">Card type</a>
+                        </div>
+                        <div class="card-body">
+                            <h5 class="card-title">Card title</h5>
+                            <p class="card-text">This is a wider card with supporting text below as a natural lead-in to
+                                additional content. This content is a little bit longer.</p>
+                        </div>
+                        <div class="card-footer d-flex justify-content-between">
+                            <small class="text-muted">Last updated 3 mins ago</small>
+                            <small>Author</small>
+                        </div>
+                    </div>
+                </a>
+            </div>
+            <div class="col">
+                <a href="#" class="text-dark text-decoration-none">
+                    <div class="card h-100">
+                        <img src="https://www.interfax.ru/ftproot/photos/photostory/2022/02/18/w/week3_700.jpg"
+                             class="img-fluid rounded-start" alt="...">
+                        <div class="card-img-overlay">
+                            <a href="#" class="btn btn-dark">Card type</a>
+                        </div>
+                        <div class="card-body">
+                            <h5 class="card-title">Card title</h5>
+                            <p class="card-text">This is a wider card with supporting text below as a natural lead-in to
+                                additional content. This content is a little bit longer.</p>
+                        </div>
+                        <div class="card-footer d-flex justify-content-between">
+                            <small class="text-muted">Last updated 3 mins ago</small>
+                            <small>Author</small>
+                        </div>
+                    </div>
+                </a>
+            </div>
+            <div class="col">
+                <a href="#" class="text-dark text-decoration-none">
+                    <div class="card h-100">
+                        <img src="https://www.interfax.ru/ftproot/photos/photostory/2022/02/18/w/week3_700.jpg"
+                             class="img-fluid rounded-start" alt="...">
+                        <div class="card-img-overlay">
+                            <a href="#" class="btn btn-dark">Card type</a>
+                        </div>
+                        <div class="card-body">
+                            <h5 class="card-title">Card title</h5>
+                            <p class="card-text">This is a wider card with supporting text below as a natural lead-in to
+                                additional content. This content is a little bit longer.</p>
+                        </div>
+                        <div class="card-footer d-flex justify-content-between">
+                            <small class="text-muted">Last updated 3 mins ago</small>
+                            <small>Author</small>
+                        </div>
+                    </div>
+                </a>
+            </div>
+        </div>
+    </div>
+
+
 </div>
-{% endif %}
-
-
-  
 {% endblock %}

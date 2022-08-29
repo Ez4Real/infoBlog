@@ -4,7 +4,7 @@ Hi, {{ user }}
 <p>This is newsletter!</p>
 
 <p>Some newsletter content...</p>
-
+{{ content }}
 <p>
     <a href="{{ protocol }}://{{ domain }}{% url 'delete' uidb64=uid token=token %}">Unsubscribe.</a>
 </p>
