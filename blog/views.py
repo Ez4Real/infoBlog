@@ -159,11 +159,11 @@ Media
 
 
 def podcast(request):
-    return render(request, 'blog/media/podcast.html', {'form': form_generic(request)})
+    return render(request, 'blog/media_page/podcast.html', {'form': form_generic(request)})
 
 
 def videos(request):
-    return render(request, 'blog/media/videos.html', {'form': form_generic(request)})
+    return render(request, 'blog/media_page/videos.html', {'form': form_generic(request)})
 
 
 """
