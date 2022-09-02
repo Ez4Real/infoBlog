@@ -75,10 +75,11 @@ class News(models.Model):
                 'token': email_unsubscribe_token.make_token(sub),
                 'protocol': 'https' if request.is_secure() else 'http',
                 'date': self.date_of_creation,
-                'content': str(soup),
+                'content': soup.text[:1024],
             })
             email = EmailMessage(mail_subject, message, to=[sub.email])
-            if img_tags: email.attach(img)
+            if img_tags:
+                email.attach(img)
             email.content_subtype = 'html'
             email.send()
 

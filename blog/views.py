@@ -3,6 +3,7 @@ import re
 from django.contrib import messages
 from django.contrib.sites.shortcuts import get_current_site
 from django.core.mail import EmailMessage
+from django.http import Http404
 from django.shortcuts import render, redirect
 from django.template.loader import get_template
 from django.utils.encoding import force_bytes, force_str
@@ -88,6 +89,16 @@ def index(request):
                    'last_analytics': last_analytics,
                    'last_opinions': last_opinions,
                    'form': form_generic(request), })
+
+
+def posts(request, type, pk):
+    try:
+        post = News.objects.get(pk=pk)
+    except News.DoesNotExist:
+        raise Http404('News does not exist')
+
+    return render(request, 'blog/post_detail.html',
+                  context={'news': post})
 
 
 """

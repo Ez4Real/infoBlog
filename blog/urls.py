@@ -5,6 +5,7 @@ urlpatterns = [
     path('', views.index, name='index'),
     path('delete/<uidb64>/<token>', views.delete, name='delete'),
     path('activate/<uidb64>/<token>', views.activate, name='activate'),
+    path('posts/<type>/<int:pk>', views.posts, name='post-detail'),
     # About
     path('about/board/', views.board, name='board'),
     path('about/key_doc/', views.key_doc, name='key_documents'),

@@ -1,309 +1,227 @@
-<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+
 {% autoescape off %}
-
-<html xmlns:v="urn:schemas-microsoft-com:vml">
-
+<html>
 <head>
-    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
-    <meta name="viewport" content="width=device-width; initial-scale=1.0; maximum-scale=1.0;" />
-    <!--[if !mso]--><!-- -->
-    <link href='https://fonts.googleapis.com/css?family=Work+Sans:300,400,500,600,700' rel="stylesheet">
-    <link href='https://fonts.googleapis.com/css?family=Quicksand:300,400,700' rel="stylesheet">
-    <!-- <![endif]-->
-
-    <title>Material Design for Bootstrap</title>
-
+    <!-- Compiled with Bootstrap Email version: 1.3.1 -->
+    <meta http-equiv="x-ua-compatible" content="ie=edge">
+    <meta name="x-apple-disable-message-reformatting">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="format-detection" content="telephone=no, date=no, address=no, email=no">
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
     <style type="text/css">
-        body {
-            width: 100%;
-            background-color: #ffffff;
-            margin: 0;
-            padding: 0;
-            -webkit-font-smoothing: antialiased;
-            mso-margin-top-alt: 0px;
-            mso-margin-bottom-alt: 0px;
-            mso-padding-alt: 0px 0px 0px 0px;
-        }
+      body,table,td{font-family:Helvetica,Arial,sans-serif !important}.ExternalClass{width:100%}.ExternalClass,.ExternalClass p,.ExternalClass span,.ExternalClass font,.ExternalClass td,.ExternalClass div{line-height:150%}a{text-decoration:none}*{color:inherit}a[x-apple-data-detectors],u+#body a,#MessageViewBody a{color:inherit;text-decoration:none;font-size:inherit;font-family:inherit;font-weight:inherit;line-height:inherit}img{-ms-interpolation-mode:bicubic}table:not([class^=s-]){font-family:Helvetica,Arial,sans-serif;mso-table-lspace:0pt;mso-table-rspace:0pt;border-spacing:0px;border-collapse:collapse}table:not([class^=s-]) td{border-spacing:0px;border-collapse:collapse}@media screen and (max-width: 600px){.w-full,.w-full>tbody>tr>td{width:100% !important}*[class*=s-lg-]>tbody>tr>td{font-size:0 !important;line-height:0 !important;height:0 !important}.s-2>tbody>tr>td{font-size:8px !important;line-height:8px !important;height:8px !important}.s-5>tbody>tr>td{font-size:20px !important;line-height:20px !important;height:20px !important}.s-10>tbody>tr>td{font-size:40px !important;line-height:40px !important;height:40px !important}}
 
-        p,
-        h1,
-        h2,
-        h3,
-        h4 {
-            margin-top: 0;
-            margin-bottom: 0;
-            padding-top: 0;
-            padding-bottom: 0;
-        }
 
-        span.preheader {
-            display: none;
-            font-size: 1px;
-        }
-
-        html {
-            width: 100%;
-        }
-
-        table {
-            font-size: 14px;
-            border: 0;
-        }
-        /* ----------- responsivity ----------- */
-
-        @media only screen and (max-width: 640px) {
-            /*------ top header ------ */
-            .main-header {
-                font-size: 20px !important;
-            }
-            .main-section-header {
-                font-size: 28px !important;
-            }
-            .show {
-                display: block !important;
-            }
-            .hide {
-                display: none !important;
-            }
-            .align-center {
-                text-align: center !important;
-            }
-            .no-bg {
-                background: none !important;
-            }
-            /*----- main image -------*/
-            .main-image img {
-                width: 440px !important;
-                height: auto !important;
-            }
-            /* ====== divider ====== */
-            .divider img {
-                width: 440px !important;
-            }
-            /*-------- container --------*/
-            .container590 {
-                width: 440px !important;
-            }
-            .container580 {
-                width: 400px !important;
-            }
-            .main-button {
-                width: 220px !important;
-            }
-            /*-------- secions ----------*/
-            .section-img img {
-                width: 320px !important;
-                height: auto !important;
-            }
-            .team-img img {
-                width: 100% !important;
-                height: auto !important;
-            }
-        }
-
-        @media only screen and (max-width: 479px) {
-            /*------ top header ------ */
-            .main-header {
-                font-size: 18px !important;
-            }
-            .main-section-header {
-                font-size: 26px !important;
-            }
-            /* ====== divider ====== */
-            .divider img {
-                width: 280px !important;
-            }
-            /*-------- container --------*/
-            .container590 {
-                width: 280px !important;
-            }
-            .container590 {
-                width: 280px !important;
-            }
-            .container580 {
-                width: 260px !important;
-            }
-            /*-------- secions ----------*/
-            .section-img img {
-                width: 280px !important;
-                height: auto !important;
-            }
-        }
     </style>
-    <!-- [if gte mso 9]><style type=”text/css”>
-        body {
-        font-family: arial, sans-serif!important;
-        }
-        </style>
-    <![endif]-->
 </head>
-
-
-<body class="respond" leftmargin="0" topmargin="0" marginwidth="0" marginheight="0">
-    <!-- header -->
-    <table border="0" width="100%" cellpadding="0" cellspacing="0" bgcolor="ffffff">
-
-        <tr>
-            <td align="center">
-                <table border="0" align="center" width="590" cellpadding="0" cellspacing="0" class="container590">
-
-                    <tr>
-                        <td height="25" style="font-size: 25px; line-height: 25px;">&nbsp;</td>
-                    </tr>
-
-                    <tr>
-                        <td align="center">
-
-                            <table border="0" align="center" width="590" cellpadding="0" cellspacing="0" class="container590">
-
-                                <tr>
-                                    <td align="center" height="70" style="height:70px;">
-                                        <a href="" style="display: block; border-style: none !important; border: 0 !important;"><img width="100" border="0" style="display: block; width: 100px;" src="https://www.interfax.ru/ftproot/photos/photostory/2022/02/18/w/week3_700.jpg" alt="" /></a>
-                                    </td>
-                                </tr>
-                            </table>
+<body class="bg-light"
+      style="outline: 0; width: 100%; min-width: 100%; height: 100%; -webkit-text-size-adjust: 100%; -ms-text-size-adjust: 100%; font-family: Helvetica, Arial, sans-serif; line-height: 24px; font-weight: normal; font-size: 16px; -moz-box-sizing: border-box; -webkit-box-sizing: border-box; box-sizing: border-box; color: #000000; margin: 0; padding: 0; border-width: 0;"
+      bgcolor="#f7fafc">
+<table class="bg-light body" valign="top" role="presentation" border="0" cellpadding="0" cellspacing="0"
+       style="outline: 0; width: 100%; min-width: 100%; height: 100%; -webkit-text-size-adjust: 100%; -ms-text-size-adjust: 100%; font-family: Helvetica, Arial, sans-serif; line-height: 24px; font-weight: normal; font-size: 16px; -moz-box-sizing: border-box; -webkit-box-sizing: border-box; box-sizing: border-box; color: #000000; margin: 0; padding: 0; border-width: 0;"
+       bgcolor="#f7fafc">
+    <tbody>
+    <tr>
+        <td valign="top" style="line-height: 24px; font-size: 16px; margin: 0;" align="left" bgcolor="#f7fafc">
+            <table class="container" role="presentation" border="0" cellpadding="0" cellspacing="0"
+                   style="width: 100%;">
+                <tbody>
+                <tr>
+                    <td align="center" style="line-height: 24px; font-size: 16px; margin: 0; padding: 0 16px;">
+                        <!--[if (gte mso 9)|(IE)]>
+                        <table align="center" role="presentation">
+                            <tbody>
+                            <tr>
+                                <td width="600">
+                        <![endif]-->
+                        <table align="center" role="presentation" border="0" cellpadding="0" cellspacing="0"
+                               style="width: 100%; max-width: 600px; margin: 0 auto;">
+                            <tbody>
+                            <tr>
+                                <td style="line-height: 24px; font-size: 16px; margin: 0;" align="left">
+                                    <table class="s-10 w-full" role="presentation" border="0" cellpadding="0"
+                                           cellspacing="0" style="width: 100%;" width="100%">
+                                        <tbody>
+                                        <tr>
+                                            <td style="line-height: 40px; font-size: 40px; width: 100%; height: 40px; margin: 0;"
+                                                align="left" width="100%" height="40">
+                                                &#160;
+                                            </td>
+                                        </tr>
+                                        </tbody>
+                                    </table>
+                                    <table class="card" role="presentation" border="0" cellpadding="0" cellspacing="0"
+                                           style="border-radius: 6px; border-collapse: separate !important; width: 100%; overflow: hidden; border: 1px solid #e2e8f0;"
+                                           bgcolor="#ffffff">
+                                        <tbody>
+                                        <tr>
+                                            <td style="line-height: 24px; font-size: 16px; width: 100%; margin: 0;"
+                                                align="left" bgcolor="#ffffff">
+                                                <table class="card-body" role="presentation" border="0" cellpadding="0"
+                                                       cellspacing="0" style="width: 100%;">
+                                                    <tbody>
+                                                    <tr>
+                                                        <td style="line-height: 24px; font-size: 16px; width: 100%; margin: 0; padding: 20px;"
+                                                            align="left">
+                                                            <div class="huy" style="float: left;">
+                                                                <h1 class="h3"
+                                                                    style="padding-top: 0; padding-bottom: 0; font-weight: 500; vertical-align: baseline; font-size: 28px; line-height: 33.6px; margin: 0;"
+                                                                    align="left">Hi, {{ user }}</h1>
+                                                                <table class="s-2 w-full" role="presentation" border="0"
+                                                                       cellpadding="0" cellspacing="0"
+                                                                       style="width: 100%;" width="100%">
+                                                                    <tbody>
+                                                                    <tr>
+                                                                        <td style="line-height: 8px; font-size: 8px; width: 100%; height: 8px; margin: 0;"
+                                                                            align="left" width="100%" height="8">
+                                                                            &#160;
+                                                                        </td>
+                                                                    </tr>
+                                                                    </tbody>
+                                                                </table>
+                                                                <h5 class="text-teal-700"
+                                                                    style="color: #13795b; padding-top: 0; padding-bottom: 0; font-weight: 500; vertical-align: baseline; font-size: 20px; line-height: 24px; margin: 0;"
+                                                                    align="left">This is lastest news</h5>
+                                                            </div>
+                                                            <img src="https://picsum.photos/1900/720"
+                                                                 style="height: 60px; width: 200px; line-height: 100%; outline: none; text-decoration: none; display: block; border-style: none; border-width: 0;"
+                                                                 align="right">
+                                                            <table class="s-5 w-full" role="presentation" border="0"
+                                                                   cellpadding="0" cellspacing="0" style="width: 100%;"
+                                                                   width="100%">
+                                                                <tbody>
+                                                                <tr>
+                                                                    <td style="line-height: 20px; font-size: 20px; width: 100%; height: 20px; margin: 0;"
+                                                                        align="left" width="100%" height="20">
+                                                                        &#160;
+                                                                    </td>
+                                                                </tr>
+                                                                </tbody>
+                                                            </table>
+                                                            <table class="hr" role="presentation" border="0"
+                                                                   cellpadding="0" cellspacing="0" style="width: 100%;">
+                                                                <tbody>
+                                                                <tr>
+                                                                    <td style="line-height: 24px; font-size: 16px; border-top-width: 1px; border-top-color: #e2e8f0; border-top-style: solid; height: 1px; width: 100%; margin: 0;"
+                                                                        align="left">
+                                                                    </td>
+                                                                </tr>
+                                                                </tbody>
+                                                            </table>
+                                                            <table class="s-5 w-full" role="presentation" border="0"
+                                                                   cellpadding="0" cellspacing="0" style="width: 100%;"
+                                                                   width="100%">
+                                                                <tbody>
+                                                                <tr>
+                                                                    <td style="line-height: 20px; font-size: 20px; width: 100%; height: 20px; margin: 0;"
+                                                                        align="left" width="100%" height="20">
+                                                                        &#160;
+                                                                    </td>
+                                                                </tr>
+                                                                </tbody>
+                                                            </table>
+                                                            <div class="space-y-3">
+                                                                <p class="text-gray-700"
+                                                                   style="line-height: 24px; font-size: 16px; color: #4a5568; width: 100%; margin: 0;"
+                                                                   align="left">
+                                                                    &#160;
+                                                                    {{ content }}
+                                                                </p>
+                                                            </div>
+                                                            <table class="btn btn-primary" role="presentation"
+                                                                   border="0" cellpadding="0" cellspacing="0"
+                                                                   style="border-radius: 6px; border-collapse: separate !important;">
+                                                                <tbody>
+                                                                <tr>
+                                                                    <td style="line-height: 24px; font-size: 16px; border-radius: 6px; margin: 0;"
+                                                                        align="center" bgcolor="#0d6efd">
+                                                                        <a href="https://app.bootstrapemail.com/templates"
+                                                                           target="_blank"
+                                                                           style="color: #ffffff; font-size: 16px; font-family: Helvetica, Arial, sans-serif; text-decoration: none; border-radius: 6px; line-height: 20px; display: block; font-weight: normal; white-space: nowrap; background-color: #0d6efd; padding: 8px 12px; border: 1px solid #0d6efd;">
+                                                                            Read more...
+                                                                        </a>
+                                                                    </td>
+                                                                </tr>
+                                                                </tbody>
+                                                            </table>
+                                                            <table class="s-5 w-full" role="presentation" border="0"
+                                                                   cellpadding="0" cellspacing="0" style="width: 100%;"
+                                                                   width="100%">
+                                                                <tbody>
+                                                                <tr>
+                                                                    <td style="line-height: 20px; font-size: 20px; width: 100%; height: 20px; margin: 0;"
+                                                                        align="left" width="100%" height="20">
+                                                                        &#160;
+                                                                    </td>
+                                                                </tr>
+                                                                </tbody>
+                                                            </table>
+                                                            <table class="hr" role="presentation" border="0"
+                                                                   cellpadding="0" cellspacing="0" style="width: 100%;">
+                                                                <tbody>
+                                                                <tr>
+                                                                    <td style="line-height: 24px; font-size: 16px; border-top-width: 1px; border-top-color: #e2e8f0; border-top-style: solid; height: 1px; width: 100%; margin: 0;"
+                                                                        align="left">
+                                                                    </td>
+                                                                </tr>
+                                                                </tbody>
+                                                            </table>
+                                                            <table class="s-5 w-full" role="presentation" border="0"
+                                                                   cellpadding="0" cellspacing="0" style="width: 100%;"
+                                                                   width="100%">
+                                                                <tbody>
+                                                                <tr>
+                                                                    <td style="line-height: 20px; font-size: 20px; width: 100%; height: 20px; margin: 0;"
+                                                                        align="left" width="100%" height="20">
+                                                                        &#160;
+                                                                    </td>
+                                                                </tr>
+                                                                </tbody>
+                                                            </table>
+                                                            <a style="font-size: 14px; line-height: 24px; color: #5caad2; text-decoration: none; font-weight: bold;"
+                                                               href="{{ protocol }}://{{ domain }}%7B%%20url%20'delete'%20uidb64=uid%20token=token%20%%7D">UNSUBSCRIBE</a>
+                                                        </td>
+                                                    </tr>
+                                                    </tbody>
+                                                </table>
+                                            </td>
+                                        </tr>
+                                        </tbody>
+                                    </table>
+                                    <table class="s-10 w-full" role="presentation" border="0" cellpadding="0"
+                                           cellspacing="0" style="width: 100%;" width="100%">
+                                        <tbody>
+                                        <tr>
+                                            <td style="line-height: 40px; font-size: 40px; width: 100%; height: 40px; margin: 0;"
+                                                align="left" width="100%" height="40">
+                                                &#160;
+                                            </td>
+                                        </tr>
+                                        </tbody>
+                                    </table>
+                                </td>
+                            </tr>
+                            </tbody>
+                        </table>
+                        <!--[if (gte mso 9)|(IE)]>
                         </td>
-                    </tr>
-
-                    <tr>
-                        <td height="25" style="font-size: 25px; line-height: 25px;">&nbsp;</td>
-                    </tr>
-
-                </table>
-            </td>
-        </tr>
-    </table>
-    <!-- end header -->
-
-    <!-- big image section -->
-    <table border="0" width="100%" cellpadding="0" cellspacing="0" bgcolor="ffffff" class="bg_color">
-
-        <tr>
-            <td align="center">
-                <table border="0" align="center" width="590" cellpadding="0" cellspacing="0" class="container590">
-                    <tr>
-                        <td align="center" style="color: #343434; font-size: 24px; font-family: Quicksand, Calibri, sans-serif; font-weight:700;letter-spacing: 3px; line-height: 35px;" class="main-header">
-
-
-                            <div style="line-height: 35px">
-
-                                Hi, {{ user }}
-                                <br>
-                              	This is the latest news form our blog
-                            </div>
-                        </td>
-                    </tr>
-
-                    <tr>
-                        <td align="center">
-                            <table border="0" width="40" align="center" cellpadding="0" cellspacing="0" bgcolor="eeeeee">
-                                <tr>
-                                    <td height="2" style="font-size: 2px; line-height: 2px;">&nbsp;</td>
-                                </tr>
-                            </table>
-                        </td>
-                    </tr>
-
-                    <tr>
-                        <td height="20" style="font-size: 20px; line-height: 20px;">&nbsp;</td>
-                    </tr>
-
-                    <tr>
-                        <td align="center">
-                            <table border="0" width="400" align="center" cellpadding="0" cellspacing="0" class="container590">
-                                <tr>
-                                    <td align="center" style="color: #888888; font-size: 16px; font-family: 'Work Sans', Calibri, sans-serif; line-height: 24px;">
-
-
-                                        <div style="line-height: 24px">
-
-                                            {{content}}
-
-                                        </div>
-                                    </td>
-                                </tr>
-                            </table>
-                        </td>
-                    </tr>
-
-                    <tr>
-                        <td height="25" style="font-size: 25px; line-height: 25px;">&nbsp;</td>
-                    </tr>
-
-                </table>
-
-            </td>
-        </tr>
-
-    </table>
-    <!-- end section -->
-
-
-
-    <!-- footer ====== -->
-    <table border="0" width="100%" cellpadding="0" cellspacing="0" bgcolor="f4f4f4">
-
-        <tr>
-            <td height="25" style="font-size: 25px; line-height: 25px;">&nbsp;</td>
-        </tr>
-
-        <tr>
-            <td align="center">
-
-                <table border="0" align="center" width="590" cellpadding="0" cellspacing="0" class="container590">
-
-                    <tr>
-                        <td>
-                            <table border="0" align="left" cellpadding="0" cellspacing="0" style="border-collapse:collapse; mso-table-lspace:0pt; mso-table-rspace:0pt;" class="container590">
-                                <tr>
-                                    <td align="left" style="color: #aaaaaa; font-size: 14px; font-family: 'Work Sans', Calibri, sans-serif; line-height: 24px;">
-                                        <div style="line-height: 24px;">
-
-                                            <span style="color: #333333;">nen jeka tu aton</span>
-
-                                        </div>
-                                    </td>
-                                </tr>
-                            </table>
-
-                            <table border="0" align="left" width="5" cellpadding="0" cellspacing="0" style="border-collapse:collapse; mso-table-lspace:0pt; mso-table-rspace:0pt;" class="container590">
-                                <tr>
-                                    <td height="20" width="5" style="font-size: 20px; line-height: 20px;">&nbsp;</td>
-                                </tr>
-                            </table>
-
-                            <table border="0" align="right" cellpadding="0" cellspacing="0" style="border-collapse:collapse; mso-table-lspace:0pt; mso-table-rspace:0pt;" class="container590">
-
-                                <tr>
-                                    <td align="center">
-                                        <table align="center" border="0" cellpadding="0" cellspacing="0">
-                                            <tr>
-                                                <td align="center">
-                                                    <a style="font-size: 14px; font-family: 'Work Sans', Calibri, sans-serif; line-height: 24px;color: #5caad2; text-decoration: none;font-weight:bold;" href="{{ protocol }}://{{ domain }}{% url 'delete' uidb64=uid token=token %}">UNSUBSCRIBE</a>
-                                                </td>
-                                            </tr>
-                                        </table>
-                                    </td>
-                                </tr>
-
-                            </table>
-                        </td>
-                    </tr>
-
-                </table>
-            </td>
-        </tr>
-
-        <tr>
-            <td height="25" style="font-size: 25px; line-height: 25px;">&nbsp;</td>
-        </tr>
-
-    </table>
-    <!-- end footer ====== -->
-
+                        </tr>
+                        </tbody>
+                        </table>
+                        <![endif]-->
+                    </td>
+                </tr>
+                </tbody>
+            </table>
+        </td>
+    </tr>
+    </tbody>
+</table>
 </body>
-
 </html>
+
+
 <!--<body>-->
 
 <!--    <header class="p-3 bg-dark text-white fixed-top">-->
@@ -323,3 +241,4 @@
 <!--</body>-->
 <!--</html>-->
 {% endautoescape %}
+
