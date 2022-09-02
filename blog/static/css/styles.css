@@ -1,0 +1,116 @@
+.sidebar-nav {
+    margin-top: 20px;
+    padding: 0;
+    list-style: none;
+}
+/* .main-header{
+    height: 200px;
+} */
+
+nav{
+    padding: 0px !important;
+}
+
+.nav-div{
+    padding-left: 0 px !important;
+
+}
+
+.logo{
+    height: 160px !important;
+    width: 160px !important;
+    background-color: navy;
+    margin: -16px 0px -16px 0px;
+    /* position: absolute; */
+}
+
+.header-nav-bar{
+    height: 224px;
+}
+
+.custom-font-size{
+    font-size: 25px;
+}
+
+.header-content{
+    margin: 0;
+    padding: 0;
+}
+
+.font-size-custom-navbar{
+    font-size: 25px;
+    margin-bottom: -20px;
+    margin-top: 45px;
+}
+
+@media (max-width: 1400px) {
+    .logo{
+        display: none;
+    }
+
+    .cronis-carousel-control-next{
+    }
+
+    .cronis-carousel-control-prev{
+    }
+}
+.testdiv{
+    width: 100px;
+    height: 100px;
+    background-color: red;
+}
+
+.ob-cover{
+    object-fit: cover;
+}
+
+.icon-bg-d{
+    height: 50px;
+    width: 50px;
+    background: #000;
+    border-radius: 50%;
+    /* margin-left: -20px; */
+}
+
+.cronis-nav-button-carousel {
+    margin-right: 35%;
+}
+
+.cronis-carousel-control-prev{
+    position: absolute;
+    left: -150px;
+}
+
+.cronis-carousel-control-next{
+    position: absolute;
+    left: 1250px;
+}
+
+.font-bold {
+  font-weight: bold;
+}
+
+footer{
+    margin-top: 10%;
+}
+
+.our-team-foto{
+    justify-content: center;
+}
+
+.join-us-foto{
+    height: 500px;
+    width: 100%;
+    position: relative;
+}
+.join-us-text{
+    position: absolute;
+}
+
+main{
+    margin-top: 160px;
+}
+
+.card-foto{
+    height: 400px;
+}

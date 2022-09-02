@@ -1,37 +1,279 @@
+<!DOCTYPE html>
 <html lang="en">
 <head>
-
-  {% block title %}<title>Info Blog</title>{% endblock %}
-  <meta charset="utf-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1">
-  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
-  <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
-  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
-
-  <!-- Добавление дополнительного статического CSS файла -->
-  {% load static %}
-  <link rel="stylesheet" href="{% static 'css/styles.css' %}">
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <!-- Bootstrap css -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet"
+          integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
+    {% load static %}
+    <link rel="stylesheet" href="{% static '/css/styles.css' %}">
+    <title>Home</title>
 </head>
-
 <body>
 
-  <div class="container-fluid">
+<header class="p-3 bg-dark text-white fixed-top">
+    <div class="container">
+        <div class="d-flex flex-wrap">
+            <a href="/" class="logo">
+                <!-- <img src="" alt="" class="logo"> -->
+            </a>
 
-    <div class="row">
-      <div class="col-sm-2">
-      {% block sidebar %}
-      <ul class="sidebar-nav">
-          <li><a href="{% url 'index' %}">Home</a></li>
-          <li><a href="">News</a></li>
-          <li><a href="">About</a></li>
-      </ul>
-     {% endblock %}
-      </div>
-      <div class="col-sm-10 ">
-      {% block content %}{% endblock %}
-      </div>
+            <div class="me-lg-auto"></div>
+
+            <div class="d-flex flex-column">
+
+                <div class="d-flex flex-wrap justify-content-end align-items-end h-100 ">
+
+                    <ul class="nav">
+                        <li class="nav-item dropdown ">
+                            <a class="nav-link dropdown-toggle text-white" href="#" id="navbarDropdownMenuLink"
+                               role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                                About
+                            </a>
+                            <ul class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
+                                <li><a class="dropdown-item" href="{% url 'mission' %}">Mission</a></li>
+                                <li><a class="dropdown-item" href="{% url 'vision' %}">Vision</a></li>
+                                <li><a class="dropdown-item" href="{% url 'key_documents' %}">Key-documents</a></li>
+                                <li><a class="dropdown-item" href="{% url 'team' %}">Team</a></li>
+                                <li><a class="dropdown-item" href="{% url 'board' %}">Board</a></li>
+                                <li><a class="dropdown-item" href="#">Something else here</a></li>
+                            </ul>
+                        </li>
+                        <li class="nav-item dropdown ">
+                            <a class="nav-link dropdown-toggle text-white" href="#" id="navbarDropdownMenuLink"
+                               role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                                Join us
+                            </a>
+                            <ul class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
+                                <li><a class="dropdown-item" href="{% url 'general_members' %}">General members</a></li>
+                                <li><a class="dropdown-item" href="{% url 'join_team' %}">Join team</a></li>
+                                <li><a class="dropdown-item" href="{% url 'voluntear' %}">Voluntear</a></li>
+                            </ul>
+                        </li>
+                        <li class="nav-item dropdown ">
+                            <a class="nav-link dropdown-toggle text-white" href="#" id="navbarDropdownMenuLink"
+                               role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                                Donate
+                            </a>
+                            <ul class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
+                                <li><a class="dropdown-item" href="{% url 'patrion' %}">Patrion</a></li>
+                                <li><a class="dropdown-item" href="{% url 'beav' %}">Beav</a></li>
+                                <li><a class="dropdown-item" href="{% url 'pay_pal' %}">Pay Pal</a></li>
+                            </ul>
+                        </li>
+                    </ul>
+
+                    <form class="col-12 col-lg-auto mb-3 mb-lg-0 me-lg-3">
+                        <input type="search" class="form-control form-control-dark" placeholder="Search..."
+                               aria-label="Search">
+                    </form>
+                </div>
+
+                <div class="d-flex justify-content-evenly align-items-end flex-column font-size-custom-navbar mt-0">
+                    <ul class="nav col-7 col-lg-auto  mb-2 mb-md-0 p-2 ">
+                        <li><a href="{% url 'events' %}" class="nav-link px-2 text-white">Events</a></li>
+                        <li><a href="{% url 'news' %}" class="nav-link px-2 text-white">News</a></li>
+                        <li class="nav-item dropdown ">
+                            <a class="nav-link dropdown-toggle text-white" href="#" id="navbarDropdownMenuLink"
+                               role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                                Research
+                            </a>
+                            <ul class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
+                                <li><a class="dropdown-item" href="{% url 'analitics' %}">Analitics</a></li>
+                                <li><a class="dropdown-item" href="{% url 'anual_report' %}">Anual report</a></li>
+                                <li><a class="dropdown-item" href="{% url 'index_ergosum' %}">Index ergosum</a></li>
+                                <li><a class="dropdown-item" href="{% url 'opinion' %}">Opinion</a></li>
+                            </ul>
+                        </li>
+                        <li><a href="{% url 'blog' %}" class="nav-link px-2 text-white">Blogs</a></li>
+                        <li><a href="{% url 'op_eds' %}" class="nav-link px-2 text-white">Op-eds</a></li>
+                        <li class="nav-item dropdown ">
+                            <a class="nav-link dropdown-toggle text-white" href="#" id="navbarDropdownMenuLink"
+                               role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                                Policy Areas
+                            </a>
+                            <ul class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
+                                <li><a class="dropdown-item" href="#">1</a></li>
+                                <li><a class="dropdown-item" href="#">2</a></li>
+                            </ul>
+                        </li>
+                        <li class="nav-item dropdown ">
+                            <a class="nav-link dropdown-toggle text-white" href="#" id="navbarDropdownMenuLink"
+                               role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                                Media
+                            </a>
+                            <ul class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
+                                <li><a class="dropdown-item" href="{% url 'podcast' %}">Podcast</a></li>
+                                <li><a class="dropdown-item" href="{% url 'videos' %}">Videos</a></li>
+                            </ul>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </div>
     </div>
+</header>
+<main>
 
-  </div>
+    {% block content %}{% endblock %}
+</main>
+<footer class="bg-dark text-center text-white">
+    <!-- Grid container -->
+    <div class="container p-4">
+        <!-- Section: Social media -->
+        <section class="mb-4">
+            <!-- Facebook -->
+            <a class="btn btn-outline-light btn-floating m-1" href="#!" role="button">
+                <i class="fab fa-facebook-f"></i>
+            </a>
+
+            <!-- Twitter -->
+            <a class="btn btn-outline-light btn-floating m-1" href="#!" role="button">
+                <i class="fab fa-twitter"></i>
+            </a>
+
+            <!-- Google -->
+            <a class="btn btn-outline-light btn-floating m-1" href="#!" role="button">
+                <i class="fab fa-google"></i>
+            </a>
+
+            <!-- Instagram -->
+            <a class="btn btn-outline-light btn-floating m-1" href="#!" role="button">
+                <i class="fab fa-instagram"></i>
+            </a>
+        </section>
+        <!-- Section: Social media -->
+
+        <!-- Section: Form -->
+        <section class="">
+            <!--            <form action="">-->
+            <!--                &lt;!&ndash;Grid row&ndash;&gt;-->
+            <!--                <div class="row d-flex justify-content-center">-->
+            <!--                    &lt;!&ndash;Grid column&ndash;&gt;-->
+            <!--                    <div class="col-auto">-->
+            <!--                        <p class="pt-2">-->
+            <!--                            <strong>Sign up for our newsletter</strong>-->
+            <!--                        </p>-->
+            <!--                    </div>-->
+            <!--                    &lt;!&ndash;Grid column&ndash;&gt;-->
+
+            <!--                    &lt;!&ndash;Grid column&ndash;&gt;-->
+            <!--            <div class="col-md-5 col-12">-->
+            <!--                &lt;!&ndash; Email input &ndash;&gt;-->
+            <!--                <div class="form-outline form-white mb-4">-->
+            <!--                    <input type="email" id="form5Example21" class="form-control" placeholder="Email"/>-->
+            <!--                </div>-->
+            <!--            </div>-->
+            <!--                    &lt;!&ndash;Grid column&ndash;&gt;-->
+
+            <!--                    &lt;!&ndash;Grid column&ndash;&gt;-->
+            <!--                    <div class="col-auto">-->
+            <!--                        &lt;!&ndash; Submit button &ndash;&gt;-->
+            <!--                        <button type="submit" class="btn btn-outline-light mb-4">-->
+            <!--                            Subscribe-->
+            <!--                        </button>-->
+            <!--                    </div>-->
+            <!--                    &lt;!&ndash;Grid column&ndash;&gt;-->
+            <!--                </div>-->
+            <!--                &lt;!&ndash;Grid row&ndash;&gt;-->
+            <!--            </form>-->
+            {% if form %}
+            <form method="post">
+                <div class="row  d-flex justify-content-center">
+                    <div class="col-auto">
+                        <p class="pt-2">
+                            <strong>Enter your email</strong>
+                        </p>
+                    </div>
+                    <div class="col-md-5 col-12">
+                        {% csrf_token %}
+                        {{ form }}
+                    </div>
+                    <div class="col-auto">
+                        <button type="submit" class="btn btn-outline-light mb-4">Subscribe!</button>
+                    </div>
+                </div>
+            </form>
+            {% endif %}
+        </section>
+        <!-- Section: Form -->
+
+        <!-- Section: Text -->
+        <section class="mb-4">
+            <p>
+                Lorem ipsum dolor sit amet consectetur adipisicing elit. Sunt distinctio earum
+                repellat quaerat voluptatibus placeat nam, commodi optio pariatur est quia magnam
+                eum harum corrupti dicta, aliquam sequi voluptate quas.
+            </p>
+        </section>
+        <!-- Section: Text -->
+
+        <!-- Section: Links -->
+        <section class="">
+            <!--Grid row-->
+            <div class="row">
+                <div class="col"></div>
+                <!--Grid column-->
+                <div class="col-lg-3 col-md-6 mb-4 mb-md-0">
+                    <h5 class="text-uppercase">Phone</h5>
+
+                    <ul class="list-unstyled mb-0">
+                        <li>
+                            <a href="#!" class="text-white">+380000000000</a>
+                        </li>
+                        <li>
+                            <a href="#!" class="text-white">+380000000001</a>
+                        </li>
+                    </ul>
+                </div>
+                <!--Grid column-->
+
+                <!--Grid column-->
+                <div class="col-lg-3 col-md-6 mb-4 mb-md-0">
+                    <h5 class="text-uppercase">Email</h5>
+
+                    <ul class="list-unstyled mb-0">
+                        <li>
+                            <a href="#!" class="text-white">info@gmail.com</a>
+                        </li>
+                        <li>
+                            <a href="#!" class="text-white">info1@gmail.com</a>
+                        </li>
+                    </ul>
+                </div>
+                <!--Grid column-->
+
+                <!--Grid column-->
+                <div class="col-lg-3 col-md-6 mb-4 mb-md-0">
+                    <p>
+                        вул.{вставте назву вулиці} {1А} {місто} {код} {Країна}
+                    </p>
+                </div>
+                <div class="col"></div>
+                <!--Grid column-->
+            </div>
+            <!--Grid row-->
+        </section>
+        <!-- Section: Links -->
+    </div>
+    <!-- Grid container -->
+
+    <!-- Copyright -->
+    <div class="text-center p-1" style="background-color: rgba(0, 0, 0, 0.2);">
+        © 2022 Copyright:
+        Женьшень і Атом
+    </div>
+    <!-- Copyright -->
+</footer>
+<!-- Footer -->
+
+
+<!-- JavaScript Bundle with Popper -->
+<script src="https://kit.fontawesome.com/a94260e078.js" crossorigin="anonymous"></script>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0/dist/js/bootstrap.bundle.min.js"
+        integrity="sha384-A3rJD856KowSb7dwlZdYEkO39Gagi7vIsF0jrRAoQmDKKtQBHUuLZ9AsSv4jD4Xa"
+        crossorigin="anonymous"></script>
 </body>
 </html>

@@ -1,0 +1,9 @@
+{% autoescape off %}
+
+<p>Hi, {{ user }}</p>
+<p>Thank you for signing up for our newsletter!</p>
+
+<p>Please complete the process by <a href="{{ protocol }}://{{ domain }}{% url 'activate' uidb64=uid token=token %}">clicking here</a> to confirm your subscription.</p>
+
+{% endautoescape %}
+
