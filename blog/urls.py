@@ -21,8 +21,8 @@ urlpatterns = [
     path('join_us/join_team/', views.join_team, name='join_team'),
     path('join_us/voluntear/', views.voluntear, name='voluntear'),
     # Media
-    path('donate/podcast/', views.podcast, name='podcast'),
-    path('donate/videos/', views.videos, name='videos'),
+    path('media/podcast/', views.podcast, name='podcast'),
+    path('media/videos/', views.videos, name='videos'),
     # Research
     path('research/analitics', views.analitics, name='analitics'),
     path('research/anual_report', views.anual_report, name='anual_report'),

@@ -1,14 +1,14 @@
-from bs4 import BeautifulSoup
-from ckeditor_uploader.fields import RichTextUploadingField
 from email.mime.image import MIMEImage
 
-from django.db import models
-from django.urls import reverse
-from django.template.loader import get_template
+from bs4 import BeautifulSoup
+from ckeditor_uploader.fields import RichTextUploadingField
 from django.contrib.sites.shortcuts import get_current_site
 from django.core.mail import EmailMessage
-from django.utils.http import urlsafe_base64_encode
+from django.db import models
+from django.template.loader import get_template
+from django.urls import reverse
 from django.utils.encoding import force_bytes
+from django.utils.http import urlsafe_base64_encode
 
 from .tokens import email_unsubscribe_token
 
@@ -57,7 +57,8 @@ class News(models.Model):
         subscribers = Subscriber.objects.filter(is_active=True)
         mail_subject = self.title
         soup = BeautifulSoup(self.text, "html.parser")
-        img_tags = soup.findAll('img')
+        img_tags = soup('img')
+
         for sub in subscribers:
             if img_tags:
                 img_path = img_tags[0]['src']
