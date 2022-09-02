@@ -11,7 +11,7 @@ from django.utils.encoding import force_bytes
 from django.utils.http import urlsafe_base64_encode
 
 from .tokens import email_unsubscribe_token
-
+from cssutils import parseStyle
 
 class NewsType(models.Model):
     type = models.CharField(help_text='Введіть тип новини',
@@ -57,7 +57,13 @@ class News(models.Model):
         subscribers = Subscriber.objects.filter(is_active=True)
         mail_subject = self.title
         soup = BeautifulSoup(self.text, "html.parser")
-        img_tags = soup('img')
+        img_tags = soup.findAll('img')
+        for tag in soup.findAll('p'):
+            if tag.getText():
+                # ???
+                tag['style'] = "max-height: 235px;overflow: hidden;text-overflow: ellipsis;display: -webkit-box;-webkit-box-orient: vertical; -webkit-line-clamp: 10;"
+                
+                
 
         for sub in subscribers:
             if img_tags:
@@ -67,8 +73,8 @@ class News(models.Model):
                 img = MIMEImage(img_data)
                 img.add_header('Content-ID', f'<{img_path}>')
                 img_tags[0]['src'] = f'cid:{img_path}'
-                for tag in img_tags[1:]:
-                    tag.decompose()
+                for img_tag in img_tags[1:]:
+                    img_tag.decompose()
 
             message = get_template('blog/newsletter/news.html').render({
                 'domain': get_current_site(request).domain,
@@ -76,11 +82,11 @@ class News(models.Model):
                 'token': email_unsubscribe_token.make_token(sub),
                 'protocol': 'https' if request.is_secure() else 'http',
                 'date': self.date_of_creation,
-                'content': soup.text[:1024],
+                'content': str(soup),
             })
+            print(soup)
             email = EmailMessage(mail_subject, message, to=[sub.email])
-            if img_tags:
-                email.attach(img)
+            if img_tags: email.attach(img)
             email.content_subtype = 'html'
             email.send()
 
