@@ -1,0 +1,10 @@
+{% extends "blog/base_generic.html" %}
+
+{% block content %}
+
+{{ news.title }}
+{{ news.type }}
+{{ news.text | safe }}
+{{ news.date_of_creation }}
+
+{% endblock %}

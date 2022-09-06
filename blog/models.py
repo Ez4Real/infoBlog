@@ -79,6 +79,8 @@ class News(models.Model):
                 'date': self.date_of_creation,
                 'text': text,
                 'main_img': str(img_tag),
+                'type': self.type,
+                'pk': self.pk,
             })
             print(soup)
             email = EmailMessage(mail_subject, message, to=[sub.email])
