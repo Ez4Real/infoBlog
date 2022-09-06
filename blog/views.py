@@ -81,6 +81,7 @@ def index(request):
     last_opeds = News.objects.filter(type__type='Op-eds').order_by('-id')[:3]
     last_analytics = News.objects.filter(type__type='Analytics').order_by('-id')[:3]
     last_opinions = News.objects.filter(type__type='Opinion').order_by('-id')[:3]
+    
 
     return render(request, 'blog/index.html',
                   {'last_news': last_news,

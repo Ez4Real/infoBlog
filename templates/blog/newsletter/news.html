@@ -122,11 +122,14 @@
                                                                 </tbody>
                                                             </table>
                                                             <div class="space-y-3">
-                                                                <p class="text-gray-700"
-                                                                   style="line-height: 24px; font-size: 16px; width: 100%; margin: 0; padding: 20px;"
-                                                                   align="left">
-                                                                    &#160;
-                                                                    {{ content }}...
+                                                                {{ main_img }}
+                                                                <p style="display: -webkit-box; 
+                                                                          -webkit-line-clamp: 10; 
+                                                                          overflow: hidden; 
+                                                                          text-overflow: ellipsis;
+                                                                          -webkit-box-orient: vertical;
+                                                                          max-height: 235px">
+                                                                    {{ text }}
                                                                 </p>
                                                             </div>
                                                             <table class="btn btn-primary" role="presentation"

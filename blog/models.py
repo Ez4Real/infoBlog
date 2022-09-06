@@ -11,7 +11,6 @@ from django.utils.encoding import force_bytes
 from django.utils.http import urlsafe_base64_encode
 
 from .tokens import email_unsubscribe_token
-from cssutils import parseStyle
 
 class NewsType(models.Model):
     type = models.CharField(help_text='Введіть тип новини',
@@ -57,24 +56,20 @@ class News(models.Model):
         subscribers = Subscriber.objects.filter(is_active=True)
         mail_subject = self.title
         soup = BeautifulSoup(self.text, "html.parser")
-        img_tags = soup.findAll('img')
+        img_tag = soup.find('img')
         for tag in soup.findAll('p'):
             if tag.getText():
-                # ???
-                tag['style'] = "max-height: 235px;overflow: hidden;text-overflow: ellipsis;display: -webkit-box;-webkit-box-orient: vertical; -webkit-line-clamp: 10;"
-                
-                
+                text = tag.getText()
+                break
 
         for sub in subscribers:
-            if img_tags:
-                img_path = img_tags[0]['src']
+            if img_tag:
+                img_path = img_tag['src']
                 with open(img_path[1:], 'rb') as f:
                     img_data = f.read()
                 img = MIMEImage(img_data)
                 img.add_header('Content-ID', f'<{img_path}>')
-                img_tags[0]['src'] = f'cid:{img_path}'
-                for img_tag in img_tags[1:]:
-                    img_tag.decompose()
+                img_tag['src'] = f'cid:{img_path}'
 
             message = get_template('blog/newsletter/news.html').render({
                 'domain': get_current_site(request).domain,
@@ -82,12 +77,14 @@ class News(models.Model):
                 'token': email_unsubscribe_token.make_token(sub),
                 'protocol': 'https' if request.is_secure() else 'http',
                 'date': self.date_of_creation,
-                'content': str(soup),
+                'text': text,
+                'main_img': str(img_tag),
             })
             print(soup)
             email = EmailMessage(mail_subject, message, to=[sub.email])
-            if img_tags: email.attach(img)
+            if img_tag: email.attach(img)
             email.content_subtype = 'html'
+            print(img_tag)
             email.send()
 
 
