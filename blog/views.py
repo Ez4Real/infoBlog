@@ -77,7 +77,7 @@ def form_generic(request):
 
 
 def index(request):
-    last_news = News.objects.filter(type__type='News').order_by('-id')[:5]
+    last_news = News.objects.filter(type__type='News').order_by('id')[:5]
     last_opeds = News.objects.filter(type__type='Op-eds').order_by('-id')[:3]
     last_analytics = News.objects.filter(type__type='Analytics').order_by('-id')[:3]
     last_opinions = News.objects.filter(type__type='Opinion').order_by('-id')[:3]
@@ -97,7 +97,9 @@ def posts(request, type, pk):
         raise Http404('News does not exist')
 
     return render(request, 'blog/post_detail.html',
-                  context={'news': post})
+                  context={'news': post,
+                           'form': form_generic(request),
+                           })
 
 
 """
@@ -144,6 +146,9 @@ def pay_pal(request):
     return render(request, 'blog/donate/pay_pal.html', {'form': form_generic(request)})
 
 
+def all_donate(request):
+    return render(request, 'blog/donate/all_donate.html', {'form': form_generic(request)})
+
 """
 ________________________________________________________________________________________________________________________
 Join Us
@@ -169,11 +174,11 @@ Media
 
 
 def podcast(request):
-    return render(request, 'blog/media/podcast.html', {'form': form_generic(request)})
+    return render(request, 'blog/media_page/podcast.html', {'form': form_generic(request)})
 
 
 def videos(request):
-    return render(request, 'blog/media/videos.html', {'form': form_generic(request)})
+    return render(request, 'blog/media_page/videos.html', {'form': form_generic(request)})
 
 
 """

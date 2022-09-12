@@ -1,22 +1,44 @@
 {% extends "blog/base_generic.html" %}
-
 {% block content %}
-<div class="p-3"></div>
+<div class="text-center join-us-foto d-flex align-items-center justify-content-center">
+    <img src="https://images.unsplash.com/photo-1447078806655-40579c2520d6?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=2070&q=80"
+         class="d-block mx-auto w-100 h-100 ob-cover">
+    <p class="h1 text-white join-us-text">Donate</p>
+</div>
+{% load static %}
 <div class="container">
-    <div class="row row-cols-2">
+    <div class="p-4"></div>
+    <div class="row row-cols-xl-3">
         <div class="col">
-            <h1>
-                Our Mision
-            </h1>
-            <p>
-                Lorem ipsum dolor sit amet consectetur, adipisicing elit. Perspiciatis fugit veniam molestiae voluptates suscipit molestias libero eum ad facere optio officia adipisci explicabo beatae, iusto voluptas nisi cum labore delectus.
-                Lorem, ipsum dolor sit amet consectetur adipisicing elit. Consectetur, explicabo illum! Tempore, a. Debitis vel blanditiis quasi similique consequuntur maiores eos, dolorum officiis accusantium magni, dolores error commodi qui! Culpa?
-                Lorem ipsum dolor sit amet consectetur adipisicing elit. Reiciendis quae, cumque quidem labore eligendi delectus velit sapiente repudiandae maxime, voluptas atque facilis voluptates ullam quo hic porro qui minima voluptate.
-            </p>
+            <div class="card mb-4" style="min-width:250px;">
+                <img class="card-img-top" alt="Team o"
+                     src="{% static '/img_static/paypal.svg' %}">
+                <hr style="margin:0px;">
+                <div class="card-body">
+                    <p class="card-text">{href}</p>
+                </div>
+            </div>
         </div>
         <div class="col">
-            <div class="misio-img">
-                <img src="https://images.unsplash.com/photo-1447078806655-40579c2520d6?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=2070&q=80" class="img-thumbnail" alt="">
+            <div class="card mb-4" style="min-width:250px;">
+                <img class="card-img-top" alt="Team foto"
+                     src="{% static '/img_static/patreon.svg' %}">
+                <hr style="margin:0px;">
+                <div class="card-body">
+                    <p class="card-text">{href}</p>
+                </div>
+            </div>
+        </div>
+        <div class="col">
+            <div class="card mb-4" style="min-width:250px;">
+                <div class="beam-cronis">
+                <img class="card-img-top h-100" alt="Team foto"
+                     src="https://beam.org/assets/beam-logo-no-bar-89f397e9ff7df6b04a578335ac6e1e5e6d0c8599f617943001dc602c3136441f.png">
+                </div>
+                <hr style="margin:0px;">
+                <div class="card-body">
+                    <p class="card-text">{href}</p>
+                </div>
             </div>
         </div>
     </div>

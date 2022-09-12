@@ -1,0 +1,22 @@
+{% extends "blog/base_generic.html" %}
+
+{% block content %}
+
+    <div class="header-cronis-post text-white h1 w-100 d-flex align-items-center justify-content-center" style="height: 500px;">
+        {{ news.title }}
+    </div>
+    <div class="m-5"></div>
+<div class="container">
+
+    <div class="body-cronis-post">
+        {{ news.text | safe }}
+    </div>
+
+    <div class="row bg-gray">
+        <div class="col">{{ news.date_of_creation }}</div>
+        <div class="col text-end">{{ news.type }}</div>
+    </div>
+    <hr>
+</div>
+
+{% endblock %}

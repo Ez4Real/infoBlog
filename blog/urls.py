@@ -16,6 +16,7 @@ urlpatterns = [
     path('donate/beav/', views.beav, name='beav'),
     path('donate/patrion/', views.patrion, name='patrion'),
     path('donate/pay_pal/', views.pay_pal, name='pay_pal'),
+    path('donate', views.all_donate, name='all_donate'),
     # Join us
     path('join_us/general_members/', views.general_members, name='general_members'),
     path('join_us/join_team/', views.join_team, name='join_team'),
@@ -29,7 +30,7 @@ urlpatterns = [
     path('research/index_ergosum', views.index_ergosum, name='index_ergosum'),
     path('research/opinion', views.opinion, name='opinion'),
     # Else
-    path('blog', views.blog, name='blog'),
+    path('our_blog', views.blog, name='blog'),
     path('events', views.events, name='events'),
     path('news', views.news, name='news'),
     path('op_eds', views.op_eds, name='op_eds'),

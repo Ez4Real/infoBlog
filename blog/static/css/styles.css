@@ -53,6 +53,20 @@ nav{
 
     .cronis-carousel-control-prev{
     }
+
+    main{
+        margin-top: 121.500px!important;
+    }
+
+    .beam-cronis{
+        height: 177px!important;
+    }
+}
+
+@media (max-width: 1200px) {
+    .beam-cronis{
+        height: 147px!important;
+    }
 }
 .testdiv{
     width: 100px;
@@ -113,4 +127,26 @@ main{
 
 .card-foto{
     height: 400px;
+}
+
+.header-cronis-post{
+    background-image: url('https://images.unsplash.com/photo-1661760625983-298c7f97fa9b?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1974&q=80')
+}
+
+.body-cronis-post img{
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+.beam-cronis{
+    height: 207px;
+}
+
+.card-custom{
+    overflow: hidden;
+    text-overflow: ellipsis;
+    display: -webkit-box;
+    -webkit-line-clamp: 10;
+    -webkit-box-orient: vertical;
 }

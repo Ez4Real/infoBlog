@@ -9,40 +9,35 @@
         <button type="button" data-bs-target="#cascad" data-bs-slide-to="0" class="active"></button>
         <button type="button" data-bs-target="#cascad" data-bs-slide-to="1"></button>
         <button type="button" data-bs-target="#cascad" data-bs-slide-to="2"></button>
+        <button type="button" data-bs-target="#cascad" data-bs-slide-to="3"></button>
+        <button type="button" data-bs-target="#cascad" data-bs-slide-to="4"></button>
     </div>
 
     <!--  <p>The blog has the following last news:</p>-->
-    <!--  <ul>-->
-    <!--    <li><strong>News:</strong> {{ last_news }}</li>-->
+    <!--      <ul>-->
+    <!--        <li><strong>News:</strong> {{ last_news }}</li>-->
     <!--    <li><strong>Op-eds:</strong> {{ last_opeds }}</li>-->
     <!--    <li><strong>Analytics:</strong> {{ last_analytics }}</li>-->
     <!--    <li><strong>Opinions:</strong> {{ last_opinions }}</li>-->
-    <!--  </ul>-->
+    <!--      </ul>-->
     <div class="carousel-inner">
-        <div class="carousel-item active " style="height: 500px;">
-            <img src="https://images.unsplash.com/photo-1447078806655-40579c2520d6?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=2070&q=80" alt="Los Angeles"
-                 class="d-block mx-auto w-100 h-100 ob-cover">
-            <div class="carousel-caption">
-                <h3>Lorem ipsum</h3>
-                <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit.</p>
-            </div>
-        </div>
-        <div class="carousel-item " style="height: 500px;">
-            <img src="https://images.unsplash.com/photo-1661881556222-54af8e8de24b?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1974&q=80" alt="Chicago"
-                 class="d-block mx-auto w-100 h-100 ob-cover">
-            <div class="carousel-caption">
-                <h3>Lorem ipsum</h3>
-                <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit.</p>
-            </div>
-        </div>
-        <div class="carousel-item " style="height: 500px;">
-            <img src="https://images.unsplash.com/photo-1661760625983-298c7f97fa9b?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1974&q=80" alt="New York"
-                 class="d-block mx-auto w-100 h-100 ob-cover">
-            <div class="carousel-caption">
-                <h3>Lorem ipsum</h3>
-                <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit.</p>
-            </div>
-        </div>
+        {% for news in last_news %}
+        <a href="{% url 'post-detail' type=news.type pk=news.id %}">
+            {% if forloop.first %}
+            <div class="carousel-item active" style="height: 500px;">
+                {% else %}
+                <div class="carousel-item" style="height: 500px;">
+                    {% endif %}
+                    <img src="https://images.unsplash.com/photo-1661760625983-298c7f97fa9b?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1974&q=80"
+                         alt="{{ news.title }}"
+                         class="d-block mx-auto w-100 h-100 ob-cover">
+                    <div class="carousel-caption">
+                        <h3>{{ news.title }}</h3>
+                        {{ news.text | safe }}
+                    </div>
+                </div>
+        </a>
+        {% endfor %}
     </div>
 
     <!--  <div class="col-12">-->
@@ -68,6 +63,7 @@
         <span class="carousel-control-next-icon"></span>
     </button>
 </div>
+
 <div class="container">
     <div class="p-4"></div>
 
@@ -77,66 +73,24 @@
             Analitics
         </div>
         <div class="row row-cols-1 row-cols-md-3 g-4">
+            {% for analitic in last_analytics %}
             <div class="col">
-                <a href="#" class="text-dark text-decoration-none">
-                    <div class="card h-100">
-                        <img src="https://images.unsplash.com/photo-1447078806655-40579c2520d6?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=2070&q=80"
+                <a href="{% url 'post-detail' type=analitic.type pk=analitic.id %}"
+                   class="text-dark text-decoration-none">
+                    <div class="card " >
+                        <img src="https://picsum.photos/1900/720"
                              class="img-fluid rounded-start" alt="...">
-                        <div class="card-img-overlay">
-                            <a href="#" class="btn btn-dark">Card type</a>
-                        </div>
-                        <div class="card-body">
-                            <h5 class="card-title">Card title</h5>
-                            <p class="card-text">This is a wider card with supporting text below as a natural lead-in to
-                                additional content. This content is a little bit longer.</p>
+                        <div class="card-body card-custom">
+                            <h5 class="card-title">{{ analitic.title }}</h5>
+                            <p class="card-text">{{ analitic.text | safe }}</p>
                         </div>
                         <div class="card-footer d-flex justify-content-between">
-                            <small class="text-muted">Last updated 3 mins ago</small>
-                            <small>Author</small>
+                            <small class="text-muted">{{ analitic.date_of_creation }}</small>
                         </div>
                     </div>
                 </a>
             </div>
-            <div class="col">
-                <a href="#" class="text-dark text-decoration-none">
-                    <div class="card h-100">
-                        <img src="https://images.unsplash.com/photo-1447078806655-40579c2520d6?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=2070&q=80"
-                             class="img-fluid rounded-start" alt="...">
-                        <div class="card-img-overlay">
-                            <a href="#" class="btn btn-dark">Card type</a>
-                        </div>
-                        <div class="card-body">
-                            <h5 class="card-title">Card title</h5>
-                            <p class="card-text">This is a wider card with supporting text below as a natural lead-in to
-                                additional content. This content is a little bit longer.</p>
-                        </div>
-                        <div class="card-footer d-flex justify-content-between">
-                            <small class="text-muted">Last updated 3 mins ago</small>
-                            <small>Author</small>
-                        </div>
-                    </div>
-                </a>
-            </div>
-            <div class="col">
-                <a href="#" class="text-dark text-decoration-none">
-                    <div class="card h-100">
-                        <img src="https://images.unsplash.com/photo-1447078806655-40579c2520d6?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=2070&q=80"
-                             class="img-fluid rounded-start" alt="...">
-                        <div class="card-img-overlay">
-                            <a href="#" class="btn btn-dark">Card type</a>
-                        </div>
-                        <div class="card-body">
-                            <h5 class="card-title">Card title</h5>
-                            <p class="card-text">This is a wider card with supporting text below as a natural lead-in to
-                                additional content. This content is a little bit longer.</p>
-                        </div>
-                        <div class="card-footer d-flex justify-content-between">
-                            <small class="text-muted">Last updated 3 mins ago</small>
-                            <small>Author</small>
-                        </div>
-                    </div>
-                </a>
-            </div>
+            {% endfor %}
         </div>
     </div>
 
@@ -148,66 +102,23 @@
             Op-eds
         </div>
         <div class="row row-cols-1 row-cols-md-3 g-4">
+            {% for opeds in last_opeds %}
             <div class="col">
-                <a href="#" class="text-dark text-decoration-none">
+                <a href="{% url 'post-detail' type=opeds.type pk=opeds.id %}" class="text-dark text-decoration-none">
                     <div class="card h-100">
-                        <img src="https://images.unsplash.com/photo-1447078806655-40579c2520d6?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=2070&q=80"
+                        <img src="https://picsum.photos/1900/720"
                              class="img-fluid rounded-start" alt="...">
-                        <div class="card-img-overlay">
-                            <a href="#" class="btn btn-dark">Card type</a>
-                        </div>
-                        <div class="card-body">
-                            <h5 class="card-title">Card title</h5>
-                            <p class="card-text">This is a wider card with supporting text below as a natural lead-in to
-                                additional content. This content is a little bit longer.</p>
+                        <div class="card-body card-custom">
+                            <h5 class="card-title">{{ opeds.title }}</h5>
+                            <p class="card-text">{{ opeds.text | safe }}</p>
                         </div>
                         <div class="card-footer d-flex justify-content-between">
-                            <small class="text-muted">Last updated 3 mins ago</small>
-                            <small>Author</small>
+                            <small class="text-muted">{{ opeds.date_of_creation }}</small>
                         </div>
                     </div>
                 </a>
             </div>
-            <div class="col">
-                <a href="#" class="text-dark text-decoration-none">
-                    <div class="card h-100">
-                        <img src="https://images.unsplash.com/photo-1447078806655-40579c2520d6?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=2070&q=80"
-                             class="img-fluid rounded-start" alt="...">
-                        <div class="card-img-overlay">
-                            <a href="#" class="btn btn-dark">Card type</a>
-                        </div>
-                        <div class="card-body">
-                            <h5 class="card-title">Card title</h5>
-                            <p class="card-text">This is a wider card with supporting text below as a natural lead-in to
-                                additional content. This content is a little bit longer.</p>
-                        </div>
-                        <div class="card-footer d-flex justify-content-between">
-                            <small class="text-muted">Last updated 3 mins ago</small>
-                            <small>Author</small>
-                        </div>
-                    </div>
-                </a>
-            </div>
-            <div class="col">
-                <a href="#" class="text-dark text-decoration-none">
-                    <div class="card h-100">
-                        <img src="https://images.unsplash.com/photo-1447078806655-40579c2520d6?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=2070&q=80"
-                             class="img-fluid rounded-start" alt="...">
-                        <div class="card-img-overlay">
-                            <a href="#" class="btn btn-dark">Card type</a>
-                        </div>
-                        <div class="card-body">
-                            <h5 class="card-title">Card title</h5>
-                            <p class="card-text">This is a wider card with supporting text below as a natural lead-in to
-                                additional content. This content is a little bit longer.</p>
-                        </div>
-                        <div class="card-footer d-flex justify-content-between">
-                            <small class="text-muted">Last updated 3 mins ago</small>
-                            <small>Author</small>
-                        </div>
-                    </div>
-                </a>
-            </div>
+            {% endfor %}
         </div>
     </div>
 
@@ -220,69 +131,26 @@
             Opinion
         </div>
         <div class="row row-cols-1 row-cols-md-3 g-4">
+            {% for opinions in last_opinions %}
             <div class="col">
-                <a href="#" class="text-dark text-decoration-none">
+                <a href="{% url 'post-detail' type=opinions.type pk=opinions.id %}"
+                   class="text-dark text-decoration-none">
                     <div class="card h-100">
-                        <img src="https://images.unsplash.com/photo-1447078806655-40579c2520d6?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=2070&q=80"
+                        <img src="https://picsum.photos/1900/720"
                              class="img-fluid rounded-start" alt="...">
-                        <div class="card-img-overlay">
-                            <a href="#" class="btn btn-dark">Card type</a>
-                        </div>
-                        <div class="card-body">
-                            <h5 class="card-title">Card title</h5>
-                            <p class="card-text">This is a wider card with supporting text below as a natural lead-in to
-                                additional content. This content is a little bit longer.</p>
+                        <div class="card-body card-custom">
+                            <h5 class="card-title">{{ opinions.title }}</h5>
+                            <p class="card-text card-text-cronis">{{ opinions.text | safe }}</p>
                         </div>
                         <div class="card-footer d-flex justify-content-between">
-                            <small class="text-muted">Last updated 3 mins ago</small>
-                            <small>Author</small>
+                            <small class="text-muted">{{ opinions.date_of_creation }}</small>
                         </div>
                     </div>
                 </a>
             </div>
-            <div class="col">
-                <a href="#" class="text-dark text-decoration-none">
-                    <div class="card h-100">
-                        <img src="https://images.unsplash.com/photo-1447078806655-40579c2520d6?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=2070&q=80"
-                             class="img-fluid rounded-start" alt="...">
-                        <div class="card-img-overlay">
-                            <a href="#" class="btn btn-dark">Card type</a>
-                        </div>
-                        <div class="card-body">
-                            <h5 class="card-title">Card title</h5>
-                            <p class="card-text">This is a wider card with supporting text below as a natural lead-in to
-                                additional content. This content is a little bit longer.</p>
-                        </div>
-                        <div class="card-footer d-flex justify-content-between">
-                            <small class="text-muted">Last updated 3 mins ago</small>
-                            <small>Author</small>
-                        </div>
-                    </div>
-                </a>
-            </div>
-            <div class="col">
-                <a href="#" class="text-dark text-decoration-none">
-                    <div class="card h-100">
-                        <img src="https://images.unsplash.com/photo-1447078806655-40579c2520d6?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=2070&q=80"
-                             class="img-fluid rounded-start" alt="...">
-                        <div class="card-img-overlay">
-                            <a href="#" class="btn btn-dark">Card type</a>
-                        </div>
-                        <div class="card-body">
-                            <h5 class="card-title">Card title</h5>
-                            <p class="card-text">This is a wider card with supporting text below as a natural lead-in to
-                                additional content. This content is a little bit longer.</p>
-                        </div>
-                        <div class="card-footer d-flex justify-content-between">
-                            <small class="text-muted">Last updated 3 mins ago</small>
-                            <small>Author</small>
-                        </div>
-                    </div>
-                </a>
-            </div>
+            {% endfor %}
         </div>
     </div>
-
 
 </div>
 {% endblock %}
