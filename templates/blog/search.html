@@ -1,0 +1,20 @@
+{% extends "blog/base_generic.html" %}
+
+{% block content %}
+
+<div>
+    <p>Found {{ results_num }} results
+    {% if query != "" %}
+        for “{{ query }}”</p>
+    {% endif %} 
+    {% if results %}
+        {% for news in results %}
+        <div>
+            <strong>{{ news.title }} - {{ news.type }}</strong>
+            {{ news.text | safe }}
+        </div>
+        {% endfor %}
+    {% endif %}
+</div>
+
+{% endblock %}
