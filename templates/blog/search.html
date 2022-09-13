@@ -3,18 +3,46 @@
 {% block content %}
 
 <div>
-    <p>Found {{ results_num }} results
+    <h5>Page {{ page_num }}</h5>
+    <p>Found {{ posts_num }} results
     {% if query != "" %}
         for “{{ query }}”</p>
-    {% endif %} 
-    {% if results %}
-        {% for news in results %}
+    {% endif %}
+
+    {% if blog_posts %}
+        {% for news in blog_posts %}
         <div>
             <strong>{{ news.title }} - {{ news.type }}</strong>
             {{ news.text | safe }}
         </div>
         {% endfor %}
     {% endif %}
+    <div class="pagination">
+        <span class="step-links">
+            {% if blog_posts.has_previous %}
+            <li class="page-item">
+                <a class="page-link" href="?{% if query %}q={{query}}&{% endif %}page={{ blog_posts.previous_page_number }}">&laquo; Previous</a>
+            </li>
+            {% endif %}
+
+	{% for i in blog_posts.paginator.page_range %}
+		{% if blog_posts.number == i %}
+			<li class="page-item active"><a class="page-link">{{ i }}</a></li>
+		{% else %}
+			<li class="page-item" ><a class="page-link" href="?{% if query %}q={{query}}&{% endif %}page={{ i }}">{{ i }}</a></li>
+		{% endif %}
+	{% endfor %}
+    
+    {% if blog_posts.has_next %}
+    	<li class="page-item">
+		  <a class="page-link" href="?{% if query %}q={{query}}&{% endif %}page={{ blog_posts.next_page_number }}">Next</a>
+		</li>
+		<li class="page-item">
+		  <a class="page-link"  href="?{% if query %}q={{query}}&{% endif %}page={{ blog_posts.paginator.num_pages }}">Last &raquo;</a>
+		</li>
+    {% endif %}
+        </span>
+    </div>
 </div>
 
 {% endblock %}

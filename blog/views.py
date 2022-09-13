@@ -3,6 +3,7 @@ import re
 from django.contrib import messages
 from django.contrib.sites.shortcuts import get_current_site
 from django.core.mail import EmailMessage
+from django.core.paginator import Paginator, EmptyPage, PageNotAnInteger
 from django.http import Http404
 from django.shortcuts import render, redirect
 from django.template.loader import get_template
@@ -13,6 +14,9 @@ from django.db.models import Q
 from .forms import SubscriberForm
 from .models import News, Subscriber
 from .tokens import email_activation_token
+
+
+POSTS_PER_PAGE = 15
 
 
 def activateEmail(request, sub, to_email):
@@ -74,30 +78,42 @@ def subscribeForm(request):
     return SubscriberForm()
 
 def search(request):
+    context = {}
     if request.method == 'GET':
-        query = request.GET.get('search')
+        query = request.GET.get('search', '')
+        context['query'] = str(query)
         
         results = News.objects.filter(Q(title__icontains=query) | 
                                       Q(text__icontains=query) |
-                                      Q(type__type__icontains=query) )
-    return render(request, 'blog/search.html',
-                  {'query': query,
-                   'results': results,
-                   'results_num': len(results)})
+                                      Q(type__type__icontains=query)).order_by('-date_of_creation')
+        context['posts_num'] = len(results)
+        
+        page = request.GET.get('page', 1)
+        context['page_num'] = page
+        paginator = Paginator(results, POSTS_PER_PAGE)      
+        try:
+            results = paginator.page(page)
+        except PageNotAnInteger:
+            results = paginator.page(POSTS_PER_PAGE)
+        except EmptyPage:
+            results = paginator.page(paginator.num_pages)
+        context['blog_posts'] = results
+        
+    return render(request, 'blog/search.html', context)
 
 def index(request):
+    context = {}
+    context['form'] = subscribeForm(request)
     last_news = News.objects.filter(type__type='News').order_by('-id')[:5]
     last_opeds = News.objects.filter(type__type='Op-eds').order_by('-id')[:3]
     last_analytics = News.objects.filter(type__type='Analytics').order_by('-id')[:3]
     last_opinions = News.objects.filter(type__type='Opinion').order_by('-id')[:3]
-    
+    context['last_news'] = last_news
+    context['last_opeds'] = last_opeds
+    context['last_analytics'] = last_analytics
+    context['last_opinions'] = last_opinions
 
-    return render(request, 'blog/index.html',
-                  {'last_news': last_news,
-                   'last_opeds': last_opeds,
-                   'last_analytics': last_analytics,
-                   'last_opinions': last_opinions,
-                   'form': subscribeForm(request), })
+    return render(request, 'blog/index.html', context)
 
 
 def posts(request, type, pk):
