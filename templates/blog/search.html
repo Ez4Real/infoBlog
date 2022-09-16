@@ -13,7 +13,9 @@
         {% for news in blog_posts %}
         <div>
             <strong>{{ news.title }} - {{ news.type }}</strong>
-            {{ news.text | safe }}
+            <p><img src={{ news.banner.url }}></p>
+            {{ news.subtitle }}
+            {{ news.content | safe }}
         </div>
         {% endfor %}
     {% endif %}

@@ -77,6 +77,7 @@ def subscribeForm(request):
 
     return SubscriberForm()
 
+
 def search(request):
     context = {}
     if request.method == 'GET':
@@ -84,7 +85,8 @@ def search(request):
         context['query'] = str(query)
         
         results = News.objects.filter(Q(title__icontains=query) | 
-                                      Q(text__icontains=query) |
+                                      Q(subtitle__icontains=query) | 
+                                      Q(content__icontains=query) |
                                       Q(type__type__icontains=query)).order_by('-date_of_creation')
         context['posts_num'] = len(results)
         
@@ -112,7 +114,7 @@ def index(request):
     context['last_opeds'] = last_opeds
     context['last_analytics'] = last_analytics
     context['last_opinions'] = last_opinions
-
+    
     return render(request, 'blog/index.html', context)
 
 

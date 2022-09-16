@@ -22,8 +22,8 @@ class SubscriberAdmin(admin.ModelAdmin):
 @admin.register(News)
 class NewsAdmin(admin.ModelAdmin):
     list_display = ('title', 'type', 'date_of_creation')
-    list_filter = ('type', 'date_of_creation')
-    fields = [('type', 'title'), 'text']
+    list_filter = ('type', 'title', 'date_of_creation')
+    fields = [('type', 'title'), 'banner', 'subtitle', 'content']
     actions = [send_newsletter]
     
 @admin.register(Video)
