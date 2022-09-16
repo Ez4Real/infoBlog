@@ -1,9 +1,7 @@
-from email.mime.image import MIMEImage
-import imghdr
-from PIL import Image
 import requests
-from bs4 import BeautifulSoup
+from PIL import Image
 from io import BytesIO
+from email.mime.image import MIMEImage
 
 from ckeditor_uploader.fields import RichTextUploadingField
 from django.contrib.sites.shortcuts import get_current_site
