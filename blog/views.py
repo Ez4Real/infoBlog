@@ -3,15 +3,20 @@ import re
 from django.contrib import messages
 from django.contrib.sites.shortcuts import get_current_site
 from django.core.mail import EmailMessage
+from django.core.paginator import Paginator, EmptyPage, PageNotAnInteger
 from django.http import Http404
 from django.shortcuts import render, redirect
 from django.template.loader import get_template
 from django.utils.encoding import force_bytes, force_str
 from django.utils.http import urlsafe_base64_encode, urlsafe_base64_decode
+from django.db.models import Q
 
 from .forms import SubscriberForm
 from .models import News, Subscriber
 from .tokens import email_activation_token
+
+
+POSTS_PER_PAGE = 15
 
 
 def activateEmail(request, sub, to_email):
@@ -62,11 +67,11 @@ def delete(request, uidb64, token):
     return redirect('index')
 
 
-def form_generic(request):
+def subscribeForm(request):
     if request.POST:
         sub = Subscriber(email=request.POST['email'])
         if Subscriber.objects.filter(email=sub.email).exists():
-            messages.error(request, 'This address is already subscribed!')
+            messages.warning(request, 'This address is already subscribed!')
         elif not re.match(r"^\w+([-+.']\w+)*@\w+([-.]\w+)*\.\w+([-.]\w+)*$", sub.email):
             messages.error(request, 'This address is not valid!')
         else:
@@ -76,18 +81,46 @@ def form_generic(request):
     return SubscriberForm()
 
 
+def search(request):
+    context = {}
+    if request.method == 'GET':
+        query = request.GET.get('search', '')
+        context['query'] = str(query)
+
+        results = News.objects.filter(Q(title__icontains=query) |
+                                      Q(subtitle__icontains=query) |
+                                      Q(content__icontains=query) |
+                                      Q(type__type__icontains=query)).order_by('-date_of_creation')
+        context['posts_num'] = len(results)
+
+        page = request.GET.get('page', 1)
+        context['page_num'] = page
+        paginator = Paginator(results, POSTS_PER_PAGE)
+        try:
+            results = paginator.page(page)
+        except PageNotAnInteger:
+            results = paginator.page(POSTS_PER_PAGE)
+        except EmptyPage:
+            results = paginator.page(paginator.num_pages)
+        context['blog_posts'] = results
+        context['form'] = subscribeForm(request)
+
+    return render(request, 'blog/search.html', context)
+
+
 def index(request):
-    last_news = News.objects.filter(type__type='News').order_by('id')[:5]
+    context = {}
+    context['form'] = subscribeForm(request)
+    last_news = News.objects.filter(type__type='News').order_by('-id')[:5]
     last_opeds = News.objects.filter(type__type='Op-eds').order_by('-id')[:3]
     last_analytics = News.objects.filter(type__type='Analytics').order_by('-id')[:3]
     last_opinions = News.objects.filter(type__type='Opinion').order_by('-id')[:3]
+    context['last_news'] = last_news
+    context['last_opeds'] = last_opeds
+    context['last_analytics'] = last_analytics
+    context['last_opinions'] = last_opinions
 
-    return render(request, 'blog/index.html',
-                  {'last_news': last_news,
-                   'last_opeds': last_opeds,
-                   'last_analytics': last_analytics,
-                   'last_opinions': last_opinions,
-                   'form': form_generic(request), })
+    return render(request, 'blog/index.html', context)
 
 
 def posts(request, type, pk):
@@ -97,9 +130,7 @@ def posts(request, type, pk):
         raise Http404('News does not exist')
 
     return render(request, 'blog/post_detail.html',
-                  context={'news': post,
-                           'form': form_generic(request),
-                           })
+                  context={'news': post, 'form': subscribeForm(request)})
 
 
 """
@@ -109,23 +140,23 @@ About
 
 
 def board(request):
-    return render(request, 'blog/about/board.html', {'form': form_generic(request)})
+    return render(request, 'blog/about/board.html', {'form': subscribeForm(request)})
 
 
 def key_doc(request):
-    return render(request, 'blog/about/key_doc.html', {'form': form_generic(request)})
+    return render(request, 'blog/about/key_doc.html', {'form': subscribeForm(request)})
 
 
 def mission(request):
-    return render(request, 'blog/about/mission.html', {'form': form_generic(request)})
+    return render(request, 'blog/about/mission.html', {'form': subscribeForm(request)})
 
 
 def team(request):
-    return render(request, 'blog/about/team.html', {'form': form_generic(request)})
+    return render(request, 'blog/about/team.html', {'form': subscribeForm(request)})
 
 
 def vision(request):
-    return render(request, 'blog/about/vision.html', {'form': form_generic(request)})
+    return render(request, 'blog/about/vision.html', {'form': subscribeForm(request)})
 
 
 """
@@ -134,20 +165,21 @@ Donate
 """
 
 
+def all_donate(request):
+    return render(request, 'blog/donate/all_donate.html', {'form': subscribeForm(request)})
+
+
 def beav(request):
-    return render(request, 'blog/donate/beav.html', {'form': form_generic(request)})
+    return render(request, 'blog/donate/beav.html', {'form': subscribeForm(request)})
 
 
 def patrion(request):
-    return render(request, 'blog/donate/patrion.html', {'form': form_generic(request)})
+    return render(request, 'blog/donate/patrion.html', {'form': subscribeForm(request)})
 
 
 def pay_pal(request):
-    return render(request, 'blog/donate/pay_pal.html', {'form': form_generic(request)})
+    return render(request, 'blog/donate/pay_pal.html', {'form': subscribeForm(request)})
 
-
-def all_donate(request):
-    return render(request, 'blog/donate/all_donate.html', {'form': form_generic(request)})
 
 """
 ________________________________________________________________________________________________________________________
@@ -156,15 +188,15 @@ Join Us
 
 
 def general_members(request):
-    return render(request, 'blog/join_us/general_members.html', {'form': form_generic(request)})
+    return render(request, 'blog/join_us/general_members.html', {'form': subscribeForm(request)})
 
 
 def join_team(request):
-    return render(request, 'blog/join_us/join_team.html', {'form': form_generic(request)})
+    return render(request, 'blog/join_us/join_team.html', {'form': subscribeForm(request)})
 
 
 def voluntear(request):
-    return render(request, 'blog/join_us/voluntear.html', {'form': form_generic(request)})
+    return render(request, 'blog/join_us/voluntear.html', {'form': subscribeForm(request)})
 
 
 """
@@ -174,11 +206,11 @@ Media
 
 
 def podcast(request):
-    return render(request, 'blog/media_page/podcast.html', {'form': form_generic(request)})
+    return render(request, 'blog/media_page/podcast.html', {'form': subscribeForm(request)})
 
 
 def videos(request):
-    return render(request, 'blog/media_page/videos.html', {'form': form_generic(request)})
+    return render(request, 'blog/media_page/videos.html', {'form': subscribeForm(request)})
 
 
 """
@@ -193,19 +225,19 @@ Research
 
 
 def analitics(request):
-    return render(request, 'blog/research/analitics.html', {'form': form_generic(request)})
+    return render(request, 'blog/research/analitics.html', {'form': subscribeForm(request)})
 
 
 def anual_report(request):
-    return render(request, 'blog/research/anual_report.html', {'form': form_generic(request)})
+    return render(request, 'blog/research/anual_report.html', {'form': subscribeForm(request)})
 
 
 def index_ergosum(request):
-    return render(request, 'blog/research/index_ergosum.html', {'form': form_generic(request)})
+    return render(request, 'blog/research/index_ergosum.html', {'form': subscribeForm(request)})
 
 
 def opinion(request):
-    return render(request, 'blog/research/opinion.html', {'form': form_generic(request)})
+    return render(request, 'blog/research/opinion.html', {'form': subscribeForm(request)})
 
 
 """
@@ -215,16 +247,16 @@ Main
 
 
 def blog(request):
-    return render(request, 'blog/blog.html', {'form': form_generic(request)})
+    return render(request, 'blog/blog.html', {'form': subscribeForm(request)})
 
 
 def events(request):
-    return render(request, 'blog/events.html', {'form': form_generic(request)})
+    return render(request, 'blog/events.html', {'form': subscribeForm(request)})
 
 
 def news(request):
-    return render(request, 'blog/news.html', {'form': form_generic(request)})
+    return render(request, 'blog/news.html', {'form': subscribeForm(request)})
 
 
 def op_eds(request):
-    return render(request, 'blog/op_eds.html', {'form': form_generic(request)})
+    return render(request, 'blog/op_eds.html', {'form': subscribeForm(request)})

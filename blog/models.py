@@ -1,6 +1,8 @@
+import requests
+from PIL import Image
+from io import BytesIO
 from email.mime.image import MIMEImage
 
-from bs4 import BeautifulSoup
 from ckeditor_uploader.fields import RichTextUploadingField
 from django.contrib.sites.shortcuts import get_current_site
 from django.core.mail import EmailMessage
@@ -33,7 +35,14 @@ class News(models.Model):
                              help_text='Введіть заголовок новини',
                              verbose_name='Заголовок')
 
-    text = RichTextUploadingField(help_text='Введіть зміст новини',
+    banner = models.ImageField(upload_to='uploads/banners', 
+                               verbose_name='Банер новини')
+    
+    subtitle = models.TextField(max_length=296,
+                                help_text='Введіть текст підзаголовку',
+                                verbose_name='Підзаголовок')
+
+    content = RichTextUploadingField(help_text='Введіть зміст новини',
                                   verbose_name='Зміст')
 
     type = models.ForeignKey(NewsType,
@@ -53,38 +62,37 @@ class News(models.Model):
         return f'{self.title}'
 
     def send(self, request):
+        context = {}
+        context['domain'] = get_current_site(request).domain
+        context['protocol'] = 'https' if request.is_secure() else 'http'
+        context['date'] = self.date_of_creation
+        context['subtitle'] = self.subtitle
+        context['type'] = self.type
+        context['pk'] = self.pk
+        
         subscribers = Subscriber.objects.filter(is_active=True)
         mail_subject = self.title
-        soup = BeautifulSoup(self.text, "html.parser")
-        img_tag = soup.find('img')
-        for tag in soup.findAll('p'):
-            if tag.getText():
-                text = tag.getText()
-                break
-
+        
         for sub in subscribers:
-            if img_tag:
-                img_path = img_tag['src']
-                with open(img_path[1:], 'rb') as f:
-                    img_data = f.read()
-                img = MIMEImage(img_data)
-                img.add_header('Content-ID', f'<{img_path}>')
-                img_tag['src'] = f'cid:{img_path}'
+            context['uid'] = urlsafe_base64_encode(force_bytes(sub.pk))
+            context['token'] = email_unsubscribe_token.make_token(sub)
+            if self.banner.url:
+                img_url = self.banner.url
+                print(img_url)
+                context['img_url'] = img_url
+                img = Image.open(requests.get(img_url, stream=True).raw)
+                print(img)
+                byte_buffer = BytesIO()
+                img.save(byte_buffer, 'png')
+                print('SAVE', img)
+                print(img.format)
+                img = MIMEImage(byte_buffer.getvalue())
+                img.add_header('Content-ID', f'<{img_url}>')
 
-            message = get_template('blog/newsletter/news.html').render({
-                'domain': get_current_site(request).domain,
-                'uid': urlsafe_base64_encode(force_bytes(sub.pk)),
-                'token': email_unsubscribe_token.make_token(sub),
-                'protocol': 'https' if request.is_secure() else 'http',
-                'date': self.date_of_creation,
-                'text': text,
-                'main_img': str(img_tag),
-                'type': self.type,
-                'pk': self.pk,
-            })
+            message = get_template('blog/newsletter/news.html').render(context)
             email = EmailMessage(mail_subject, message, to=[sub.email])
-            if img_tag: email.attach(img)
             email.content_subtype = 'html'
+            if img_url: email.attach(img)
             email.send()
 
 

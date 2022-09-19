@@ -28,16 +28,17 @@
                 {% else %}
                 <div class="carousel-item" style="height: 500px;">
                     {% endif %}
-                    <img src="https://images.unsplash.com/photo-1661760625983-298c7f97fa9b?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1974&q=80"
+                    <img src="{{ news.banner.url }}"
                          alt="{{ news.title }}"
                          class="d-block mx-auto w-100 h-100 ob-cover">
                     <div class="carousel-caption">
                         <h3>{{ news.title }}</h3>
-                        {{ news.text | safe }}
+                        {{ news.subtitle }}
                     </div>
                 </div>
+            </div>
+            {% endfor %}
         </a>
-        {% endfor %}
     </div>
 
     <!--  <div class="col-12">-->
@@ -73,19 +74,22 @@
             Analitics
         </div>
         <div class="row row-cols-1 row-cols-md-3 g-4">
-            {% for analitic in last_analytics %}
+            {% for Analytics in last_analytics %}
             <div class="col">
-                <a href="{% url 'post-detail' type=analitic.type pk=analitic.id %}"
+                <a href="{% url 'post-detail' type=Analytics.type pk=Analytics.id %}"
                    class="text-dark text-decoration-none">
-                    <div class="card " >
-                        <img src="https://picsum.photos/1900/720"
-                             class="img-fluid rounded-start" alt="...">
+                    <div class="card">
+                        <div class="d-flex align-items-center justify-content-center" style="height: 200px;">
+                            <img src="{{ Analytics.banner.url }}"
+                                 class="img-fluid rounded-start d-block mx-auto w-100 h-100 ob-cover"
+                                 alt="...">
+                        </div>
                         <div class="card-body card-custom">
-                            <h5 class="card-title">{{ analitic.title }}</h5>
-                            <p class="card-text">{{ analitic.text | safe }}</p>
+                            <h5 class="card-title">{{ Analytics.title }}</h5>
+                            <p class="card-text">{{ Analytics.subtitle }}...</p>
                         </div>
                         <div class="card-footer d-flex justify-content-between">
-                            <small class="text-muted">{{ analitic.date_of_creation }}</small>
+                            <small class="text-muted">{{ Analytics.date_of_creation }}</small>
                         </div>
                     </div>
                 </a>
@@ -106,11 +110,11 @@
             <div class="col">
                 <a href="{% url 'post-detail' type=opeds.type pk=opeds.id %}" class="text-dark text-decoration-none">
                     <div class="card h-100">
-                        <img src="https://picsum.photos/1900/720"
+                        <img src="{{ opeds.banner.url }}"
                              class="img-fluid rounded-start" alt="...">
                         <div class="card-body card-custom">
                             <h5 class="card-title">{{ opeds.title }}</h5>
-                            <p class="card-text">{{ opeds.text | safe }}</p>
+                            <p class="card-text">{{ opeds.subtitle }}</p>
                         </div>
                         <div class="card-footer d-flex justify-content-between">
                             <small class="text-muted">{{ opeds.date_of_creation }}</small>
@@ -136,11 +140,11 @@
                 <a href="{% url 'post-detail' type=opinions.type pk=opinions.id %}"
                    class="text-dark text-decoration-none">
                     <div class="card h-100">
-                        <img src="https://picsum.photos/1900/720"
+                        <img src="{{ opinions.banner.url }}"
                              class="img-fluid rounded-start" alt="...">
                         <div class="card-body card-custom">
                             <h5 class="card-title">{{ opinions.title }}</h5>
-                            <p class="card-text card-text-cronis">{{ opinions.text | safe }}</p>
+                            <p class="card-text card-text-cronis">{{ opinions.subtitle }}</p>
                         </div>
                         <div class="card-footer d-flex justify-content-between">
                             <small class="text-muted">{{ opinions.date_of_creation }}</small>

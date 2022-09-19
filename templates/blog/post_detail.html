@@ -2,16 +2,23 @@
 
 {% block content %}
 
-    <div class="header-cronis-post text-white h1 w-100 d-flex align-items-center justify-content-center" style="height: 500px;">
-        {{ news.title }}
+    <div class="text-center join-us-foto d-flex align-items-center justify-content-center">
+        <img src="{{ news.banner.url }}" class="d-block mx-auto w-100 h-100 ob-cover">
+        <div class="h1 text-white join-us-text">
+            {{ news.title }}
+        </div>
     </div>
+
     <div class="m-5"></div>
 <div class="container">
 
-    <div class="body-cronis-post">
-        {{ news.text | safe }}
+    <div class="h3">
+        {{ news.subtitle }}
     </div>
-
+    <div class="body-cronis-post">
+        {{ news.content | safe }}
+    </div>
+    <div class="p-4"></div>
     <div class="row bg-gray">
         <div class="col">{{ news.date_of_creation }}</div>
         <div class="col text-end">{{ news.type }}</div>

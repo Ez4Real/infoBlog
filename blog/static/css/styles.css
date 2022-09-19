@@ -17,8 +17,8 @@ nav{
 }
 
 .logo{
-    height: 160px !important;
-    width: 160px !important;
+    height: 160px;
+    width: 160px;
     background-color: navy;
     margin: -16px 0px -16px 0px;
     /* position: absolute; */
@@ -45,7 +45,10 @@ nav{
 
 @media (max-width: 1400px) {
     .logo{
-        display: none;
+        height: 121.5px;
+        width: 121.5px;
+        background-color: navy;
+        margin: -16px 0px -16px 0px;
     }
 
     .cronis-carousel-control-next{
@@ -129,10 +132,6 @@ main{
     height: 400px;
 }
 
-.header-cronis-post{
-    background-image: url('https://images.unsplash.com/photo-1661760625983-298c7f97fa9b?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1974&q=80')
-}
-
 .body-cronis-post img{
     display: block;
     margin-left: auto;
@@ -144,9 +143,5 @@ main{
 }
 
 .card-custom{
-    overflow: hidden;
-    text-overflow: ellipsis;
-    display: -webkit-box;
-    -webkit-line-clamp: 10;
-    -webkit-box-orient: vertical;
+    height: 250px;
 }
