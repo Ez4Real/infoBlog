@@ -48,5 +48,35 @@
         </div>
     </div>
 
+    Analytics
+    
+    {% if blog_posts %}
+        {% for news in blog_posts %}
+        <div>
+            <strong>{{ news.title }} - {{ news.type }}</strong>
+            <p><img src={{ news.banner.url }}></p>
+            {{ news.subtitle }}
+            <p>{{ news.content | safe }}</p>
+        </div>
+        {% endfor %}
+    {% endif %}
+    <div class="pagination">
+        <span class="step-links">
+            {% if blog_posts.has_previous %}
+            <li class="page-item">
+                <a class="page-link" href="?{% if query %}q={{query}}&{% endif %}page={{ blog_posts.previous_page_number }}">&laquo; Previous</a>
+            </li>
+            {% endif %}
+
+    {% if blog_posts %}
+        {% for i in blog_posts.paginator.page_range %}
+            {% if blog_posts.number == i %}
+                <li class="page-item active"><a class="page-link">{{ i }}</a></li>
+            {% else %}
+                <li class="page-item" ><a class="page-link" href="?{% if query %}q={{query}}&{% endif %}page={{ i }}">{{ i }}</a></li>
+            {% endif %}
+        {% endfor %}
+    {% endif %}
+
 </div>
 {% endblock content %}
