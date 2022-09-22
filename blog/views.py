@@ -81,6 +81,19 @@ def subscribeForm(request):
     return SubscriberForm()
 
 
+def paginate(queryset, request, context):
+    page = request.GET.get('page', 1)
+    context['page_num'] = page
+    paginator = Paginator(queryset, POSTS_PER_PAGE)
+    try:
+        results = paginator.page(page)
+    except PageNotAnInteger:
+        results = paginator.page(POSTS_PER_PAGE)
+    except EmptyPage:
+        results = paginator.page(paginator.num_pages)
+    return results
+
+
 def search(request):
     context = {}
     if request.method == 'GET':
@@ -108,19 +121,19 @@ def search(request):
     return render(request, 'blog/search.html', context)
 
 
-def index(request):
+def homepage(request):
     context = {}
     context['form'] = subscribeForm(request)
-    last_news = News.objects.filter(type__type='News').order_by('-id')[:5]
-    last_opeds = News.objects.filter(type__type='Op-eds').order_by('-id')[:3]
-    last_analytics = News.objects.filter(type__type='Analytics').order_by('-id')[:3]
-    last_opinions = News.objects.filter(type__type='Opinion').order_by('-id')[:3]
+    last_news = News.objects.filter(type__type='News').order_by('-date_of_creation')[:5]
+    last_opeds = News.objects.filter(type__type='Op-eds').order_by('-date_of_creation')[:3]
+    last_analytics = News.objects.filter(type__type='Analytics').order_by('-date_of_creation')[:3]
+    last_opinions = News.objects.filter(type__type='Opinion').order_by('-date_of_creation')[:3]
     context['last_news'] = last_news
     context['last_opeds'] = last_opeds
     context['last_analytics'] = last_analytics
     context['last_opinions'] = last_opinions
 
-    return render(request, 'blog/index.html', context)
+    return render(request, 'blog/homepage.html', context)
 
 
 def posts(request, type, pk):
@@ -206,11 +219,11 @@ Media
 
 
 def podcast(request):
-    return render(request, 'blog/media_page/podcast.html', {'form': subscribeForm(request)})
+    return render(request, 'blog/media/podcast.html', {'form': subscribeForm(request)})
 
 
 def videos(request):
-    return render(request, 'blog/media_page/videos.html', {'form': subscribeForm(request)})
+    return render(request, 'blog/media/videos.html', {'form': subscribeForm(request)})
 
 
 """

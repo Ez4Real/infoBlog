@@ -1,10 +1,8 @@
 {% extends "blog/base_generic.html" %}
 
 {% block content %}
-<!--<h1>Info Blog Home</h1>-->
 <div id="cascad" class="carousel slide " data-bs-ride="carousel">
 
-    <!--  <p>Welcome to <em>Info Blog</em>.</p>-->
     <div class="carousel-indicators">
         <button type="button" data-bs-target="#cascad" data-bs-slide-to="0" class="active"></button>
         <button type="button" data-bs-target="#cascad" data-bs-slide-to="1"></button>
@@ -13,21 +11,11 @@
         <button type="button" data-bs-target="#cascad" data-bs-slide-to="4"></button>
     </div>
 
-    <!--  <p>The blog has the following last news:</p>-->
-    <!--      <ul>-->
-    <!--        <li><strong>News:</strong> {{ last_news }}</li>-->
-    <!--    <li><strong>Op-eds:</strong> {{ last_opeds }}</li>-->
-    <!--    <li><strong>Analytics:</strong> {{ last_analytics }}</li>-->
-    <!--    <li><strong>Opinions:</strong> {{ last_opinions }}</li>-->
-    <!--      </ul>-->
     <div class="carousel-inner">
         {% for news in last_news %}
         <a href="{% url 'post-detail' type=news.type pk=news.id %}">
             {% if forloop.first %}
-            <div class="carousel-item active" style="height: 500px;">
-                {% else %}
-                <div class="carousel-item" style="height: 500px;">
-                    {% endif %}
+                <div class="carousel-item active" style="height: 500px;">
                     <img src="{{ news.banner.url }}"
                          alt="{{ news.title }}"
                          class="d-block mx-auto w-100 h-100 ob-cover">
@@ -36,26 +24,20 @@
                         {{ news.subtitle }}
                     </div>
                 </div>
-            </div>
-            {% endfor %}
+            {% else %}
+                <div class="carousel-item" style="height: 500px;">
+                    <img src="{{ news.banner.url }}"
+                         alt="{{ news.title }}"
+                         class="d-block mx-auto w-100 h-100 ob-cover">
+                    <div class="carousel-caption">
+                        <h3>{{ news.title }}</h3>
+                        {{ news.subtitle }}
+                    </div>
+                </div>
+            {% endif %}
         </a>
+        {% endfor %}
     </div>
-
-    <!--  <div class="col-12">-->
-    <!--    {% if email %}-->
-    <!--    <p>{{ email }} {{ action }}.</p>-->
-    <!--    {% endif %}-->
-    <!--</div>-->
-    <!--{% if form %}-->
-    <!--<div class="col-12 col-md-4">-->
-    <!--    <form method="post">-->
-    <!--        {% csrf_token %}-->
-    <!--        {{ form }}-->
-    <!--        <br>-->
-    <!--        <button type="submit" class="btn btn-success">Subscribe!</button>-->
-    <!--    </form>-->
-    <!--</div>-->
-    <!--{% endif %}-->
 
     <button class="carousel-control-prev" type="button" data-bs-target="#cascad" data-bs-slide="prev">
         <span class="carousel-control-prev-icon"></span>
@@ -63,6 +45,7 @@
     <button class="carousel-control-next" type="button" data-bs-target="#cascad" data-bs-slide="next">
         <span class="carousel-control-next-icon"></span>
     </button>
+
 </div>
 
 <div class="container">
