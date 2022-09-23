@@ -38,7 +38,7 @@ class News(models.Model):
     banner = models.ImageField(upload_to='uploads/banners', 
                                verbose_name='Банер новини')
     
-    subtitle = models.TextField(max_length=1000,
+    subtitle = models.TextField(max_length=296,
                                 help_text='Введіть текст підзаголовку',
                                 verbose_name='Підзаголовок')
 

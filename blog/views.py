@@ -88,20 +88,43 @@ def paginate(queryset, request, context):
         results = paginator.page(paginator.num_pages)
     return results
 
+def paginate(queryset, request, context):
+    page = request.GET.get('page', 1)
+    context['page_num'] = page
+    paginator = Paginator(queryset, POSTS_PER_PAGE)
+    try:
+        results = paginator.page(page)
+    except PageNotAnInteger:
+        results = paginator.page(POSTS_PER_PAGE)
+    except EmptyPage:
+        results = paginator.page(paginator.num_pages)
+    return results
+
 
 def search(request):
     context = {}
     if request.method == 'GET':
         query = request.GET.get('search', '')
         context['query'] = str(query)
-        
-        results = News.objects.filter(Q(title__icontains=query) | 
-                                      Q(subtitle__icontains=query) | 
+
+        results = News.objects.filter(Q(title__icontains=query) |
+                                      Q(subtitle__icontains=query) |
                                       Q(content__icontains=query) |
                                       Q(type__type__icontains=query)).order_by('-date_of_creation')
         context['posts_num'] = len(results)
-        context['blog_posts'] = paginate(results, request, context)
-        
+
+        page = request.GET.get('page', 1)
+        context['page_num'] = page
+        paginator = Paginator(results, POSTS_PER_PAGE)
+        try:
+            results = paginator.page(page)
+        except PageNotAnInteger:
+            results = paginator.page(POSTS_PER_PAGE)
+        except EmptyPage:
+            results = paginator.page(paginator.num_pages)
+        context['blog_posts'] = results
+        context['form'] = subscribeForm(request)
+
     return render(request, 'blog/search.html', context)
 
 
@@ -116,7 +139,6 @@ def homepage(request):
     context['last_opeds'] = last_opeds
     context['last_analytics'] = last_analytics
     context['last_opinions'] = last_opinions
-    
     return render(request, 'blog/homepage.html', context)
 
 
@@ -127,7 +149,7 @@ def posts(request, type, pk):
         raise Http404('News does not exist')
 
     return render(request, 'blog/post_detail.html',
-                  context={'news': post})
+                  context={'news': post, 'form': subscribeForm(request)})
 
 
 """
@@ -165,6 +187,10 @@ def vision(request):
 ________________________________________________________________________________________________________________________
 Donate
 """
+
+
+def all_donate(request):
+    return render(request, 'blog/donate/all_donate.html', {'form': subscribeForm(request)})
 
 
 def beav(request):

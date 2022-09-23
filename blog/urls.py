@@ -17,6 +17,7 @@ urlpatterns = [
     path('donate/beav/', views.beav, name='beav'),
     path('donate/patrion/', views.patrion, name='patrion'),
     path('donate/pay_pal/', views.pay_pal, name='pay_pal'),
+    path('donate', views.all_donate, name='all_donate'),
     # Join us
     path('join_us/general_members/', views.general_members, name='general_members'),
     path('join_us/join_team/', views.join_team, name='join_team'),
