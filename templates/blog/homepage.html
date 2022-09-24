@@ -1,4 +1,5 @@
 {% extends "blog/base_generic.html" %}
+{% load i18n %}
 
 {% block content %}
 <div id="cascad" class="carousel slide " data-bs-ride="carousel">
@@ -54,7 +55,7 @@
     <div class="cronis-analitics">
         <hr>
         <div class="h2">
-            Analitics
+            {% trans "Analytics" %}
         </div>
         <div class="row row-cols-1 row-cols-md-3 g-4">
             {% for Analytics in last_analytics %}
@@ -86,7 +87,7 @@
     <div class="cronis-analitics">
         <hr>
         <div class="h2">
-            Op-eds
+            {% trans 'Op-eds' %}
         </div>
         <div class="row row-cols-1 row-cols-md-3 g-4">
             {% for opeds in last_opeds %}
@@ -115,7 +116,7 @@
     <div class="cronis-analitics">
         <hr>
         <div class="h2">
-            Opinion
+            {% trans 'Opinion' %}
         </div>
         <div class="row row-cols-1 row-cols-md-3 g-4">
             {% for opinions in last_opinions %}

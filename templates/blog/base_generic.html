@@ -1,4 +1,5 @@
 <!DOCTYPE html>
+{% load i18n %}
 <html lang="en">
 <head>
     <meta charset="UTF-8">
@@ -9,7 +10,7 @@
           integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
     {% load static %}
     <link rel="stylesheet" href="{% static '/css/styles.css' %}">
-    <title>Home</title>
+    <title>{% trans "Home" %}</title>
 </head>
 <body>
 
@@ -26,42 +27,60 @@
 
                 <div class="d-flex flex-wrap justify-content-end align-items-end h-100 ">
 
+                    <div class="container">
+                        {% get_current_language as CURRENT_LANGUAGE %}
+                        {% get_available_languages as AVAILABLE_LANGUAGES %}
+                        {% get_language_info_list for AVAILABLE_LANGUAGES as languages %}
+                        <div class="languages">
+                          <ul class="languages">
+                            {% for language in languages %}
+                              <li>
+                                <a href="/{{ language.code }}/"
+                                  {% if language.code == CURRENT_LANGUAGE %} class="active"{% endif %}>
+                                  {{ language.name_local }}
+                                </a>
+                              </li>
+                            {% endfor %}
+                          </ul>
+                        </div>
+                    </div> 
+
                     <ul class="nav">
                         <li class="nav-item dropdown ">
                             <a class="nav-link dropdown-toggle text-white" href="#" id="navbarDropdownMenuLink"
                                role="button" data-bs-toggle="dropdown" aria-expanded="false">
-                                About
+                               {% trans "About" %}
                             </a>
                             <ul class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
-                                <li><a class="dropdown-item" href="{% url 'mission' %}">Mission</a></li>
-                                <li><a class="dropdown-item" href="{% url 'vision' %}">Vision</a></li>
-                                <li><a class="dropdown-item" href="{% url 'key_documents' %}">Key-documents</a></li>
-                                <li><a class="dropdown-item" href="{% url 'team' %}">Team</a></li>
-                                <li><a class="dropdown-item" href="{% url 'board' %}">Board</a></li>
+                                <li><a class="dropdown-item" href="{% url 'mission' %}">{% trans "Mission" %}</a></li>
+                                <li><a class="dropdown-item" href="{% url 'vision' %}">{% trans "Vision" %}</a></li>
+                                <li><a class="dropdown-item" href="{% url 'key_documents' %}">{% trans "Key-documents" %}</a></li>
+                                <li><a class="dropdown-item" href="{% url 'team' %}">{% trans "Team" %}</a></li>
+                                <li><a class="dropdown-item" href="{% url 'board' %}">{% trans "Board" %}</a></li>
                                 <li><a class="dropdown-item" href="#">Something else here</a></li>
                             </ul>
                         </li>
                         <li class="nav-item dropdown ">
                             <a class="nav-link dropdown-toggle text-white" href="#" id="navbarDropdownMenuLink"
                                role="button" data-bs-toggle="dropdown" aria-expanded="false">
-                                Join us
+                               {% trans "Join us" %}
                             </a>
                             <ul class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
-                                <li><a class="dropdown-item" href="{% url 'general_members' %}">General members</a></li>
-                                <li><a class="dropdown-item" href="{% url 'join_team' %}">Join team</a></li>
-                                <li><a class="dropdown-item" href="{% url 'voluntear' %}">Voluntear</a></li>
+                                <li><a class="dropdown-item" href="{% url 'general_members' %}">{% trans "General members" %}</a></li>
+                                <li><a class="dropdown-item" href="{% url 'join_team' %}">{% trans "Join team" %}</a></li>
+                                <li><a class="dropdown-item" href="{% url 'voluntear' %}">{% trans "Volunteering" %}</a></li>
                             </ul>
                         </li>
                         <li class="nav-item dropdown ">
                             <a class="nav-link dropdown-toggle text-white" href="#" id="navbarDropdownMenuLink"
                                role="button" data-bs-toggle="dropdown" aria-expanded="false">
-                                Donate
+                               {% trans "Donate" %}
                             </a>
                             <ul class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
-                                <li><a class="dropdown-item" href="{% url 'all_donate' %}">All Donate</a></li>
+                                <li><a class="dropdown-item" href="{% url 'all_donate' %}">{% trans "Donates" %} </a></li>
                                 <li><a class="dropdown-item" href="{% url 'patrion' %}">Patrion</a></li>
                                 <li><a class="dropdown-item" href="{% url 'beav' %}">Beav</a></li>
-                                <li><a class="dropdown-item" href="{% url 'pay_pal' %}">Pay Pal</a></li>
+                                <li><a class="dropdown-item" href="{% url 'pay_pal' %}">PayPal</a></li>
                             </ul>
                         </li>
                     </ul>
@@ -70,30 +89,31 @@
                         <input type="text" name="search" class="form-control form-control-dark" placeholder="Search..."
                                aria-label="Search">
                     </form>
+                    
                 </div>
 
                 <div class="d-flex justify-content-evenly align-items-end flex-column font-size-custom-navbar mt-0">
                     <ul class="nav col-7 col-lg-auto  mb-2 mb-md-0 p-2 ">
-                        <li><a href="{% url 'events' %}" class="nav-link px-2 text-white">Events</a></li>
-                        <li><a href="{% url 'news' %}" class="nav-link px-2 text-white">News</a></li>
+                        <li><a href="{% url 'events' %}" class="nav-link px-2 text-white">{% trans "Events" %}</a></li>
+                        <li><a href="{% url 'news' %}" class="nav-link px-2 text-white">{% trans "News" %}</a></li>
                         <li class="nav-item dropdown ">
                             <a class="nav-link dropdown-toggle text-white" href="#" id="navbarDropdownMenuLink"
                                role="button" data-bs-toggle="dropdown" aria-expanded="false">
-                                Research
+                               {% trans "Research" %}
                             </a>
                             <ul class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
-                                <li><a class="dropdown-item" href="{% url 'analitics' %}">Analitics</a></li>
-                                <li><a class="dropdown-item" href="{% url 'anual_report' %}">Anual report</a></li>
-                                <li><a class="dropdown-item" href="{% url 'index_ergosum' %}">Index ergosum</a></li>
-                                <li><a class="dropdown-item" href="{% url 'opinion' %}">Opinion</a></li>
+                                <li><a class="dropdown-item" href="{% url 'analitics' %}">{% trans "Analytics" %}</a></li>
+                                <li><a class="dropdown-item" href="{% url 'anual_report' %}">{% trans "Annual report" %}</a></li>
+                                <li><a class="dropdown-item" href="{% url 'index_ergosum' %}">{% trans "Index ergosum" %}</a></li>
+                                <li><a class="dropdown-item" href="{% url 'opinion' %}">{% trans "Opinion" %}</a></li>
                             </ul>
                         </li>
-                        <li><a href="{% url 'blog' %}" class="nav-link px-2 text-white">Blogs</a></li>
-                        <li><a href="{% url 'op_eds' %}" class="nav-link px-2 text-white">Op-eds</a></li>
+                        <li><a href="{% url 'blog' %}" class="nav-link px-2 text-white">{% trans "Blogs" %}</a></li>
+                        <li><a href="{% url 'op_eds' %}" class="nav-link px-2 text-white">{% trans "Op-eds" %}</a></li>
                         <li class="nav-item dropdown ">
                             <a class="nav-link dropdown-toggle text-white" href="#" id="navbarDropdownMenuLink"
                                role="button" data-bs-toggle="dropdown" aria-expanded="false">
-                                Policy Areas
+                               {% trans "Policy Areas" %}
                             </a>
                             <ul class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
                                 <li><a class="dropdown-item" href="#">1</a></li>
@@ -103,11 +123,11 @@
                         <li class="nav-item dropdown ">
                             <a class="nav-link dropdown-toggle text-white" href="#" id="navbarDropdownMenuLink"
                                role="button" data-bs-toggle="dropdown" aria-expanded="false">
-                                Media
+                               {% trans "Media" %}
                             </a>
                             <ul class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
-                                <li><a class="dropdown-item" href="{% url 'podcast' %}">Podcast</a></li>
-                                <li><a class="dropdown-item" href="{% url 'videos' %}">Videos</a></li>
+                                <li><a class="dropdown-item" href="{% url 'podcast' %}">{% trans "Podcast" %}</a></li>
+                                <li><a class="dropdown-item" href="{% url 'videos' %}">{% trans "Videos" %}</a></li>
                             </ul>
                         </li>
                     </ul>
@@ -209,7 +229,7 @@
                 <div class="row  d-flex justify-content-center">
                     <div class="col-auto">
                         <p class="pt-2">
-                            <strong>Enter your email</strong>
+                            <strong>{% trans 'Enter' %}e-mail</strong>
                         </p>
                     </div>
                     <div class="col-md-5 col-12">
@@ -217,7 +237,7 @@
                         {{ form }}
                     </div>
                     <div class="col-auto">
-                        <button type="submit" class="btn btn-outline-light mb-4">Subscribe!</button>
+                        <button type="submit" class="btn btn-outline-light mb-4">{% trans 'Subscribe' %}!</button>
                     </div>
                 </div>
             </form>
@@ -243,7 +263,7 @@
                 <div class="col"></div>
                 <!--Grid column-->
                 <div class="col-lg-3 col-md-6 mb-4 mb-md-0">
-                    <h5 class="text-uppercase">Phone</h5>
+                    <h5 class="text-uppercase">{% trans 'Subscribe' %}</h5>
 
                     <ul class="list-unstyled mb-0">
                         <li>
@@ -258,7 +278,7 @@
 
                 <!--Grid column-->
                 <div class="col-lg-3 col-md-6 mb-4 mb-md-0">
-                    <h5 class="text-uppercase">Email</h5>
+                    <h5 class="text-uppercase">E-mail</h5>
 
                     <ul class="list-unstyled mb-0">
                         <li>
@@ -289,7 +309,7 @@
     <!-- Copyright -->
     <div class="text-center p-1" style="background-color: rgba(0, 0, 0, 0.2);">
         © 2022 Copyright:
-        Женьшень і Атом
+        Evjeno and Antony
     </div>
     <!-- Copyright -->
 </footer>
