@@ -22,7 +22,7 @@ class NewsType(models.Model):
                             verbose_name=_('News type'))
 
     class Meta:
-        verbose_name_plural = 'News Types'
+        verbose_name_plural = _('News Types')
 
     def __str__(self):
         return f'{self.type}'
@@ -33,19 +33,27 @@ class News(models.Model):
     def get_absolute_url(self):
         return reverse('news-detail', args=[str(self.id)])
 
-    title = models.CharField(max_length=45,
-                             help_text='Enter news title',
-                             verbose_name=_('Title'))
+    en_title = models.CharField(max_length=45,
+                                help_text='Enter news title',
+                                verbose_name=_('English title'))
+    uk_title = models.CharField(max_length=45,
+                                help_text='Enter news title',
+                                verbose_name=_('Ukrainian title'))
 
     banner = models.ImageField(upload_to='uploads/banners', 
                                verbose_name=_('News banner'))
     
-    subtitle = models.TextField(max_length=296,
-                                help_text='Enter subtitle',
-                                verbose_name=_('Subtitle'))
+    en_subtitle = models.TextField(max_length=296,
+                                   help_text='Enter subtitle',
+                                   verbose_name=_('English subtitle'))
+    uk_subtitle = models.TextField(max_length=296,
+                                   help_text='Enter subtitle',
+                                   verbose_name=_('Ukrainian subtitle'))
 
-    content = RichTextUploadingField(help_text='Enter news content',
-                                     verbose_name=_('Content'))
+    en_content = RichTextUploadingField(help_text='Enter news content',
+                                        verbose_name=_('English content'))
+    uk_content = RichTextUploadingField(help_text='Enter news content',
+                                        verbose_name=_('Ukrainian content'))
 
     type = models.ForeignKey(NewsType,
                              on_delete=models.PROTECT,
@@ -57,37 +65,33 @@ class News(models.Model):
                                             verbose_name=_('Date of creation'))
 
     class Meta:
-        ordering = ['title', 'type', 'date_of_creation']
+        ordering = ['en_title', 'uk_title', 'type', 'date_of_creation']
         verbose_name_plural = _('News')
 
     def __str__(self):
-        return f'{self.title}'
+        return f'{self.en_title}, {self.uk_title}, {self.date_of_creation}'
 
     def send(self, request):
         context = {}
         context['domain'] = get_current_site(request).domain
         context['protocol'] = 'https' if request.is_secure() else 'http'
         context['date'] = self.date_of_creation
-        context['subtitle'] = self.subtitle
+        context['subtitle'] = self.en_subtitle
         context['type'] = self.type
         context['pk'] = self.pk
         
         subscribers = Subscriber.objects.filter(is_active=True)
-        mail_subject = self.title
+        mail_subject = self.en_title
         
         for sub in subscribers:
             context['uid'] = urlsafe_base64_encode(force_bytes(sub.pk))
             context['token'] = email_unsubscribe_token.make_token(sub)
             if self.banner.url:
                 img_url = self.banner.url
-                print(img_url)
                 context['img_url'] = img_url
                 img = Image.open(requests.get(img_url, stream=True).raw)
-                print(img)
                 byte_buffer = BytesIO()
                 img.save(byte_buffer, 'png')
-                print('SAVE', img)
-                print(img.format)
                 img = MIMEImage(byte_buffer.getvalue())
                 img.add_header('Content-ID', f'<{img_url}>')
 

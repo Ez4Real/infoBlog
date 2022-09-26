@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2022-09-24 19:26+0300\n"
+"POT-Creation-Date: 2022-09-26 21:05+0300\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -22,39 +22,59 @@ msgstr ""
 msgid "News type"
 msgstr ""
 
+#: .\blog\models.py:25
+msgid "News Types"
+msgstr ""
+
 #: .\blog\models.py:38
-msgid "Title"
+msgid "English title"
 msgstr ""
 
 #: .\blog\models.py:41
+msgid "Ukrainian title"
+msgstr ""
+
+#: .\blog\models.py:44
 msgid "News banner"
 msgstr ""
 
-#: .\blog\models.py:45
-msgid "Subtitle"
+#: .\blog\models.py:48
+msgid "English subtitle"
 msgstr ""
 
-#: .\blog\models.py:48 .\blog\models.py:116
-msgid "Content"
+#: .\blog\models.py:51
+msgid "Ukrainian subtitle"
 msgstr ""
 
-#: .\blog\models.py:53
+#: .\blog\models.py:54
+msgid "English content"
+msgstr ""
+
+#: .\blog\models.py:56
+msgid "Ukrainian content"
+msgstr ""
+
+#: .\blog\models.py:61
 msgid "Type"
 msgstr ""
 
-#: .\blog\models.py:57 .\blog\models.py:118
+#: .\blog\models.py:65 .\blog\models.py:122
 msgid "Date of creation"
 msgstr ""
 
-#: .\blog\models.py:61 .\templates\blog\base_generic.html:98
+#: .\blog\models.py:69 .\templates\blog\base_generic.html:98
 msgid "News"
 msgstr ""
 
-#: .\blog\models.py:108
+#: .\blog\models.py:112
 msgid "Subscribers e-mails"
 msgstr ""
 
-#: .\blog\models.py:121
+#: .\blog\models.py:120
+msgid "Content"
+msgstr ""
+
+#: .\blog\models.py:125
 msgid "Video content"
 msgstr ""
 
@@ -130,7 +150,7 @@ msgstr ""
 msgid "Research"
 msgstr ""
 
-#: .\templates\blog\base_generic.html:105 .\templates\blog\homepage.html:58
+#: .\templates\blog\base_generic.html:105 .\templates\blog\homepage.html:65
 msgid "Analytics"
 msgstr ""
 
@@ -142,7 +162,7 @@ msgstr ""
 msgid "Index ergosum"
 msgstr ""
 
-#: .\templates\blog\base_generic.html:108 .\templates\blog\homepage.html:119
+#: .\templates\blog\base_generic.html:108 .\templates\blog\homepage.html:156
 msgid "Opinion"
 msgstr ""
 
@@ -150,7 +170,7 @@ msgstr ""
 msgid "Blogs"
 msgstr ""
 
-#: .\templates\blog\base_generic.html:112 .\templates\blog\homepage.html:90
+#: .\templates\blog\base_generic.html:112 .\templates\blog\homepage.html:112
 msgid "Op-eds"
 msgstr ""
 

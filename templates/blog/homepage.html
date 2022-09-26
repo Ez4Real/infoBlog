@@ -21,8 +21,15 @@
                          alt="{{ news.title }}"
                          class="d-block mx-auto w-100 h-100 ob-cover">
                     <div class="carousel-caption">
-                        <h3>{{ news.title }}</h3>
-                        {{ news.subtitle }}
+
+                        {% if CURRENT_LANGUAGE == "uk" %}
+                        <h3>{{ news.uk_title }}</h3>
+                        {{ news.uk_subtitle }}
+                        {% else %}
+                        <h3>{{ news.en_title }}</h3>
+                        {{ news.en_subtitle }}
+                        {% endif %}
+
                     </div>
                 </div>
             {% else %}
@@ -69,8 +76,23 @@
                                  alt="...">
                         </div>
                         <div class="card-body card-custom">
-                            <h5 class="card-title">{{ Analytics.title }}</h5>
-                            <p class="card-text">{{ Analytics.subtitle }}...</p>
+                            
+                            {% if CURRENT_LANGUAGE == "uk" %}
+                            <h5 class="card-title">
+                                {{ Analytics.uk_title }}
+                            </h5>
+                            <p class="card-text">
+                                {{ Analytics.uk_subtitle }}...
+                            </p>
+                            {% else %}
+                            <h5 class="card-title">
+                                {{ Analytics.en_title }}
+                            </h5>
+                            <p class="card-text">
+                                {{ Analytics.en_subtitle }}...
+                            </p>
+                            {% endif %}
+                            
                         </div>
                         <div class="card-footer d-flex justify-content-between">
                             <small class="text-muted">{{ Analytics.date_of_creation }}</small>
@@ -97,8 +119,23 @@
                         <img src="{{ opeds.banner.url }}"
                              class="img-fluid rounded-start" alt="...">
                         <div class="card-body card-custom">
-                            <h5 class="card-title">{{ opeds.title }}</h5>
-                            <p class="card-text">{{ opeds.subtitle }}</p>
+
+                            {% if CURRENT_LANGUAGE == "uk" %}
+                            <h5 class="card-title">
+                                {{ opeds.uk_title }}
+                            </h5>
+                            <p class="card-text">
+                                {{ opeds.uk_subtitle }}...
+                            </p>
+                            {% else %}
+                            <h5 class="card-title">
+                                {{ opeds.en_title }}
+                            </h5>
+                            <p class="card-text">
+                                {{ opeds.en_subtitle }}...
+                            </p>
+                            {% endif %}
+
                         </div>
                         <div class="card-footer d-flex justify-content-between">
                             <small class="text-muted">{{ opeds.date_of_creation }}</small>
@@ -127,8 +164,23 @@
                         <img src="{{ opinions.banner.url }}"
                              class="img-fluid rounded-start" alt="...">
                         <div class="card-body card-custom">
-                            <h5 class="card-title">{{ opinions.title }}</h5>
-                            <p class="card-text card-text-cronis">{{ opinions.subtitle }}</p>
+
+                            {% if CURRENT_LANGUAGE == "uk" %}
+                            <h5 class="card-title">
+                                {{ opinions.uk_title }}
+                            </h5>
+                            <p class="card-text">
+                                {{ opinions.uk_subtitle }}...
+                            </p>
+                            {% else %}
+                            <h5 class="card-title">
+                                {{ opinions.en_title }}
+                            </h5>
+                            <p class="card-text">
+                                {{ opinions.en_subtitle }}...
+                            </p>
+                            {% endif %}
+
                         </div>
                         <div class="card-footer d-flex justify-content-between">
                             <small class="text-muted">{{ opinions.date_of_creation }}</small>

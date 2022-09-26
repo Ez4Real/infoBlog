@@ -48,7 +48,7 @@ def activate(request, uidb64, token):
         messages.success(request, 'Thank you for subscription.')
     else:
         messages.error(request, 'Activation link is invalid!')
-    return redirect('index')
+    return redirect('homepage')
 
 def delete(request, uidb64, token):
     try:
@@ -62,7 +62,7 @@ def delete(request, uidb64, token):
         messages.success(request, 'Unsubscribed successfully')
     else:
         messages.error(request, 'Activation link is invalid!')
-    return redirect('index')
+    return redirect('homepage')
 
 def subscribeForm(request):
     if request.POST:
@@ -107,9 +107,12 @@ def search(request):
         query = request.GET.get('search', '')
         context['query'] = str(query)
 
-        results = News.objects.filter(Q(title__icontains=query) |
-                                      Q(subtitle__icontains=query) |
-                                      Q(content__icontains=query) |
+        results = News.objects.filter(Q(en_title__icontains=query) |
+                                      Q(uk_title__icontains=query) |
+                                      Q(en_subtitle__icontains=query) |
+                                      Q(uk_subtitle__icontains=query) |
+                                      Q(en_content__icontains=query) |
+                                      Q(uk_content__icontains=query) |
                                       Q(type__type__icontains=query)).order_by('-date_of_creation')
         context['posts_num'] = len(results)
 
@@ -123,7 +126,7 @@ def search(request):
         except EmptyPage:
             results = paginator.page(paginator.num_pages)
         context['blog_posts'] = results
-        context['form'] = subscribeForm(request)
+    context['form'] = subscribeForm(request)
 
     return render(request, 'blog/search.html', context)
 
@@ -132,7 +135,7 @@ def homepage(request):
     context = {}
     context['form'] = subscribeForm(request)
     last_news = News.objects.filter(type__type='News').order_by('-date_of_creation')[:5]
-    last_opeds = News.objects.filter(type__type='Op-eds').order_by('-date_of_creation')[:3]
+    last_opeds = News.objects.filter(type__type='Op-ed').order_by('-date_of_creation')[:3]
     last_analytics = News.objects.filter(type__type='Analytics').order_by('-date_of_creation')[:3]
     last_opinions = News.objects.filter(type__type='Opinion').order_by('-date_of_creation')[:3]
     context['last_news'] = last_news

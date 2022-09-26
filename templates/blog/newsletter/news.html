@@ -178,7 +178,7 @@
                                                                 </tbody>
                                                             </table>
                                                             <a style="font-size: 14px; line-height: 24px; color: #5caad2; text-decoration: none; font-weight: bold;"
-                                                               href="{{ protocol }}://{{ domain }}%7B%%20url%20'delete'%20uidb64=uid%20token=token%20%%7D">UNSUBSCRIBE</a>
+                                                            href="{{ protocol }}://{{ domain }}{% url 'delete' uidb64=uid token=token %}">UNSUBSCRIBE</a>
                                                         </td>
                                                     </tr>
                                                     </tbody>

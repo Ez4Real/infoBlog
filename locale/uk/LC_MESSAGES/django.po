@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2022-09-24 19:26+0300\n"
+"POT-Creation-Date: 2022-09-26 21:05+0300\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -25,39 +25,59 @@ msgstr ""
 msgid "News type"
 msgstr "Тип новини"
 
+#: .\blog\models.py:25
+msgid "News Types"
+msgstr "Типи новин"
+
 #: .\blog\models.py:38
-msgid "Title"
-msgstr "Заголовок"
+msgid "English title"
+msgstr "Заголовок англійською"
 
 #: .\blog\models.py:41
+msgid "Ukrainian title"
+msgstr "Заголовок українською"
+
+#: .\blog\models.py:44
 msgid "News banner"
-msgstr "Баннер новни"
+msgstr "Баннер новини"
 
-#: .\blog\models.py:45
-msgid "Subtitle"
-msgstr "Підзаголовок"
+#: .\blog\models.py:48
+msgid "English subtitle"
+msgstr "Підзаголовок англійською"
 
-#: .\blog\models.py:48 .\blog\models.py:116
-msgid "Content"
-msgstr "Зміст"
+#: .\blog\models.py:51
+msgid "Ukrainian subtitle"
+msgstr "Підзаголовок українською"
 
-#: .\blog\models.py:53
+#: .\blog\models.py:54
+msgid "English content"
+msgstr "Контент англійською"
+
+#: .\blog\models.py:56
+msgid "Ukrainian content"
+msgstr "Контент українською"
+
+#: .\blog\models.py:61
 msgid "Type"
 msgstr "Тип"
 
-#: .\blog\models.py:57 .\blog\models.py:118
+#: .\blog\models.py:65 .\blog\models.py:122
 msgid "Date of creation"
 msgstr "Дата створення"
 
-#: .\blog\models.py:61 .\templates\blog\base_generic.html:98
+#: .\blog\models.py:69 .\templates\blog\base_generic.html:98
 msgid "News"
 msgstr "Новини"
 
-#: .\blog\models.py:108
+#: .\blog\models.py:112
 msgid "Subscribers e-mails"
 msgstr "Електронні пошти підписників"
 
-#: .\blog\models.py:121
+#: .\blog\models.py:120
+msgid "Content"
+msgstr "Зміст"
+
+#: .\blog\models.py:125
 msgid "Video content"
 msgstr "Відеоконтент"
 
@@ -133,7 +153,7 @@ msgstr "Події"
 msgid "Research"
 msgstr "Дослідження"
 
-#: .\templates\blog\base_generic.html:105 .\templates\blog\homepage.html:58
+#: .\templates\blog\base_generic.html:105 .\templates\blog\homepage.html:65
 msgid "Analytics"
 msgstr "Аналітика"
 
@@ -145,7 +165,7 @@ msgstr "Річний звіт"
 msgid "Index ergosum"
 msgstr "Показник ергосум"
 
-#: .\templates\blog\base_generic.html:108 .\templates\blog\homepage.html:119
+#: .\templates\blog\base_generic.html:108 .\templates\blog\homepage.html:156
 msgid "Opinion"
 msgstr "Думки"
 
@@ -153,7 +173,7 @@ msgstr "Думки"
 msgid "Blogs"
 msgstr "Блоги"
 
-#: .\templates\blog\base_generic.html:112 .\templates\blog\homepage.html:90
+#: .\templates\blog\base_generic.html:112 .\templates\blog\homepage.html:112
 msgid "Op-eds"
 msgstr "Статті"
 
@@ -181,3 +201,9 @@ msgstr "Введіть"
 #: .\templates\blog\base_generic.html:266
 msgid "Subscribe"
 msgstr "Підписатись"
+
+#~ msgid "Title"
+#~ msgstr "Заголовок"
+
+#~ msgid "Subtitle"
+#~ msgstr "Підзаголовок"
