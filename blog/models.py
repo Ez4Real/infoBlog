@@ -11,16 +11,18 @@ from django.template.loader import get_template
 from django.urls import reverse
 from django.utils.encoding import force_bytes
 from django.utils.http import urlsafe_base64_encode
+from django.utils.translation import gettext_lazy as _
 
 from .tokens import email_unsubscribe_token
 
+
 class NewsType(models.Model):
-    type = models.CharField(help_text='Введіть тип новини',
+    type = models.CharField(help_text='Enter news type',
                             max_length=25,
-                            verbose_name='Тип новини')
+                            verbose_name=_('News type'))
 
     class Meta:
-        verbose_name_plural = 'Типи новин'
+        verbose_name_plural = 'News Types'
 
     def __str__(self):
         return f'{self.type}'
@@ -32,31 +34,31 @@ class News(models.Model):
         return reverse('news-detail', args=[str(self.id)])
 
     title = models.CharField(max_length=45,
-                             help_text='Введіть заголовок новини',
-                             verbose_name='Заголовок')
+                             help_text='Enter news title',
+                             verbose_name=_('Title'))
 
     banner = models.ImageField(upload_to='uploads/banners', 
-                               verbose_name='Банер новини')
+                               verbose_name=_('News banner'))
     
-    subtitle = models.TextField(max_length=1000,
-                                help_text='Введіть текст підзаголовку',
-                                verbose_name='Підзаголовок')
+    subtitle = models.TextField(max_length=296,
+                                help_text='Enter subtitle',
+                                verbose_name=_('Subtitle'))
 
-    content = RichTextUploadingField(help_text='Введіть зміст новини',
-                                  verbose_name='Зміст')
+    content = RichTextUploadingField(help_text='Enter news content',
+                                     verbose_name=_('Content'))
 
     type = models.ForeignKey(NewsType,
                              on_delete=models.PROTECT,
-                             help_text='Оберіть тип новини',
-                             verbose_name='Тип',
+                             help_text='Choose news type',
+                             verbose_name=_('Type'),
                              default='News')
 
     date_of_creation = models.DateTimeField(auto_now_add=True,
-                                            verbose_name='Дата створення')
+                                            verbose_name=_('Date of creation'))
 
     class Meta:
         ordering = ['title', 'type', 'date_of_creation']
-        verbose_name_plural = 'Новини'
+        verbose_name_plural = _('News')
 
     def __str__(self):
         return f'{self.title}'
@@ -99,24 +101,24 @@ class News(models.Model):
 class Subscriber(models.Model):
     email = models.EmailField(unique=True,
                               max_length=254,
-                              help_text='Введіть email')
+                              help_text='Enter e-mail')
     is_active = models.BooleanField(default=False)
 
     class Meta:
-        verbose_name_plural = 'Електронні пошти підписників'
+        verbose_name_plural = _('Subscribers e-mails')
 
     def __str__(self):
         return self.email + " (" + ("not " if not self.is_active else "") + "confirmed)"
 
 
 class Video(models.Model):
-    video = RichTextUploadingField(help_text='Введіть зміст відео',
-                                   verbose_name='Зміст')
+    video = RichTextUploadingField(help_text='Upload video',
+                                   verbose_name=_('Content'))
     date_of_creation = models.DateTimeField(auto_now_add=True,
-                                            verbose_name='Дата створення')
+                                            verbose_name=_('Date of creation'))
 
     class Meta:
-        verbose_name_plural = 'Відеоконтент'
+        verbose_name_plural = _('Video content')
 
     def __str__(self):
         return self.video

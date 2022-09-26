@@ -1,0 +1,144 @@
+{% extends "blog/base_generic.html" %}
+{% load i18n %}
+
+{% block content %}
+<div id="cascad" class="carousel slide " data-bs-ride="carousel">
+
+    <div class="carousel-indicators">
+        <button type="button" data-bs-target="#cascad" data-bs-slide-to="0" class="active"></button>
+        <button type="button" data-bs-target="#cascad" data-bs-slide-to="1"></button>
+        <button type="button" data-bs-target="#cascad" data-bs-slide-to="2"></button>
+        <button type="button" data-bs-target="#cascad" data-bs-slide-to="3"></button>
+        <button type="button" data-bs-target="#cascad" data-bs-slide-to="4"></button>
+    </div>
+
+    <div class="carousel-inner">
+        {% for news in last_news %}
+        <a href="{% url 'post-detail' type=news.type pk=news.id %}">
+            {% if forloop.first %}
+                <div class="carousel-item active" style="height: 500px;">
+                    <img src="{{ news.banner.url }}"
+                         alt="{{ news.title }}"
+                         class="d-block mx-auto w-100 h-100 ob-cover">
+                    <div class="carousel-caption">
+                        <h3>{{ news.title }}</h3>
+                        {{ news.subtitle }}
+                    </div>
+                </div>
+            {% else %}
+                <div class="carousel-item" style="height: 500px;">
+                    <img src="{{ news.banner.url }}"
+                         alt="{{ news.title }}"
+                         class="d-block mx-auto w-100 h-100 ob-cover">
+                    <div class="carousel-caption">
+                        <h3>{{ news.title }}</h3>
+                        {{ news.subtitle }}
+                    </div>
+                </div>
+            {% endif %}
+        </a>
+        {% endfor %}
+    </div>
+
+    <button class="carousel-control-prev" type="button" data-bs-target="#cascad" data-bs-slide="prev">
+        <span class="carousel-control-prev-icon"></span>
+    </button>
+    <button class="carousel-control-next" type="button" data-bs-target="#cascad" data-bs-slide="next">
+        <span class="carousel-control-next-icon"></span>
+    </button>
+
+</div>
+
+<div class="container">
+    <div class="p-4"></div>
+
+    <div class="cronis-analitics">
+        <hr>
+        <div class="h2">
+            {% trans "Analytics" %}
+        </div>
+        <div class="row row-cols-1 row-cols-md-3 g-4">
+            {% for Analytics in last_analytics %}
+            <div class="col">
+                <a href="{% url 'post-detail' type=Analytics.type pk=Analytics.id %}"
+                   class="text-dark text-decoration-none">
+                    <div class="card">
+                        <div class="d-flex align-items-center justify-content-center" style="height: 200px;">
+                            <img src="{{ Analytics.banner.url }}"
+                                 class="img-fluid rounded-start d-block mx-auto w-100 h-100 ob-cover"
+                                 alt="...">
+                        </div>
+                        <div class="card-body card-custom">
+                            <h5 class="card-title">{{ Analytics.title }}</h5>
+                            <p class="card-text">{{ Analytics.subtitle }}...</p>
+                        </div>
+                        <div class="card-footer d-flex justify-content-between">
+                            <small class="text-muted">{{ Analytics.date_of_creation }}</small>
+                        </div>
+                    </div>
+                </a>
+            </div>
+            {% endfor %}
+        </div>
+    </div>
+
+    <div class="p-4"></div>
+
+    <div class="cronis-analitics">
+        <hr>
+        <div class="h2">
+            {% trans 'Op-eds' %}
+        </div>
+        <div class="row row-cols-1 row-cols-md-3 g-4">
+            {% for opeds in last_opeds %}
+            <div class="col">
+                <a href="{% url 'post-detail' type=opeds.type pk=opeds.id %}" class="text-dark text-decoration-none">
+                    <div class="card h-100">
+                        <img src="{{ opeds.banner.url }}"
+                             class="img-fluid rounded-start" alt="...">
+                        <div class="card-body card-custom">
+                            <h5 class="card-title">{{ opeds.title }}</h5>
+                            <p class="card-text">{{ opeds.subtitle }}</p>
+                        </div>
+                        <div class="card-footer d-flex justify-content-between">
+                            <small class="text-muted">{{ opeds.date_of_creation }}</small>
+                        </div>
+                    </div>
+                </a>
+            </div>
+            {% endfor %}
+        </div>
+    </div>
+
+
+    <div class="p-4"></div>
+
+    <div class="cronis-analitics">
+        <hr>
+        <div class="h2">
+            {% trans 'Opinion' %}
+        </div>
+        <div class="row row-cols-1 row-cols-md-3 g-4">
+            {% for opinions in last_opinions %}
+            <div class="col">
+                <a href="{% url 'post-detail' type=opinions.type pk=opinions.id %}"
+                   class="text-dark text-decoration-none">
+                    <div class="card h-100">
+                        <img src="{{ opinions.banner.url }}"
+                             class="img-fluid rounded-start" alt="...">
+                        <div class="card-body card-custom">
+                            <h5 class="card-title">{{ opinions.title }}</h5>
+                            <p class="card-text card-text-cronis">{{ opinions.subtitle }}</p>
+                        </div>
+                        <div class="card-footer d-flex justify-content-between">
+                            <small class="text-muted">{{ opinions.date_of_creation }}</small>
+                        </div>
+                    </div>
+                </a>
+            </div>
+            {% endfor %}
+        </div>
+    </div>
+
+</div>
+{% endblock %}

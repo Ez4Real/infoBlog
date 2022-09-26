@@ -1,29 +1,64 @@
 {% extends "blog/base_generic.html" %}
+{% load i18n %}
 
 {% block content %}
 
-<div>
-    <h5>Page {{ page_num }}</h5>
-    <p>Found {{ posts_num }} results
-    {% if query != "" %}
-        for “{{ query }}”</p>
+<div class="container">
+    <!--    <h5>Page {{ page_num }}</h5>-->
+    <div class="p-3"></div>
+    <div class="h1">{% trans "Search Results" %}</div>
+    {% if query %}
+        <p>
+            {% trans "Found" %} {{ posts_num }} {% trans "results for" %} “{{ query }}”
+        </p>
+    {% else %}
+        <p>
+            {% trans "Found" %} {{ posts_num }} {% trans "results" %}
+        </p>
     {% endif %}
+    <div class="p-1"></div>
+
+    <form class="d-flex gap-3" name="search" method="GET" action="{% url 'search' %}">
+        <input class="form-control me-1" name="search" type="search" placeholder="Search" aria-label="Search">
+        <button class="btn btn-primary" style="width: 200px;" type="submit">Search</button>
+    </form>
+
+    <div class="p-3"></div>
 
     {% if blog_posts %}
-        {% for news in blog_posts %}
-        <div>
-            <strong>{{ news.title }} - {{ news.type }}</strong>
-            <p><img src={{ news.banner.url }}></p>
-            {{ news.subtitle }}
-            {{ news.content | safe }}
+    {% for news in blog_posts %}
+    <a href="{% url 'post-detail' type=news.type pk=news.id %}" class="text-dark text-decoration-none">
+    <div class="card mb-5">
+        <div class="row g-0">
+            <div class="col-md-4" style="height: 273px;">
+                <img src="{{ news.banner.url }}"
+                     class="img-fluid rounded-start d-block mx-auto w-100 h-100 ob-cover" alt="...">
+                <div class="card-img-overlay">
+            </div>
+            </div>
+            <div class="col-md-8">
+                <div class="card-body " style="height: 235px;">
+                    <h5 class="card-title">{{ news.title }}</h5>
+                    <p class="card-text">{{ news.subtitle }}...</p>
+                </div>
+                <div class="d-flex justify-content-between card-footer bg-transparent border-secondary">
+                    <small class="text-muted">{{ news.date_of_creation }}</small>
+                    <small class="text-muted">{{ news.type }}</small>
+                </div>
+            </div>
         </div>
-        {% endfor %}
+    </div>
+    </a>
+    {% endfor %}
     {% endif %}
-    <div class="pagination">
-        <span class="step-links">
+
+
+    <ul class="pagination">
+
             {% if blog_posts.has_previous %}
             <li class="page-item">
-                <a class="page-link" href="?{% if query %}q={{query}}&{% endif %}page={{ blog_posts.previous_page_number }}">&laquo; Previous</a>
+                <a class="page-link"
+                   href="?{% if query %}q={{query}}&{% endif %}page={{ blog_posts.previous_page_number }}">&lsaquo;</a>
             </li>
             {% endif %}
 
@@ -32,21 +67,22 @@
             {% if blog_posts.number == i %}
                 <li class="page-item active"><a class="page-link">{{ i }}</a></li>
             {% else %}
-                <li class="page-item" ><a class="page-link" href="?{% if query %}q={{query}}&{% endif %}page={{ i }}">{{ i }}</a></li>
+                <li class="page-item"><a class="page-link" href="?{% if query %}q={{query}}&{% endif %}page={{ i }}">{{ i }}</a></li>
             {% endif %}
         {% endfor %}
     {% endif %}
     
     {% if blog_posts.has_next %}
     	<li class="page-item">
-		  <a class="page-link" href="?{% if query %}q={{query}}&{% endif %}page={{ blog_posts.next_page_number }}">Next</a>
+		  <a class="page-link"
+             href="?{% if query %}q={{query}}&{% endif %}page={{ blog_posts.next_page_number }}">&rsaquo;</a>
 		</li>
 		<li class="page-item">
-		  <a class="page-link"  href="?{% if query %}q={{query}}&{% endif %}page={{ blog_posts.paginator.num_pages }}">Last &raquo;</a>
+		  <a class="page-link" href="?{% if query %}q={{query}}&{% endif %}page={{ blog_posts.paginator.num_pages }}">&raquo;</a>
 		</li>
     {% endif %}
-        </span>
-    </div>
+
+    </ul>
 </div>
 
 {% endblock %}

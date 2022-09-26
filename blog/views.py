@@ -35,6 +35,7 @@ def activateEmail(request, sub, to_email):
     else:
         messages.error(request, 'Problem sending email to this adress, check if you typed it correctly')
 
+
 def activate(request, uidb64, token):
     try:
         uid = force_str(urlsafe_base64_decode(uidb64))
@@ -50,6 +51,7 @@ def activate(request, uidb64, token):
         messages.error(request, 'Activation link is invalid!')
     return redirect('index')
 
+
 def delete(request, uidb64, token):
     try:
         uid = force_str(urlsafe_base64_decode(uidb64))
@@ -63,6 +65,7 @@ def delete(request, uidb64, token):
     else:
         messages.error(request, 'Activation link is invalid!')
     return redirect('index')
+
 
 def subscribeForm(request):
     if request.POST:
@@ -78,21 +81,34 @@ def subscribeForm(request):
     return SubscriberForm()
 
 
+def paginate(queryset, request, context):
+    page = request.GET.get('page', 1)
+    context['page_num'] = page
+    paginator = Paginator(queryset, POSTS_PER_PAGE)
+    try:
+        results = paginator.page(page)
+    except PageNotAnInteger:
+        results = paginator.page(POSTS_PER_PAGE)
+    except EmptyPage:
+        results = paginator.page(paginator.num_pages)
+    return results
+
+
 def search(request):
     context = {}
     if request.method == 'GET':
         query = request.GET.get('search', '')
         context['query'] = str(query)
-        
-        results = News.objects.filter(Q(title__icontains=query) | 
-                                      Q(subtitle__icontains=query) | 
+
+        results = News.objects.filter(Q(title__icontains=query) |
+                                      Q(subtitle__icontains=query) |
                                       Q(content__icontains=query) |
                                       Q(type__type__icontains=query)).order_by('-date_of_creation')
         context['posts_num'] = len(results)
-        
+
         page = request.GET.get('page', 1)
         context['page_num'] = page
-        paginator = Paginator(results, POSTS_PER_PAGE)      
+        paginator = Paginator(results, POSTS_PER_PAGE)
         try:
             results = paginator.page(page)
         except PageNotAnInteger:
@@ -100,22 +116,24 @@ def search(request):
         except EmptyPage:
             results = paginator.page(paginator.num_pages)
         context['blog_posts'] = results
-        
+        context['form'] = subscribeForm(request)
+
     return render(request, 'blog/search.html', context)
 
-def index(request):
+
+def homepage(request):
     context = {}
     context['form'] = subscribeForm(request)
-    last_news = News.objects.filter(type__type='News').order_by('-id')[:5]
-    last_opeds = News.objects.filter(type__type='Op-eds').order_by('-id')[:3]
-    last_analytics = News.objects.filter(type__type='Analytics').order_by('-id')[:3]
-    last_opinions = News.objects.filter(type__type='Opinion').order_by('-id')[:3]
+    last_news = News.objects.filter(type__type='News').order_by('-date_of_creation')[:5]
+    last_opeds = News.objects.filter(type__type='Op-eds').order_by('-date_of_creation')[:3]
+    last_analytics = News.objects.filter(type__type='Analytics').order_by('-date_of_creation')[:3]
+    last_opinions = News.objects.filter(type__type='Opinion').order_by('-date_of_creation')[:3]
     context['last_news'] = last_news
     context['last_opeds'] = last_opeds
     context['last_analytics'] = last_analytics
     context['last_opinions'] = last_opinions
-    
-    return render(request, 'blog/index.html', context)
+
+    return render(request, 'blog/homepage.html', context)
 
 
 def posts(request, type, pk):
@@ -125,7 +143,7 @@ def posts(request, type, pk):
         raise Http404('News does not exist')
 
     return render(request, 'blog/post_detail.html',
-                  context={'news': post})
+                  context={'news': post, 'form': subscribeForm(request)})
 
 
 """
@@ -158,6 +176,10 @@ def vision(request):
 ________________________________________________________________________________________________________________________
 Donate
 """
+
+
+def all_donate(request):
+    return render(request, 'blog/donate/all_donate.html', {'form': subscribeForm(request)})
 
 
 def beav(request):
@@ -216,7 +238,11 @@ Research
 
 
 def analitics(request):
-    return render(request, 'blog/research/analitics.html', {'form': subscribeForm(request)})
+    context = {}
+    context['form'] = subscribeForm(request)
+    blog_posts = News.objects.filter(type__type='Analytics').order_by('-date_of_creation')
+    context['blog_posts'] = paginate(blog_posts, request, context)
+    return render(request, 'blog/research/analytics.html', context)
 
 
 def anual_report(request):
@@ -228,7 +254,11 @@ def index_ergosum(request):
 
 
 def opinion(request):
-    return render(request, 'blog/research/opinion.html', {'form': subscribeForm(request)})
+    context = {}
+    context['form'] = subscribeForm(request)
+    blog_posts = News.objects.filter(type__type='Opinion').order_by('-date_of_creation')
+    context['blog_posts'] = paginate(blog_posts, request, context)
+    return render(request, 'blog/research/opinion.html', context)
 
 
 """
@@ -242,12 +272,24 @@ def blog(request):
 
 
 def events(request):
-    return render(request, 'blog/events.html', {'form': subscribeForm(request)})
+    context = {}
+    context['form'] = subscribeForm(request)
+    blog_posts = News.objects.filter(type__type='Events').order_by('-date_of_creation')
+    context['blog_posts'] = paginate(blog_posts, request, context)
+    return render(request, 'blog/events.html', context)
 
 
 def news(request):
-    return render(request, 'blog/news.html', {'form': subscribeForm(request)})
+    context = {}
+    context['form'] = subscribeForm(request)
+    blog_posts = News.objects.filter(type__type='News').order_by('-date_of_creation')
+    context['blog_posts'] = paginate(blog_posts, request, context)
+    return render(request, 'blog/news.html', context)
 
 
 def op_eds(request):
-    return render(request, 'blog/op_eds.html', {'form': subscribeForm(request)})
+    context = {}
+    context['form'] = subscribeForm(request)
+    blog_posts = News.objects.filter(type__type='Op-eds').order_by('-date_of_creation')
+    context['blog_posts'] = paginate(blog_posts, request, context)
+    return render(request, 'blog/op_eds.html', context)

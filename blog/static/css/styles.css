@@ -17,8 +17,8 @@ nav{
 }
 
 .logo{
-    height: 160px !important;
-    width: 160px !important;
+    height: 160px;
+    width: 160px;
     background-color: navy;
     margin: -16px 0px -16px 0px;
     /* position: absolute; */
@@ -45,13 +45,30 @@ nav{
 
 @media (max-width: 1400px) {
     .logo{
-        display: none;
+        height: 121.5px;
+        width: 121.5px;
+        background-color: navy;
+        margin: -16px 0px -16px 0px;
     }
 
     .cronis-carousel-control-next{
     }
 
     .cronis-carousel-control-prev{
+    }
+
+    main{
+        margin-top: 121.500px!important;
+    }
+
+    .beam-cronis{
+        height: 177px!important;
+    }
+}
+
+@media (max-width: 1200px) {
+    .beam-cronis{
+        height: 147px!important;
     }
 }
 .testdiv{
@@ -113,4 +130,18 @@ main{
 
 .card-foto{
     height: 400px;
+}
+
+.body-cronis-post img{
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+.beam-cronis{
+    height: 207px;
+}
+
+.card-custom{
+    height: 250px;
 }
