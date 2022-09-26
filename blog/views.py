@@ -35,6 +35,7 @@ def activateEmail(request, sub, to_email):
     else:
         messages.error(request, 'Problem sending email to this adress, check if you typed it correctly')
 
+
 def activate(request, uidb64, token):
     try:
         uid = force_str(urlsafe_base64_decode(uidb64))
@@ -50,6 +51,7 @@ def activate(request, uidb64, token):
         messages.error(request, 'Activation link is invalid!')
     return redirect('homepage')
 
+
 def delete(request, uidb64, token):
     try:
         uid = force_str(urlsafe_base64_decode(uidb64))
@@ -64,6 +66,7 @@ def delete(request, uidb64, token):
         messages.error(request, 'Activation link is invalid!')
     return redirect('homepage')
 
+
 def subscribeForm(request):
     if request.POST:
         sub = Subscriber(email=request.POST['email'])
@@ -74,19 +77,9 @@ def subscribeForm(request):
         else:
             sub.save()
             activateEmail(request, sub, sub.email)
+
     return SubscriberForm()
 
-def paginate(queryset, request, context):
-    page = request.GET.get('page', 1)
-    context['page_num'] = page
-    paginator = Paginator(queryset, POSTS_PER_PAGE)      
-    try:
-        results = paginator.page(page)
-    except PageNotAnInteger:
-        results = paginator.page(POSTS_PER_PAGE)
-    except EmptyPage:
-        results = paginator.page(paginator.num_pages)
-    return results
 
 def paginate(queryset, request, context):
     page = request.GET.get('page', 1)
@@ -142,6 +135,7 @@ def homepage(request):
     context['last_opeds'] = last_opeds
     context['last_analytics'] = last_analytics
     context['last_opinions'] = last_opinions
+
     return render(request, 'blog/homepage.html', context)
 
 
@@ -162,28 +156,23 @@ About
 
 
 def board(request):
-    context = {}
-    return render(request, 'blog/about/board.html', context)
+    return render(request, 'blog/about/board.html', {'form': subscribeForm(request)})
 
 
 def key_doc(request):
-    context = {}
-    return render(request, 'blog/about/key_doc.html', context)
+    return render(request, 'blog/about/key_doc.html', {'form': subscribeForm(request)})
 
 
 def mission(request):
-    context = {}
-    return render(request, 'blog/about/mission.html', context)
+    return render(request, 'blog/about/mission.html', {'form': subscribeForm(request)})
 
 
 def team(request):
-    context = {}
-    return render(request, 'blog/about/team.html', context)
+    return render(request, 'blog/about/team.html', {'form': subscribeForm(request)})
 
 
 def vision(request):
-    context = {}
-    return render(request, 'blog/about/vision.html', context)
+    return render(request, 'blog/about/vision.html', {'form': subscribeForm(request)})
 
 
 """
@@ -197,18 +186,15 @@ def all_donate(request):
 
 
 def beav(request):
-    context = {}
-    return render(request, 'blog/donate/beav.html', context)
+    return render(request, 'blog/donate/beav.html', {'form': subscribeForm(request)})
 
 
 def patrion(request):
-    context = {}
-    return render(request, 'blog/donate/patrion.html', context)
+    return render(request, 'blog/donate/patrion.html', {'form': subscribeForm(request)})
 
 
 def pay_pal(request):
-    context = {}
-    return render(request, 'blog/donate/pay_pal.html', context)
+    return render(request, 'blog/donate/pay_pal.html', {'form': subscribeForm(request)})
 
 
 """
@@ -218,18 +204,15 @@ Join Us
 
 
 def general_members(request):
-    context = {}
-    return render(request, 'blog/join_us/general_members.html', context)
+    return render(request, 'blog/join_us/general_members.html', {'form': subscribeForm(request)})
 
 
 def join_team(request):
-    context = {}
-    return render(request, 'blog/join_us/join_team.html', context)
+    return render(request, 'blog/join_us/join_team.html', {'form': subscribeForm(request)})
 
 
 def voluntear(request):
-    context = {}
-    return render(request, 'blog/join_us/voluntear.html', context)
+    return render(request, 'blog/join_us/voluntear.html', {'form': subscribeForm(request)})
 
 
 """
@@ -239,13 +222,11 @@ Media
 
 
 def podcast(request):
-    context = {}
-    return render(request, 'blog/media/podcast.html', context)
+    return render(request, 'blog/media/podcast.html', {'form': subscribeForm(request)})
 
 
 def videos(request):
-    context = {}
-    return render(request, 'blog/media/videos.html', context)
+    return render(request, 'blog/media/videos.html', {'form': subscribeForm(request)})
 
 
 """
@@ -264,17 +245,15 @@ def analitics(request):
     context['form'] = subscribeForm(request)
     blog_posts = News.objects.filter(type__type='Analytics').order_by('-date_of_creation')
     context['blog_posts'] = paginate(blog_posts, request, context)
-    return render(request, 'blog/research/analitics.html', context)
+    return render(request, 'blog/research/analytics.html', context)
 
 
 def anual_report(request):
-    context = {}
-    return render(request, 'blog/research/anual_report.html', context)
+    return render(request, 'blog/research/anual_report.html', {'form': subscribeForm(request)})
 
 
 def index_ergosum(request):
-    context = {}
-    return render(request, 'blog/research/index_ergosum.html', context)
+    return render(request, 'blog/research/index_ergosum.html', {'form': subscribeForm(request)})
 
 
 def opinion(request):
@@ -292,8 +271,7 @@ Main
 
 
 def blog(request):
-    context = {}
-    return render(request, 'blog/blog.html', context)
+    return render(request, 'blog/blog.html', {'form': subscribeForm(request)})
 
 
 def events(request):

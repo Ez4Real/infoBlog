@@ -1,82 +1,97 @@
 {% extends "blog/base_generic.html" %}
+{% load i18n %}
 
 {% block content %}
 <div class="p-3"></div>
+
 <div class="container">
+
     <div class="text-center">
-        <h1>News</h1>
-    </div>
-    <div class="card mb-5">
-        <div class="card-foto w-100">
-            <img src="https://images.unsplash.com/photo-1447078806655-40579c2520d6?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=2070&q=80"
-                 class="card-img-top d-block mx-auto w-100 h-100 ob-cover" alt="...">
-            <div class="card-img-overlay">
-                <a href="#" class="h5 btn btn-dark">Card type</a>
-            </div>
-        </div>
-        <div class="card-body">
-            <h5>Card title</h5>
-            <p class="card-text">This is a wider card with supporting text below as a natural lead-in to additional
-                content. This content is a little bit longer.</p>
-        </div>
-        <div class="d-flex justify-content-between card-footer bg-transparent border-secondary">
-            <small class="text-muted">Last updated 3 mins ago</small>
-            <small>Author</small>
-        </div>
+        <h1>{% trans "News" %}</h1>
     </div>
 
+    {% if blog_posts %}
+    {% for news in blog_posts %}
+
+
+    {% if forloop.first %}
+    <div class="card mb-5">
+        <a href="{% url 'post-detail' type=news.type pk=news.id %}" class="text-dark text-decoration-none">
+        <div class="card-foto w-100">
+            <img src="{{ news.banner.url }}"
+                 class="card-img-top d-block mx-auto w-100 h-100 ob-cover" alt="...">
+        </div>
+        <div class="card-body">
+            <h5>{{ news.title }}</h5>
+            <p class="card-text">{{ news.subtitle }}...</p>
+        </div>
+        <div class="d-flex justify-content-between card-footer bg-transparent border-secondary">
+            <small class="text-muted">{{ news.date_of_creation }}</small>
+            <small>{{ news.type }}</small>
+        </div>
+        </a>
+    </div>
+
+            {% else %}
+
+<a href="{% url 'post-detail' type=news.type pk=news.id %}" class="text-dark text-decoration-none">
     <div class="card mb-5">
         <div class="row g-0">
-            <div class="col-md-4">
-                <img src="https://images.unsplash.com/photo-1447078806655-40579c2520d6?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=2070&q=80"
-                     class="img-fluid rounded-start" alt="...">
+            <div class="col-md-4" style="height: 273px;">
+                <img src="{{ news.banner.url }}"
+                     class="img-fluid rounded-start d-block mx-auto w-100 h-100 ob-cover" alt="...">
                 <div class="card-img-overlay">
-                    <a href="#" class="h5 btn btn-dark">Card type</a>
-                </div>
+            </div>
             </div>
             <div class="col-md-8">
                 <div class="card-body " style="height: 235px;">
-                    <h5 class="card-title">Card title</h5>
-                    <p class="card-text">This is a wider card with supporting text below as a natural lead-in to
-                        additional content. This content is a little bit longer.</p>
+                    <h5 class="card-title">{{ news.title }}</h5>
+                    <p class="card-text">{{ news.subtitle }}...</p>
                 </div>
                 <div class="d-flex justify-content-between card-footer bg-transparent border-secondary">
-                    <small class="text-muted">Last updated 3 mins ago</small>
-                    <small>Author</small>
+                    <small class="text-muted">{{ news.date_of_creation }}</small>
+                    <small class="text-muted">{{ news.type }}</small>
                 </div>
             </div>
         </div>
     </div>
+    </a>
 
-    News
-    
-    {% if blog_posts %}
-        {% for news in blog_posts %}
-        <div>
-            <strong>{{ news.title }} - {{ news.type }}</strong>
-            <p><img src={{ news.banner.url }}></p>
-            {{ news.subtitle }}
-            <p>{{ news.content | safe }}</p>
-        </div>
-        {% endfor %}
     {% endif %}
-    <div class="pagination">
-        <span class="step-links">
-            {% if blog_posts.has_previous %}
-            <li class="page-item">
-                <a class="page-link" href="?{% if query %}q={{query}}&{% endif %}page={{ blog_posts.previous_page_number }}">&laquo; Previous</a>
-            </li>
-            {% endif %}
 
-    {% if blog_posts %}
+    {% endfor %}
+    {% endif %}
+
+    <ul class="pagination">
+
+        {% if blog_posts.has_previous %}
+        <li class="page-item">
+            <a class="page-link"
+               href="?{% if query %}q={{query}}&{% endif %}page={{ blog_posts.previous_page_number }}">&lsaquo;</a>
+        </li>
+        {% endif %}
+
+        {% if blog_posts %}
         {% for i in blog_posts.paginator.page_range %}
-            {% if blog_posts.number == i %}
-                <li class="page-item active"><a class="page-link">{{ i }}</a></li>
-            {% else %}
-                <li class="page-item" ><a class="page-link" href="?{% if query %}q={{query}}&{% endif %}page={{ i }}">{{ i }}</a></li>
-            {% endif %}
+        {% if blog_posts.number == i %}
+        <li class="page-item active"><a class="page-link">{{ i }}</a></li>
+        {% else %}
+        <li class="page-item"><a class="page-link" href="?{% if query %}q={{query}}&{% endif %}page={{ i }}">{{ i }}</a>
+        </li>
+        {% endif %}
         {% endfor %}
-    {% endif %}
+        {% endif %}
 
+        {% if blog_posts.has_next %}
+        <li class="page-item">
+            <a class="page-link"
+               href="?{% if query %}q={{query}}&{% endif %}page={{ blog_posts.next_page_number }}">&rsaquo;</a>
+        </li>
+        <li class="page-item">
+            <a class="page-link" href="?{% if query %}q={{query}}&{% endif %}page={{ blog_posts.paginator.num_pages }}">&raquo;</a>
+        </li>
+        {% endif %}
+
+    </ul>
 </div>
 {% endblock content %}

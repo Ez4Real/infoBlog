@@ -1,4 +1,5 @@
 {% extends "blog/base_generic.html" %}
+{% load i18n %}
 
 {% block content %}
 <div class="p-3"></div>
@@ -6,17 +7,25 @@
     <div class="row row-cols-2">
         <div class="col">
             <h1>
-                Our Mision
+                {% trans "Our Mision" %}
+
             </h1>
             <p>
-                Lorem ipsum dolor sit amet consectetur, adipisicing elit. Perspiciatis fugit veniam molestiae voluptates suscipit molestias libero eum ad facere optio officia adipisci explicabo beatae, iusto voluptas nisi cum labore delectus.
-                Lorem, ipsum dolor sit amet consectetur adipisicing elit. Consectetur, explicabo illum! Tempore, a. Debitis vel blanditiis quasi similique consequuntur maiores eos, dolorum officiis accusantium magni, dolores error commodi qui! Culpa?
-                Lorem ipsum dolor sit amet consectetur adipisicing elit. Reiciendis quae, cumque quidem labore eligendi delectus velit sapiente repudiandae maxime, voluptas atque facilis voluptates ullam quo hic porro qui minima voluptate.
+                Lorem ipsum dolor sit amet consectetur, adipisicing elit. Perspiciatis fugit veniam molestiae voluptates
+                suscipit molestias libero eum ad facere optio officia adipisci explicabo beatae, iusto voluptas nisi cum
+                labore delectus.
+                Lorem, ipsum dolor sit amet consectetur adipisicing elit. Consectetur, explicabo illum! Tempore, a.
+                Debitis vel blanditiis quasi similique consequuntur maiores eos, dolorum officiis accusantium magni,
+                dolores error commodi qui! Culpa?
+                Lorem ipsum dolor sit amet consectetur adipisicing elit. Reiciendis quae, cumque quidem labore eligendi
+                delectus velit sapiente repudiandae maxime, voluptas atque facilis voluptates ullam quo hic porro qui
+                minima voluptate.
             </p>
         </div>
         <div class="col">
             <div class="misio-img">
-                <img src="https://images.unsplash.com/photo-1447078806655-40579c2520d6?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=2070&q=80" class="img-thumbnail" alt="">
+                <img src="https://images.unsplash.com/photo-1447078806655-40579c2520d6?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=2070&q=80"
+                     class="img-thumbnail" alt="">
             </div>
         </div>
     </div>

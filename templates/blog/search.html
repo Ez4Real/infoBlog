@@ -1,14 +1,21 @@
 {% extends "blog/base_generic.html" %}
+{% load i18n %}
 
 {% block content %}
 
 <div class="container">
     <!--    <h5>Page {{ page_num }}</h5>-->
     <div class="p-3"></div>
-    <p>Found {{ posts_num }} results
-        {% if query != "" %}
-            for “{{ query }}”</p>
-        {% endif %}
+    <div class="h1">{% trans "Search Results" %}</div>
+    {% if query %}
+        <p>
+            {% trans "Found" %} {{ posts_num }} {% trans "results for" %} “{{ query }}”
+        </p>
+    {% else %}
+        <p>
+            {% trans "Found" %} {{ posts_num }} {% trans "results" %}
+        </p>
+    {% endif %}
     <div class="p-1"></div>
 
     <form class="d-flex gap-3" name="search" method="GET" action="{% url 'search' %}">

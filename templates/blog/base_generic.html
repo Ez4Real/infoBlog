@@ -25,6 +25,25 @@
 
             <div class="d-flex flex-column">
 
+                        {% get_current_language as CURRENT_LANGUAGE %}
+                        {% get_available_languages as AVAILABLE_LANGUAGES %}
+                        {% get_language_info_list for AVAILABLE_LANGUAGES as languages %}
+                          <div class="languages row " style="margin-right: 10px;">
+                              <div class="col-10"></div>
+                            {% for language in languages %}
+                              <div class="col d-flex justify-content-end text-decoration-none">
+                                <a href="/{{ language.code }}/"
+                                  {% if language.code == CURRENT_LANGUAGE %} class="active"{% endif %}>
+                                  {% if language.name_local == "Українська" %}
+                                    🇺🇦
+                                  {% else %}
+                                    🇬🇧
+                                  {% endif %}
+                                </a>
+                              </div>
+                            {% endfor %}
+                          </div>
+
                 <div class="d-flex flex-wrap justify-content-end align-items-end h-100 ">
 
                     <div class="container">
@@ -87,7 +106,7 @@
 
                     <form name="search" method="GET" action="{% url 'search' %}" class="col-12 col-lg-auto mb-3 mb-lg-0 me-lg-3">
                         <input type="text" name="search" class="form-control form-control-dark" placeholder="Search..."
-                               aria-label="Search">
+                               aria-label="{% trans 'Search' %}">
                     </form>
                     
                 </div>
