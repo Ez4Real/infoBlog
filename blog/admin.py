@@ -7,7 +7,7 @@ def send_newsletter(modeladmin, request, queryset):
     for newsletter in queryset:
         newsletter.send(request)
         
-send_newsletter.short_description = 'Розіслати обрані новини підписникам'
+send_newsletter.short_description = 'Send newsletter to subscribers'
 
 
 @admin.register(NewsType)
