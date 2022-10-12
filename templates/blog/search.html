@@ -27,7 +27,7 @@
 
     {% if blog_posts %}
     {% for news in blog_posts %}
-    <a href="{% url 'post-detail' type=news.type pk=news.id %}" class="text-dark text-decoration-none">
+    <a href="{% url 'post-detail' type=news.type.slug slug=news.slug %}" class="text-dark text-decoration-none">
     <div class="card mb-5">
         <div class="row g-0">
             <div class="col-md-4" style="height: 273px;">

@@ -139,9 +139,9 @@ def homepage(request):
     return render(request, 'blog/homepage.html', context)
 
 
-def posts(request, type, pk):
+def posts(request, type, slug):
     try:
-        post = News.objects.get(pk=pk)
+        post = News.objects.get(slug=slug)
     except News.DoesNotExist:
         raise Http404('News does not exist')
 

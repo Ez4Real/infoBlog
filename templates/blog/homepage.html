@@ -14,7 +14,7 @@
 
     <div class="carousel-inner">
         {% for news in last_news %}
-        <a href="{% url 'post-detail' type=news.type pk=news.id %}">
+        <a href="{% url 'post-detail' type=news.type.slug slug=news.slug %}">
             {% if forloop.first %}
                 <div class="carousel-item active" style="height: 500px;">
                     <img src="{{ news.banner.url }}"
@@ -67,7 +67,7 @@
         <div class="row row-cols-1 row-cols-md-3 g-4">
             {% for Analytics in last_analytics %}
             <div class="col">
-                <a href="{% url 'post-detail' type=Analytics.type pk=Analytics.id %}"
+                <a href="{% url 'post-detail' type=Analytics.type.slug slug=Analytics.slug %}"
                    class="text-dark text-decoration-none">
                     <div class="card">
                         <div class="d-flex align-items-center justify-content-center" style="height: 200px;">
@@ -114,7 +114,7 @@
         <div class="row row-cols-1 row-cols-md-3 g-4">
             {% for opeds in last_opeds %}
             <div class="col">
-                <a href="{% url 'post-detail' type=opeds.type pk=opeds.id %}" class="text-dark text-decoration-none">
+                <a href="{% url 'post-detail' type=opeds.type.slug slug=opeds.slug %}" class="text-dark text-decoration-none">
                     <div class="card h-100">
                         <img src="{{ opeds.banner.url }}"
                              class="img-fluid rounded-start" alt="...">
@@ -158,7 +158,7 @@
         <div class="row row-cols-1 row-cols-md-3 g-4">
             {% for opinions in last_opinions %}
             <div class="col">
-                <a href="{% url 'post-detail' type=opinions.type pk=opinions.id %}"
+                <a href="{% url 'post-detail' type=opinions.type.slug slug=opinions.slug %}"
                    class="text-dark text-decoration-none">
                     <div class="card h-100">
                         <img src="{{ opinions.banner.url }}"

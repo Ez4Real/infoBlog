@@ -13,12 +13,27 @@
     <div class="m-5"></div>
 <div class="container text-break">
 
-    <div class="h3">
-        {{ news.subtitle }}
-    </div>
-    <div class="body-cronis-post ">
-        {{ news.content | safe }}
-    </div>
+    {% if CURRENT_LANGUAGE == "uk" %}
+        <h5 class="card-title">
+            {{ news.uk_title }}
+        </h5>
+        <p class="card-text">
+            {{ news.uk_subtitle }}...
+        </p>
+        <div class="body-cronis-post ">
+            {{ news.uk_content | safe }}
+        </div>
+        {% else %}
+        <h5 class="card-title">
+            {{ news.en_title }}
+        </h5>
+        <p class="card-text">
+            {{ news.en_subtitle }}...
+        </p>
+        <div class="body-cronis-post ">
+            {{ news.en_content | safe }}
+        </div>
+    {% endif %}
     <div class="p-4"></div>
     <div class="row bg-gray">
         <div class="col">{{ news.date_of_creation }}</div>

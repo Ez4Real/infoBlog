@@ -13,6 +13,7 @@ send_newsletter.short_description = 'Send newsletter to subscribers'
 @admin.register(NewsType)
 class NewsTypeAdmin(admin.ModelAdmin):
     list_display = ('type',)
+    fields = ('type',)
     
 @admin.register(Subscriber)
 class SubscriberAdmin(admin.ModelAdmin):

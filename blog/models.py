@@ -11,6 +11,7 @@ from django.template.loader import get_template
 from django.urls import reverse
 from django.utils.encoding import force_bytes
 from django.utils.http import urlsafe_base64_encode
+from django.utils.text import slugify 
 from django.utils.translation import gettext_lazy as _
 
 from .tokens import email_unsubscribe_token
@@ -19,8 +20,16 @@ from .tokens import email_unsubscribe_token
 class NewsType(models.Model):
     type = models.CharField(help_text='Enter news type',
                             max_length=25,
+                            unique=True,
                             verbose_name=_('News type'))
-
+    
+    slug = models.SlugField(help_text='Slug',
+                            unique=True,)
+    
+    def save(self, *args, **kwargs):
+        self.slug = slugify(self.type.lower())
+        super(NewsType, self).save(*args, **kwargs)
+        
     class Meta:
         verbose_name_plural = _('News Types')
 
@@ -64,12 +73,19 @@ class News(models.Model):
     date_of_creation = models.DateTimeField(auto_now_add=True,
                                             verbose_name=_('Date of creation'))
 
+    slug = models.SlugField(help_text='Slug',
+                            unique=True,)
+
     class Meta:
         ordering = ['en_title', 'uk_title', 'type', 'date_of_creation']
         verbose_name_plural = _('News')
 
     def __str__(self):
         return f'{self.en_title}, {self.uk_title}, {self.date_of_creation}'
+    
+    def save(self, *args, **kwargs):
+        self.slug = slugify(self.en_title.lower())
+        super(News, self).save(*args, **kwargs)
 
     def send(self, request):
         context = {}
