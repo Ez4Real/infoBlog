@@ -238,9 +238,7 @@ Policy Areas
 ________________________________________________________________________________________________________________________
 Research
 """
-
-
-def analitics(request):
+def analytics(request):
     context = {}
     context['form'] = subscribeForm(request)
     blog_posts = News.objects.filter(type__type='Analytics').order_by('-date_of_creation')
@@ -249,6 +247,8 @@ def analitics(request):
 
 
 def anual_report(request):
+    context = {}
+    context['form'] = subscribeForm(request)
     return render(request, 'blog/research/anual_report.html', {'form': subscribeForm(request)})
 
 
@@ -269,7 +269,6 @@ ________________________________________________________________________________
 Main
 """
 
-
 def blog(request):
     return render(request, 'blog/blog.html', {'form': subscribeForm(request)})
 
@@ -277,7 +276,7 @@ def blog(request):
 def events(request):
     context = {}
     context['form'] = subscribeForm(request)
-    blog_posts = News.objects.filter(type__type='Events').order_by('-date_of_creation')
+    blog_posts = News.objects.filter(type__type='Event').order_by('-date_of_creation')
     context['blog_posts'] = paginate(blog_posts, request, context)
     return render(request, 'blog/events.html', context)
 
@@ -293,6 +292,6 @@ def news(request):
 def op_eds(request):
     context = {}
     context['form'] = subscribeForm(request)
-    blog_posts = News.objects.filter(type__type='Op-eds').order_by('-date_of_creation')
+    blog_posts = News.objects.filter(type__type='Op-ed').order_by('-date_of_creation')
     context['blog_posts'] = paginate(blog_posts, request, context)
     return render(request, 'blog/op_eds.html', context)
