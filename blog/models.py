@@ -93,8 +93,8 @@ class News(models.Model):
         context['protocol'] = 'https' if request.is_secure() else 'http'
         context['date'] = self.date_of_creation
         context['subtitle'] = self.en_subtitle
-        context['type'] = self.type
-        context['pk'] = self.pk
+        context['type'] = self.type.slug
+        context['slug'] = self.slug
         
         subscribers = Subscriber.objects.filter(is_active=True)
         mail_subject = self.en_title
