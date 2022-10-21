@@ -18,11 +18,11 @@ from dotenv import load_dotenv
 from django.utils.translation import gettext_lazy as _
 
 
-load_dotenv()
-
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
 
+dotenv_path = BASE_DIR / 'config/.env'
+load_dotenv(dotenv_path)
 
 # Quick-start development settings - unsuitable for production
 # See https://docs.djangoproject.com/en/4.0/howto/deployment/checklist/
@@ -33,7 +33,7 @@ SECRET_KEY = str(os.getenv('SECRET_KEY'))
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = []
+ALLOWED_HOSTS = str(os.getenv('DJANGO_ALLOWED_HOSTS')).split(" ")
 
 
 # Application definition
@@ -90,12 +90,12 @@ WSGI_APPLICATION = 'infoBlog.wsgi.application'
 
 DATABASES = {
     'default': {
-        'ENGINE': str(os.getenv('DB_ENGINE')),
+        'ENGINE': 'django.db.backends.postgresql_psycopg2',
         'NAME': str(os.getenv('DB_NAME')),
         'USER': str(os.getenv('DB_USER')),
         'PASSWORD': str(os.getenv('DB_PASSWORD')),
-        'HOST': str(os.getenv('DB_HOST')),
-        'PORT': str(os.getenv('DB_PORT')),
+        'HOST': 'localhost',
+        'PORT': 5432,
     }
 }
 

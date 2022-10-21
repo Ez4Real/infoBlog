@@ -36,7 +36,7 @@ def activateEmail(request, sub, to_email):
         messages.error(request, 'Problem sending email to this adress, check if you typed it correctly')
 
 
-def activate(request, uidb64, token):
+def activate(request, uidb64, token, lang):
     try:
         uid = force_str(urlsafe_base64_decode(uidb64))
         sub = Subscriber.objects.get(pk=uid)
@@ -45,6 +45,7 @@ def activate(request, uidb64, token):
 
     if sub is not None and email_activation_token.check_token(sub, token):
         sub.is_active = True
+        sub.mailing_language = lang
         sub.save()
         messages.success(request, 'Thank you for subscription.')
     else:

@@ -17,8 +17,8 @@ class NewsTypeAdmin(admin.ModelAdmin):
     
 @admin.register(Subscriber)
 class SubscriberAdmin(admin.ModelAdmin):
-    list_display = ('email', 'is_active')
-    fields = [('email', 'is_active')]
+    list_display = ('email', 'is_active', 'mailing_language')
+    fields = [('email', 'is_active'), 'mailing_language']
     
 @admin.register(News)
 class NewsAdmin(admin.ModelAdmin):

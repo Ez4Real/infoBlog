@@ -3,8 +3,8 @@ from blog import views
 
 urlpatterns = [
     path('', views.homepage, name='homepage'),
-    path('delete/<uidb64>/<token>', views.delete, name='delete'),
-    path('activate/<uidb64>/<token>', views.activate, name='activate'),
+    path('delete/<uidb64>/<token>/', views.delete, name='delete'),
+    path('activate/<uidb64>/<token>/<lang>/', views.activate, name='activate'),
     path('<type>/<slug:slug>', views.posts, name='post-detail'),
     path('search/', views.search, name='search'),
     # About

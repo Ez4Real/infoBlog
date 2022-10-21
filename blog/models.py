@@ -1,3 +1,5 @@
+from email.policy import default
+from random import choices
 import requests
 from PIL import Image
 from io import BytesIO
@@ -92,13 +94,10 @@ class News(models.Model):
         context['domain'] = get_current_site(request).domain
         context['protocol'] = 'https' if request.is_secure() else 'http'
         context['date'] = self.date_of_creation
-        context['subtitle'] = self.en_subtitle
         context['type'] = self.type.slug
         context['slug'] = self.slug
         
         subscribers = Subscriber.objects.filter(is_active=True)
-        mail_subject = self.en_title
-        
         for sub in subscribers:
             context['uid'] = urlsafe_base64_encode(force_bytes(sub.pk))
             context['token'] = email_unsubscribe_token.make_token(sub)
@@ -110,7 +109,13 @@ class News(models.Model):
                 img.save(byte_buffer, 'png')
                 img = MIMEImage(byte_buffer.getvalue())
                 img.add_header('Content-ID', f'<{img_url}>')
-
+            if sub.mailing_language == 'en':
+                mail_subject = self.uk_title
+                context['subtitle'] = self.uk_subtitle
+            else:
+                mail_subject = self.en_title
+                context['subtitle'] = self.en_subtitle
+                
             message = get_template('blog/newsletter/news.html').render(context)
             email = EmailMessage(mail_subject, message, to=[sub.email])
             email.content_subtype = 'html'
@@ -123,6 +128,10 @@ class Subscriber(models.Model):
                               max_length=254,
                               help_text='Enter e-mail')
     is_active = models.BooleanField(default=False)
+    mailing_language = models.CharField(default='en',
+                                        max_length=2,
+                                        choices=[('en', _('English')),
+                                                 ('uk', _('Ukrainian'))])
 
     class Meta:
         verbose_name_plural = _('Subscribers e-mails')
