@@ -163,7 +163,7 @@ msgstr "Річний звіт"
 
 #: .\templates\blog\base_generic.html:107
 msgid "Index ergosum"
-msgstr "Показник ергосум"
+msgstr "Оціночний Індекс"
 
 #: .\templates\blog\base_generic.html:108 .\templates\blog\homepage.html:156
 msgid "Opinion"
