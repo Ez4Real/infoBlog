@@ -108,8 +108,8 @@ def search(request):
                                       Q(en_content__icontains=query) |
                                       Q(uk_content__icontains=query) |
                                       Q(type__type__icontains=query)).order_by('-date_of_creation')
-        context['posts_num'] = len(results)
-
+        context['posts_num'] = str(len(results))
+        context['endswith1'] = True if context['posts_num'][-1] == '1' and context['posts_num'] != '11' else False
         page = request.GET.get('page', 1)
         context['page_num'] = page
         paginator = Paginator(results, POSTS_PER_PAGE)

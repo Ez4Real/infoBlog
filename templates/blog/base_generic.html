@@ -32,7 +32,7 @@
                               <div class="col-10"></div>
                             {% for language in languages %}
                               <div class="col d-flex justify-content-end text-decoration-none">
-                                <a href="/{{ language.code }}/"
+                                <a href="/{{ language.code }}/{{request.get_full_path|slice:"4:"}}"
                                   {% if language.code == CURRENT_LANGUAGE %} class="active"{% endif %}>
                                   {% if language.name_local == "Українська" %}
                                     🇺🇦
@@ -87,8 +87,8 @@
                     </ul>
 
                     <form name="search" method="GET" action="{% url 'search' %}" class="col-12 col-lg-auto mb-3 mb-lg-0 me-lg-3">
-                        <input type="text" name="search" class="form-control form-control-dark" placeholder="Search..."
-                               aria-label="{% trans 'Search' %}">
+                        <input type="text" name="search" class="form-control form-control-dark" placeholder="{% trans 'Search' %}..."
+                               aria-label="Search">
                     </form>
                     
                 </div>
@@ -109,12 +109,12 @@
                                 <li><a class="dropdown-item" href="{% url 'opinion' %}">{% trans "Opinion" %}</a></li>
                             </ul>
                         </li>
-                        <li><a href="{% url 'blog' %}" class="nav-link px-2 text-white">{% trans "Blogs" %}</a></li>
+                        <li><a href="{% url 'blog' %}" class="nav-link px-2 text-white">{% trans "Blog" %}</a></li>
                         <li><a href="{% url 'op_eds' %}" class="nav-link px-2 text-white">{% trans "Op-eds" %}</a></li>
                         <li class="nav-item dropdown ">
                             <a class="nav-link dropdown-toggle text-white" href="#" id="navbarDropdownMenuLink"
                                role="button" data-bs-toggle="dropdown" aria-expanded="false">
-                               {% trans "Policy Areas" %}
+                               {% trans "Policy areas" %}
                             </a>
                             <ul class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
                                 <li><a class="dropdown-item" href="#">1</a></li>
@@ -230,7 +230,7 @@
                 <div class="row  d-flex justify-content-center">
                     <div class="col-auto">
                         <p class="pt-2">
-                            <strong>{% trans 'Enter' %}e-mail</strong>
+                            <strong>{% trans 'Enter' %} e-mail</strong>
                         </p>
                     </div>
                     <div class="col-md-5 col-12">
@@ -238,7 +238,7 @@
                         {{ form }}
                     </div>
                     <div class="col-auto">
-                        <button type="submit" class="btn btn-outline-light mb-4">{% trans 'Subscribe' %}!</button>
+                        <button type="submit" class="btn btn-outline-light mb-4">{% trans 'Subscribe' %}</button>
                     </div>
                 </div>
             </form>
