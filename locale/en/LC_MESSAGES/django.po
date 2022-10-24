@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2022-10-23 19:07+0300\n"
+"POT-Creation-Date: 2022-10-24 23:26+0300\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -26,64 +26,76 @@ msgstr ""
 msgid "News Types"
 msgstr ""
 
-#: .\blog\models.py:49
+#: .\blog\models.py:46
+msgid "Policy area name"
+msgstr ""
+
+#: .\blog\models.py:48 .\templates\blog\base_generic.html:116
+msgid "Policy areas"
+msgstr ""
+
+#: .\blog\models.py:60
 msgid "English title"
 msgstr ""
 
-#: .\blog\models.py:52
+#: .\blog\models.py:63
 msgid "Ukrainian title"
 msgstr ""
 
-#: .\blog\models.py:55
+#: .\blog\models.py:66
 msgid "News banner"
 msgstr ""
 
-#: .\blog\models.py:59
+#: .\blog\models.py:70
 msgid "English subtitle"
 msgstr ""
 
-#: .\blog\models.py:62
+#: .\blog\models.py:73
 msgid "Ukrainian subtitle"
 msgstr ""
 
-#: .\blog\models.py:65
+#: .\blog\models.py:76
 msgid "English content"
 msgstr ""
 
-#: .\blog\models.py:67
+#: .\blog\models.py:78
 msgid "Ukrainian content"
 msgstr ""
 
-#: .\blog\models.py:72
+#: .\blog\models.py:83
 msgid "Type"
 msgstr ""
 
-#: .\blog\models.py:76 .\blog\models.py:147
+#: .\blog\models.py:89
+msgid "Policy area"
+msgstr ""
+
+#: .\blog\models.py:93 .\blog\models.py:164
 msgid "Date of creation"
 msgstr ""
 
-#: .\blog\models.py:83 .\templates\blog\base_generic.html:99
+#: .\blog\models.py:100 .\templates\blog\base_generic.html:98
 #: .\templates\blog\news.html:10
 msgid "News"
 msgstr ""
 
-#: .\blog\models.py:133 .\infoBlog\settings.py:136
+#: .\blog\models.py:150 .\infoBlog\settings.py:136
 msgid "English"
 msgstr ""
 
-#: .\blog\models.py:134 .\infoBlog\settings.py:135
+#: .\blog\models.py:151 .\infoBlog\settings.py:135
 msgid "Ukrainian"
 msgstr ""
 
-#: .\blog\models.py:137
+#: .\blog\models.py:154
 msgid "Subscribers e-mails"
 msgstr ""
 
-#: .\blog\models.py:145
+#: .\blog\models.py:162
 msgid "Content"
 msgstr ""
 
-#: .\blog\models.py:150
+#: .\blog\models.py:167
 msgid "Video content"
 msgstr ""
 
@@ -92,7 +104,7 @@ msgid "admin/"
 msgstr ""
 
 #: .\templates\blog\about\board.html:10
-msgid "Our Mision"
+msgid "Our Mission"
 msgstr ""
 
 #: .\templates\blog\about\key_doc.html:8
@@ -135,120 +147,145 @@ msgstr ""
 msgid "Board"
 msgstr ""
 
-#: .\templates\blog\base_generic.html:67
+#: .\templates\blog\base_generic.html:66
 #: .\templates\blog\join_us\join_team.html:7
 msgid "Join us"
 msgstr ""
 
-#: .\templates\blog\base_generic.html:70
+#: .\templates\blog\base_generic.html:69
 #: .\templates\blog\join_us\general_members.html:8
 msgid "General members"
 msgstr ""
 
-#: .\templates\blog\base_generic.html:71
+#: .\templates\blog\base_generic.html:70
 msgid "Join team"
 msgstr ""
 
-#: .\templates\blog\base_generic.html:72
+#: .\templates\blog\base_generic.html:71
+#: .\templates\blog\join_us\voluntear.html:7
 msgid "Volunteering"
 msgstr ""
 
-#: .\templates\blog\base_generic.html:78
+#: .\templates\blog\base_generic.html:77
 #: .\templates\blog\donate\all_donate.html:8
 msgid "Donate"
 msgstr ""
 
-#: .\templates\blog\base_generic.html:81
+#: .\templates\blog\base_generic.html:80
 msgid "Donates"
 msgstr ""
 
-#: .\templates\blog\base_generic.html:91
+#: .\templates\blog\base_generic.html:89
 msgid "Search"
 msgstr ""
 
-#: .\templates\blog\base_generic.html:98 .\templates\blog\events.html:10
+#: .\templates\blog\base_generic.html:97 .\templates\blog\events.html:10
 msgid "Events"
 msgstr ""
 
-#: .\templates\blog\base_generic.html:103
+#: .\templates\blog\base_generic.html:102
 msgid "Research"
 msgstr ""
 
-#: .\templates\blog\base_generic.html:106 .\templates\blog\homepage.html:65
+#: .\templates\blog\base_generic.html:105 .\templates\blog\homepage.html:65
 #: .\templates\blog\research\analytics.html:10
 msgid "Analytics"
 msgstr ""
 
-#: .\templates\blog\base_generic.html:107
+#: .\templates\blog\base_generic.html:106
 #: .\templates\blog\research\anual_report.html:9
 msgid "Annual report"
 msgstr ""
 
-#: .\templates\blog\base_generic.html:108
+#: .\templates\blog\base_generic.html:107
 #: .\templates\blog\research\index_ergosum.html:9
 msgid "Index ergosum"
 msgstr ""
 
-#: .\templates\blog\base_generic.html:109 .\templates\blog\homepage.html:156
+#: .\templates\blog\base_generic.html:108 .\templates\blog\homepage.html:156
 #: .\templates\blog\research\opinion.html:10
 msgid "Opinion"
 msgstr ""
 
-#: .\templates\blog\base_generic.html:112 .\templates\blog\blog.html:10
+#: .\templates\blog\base_generic.html:111 .\templates\blog\blog.html:10
 msgid "Blog"
 msgstr ""
 
-#: .\templates\blog\base_generic.html:113 .\templates\blog\homepage.html:112
+#: .\templates\blog\base_generic.html:112 .\templates\blog\homepage.html:112
 #: .\templates\blog\op_eds.html:10
 msgid "Op-eds"
 msgstr ""
 
-#: .\templates\blog\base_generic.html:117
-msgid "Policy areas"
+#: .\templates\blog\base_generic.html:119
+msgid "Foreign policy"
 msgstr ""
 
-#: .\templates\blog\base_generic.html:127
+#: .\templates\blog\base_generic.html:120
+msgid "Internal policy"
+msgstr ""
+
+#: .\templates\blog\base_generic.html:121
+msgid "Economics"
+msgstr ""
+
+#: .\templates\blog\base_generic.html:122
+msgid "Security"
+msgstr ""
+
+#: .\templates\blog\base_generic.html:123
+msgid "Education"
+msgstr ""
+
+#: .\templates\blog\base_generic.html:124
+msgid "Democracy"
+msgstr ""
+
+#: .\templates\blog\base_generic.html:125
+msgid "Human rights"
+msgstr ""
+
+#: .\templates\blog\base_generic.html:126
+msgid "Culture"
+msgstr ""
+
+#: .\templates\blog\base_generic.html:132
 msgid "Media"
 msgstr ""
 
-#: .\templates\blog\base_generic.html:130
+#: .\templates\blog\base_generic.html:135
 msgid "Podcast"
 msgstr ""
 
-#: .\templates\blog\base_generic.html:131
+#: .\templates\blog\base_generic.html:136
 msgid "Videos"
 msgstr ""
 
-#: .\templates\blog\base_generic.html:233
+#: .\templates\blog\base_generic.html:238
 msgid "Enter"
 msgstr ""
 
-#: .\templates\blog\base_generic.html:241
-#: .\templates\blog\base_generic.html:267
+#: .\templates\blog\base_generic.html:246
+#: .\templates\blog\base_generic.html:272
 msgid "Subscribe"
 msgstr ""
 
-#: .\templates\blog\join_us\voluntear.html:7
-msgid "Voluntear"
-msgstr ""
-
-#: .\templates\blog\search.html:9
+#: .\templates\blog\search.html:8
 msgid "Search Results"
 msgstr ""
 
-#: .\templates\blog\search.html:13 .\templates\blog\search.html:17
-#: .\templates\blog\search.html:22
+#: .\templates\blog\search.html:12 .\templates\blog\search.html:16
+#: .\templates\blog\search.html:21
 msgid "Found"
 msgstr ""
 
-#: .\templates\blog\search.html:13
+#: .\templates\blog\search.html:12
 msgid "result for"
 msgstr ""
 
-#: .\templates\blog\search.html:17
+#: .\templates\blog\search.html:16
 msgid "results for"
 msgstr ""
 
-#: .\templates\blog\search.html:22
+#: .\templates\blog\search.html:21
 msgid "results"
 msgstr ""

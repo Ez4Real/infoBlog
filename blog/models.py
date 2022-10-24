@@ -39,6 +39,17 @@ class NewsType(models.Model):
         return f'{self.type}'
 
 
+class PolicyArea(models.Model):
+    name = models.CharField(help_text='Enter policy area name',
+                            max_length=25,
+                            unique=True,
+                            verbose_name=_('Policy area name'))
+    class Meta:
+        verbose_name_plural = _('Policy areas')
+
+    def __str__(self):
+        return f'{self.name}'
+
 class News(models.Model):
 
     def get_absolute_url(self):
@@ -71,7 +82,13 @@ class News(models.Model):
                              help_text='Choose news type',
                              verbose_name=_('Type'),
                              default='News')
-
+    
+    policy_area = models.ForeignKey(PolicyArea,
+                                     on_delete=models.PROTECT,
+                                     help_text='Choose policy area',
+                                     verbose_name=_('Policy area'),
+                                     default='Foreign policy')
+    
     date_of_creation = models.DateTimeField(auto_now_add=True,
                                             verbose_name=_('Date of creation'))
 

@@ -234,6 +234,61 @@ def videos(request):
 ________________________________________________________________________________________________________________________
 Policy Areas
 """
+def foreign_policy(request):
+    context = {}
+    context['form'] = subscribeForm(request)
+    blog_posts = News.objects.filter(type__type='Foreign policy').order_by('-date_of_creation')
+    context['blog_posts'] = paginate(blog_posts, request, context)
+    return render(request, 'blog/policy_areas/foreign_policy.html', context)
+
+def internal_policy(request):
+    context = {}
+    context['form'] = subscribeForm(request)
+    blog_posts = News.objects.filter(type__type='Internal policy').order_by('-date_of_creation')
+    context['blog_posts'] = paginate(blog_posts, request, context)
+    return render(request, 'blog/policy_areas/internal_policy.html', context)
+
+def economics(request):
+    context = {}
+    context['form'] = subscribeForm(request)
+    blog_posts = News.objects.filter(type__type='Economics').order_by('-date_of_creation')
+    context['blog_posts'] = paginate(blog_posts, request, context)
+    return render(request, 'blog/policy_areas/economics.html', context)
+
+def security(request):
+    context = {}
+    context['form'] = subscribeForm(request)
+    blog_posts = News.objects.filter(type__type='Security').order_by('-date_of_creation')
+    context['blog_posts'] = paginate(blog_posts, request, context)
+    return render(request, 'blog/policy_areas/security.html', context)
+
+def education(request):
+    context = {}
+    context['form'] = subscribeForm(request)
+    blog_posts = News.objects.filter(type__type='Education').order_by('-date_of_creation')
+    context['blog_posts'] = paginate(blog_posts, request, context)
+    return render(request, 'blog/policy_areas/education.html', context)
+
+def democracy(request):
+    context = {}
+    context['form'] = subscribeForm(request)
+    blog_posts = News.objects.filter(type__type='Democracy').order_by('-date_of_creation')
+    context['blog_posts'] = paginate(blog_posts, request, context)
+    return render(request, 'blog/policy_areas/democracy.html', context)
+
+def human_rights(request):
+    context = {}
+    context['form'] = subscribeForm(request)
+    blog_posts = News.objects.filter(type__type='Human rights').order_by('-date_of_creation')
+    context['blog_posts'] = paginate(blog_posts, request, context)
+    return render(request, 'blog/policy_areas/human_rights.html', context)
+
+def culture(request):
+    context = {}
+    context['form'] = subscribeForm(request)
+    blog_posts = News.objects.filter(type__type='Culture').order_by('-date_of_creation')
+    context['blog_posts'] = paginate(blog_posts, request, context)
+    return render(request, 'blog/policy_areas/culture.html', context)
 
 """
 ________________________________________________________________________________________________________________________
@@ -242,7 +297,7 @@ Research
 def analytics(request):
     context = {}
     context['form'] = subscribeForm(request)
-    blog_posts = News.objects.filter(type__type='Analytics').order_by('-date_of_creation')
+    blog_posts = News.objects.filter(policy_area__name='Analytics').order_by('-date_of_creation')
     context['blog_posts'] = paginate(blog_posts, request, context)
     return render(request, 'blog/research/analytics.html', context)
 
