@@ -297,7 +297,7 @@ Research
 def analytics(request):
     context = {}
     context['form'] = subscribeForm(request)
-    blog_posts = News.objects.filter(policy_area__name='Analytics').order_by('-date_of_creation')
+    blog_posts = News.objects.filter(type__type='Analytics').order_by('-date_of_creation')
     context['blog_posts'] = paginate(blog_posts, request, context)
     return render(request, 'blog/research/analytics.html', context)
 
