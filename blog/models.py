@@ -65,10 +65,10 @@ class News(models.Model):
     banner = models.ImageField(upload_to='uploads/banners', 
                                verbose_name=_('News banner'))
     
-    en_subtitle = models.TextField(max_length=296,
+    en_subtitle = models.TextField(max_length=150,
                                    help_text='Enter subtitle',
                                    verbose_name=_('English subtitle'))
-    uk_subtitle = models.TextField(max_length=296,
+    uk_subtitle = models.TextField(max_length=150,
                                    help_text='Enter subtitle',
                                    verbose_name=_('Ukrainian subtitle'))
 

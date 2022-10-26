@@ -1,101 +1,105 @@
 {% load i18n %}
-<div class="d-flex flex-wrap justify-content-end align-items-end h-100 ">
+<div class="container row">
+    <div class="row cronis-item-1">
+        <ul class="navbar-nav me-auto col order-1 justify-content-end"
+            style="--bs-scroll-height: 100px;">
+            <li class="nav-item dropdown ">
+                <a class="nav-link dropdown-toggle text-white" href="#" id="navbarDropdownMenuLink"
+                   role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                    {% trans "About" %}
+                </a>
+                <ul class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
+                    <li><a class="dropdown-item" href="{% url 'mission' %}">{% trans "Mission" %}</a></li>
+                    <li><a class="dropdown-item" href="{% url 'vision' %}">{% trans "Vision" %}</a></li>
+                    <li><a class="dropdown-item" href="{% url 'key_documents' %}">{% trans "Key-documents" %}</a></li>
+                    <li><a class="dropdown-item" href="{% url 'team' %}">{% trans "Team" %}</a></li>
+                    <li><a class="dropdown-item" href="{% url 'board' %}">{% trans "Board" %}</a></li>
+                </ul>
+            </li>
+            <li class="nav-item dropdown ">
+                <a class="nav-link dropdown-toggle text-white" href="#" id="navbarDropdownMenuLink"
+                   role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                    {% trans "Join us" %}
+                </a>
+                <ul class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
+                    <li><a class="dropdown-item" href="{% url 'general_members' %}">{% trans "General members" %}</a></li>
+                    <li><a class="dropdown-item" href="{% url 'join_team' %}">{% trans "Join team" %}</a>
+                    </li>
+                    <li><a class="dropdown-item" href="{% url 'voluntear' %}">{% trans "Volunteering" %}</a>
+                    </li>
+                </ul>
+            </li>
+            <li class="nav-item dropdown ">
+                <a class="nav-link dropdown-toggle text-white" href="#" id="navbarDropdownMenuLink"
+                   role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                    {% trans "Donate" %}
+                </a>
+                <ul class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
+                    <li><a class="dropdown-item" href="{% url 'all_donate' %}">{% trans "Donates" %} </a>
+                    </li>
+                    <li><a class="dropdown-item" href="{% url 'patrion' %}">Patrion</a></li>
+                    <li><a class="dropdown-item" href="{% url 'beav' %}">Beav</a></li>
+                    <li><a class="dropdown-item" href="{% url 'pay_pal' %}">PayPal</a></li>
+                </ul>
+            </li>
+        </ul>
 
-    <ul class="nav">
-        <li class="nav-item dropdown ">
-            <a class="nav-link dropdown-toggle text-white" href="#" id="navbarDropdownMenuLink"
-               role="button" data-bs-toggle="dropdown" aria-expanded="false">
-                {% trans "About" %}
-            </a>
-            <ul class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
-                <li><a class="dropdown-item" href="{% url 'mission' %}">{% trans "Mission" %}</a></li>
-                <li><a class="dropdown-item" href="{% url 'vision' %}">{% trans "Vision" %}</a></li>
-                <li><a class="dropdown-item" href="{% url 'key_documents' %}">{% trans "Key-documents" %}</a></li>
-                <li><a class="dropdown-item" href="{% url 'team' %}">{% trans "Team" %}</a></li>
-                <li><a class="dropdown-item" href="{% url 'board' %}">{% trans "Board" %}</a></li>
-            </ul>
-        </li>
-        <li class="nav-item dropdown ">
-            <a class="nav-link dropdown-toggle text-white" href="#" id="navbarDropdownMenuLink"
-               role="button" data-bs-toggle="dropdown" aria-expanded="false">
-                {% trans "Join us" %}
-            </a>
-            <ul class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
-                <li><a class="dropdown-item" href="{% url 'general_members' %}">{% trans "General members" %}</a></li>
-                <li><a class="dropdown-item" href="{% url 'join_team' %}">{% trans "Join team" %}</a>
-                </li>
-                <li><a class="dropdown-item" href="{% url 'voluntear' %}">{% trans "Volunteering" %}</a>
-                </li>
-            </ul>
-        </li>
-        <li class="nav-item dropdown ">
-            <a class="nav-link dropdown-toggle text-white" href="#" id="navbarDropdownMenuLink"
-               role="button" data-bs-toggle="dropdown" aria-expanded="false">
-                {% trans "Donate" %}
-            </a>
-            <ul class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
-                <li><a class="dropdown-item" href="{% url 'all_donate' %}">{% trans "Donates" %} </a>
-                </li>
-                <li><a class="dropdown-item" href="{% url 'patrion' %}">Patrion</a></li>
-                <li><a class="dropdown-item" href="{% url 'beav' %}">Beav</a></li>
-                <li><a class="dropdown-item" href="{% url 'pay_pal' %}">PayPal</a></li>
-            </ul>
-        </li>
-    </ul>
+        <form name="search" method="GET" action="{% url 'search' %}"
+              class="col-12 order-2 col-lg-3 mb-3 mb-lg-0 me-lg-3">
+            <input type="text" name="search" class="form-control form-control-dark"
+                   placeholder="{% trans 'Search' %}..."
+                   aria-label="Search">
+        </form>
 
-    <form name="search" method="GET" action="{% url 'search' %}"
-          class="col-12 col-lg-auto mb-3 mb-lg-0 me-lg-3">
-        <input type="text" name="search" class="form-control form-control-dark"
-               placeholder="{% trans 'Search' %}..."
-               aria-label="Search">
-    </form>
+        {% include 'include/lang_butt.html' %}
 
-</div>
-
-<div class="d-flex justify-content-evenly align-items-end flex-column font-size-custom-navbar mt-0">
-    <ul class="nav col-7 col-lg-auto  mb-2 mb-md-0 p-2 ">
-        <li><a href="{% url 'events' %}" class="nav-link px-2 text-white">{% trans "Events" %}</a></li>
-        <li><a href="{% url 'news' %}" class="nav-link px-2 text-white">{% trans "News" %}</a></li>
-        <li class="nav-item dropdown ">
-            <a class="nav-link dropdown-toggle text-white" href="#" id="navbarDropdownMenuLink"
-               role="button" data-bs-toggle="dropdown" aria-expanded="false">
-                {% trans "Research" %}
-            </a>
-            <ul class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
-                <li><a class="dropdown-item" href="{% url 'analytics' %}">{% trans "Analytics" %}</a>
-                </li>
-                <li><a class="dropdown-item" href="{% url 'annual_report' %}">{% trans "Annual report" %}</a></li>
-                <li><a class="dropdown-item" href="{% url 'index_ergosum' %}">{% trans "Index ergosum" %}</a></li>
-                <li><a class="dropdown-item" href="{% url 'opinion' %}">{% trans "Opinion" %}</a></li>
-            </ul>
-        </li>
-        <li><a href="{% url 'blog' %}" class="nav-link px-2 text-white">{% trans "Blog" %}</a></li>
-        <li><a href="{% url 'op_eds' %}" class="nav-link px-2 text-white">{% trans "Op-eds" %}</a></li>
-        <li class="nav-item dropdown ">
-            <a class="nav-link dropdown-toggle text-white" href="#" id="navbarDropdownMenuLink"
-               role="button" data-bs-toggle="dropdown" aria-expanded="false">
-                {% trans "Policy areas" %}
-            </a>
-            <ul class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
-                <li><a class="dropdown-item" href="{% url 'foreign_policy' %}">{% trans "Foreign policy" %}</a></li>
-                <li><a class="dropdown-item" href="{% url 'internal_policy' %}">{% trans "Internal policy" %}</a></li>
-                <li><a class="dropdown-item" href="{% url 'economics' %}">{% trans "Economics" %}</a></li>
-                <li><a class="dropdown-item" href="{% url 'security' %}">{% trans "Security" %}</a></li>
-                <li><a class="dropdown-item" href="{% url 'education' %}">{% trans "Education" %}</a></li>
-                <li><a class="dropdown-item" href="{% url 'democracy' %}">{% trans "Democracy" %}</a></li>
-                <li><a class="dropdown-item" href="{% url 'human_rights' %}">{% trans "Human rights" %}</a></li>
-                <li><a class="dropdown-item" href="{% url 'culture' %}">{% trans "Culture" %}</a></li>
-            </ul>
-        </li>
-        <li class="nav-item dropdown ">
-            <a class="nav-link dropdown-toggle text-white" href="#" id="navbarDropdownMenuLink"
-               role="button" data-bs-toggle="dropdown" aria-expanded="false">
-                {% trans "Media" %}
-            </a>
-            <ul class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
-                <li><a class="dropdown-item" href="{% url 'podcast' %}">{% trans "Podcast" %}</a></li>
-                <li><a class="dropdown-item" href="{% url 'videos' %}">{% trans "Videos" %}</a></li>
-            </ul>
-        </li>
-    </ul>
+    </div>
+    <div class="row cronis-item-2 fs-4">
+        <ul class="navbar-nav me-auto col justify-content-end">
+            <li><a href="{% url 'events' %}" class="nav-link text-white">{% trans "Events" %}</a></li>
+            <li><a href="{% url 'news' %}" class="nav-link text-white">{% trans "News" %}</a></li>
+            <li class="nav-item dropdown ">
+                <a class="nav-link dropdown-toggle text-white" href="#" id="navbarDropdownMenuLink"
+                   role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                    {% trans "Research" %}
+                </a>
+                <ul class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
+                    <li><a class="dropdown-item" href="{% url 'analytics' %}">{% trans "Analytics" %}</a>
+                    </li>
+                    <li><a class="dropdown-item" href="{% url 'annual_report' %}">{% trans "Annual report" %}</a></li>
+                    <li><a class="dropdown-item" href="{% url 'index_ergosum' %}">{% trans "Index ergosum" %}</a></li>
+                    <li><a class="dropdown-item" href="{% url 'opinion' %}">{% trans "Opinion" %}</a></li>
+                </ul>
+            </li>
+            <li><a href="{% url 'blog' %}" class="nav-link text-white">{% trans "Blog" %}</a></li>
+            <li><a href="{% url 'op_eds' %}" class="nav-link text-white">{% trans "Op-eds" %}</a></li>
+            <li class="nav-item dropdown ">
+                <a class="nav-link dropdown-toggle text-white" href="#" id="navbarDropdownMenuLink"
+                   role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                    {% trans "Policy areas" %}
+                </a>
+                <ul class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
+                    <li><a class="dropdown-item" href="{% url 'foreign_policy' %}">{% trans "Foreign policy" %}</a></li>
+                    <li><a class="dropdown-item" href="{% url 'internal_policy' %}">{% trans "Internal policy" %}</a>
+                    </li>
+                    <li><a class="dropdown-item" href="{% url 'economics' %}">{% trans "Economics" %}</a></li>
+                    <li><a class="dropdown-item" href="{% url 'security' %}">{% trans "Security" %}</a></li>
+                    <li><a class="dropdown-item" href="{% url 'education' %}">{% trans "Education" %}</a></li>
+                    <li><a class="dropdown-item" href="{% url 'democracy' %}">{% trans "Democracy" %}</a></li>
+                    <li><a class="dropdown-item" href="{% url 'human_rights' %}">{% trans "Human rights" %}</a></li>
+                    <li><a class="dropdown-item" href="{% url 'culture' %}">{% trans "Culture" %}</a></li>
+                </ul>
+            </li>
+            <li class="nav-item dropdown ">
+                <a class="nav-link dropdown-toggle text-white" href="#" id="navbarDropdownMenuLink"
+                   role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                    {% trans "Media" %}
+                </a>
+                <ul class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
+                    <li><a class="dropdown-item" href="{% url 'podcast' %}">{% trans "Podcast" %}</a></li>
+                    <li><a class="dropdown-item" href="{% url 'videos' %}">{% trans "Videos" %}</a></li>
+                </ul>
+            </li>
+        </ul>
+    </div>
 </div>
