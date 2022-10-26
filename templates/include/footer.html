@@ -1,0 +1,161 @@
+{% load i18n %}
+<footer class="bg-dark text-center text-white">
+    <!-- Grid container -->
+    <div class="container p-4">
+        <!-- Section: Social media -->
+        <section class="mb-4">
+            <!-- Facebook -->
+            <a class="btn btn-outline-light btn-floating m-1" href="#!" role="button">
+                <i class="fab fa-facebook-f"></i>
+            </a>
+
+            <!-- Twitter -->
+            <a class="btn btn-outline-light btn-floating m-1" href="#!" role="button">
+                <i class="fab fa-twitter"></i>
+            </a>
+
+            <!-- Google -->
+            <a class="btn btn-outline-light btn-floating m-1" href="#!" role="button">
+                <i class="fab fa-google"></i>
+            </a>
+
+            <!-- Instagram -->
+            <a class="btn btn-outline-light btn-floating m-1" href="#!" role="button">
+                <i class="fab fa-instagram"></i>
+            </a>
+        </section>
+        <!-- Section: Social media -->
+
+        <!-- Section: Form -->
+        <section class="">
+            <!--            <form action="">-->
+            <!--                &lt;!&ndash;Grid row&ndash;&gt;-->
+            <!--                <div class="row d-flex justify-content-center">-->
+            <!--                    &lt;!&ndash;Grid column&ndash;&gt;-->
+            <!--                    <div class="col-auto">-->
+            <!--                        <p class="pt-2">-->
+            <!--                            <strong>Sign up for our newsletter</strong>-->
+            <!--                        </p>-->
+            <!--                    </div>-->
+            <!--                    &lt;!&ndash;Grid column&ndash;&gt;-->
+
+            <!--                    &lt;!&ndash;Grid column&ndash;&gt;-->
+            <!--            <div class="col-md-5 col-12">-->
+            <!--                &lt;!&ndash; Email input &ndash;&gt;-->
+            <!--                <div class="form-outline form-white mb-4">-->
+            <!--                    <input type="email" id="form5Example21" class="form-control" placeholder="Email"/>-->
+            <!--                </div>-->
+            <!--            </div>-->
+            <!--                    &lt;!&ndash;Grid column&ndash;&gt;-->
+
+            <!--                    &lt;!&ndash;Grid column&ndash;&gt;-->
+            <!--                    <div class="col-auto">-->
+            <!--                        &lt;!&ndash; Submit button &ndash;&gt;-->
+            <!--                        <button type="submit" class="btn btn-outline-light mb-4">-->
+            <!--                            Subscribe-->
+            <!--                        </button>-->
+            <!--                    </div>-->
+            <!--                    &lt;!&ndash;Grid column&ndash;&gt;-->
+            <!--                </div>-->
+            <!--                &lt;!&ndash;Grid row&ndash;&gt;-->
+            <!--            </form>-->
+
+            <!-- USER MESSAGES -->
+            <div class="col-12">
+                {% if messages %}
+                {% for message in messages %}
+                {{ message }}
+                {% endfor %}
+                {% endif %}
+            </div>
+
+            {% if form %}
+            <form method="post">
+                <div class="row  d-flex justify-content-center">
+                    <div class="col-auto">
+                        <p class="pt-2">
+                            <strong>{% trans 'Enter' %} e-mail</strong>
+                        </p>
+                    </div>
+                    <div class="col-md-5 col-12">
+                        {% csrf_token %}
+                        {{ form }}
+                    </div>
+                    <div class="col-auto">
+                        <button type="submit" class="btn btn-outline-light mb-4">{% trans 'Subscribe' %}</button>
+                    </div>
+                </div>
+            </form>
+            {% endif %}
+
+        </section>
+        <!-- Section: Form -->
+
+        <!-- Section: Text -->
+        <section class="mb-4">
+            <p>
+                Lorem ipsum dolor sit amet consectetur adipisicing elit. Sunt distinctio earum
+                repellat quaerat voluptatibus placeat nam, commodi optio pariatur est quia magnam
+                eum harum corrupti dicta, aliquam sequi voluptate quas.
+            </p>
+        </section>
+        <!-- Section: Text -->
+
+        <!-- Section: Links -->
+        <section class="">
+            <!--Grid row-->
+            <div class="row">
+                <div class="col"></div>
+                <!--Grid column-->
+                <div class="col-lg-3 col-md-6 mb-4 mb-md-0">
+                    <h5 class="text-uppercase">{% trans 'Subscribe' %}</h5>
+
+                    <ul class="list-unstyled mb-0">
+                        <li>
+                            <a href="#!" class="text-white">+380000000000</a>
+                        </li>
+                        <li>
+                            <a href="#!" class="text-white">+380000000001</a>
+                        </li>
+                    </ul>
+                </div>
+                <!--Grid column-->
+
+                <!--Grid column-->
+                <div class="col-lg-3 col-md-6 mb-4 mb-md-0">
+                    <h5 class="text-uppercase">E-mail</h5>
+
+                    <ul class="list-unstyled mb-0">
+                        <li>
+                            <a href="#!" class="text-white">info@gmail.com</a>
+                        </li>
+                        <li>
+                            <a href="#!" class="text-white">info1@gmail.com</a>
+                        </li>
+                    </ul>
+                </div>
+                <!--Grid column-->
+
+                <!--Grid column-->
+                <div class="col-lg-3 col-md-6 mb-4 mb-md-0">
+                    <p>
+                        вул.{вставте назву вулиці} {1А} {місто} {код} {Країна}
+                    </p>
+                </div>
+                <div class="col"></div>
+                <!--Grid column-->
+            </div>
+            <!--Grid row-->
+        </section>
+        <!-- Section: Links -->
+    </div>
+    <!-- Grid container -->
+
+    <!-- Copyright -->
+    <div class="text-center p-1" style="background-color: rgba(0, 0, 0, 0.2);">
+        © 2022 Copyright:
+        Evjeno and Antony
+    </div>
+    <!-- Copyright -->
+</footer>
+<!-- Footer -->

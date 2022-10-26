@@ -1,0 +1,34 @@
+<ul class="pagination">
+
+    {% if blog_posts.has_previous %}
+    <li class="page-item">
+        <a class="page-link"
+           href="?{% if query %}q={{query}}&{% endif %}page={{ blog_posts.previous_page_number }}">&lsaquo;</a>
+    </li>
+    {% endif %}
+
+    {% if blog_posts %}
+    {% for i in blog_posts.paginator.page_range %}
+    {% if blog_posts.number == i %}
+    <li class="page-item active">
+        <a class="page-link">{{ i }}</a>
+    </li>
+    {% else %}
+    <li class="page-item">
+        <a class="page-link" href="?{% if query %}q={{query}}&{% endif %}page={{ i }}">{{ i }}</a>
+    </li>
+    {% endif %}
+    {% endfor %}
+    {% endif %}
+
+    {% if blog_posts.has_next %}
+    <li class="page-item">
+        <a class="page-link"
+           href="?{% if query %}q={{query}}&{% endif %}page={{ blog_posts.next_page_number }}">&rsaquo;</a>
+    </li>
+    <li class="page-item">
+        <a class="page-link" href="?{% if query %}q={{query}}&{% endif %}page={{ blog_posts.paginator.num_pages }}">&raquo;</a>
+    </li>
+    {% endif %}
+
+</ul>

@@ -36,7 +36,7 @@ urlpatterns = [
     path('media/videos/', views.videos, name='videos'),
     # Research
     path('research/analytics/', views.analytics, name='analytics'),
-    path('research/anual-report/', views.anual_report, name='anual_report'),
+    path('research/annual-report/', views.annual_report, name='annual_report'),
     path('research/index-ergosum/', views.index_ergosum, name='index_ergosum'),
     path('research/opinion/', views.opinion, name='opinion'),
     # Else

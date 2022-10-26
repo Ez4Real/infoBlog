@@ -1,24 +1,21 @@
 {% extends "blog/base_generic.html" %}
 {% load i18n %}
-{% get_current_language as CURRENT_LANGUAGE %}
-
 {% block content %}
 <div class="p-3"></div>
 <div class="container">
     <div class="row row-cols-2">
         <div class="col">
             <h1>
-                {% trans "Index ergosum" %}
+                {% trans "Annual report" %}
             </h1>
             <p>
-
                 {% if CURRENT_LANGUAGE == "uk" %}
 
-                    {% include 'translates/uk/index_ergosum.html' %}
+                    {% include 'translates/uk/annual_report.html' %}
 
                 {% else %}
 
-                    {% include 'translates/en/index_ergosum.html' %}
+                    {% include 'translates/en/annual_report.html' %}
 
                 {% endif %}
             </p>

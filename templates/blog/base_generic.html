@@ -25,123 +25,42 @@
 
             <div class="d-flex flex-column">
 
-                        {% get_current_language as CURRENT_LANGUAGE %}
-                        {% get_available_languages as AVAILABLE_LANGUAGES %}
-                        {% get_language_info_list for AVAILABLE_LANGUAGES as languages %}
-                          <div class="languages row " style="margin-right: 10px;">
-                              <div class="col-10"></div>
+                {% get_current_language as CURRENT_LANGUAGE %}
+                {% get_available_languages as AVAILABLE_LANGUAGES %}
+                {% get_language_info_list for AVAILABLE_LANGUAGES as languages %}
+
+                <ul class="nav position-absolute end-0 translate-middle-y lang_butt p-3">
+                    <li class="nav-item dropdown ">
+                        <a class="nav-link dropdown-toggle text-white" href="#" id="navbarDropdownMenuLink"
+                           role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                            {% trans "Language" %}
+<!--                            {{ CURRENT_LANGUAGE }}-->
+                        </a>
+                        <ul class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
                             {% for language in languages %}
-                              <div class="col d-flex justify-content-end text-decoration-none">
-                                <a href="/{{ language.code }}/{{request.get_full_path|slice:"4:"}}"
-                                  {% if language.code == CURRENT_LANGUAGE %} class="active"{% endif %}>
-                                  {% if language.name_local == "Українська" %}
-                                    🇺🇦
-                                  {% else %}
-                                    🇬🇧
-                                  {% endif %}
+                            <li>
+                                <a class="dropdown-item"
+                                   href="/{{ language.code }}/{{ request.get_full_path|slice:" 4:" }}"
+                                {% if language.code == CURRENT_LANGUAGE %} class="active"{% endif %}>
+                                {% if language.name_local == "Українська" %}
+                                Українська 🇺🇦
+                                {% else %}
+                                English 🇬🇧
+                                {% endif %}
                                 </a>
-                              </div>
+                            </li>
                             {% endfor %}
-                          </div>
+                        </ul>
+                    </li>
+                </ul>
 
-                <div class="d-flex flex-wrap justify-content-end align-items-end h-100 ">
+                {% include 'include/header.html' %}
 
-                    <ul class="nav">
-                        <li class="nav-item dropdown ">
-                            <a class="nav-link dropdown-toggle text-white" href="#" id="navbarDropdownMenuLink"
-                               role="button" data-bs-toggle="dropdown" aria-expanded="false">
-                               {% trans "About" %}
-                            </a>
-                            <ul class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
-                                <li><a class="dropdown-item" href="{% url 'mission' %}">{% trans "Mission" %}</a></li>
-                                <li><a class="dropdown-item" href="{% url 'vision' %}">{% trans "Vision" %}</a></li>
-                                <li><a class="dropdown-item" href="{% url 'key_documents' %}">{% trans "Key-documents" %}</a></li>
-                                <li><a class="dropdown-item" href="{% url 'team' %}">{% trans "Team" %}</a></li>
-                                <li><a class="dropdown-item" href="{% url 'board' %}">{% trans "Board" %}</a></li>
-                            </ul>
-                        </li>
-                        <li class="nav-item dropdown ">
-                            <a class="nav-link dropdown-toggle text-white" href="#" id="navbarDropdownMenuLink"
-                               role="button" data-bs-toggle="dropdown" aria-expanded="false">
-                               {% trans "Join us" %}
-                            </a>
-                            <ul class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
-                                <li><a class="dropdown-item" href="{% url 'general_members' %}">{% trans "General members" %}</a></li>
-                                <li><a class="dropdown-item" href="{% url 'join_team' %}">{% trans "Join team" %}</a></li>
-                                <li><a class="dropdown-item" href="{% url 'voluntear' %}">{% trans "Volunteering" %}</a></li>
-                            </ul>
-                        </li>
-                        <li class="nav-item dropdown ">
-                            <a class="nav-link dropdown-toggle text-white" href="#" id="navbarDropdownMenuLink"
-                               role="button" data-bs-toggle="dropdown" aria-expanded="false">
-                               {% trans "Donate" %}
-                            </a>
-                            <ul class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
-                                <li><a class="dropdown-item" href="{% url 'all_donate' %}">{% trans "Donates" %} </a></li>
-                                <li><a class="dropdown-item" href="{% url 'patrion' %}">Patrion</a></li>
-                                <li><a class="dropdown-item" href="{% url 'beav' %}">Beav</a></li>
-                                <li><a class="dropdown-item" href="{% url 'pay_pal' %}">PayPal</a></li>
-                            </ul>
-                        </li>
-                    </ul>
-
-                    <form name="search" method="GET" action="{% url 'search' %}" class="col-12 col-lg-auto mb-3 mb-lg-0 me-lg-3">
-                        <input type="text" name="search" class="form-control form-control-dark" placeholder="{% trans 'Search' %}..."
-                               aria-label="Search">
-                    </form>
-                    
-                </div>
-
-                <div class="d-flex justify-content-evenly align-items-end flex-column font-size-custom-navbar mt-0">
-                    <ul class="nav col-7 col-lg-auto  mb-2 mb-md-0 p-2 ">
-                        <li><a href="{% url 'events' %}" class="nav-link px-2 text-white">{% trans "Events" %}</a></li>
-                        <li><a href="{% url 'news' %}" class="nav-link px-2 text-white">{% trans "News" %}</a></li>
-                        <li class="nav-item dropdown ">
-                            <a class="nav-link dropdown-toggle text-white" href="#" id="navbarDropdownMenuLink"
-                               role="button" data-bs-toggle="dropdown" aria-expanded="false">
-                               {% trans "Research" %}
-                            </a>
-                            <ul class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
-                                <li><a class="dropdown-item" href="{% url 'analytics' %}">{% trans "Analytics" %}</a></li>
-                                <li><a class="dropdown-item" href="{% url 'anual_report' %}">{% trans "Annual report" %}</a></li>
-                                <li><a class="dropdown-item" href="{% url 'index_ergosum' %}">{% trans "Index ergosum" %}</a></li>
-                                <li><a class="dropdown-item" href="{% url 'opinion' %}">{% trans "Opinion" %}</a></li>
-                            </ul>
-                        </li>
-                        <li><a href="{% url 'blog' %}" class="nav-link px-2 text-white">{% trans "Blog" %}</a></li>
-                        <li><a href="{% url 'op_eds' %}" class="nav-link px-2 text-white">{% trans "Op-eds" %}</a></li>
-                        <li class="nav-item dropdown ">
-                            <a class="nav-link dropdown-toggle text-white" href="#" id="navbarDropdownMenuLink"
-                               role="button" data-bs-toggle="dropdown" aria-expanded="false">
-                               {% trans "Policy areas" %}
-                            </a>
-                            <ul class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
-                                <li><a class="dropdown-item" href="">{% trans "Foreign policy" %}</a></li>
-                                <li><a class="dropdown-item" href="">{% trans "Internal policy" %}</a></li>
-                                <li><a class="dropdown-item" href="">{% trans "Economics" %}</a></li>
-                                <li><a class="dropdown-item" href="">{% trans "Security" %}</a></li>
-                                <li><a class="dropdown-item" href="">{% trans "Education" %}</a></li>
-                                <li><a class="dropdown-item" href="">{% trans "Democracy" %}</a></li>
-                                <li><a class="dropdown-item" href="">{% trans "Human rights" %}</a></li>
-                                <li><a class="dropdown-item" href="">{% trans "Culture" %}</a></li>
-                            </ul>
-                        </li>
-                        <li class="nav-item dropdown ">
-                            <a class="nav-link dropdown-toggle text-white" href="#" id="navbarDropdownMenuLink"
-                               role="button" data-bs-toggle="dropdown" aria-expanded="false">
-                               {% trans "Media" %}
-                            </a>
-                            <ul class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
-                                <li><a class="dropdown-item" href="{% url 'podcast' %}">{% trans "Podcast" %}</a></li>
-                                <li><a class="dropdown-item" href="{% url 'videos' %}">{% trans "Videos" %}</a></li>
-                            </ul>
-                        </li>
-                    </ul>
-                </div>
             </div>
         </div>
     </div>
 </header>
+
 <main>
 
     {% if messages %}
@@ -160,167 +79,8 @@
 
     {% endblock %}
 </main>
-<footer class="bg-dark text-center text-white">
-    <!-- Grid container -->
-    <div class="container p-4">
-        <!-- Section: Social media -->
-        <section class="mb-4">
-            <!-- Facebook -->
-            <a class="btn btn-outline-light btn-floating m-1" href="#!" role="button">
-                <i class="fab fa-facebook-f"></i>
-            </a>
 
-            <!-- Twitter -->
-            <a class="btn btn-outline-light btn-floating m-1" href="#!" role="button">
-                <i class="fab fa-twitter"></i>
-            </a>
-
-            <!-- Google -->
-            <a class="btn btn-outline-light btn-floating m-1" href="#!" role="button">
-                <i class="fab fa-google"></i>
-            </a>
-
-            <!-- Instagram -->
-            <a class="btn btn-outline-light btn-floating m-1" href="#!" role="button">
-                <i class="fab fa-instagram"></i>
-            </a>
-        </section>
-        <!-- Section: Social media -->
-
-        <!-- Section: Form -->
-        <section class="">
-            <!--            <form action="">-->
-            <!--                &lt;!&ndash;Grid row&ndash;&gt;-->
-            <!--                <div class="row d-flex justify-content-center">-->
-            <!--                    &lt;!&ndash;Grid column&ndash;&gt;-->
-            <!--                    <div class="col-auto">-->
-            <!--                        <p class="pt-2">-->
-            <!--                            <strong>Sign up for our newsletter</strong>-->
-            <!--                        </p>-->
-            <!--                    </div>-->
-            <!--                    &lt;!&ndash;Grid column&ndash;&gt;-->
-
-            <!--                    &lt;!&ndash;Grid column&ndash;&gt;-->
-            <!--            <div class="col-md-5 col-12">-->
-            <!--                &lt;!&ndash; Email input &ndash;&gt;-->
-            <!--                <div class="form-outline form-white mb-4">-->
-            <!--                    <input type="email" id="form5Example21" class="form-control" placeholder="Email"/>-->
-            <!--                </div>-->
-            <!--            </div>-->
-            <!--                    &lt;!&ndash;Grid column&ndash;&gt;-->
-
-            <!--                    &lt;!&ndash;Grid column&ndash;&gt;-->
-            <!--                    <div class="col-auto">-->
-            <!--                        &lt;!&ndash; Submit button &ndash;&gt;-->
-            <!--                        <button type="submit" class="btn btn-outline-light mb-4">-->
-            <!--                            Subscribe-->
-            <!--                        </button>-->
-            <!--                    </div>-->
-            <!--                    &lt;!&ndash;Grid column&ndash;&gt;-->
-            <!--                </div>-->
-            <!--                &lt;!&ndash;Grid row&ndash;&gt;-->
-            <!--            </form>-->
-
-            <!-- USER MESSAGES -->
-            <div class="col-12">
-                {% if messages %}
-                  {% for message in messages %}
-                    {{ message }}
-                  {% endfor %}
-                {% endif %}
-            </div>
-            
-            {% if form %}
-            <form method="post">
-                <div class="row  d-flex justify-content-center">
-                    <div class="col-auto">
-                        <p class="pt-2">
-                            <strong>{% trans 'Enter' %} e-mail</strong>
-                        </p>
-                    </div>
-                    <div class="col-md-5 col-12">
-                        {% csrf_token %}
-                        {{ form }}
-                    </div>
-                    <div class="col-auto">
-                        <button type="submit" class="btn btn-outline-light mb-4">{% trans 'Subscribe' %}</button>
-                    </div>
-                </div>
-            </form>
-            {% endif %}
-
-        </section>
-        <!-- Section: Form -->
-
-        <!-- Section: Text -->
-        <section class="mb-4">
-            <p>
-                Lorem ipsum dolor sit amet consectetur adipisicing elit. Sunt distinctio earum
-                repellat quaerat voluptatibus placeat nam, commodi optio pariatur est quia magnam
-                eum harum corrupti dicta, aliquam sequi voluptate quas.
-            </p>
-        </section>
-        <!-- Section: Text -->
-
-        <!-- Section: Links -->
-        <section class="">
-            <!--Grid row-->
-            <div class="row">
-                <div class="col"></div>
-                <!--Grid column-->
-                <div class="col-lg-3 col-md-6 mb-4 mb-md-0">
-                    <h5 class="text-uppercase">{% trans 'Subscribe' %}</h5>
-
-                    <ul class="list-unstyled mb-0">
-                        <li>
-                            <a href="#!" class="text-white">+380000000000</a>
-                        </li>
-                        <li>
-                            <a href="#!" class="text-white">+380000000001</a>
-                        </li>
-                    </ul>
-                </div>
-                <!--Grid column-->
-
-                <!--Grid column-->
-                <div class="col-lg-3 col-md-6 mb-4 mb-md-0">
-                    <h5 class="text-uppercase">E-mail</h5>
-
-                    <ul class="list-unstyled mb-0">
-                        <li>
-                            <a href="#!" class="text-white">info@gmail.com</a>
-                        </li>
-                        <li>
-                            <a href="#!" class="text-white">info1@gmail.com</a>
-                        </li>
-                    </ul>
-                </div>
-                <!--Grid column-->
-
-                <!--Grid column-->
-                <div class="col-lg-3 col-md-6 mb-4 mb-md-0">
-                    <p>
-                        вул.{вставте назву вулиці} {1А} {місто} {код} {Країна}
-                    </p>
-                </div>
-                <div class="col"></div>
-                <!--Grid column-->
-            </div>
-            <!--Grid row-->
-        </section>
-        <!-- Section: Links -->
-    </div>
-    <!-- Grid container -->
-
-    <!-- Copyright -->
-    <div class="text-center p-1" style="background-color: rgba(0, 0, 0, 0.2);">
-        © 2022 Copyright:
-        Evjeno and Antony
-    </div>
-    <!-- Copyright -->
-</footer>
-<!-- Footer -->
-
+{% include 'include/footer.html' %}
 
 <!-- JavaScript Bundle with Popper -->
 <script src="https://kit.fontawesome.com/a94260e078.js" crossorigin="anonymous"></script>

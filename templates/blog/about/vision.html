@@ -13,37 +13,12 @@
         <div class="col">
             <p>
                 {% if CURRENT_LANGUAGE == "uk" %}
-                Проект «ERGOSUM» має на меті створити новий дослідницький простір щодо сучасних відносин між ЄС та
-                Україною, вписаний у рамки досліджень розширення та європеїзації та заснований на інтенсивній співпраці
-                між європейськими та українськими науковцями. Таким чином, проект має на меті підвищити якість спільних
-                європейсько-українських досліджень на теми, що становлять взаємний інтерес, шляхом спільних публікацій
-                та інших спільних заходів для академічних спільнот, громадянського суспільства та інших зацікавлених
-                сторін.
-                Для досягнення вищевказаної мети проект також буде спрямований на створення мережі зацікавлених сторін
-                (Експертна Платформа), яка об’єднає науковців, експертів, політиків, молодих лідерів та громадянське
-                суспільство як з України, так і з ЄС.
-                Проект також спрямований на розробку нової методології, використовуючи елементи власних критеріїв
-                членства в ЄС для аналізу та оцінки того, як Україна проходить реформи та перетворення на шляху до
-                повноцінного членства в ЄС (Оціночний Індекс).
-                До розробки критеріїв та механізму використання Індексу буде залучена широка експертна мережа науковців,
-                політиків, представників громадянського суспільства з України та країн Європейського Союзу, створення
-                якої вказано в меті номер 1.
+
+                    {% include 'translates/uk/vision.html' %}
 
                 {% else %}
-                ERGOSUM project aims to create new research terrain on contemporary EU-Ukraine relations, embedded
-                within a framework of enlargement studies and Europeanisation and based on intensive collaboration
-                between European and Ukrainian scientists. In so doing, the project aims to raise the quality of joint
-                Euro-Ukrainian research on topics of mutual interest, via joint publications and other collaborative
-                activities for the academic communities, civil society and other stakeholders.
-                To succeed the project will also aim to create stakeholder network (Platform of Expertize), that bring
-                together academics, experts, policy makers, young leaders and civil society from Ukraine and EU.
-                The project also aims to develop a novel methodology, using elements of the EU’s own membership criteria
-                to analyze and assess how Ukraine get through with reforms and transformations on the way to
-                full-fledged EU membership (Evaluation Index).
-                A wide expert network of scientists, politicians, representatives of civil society from Ukraine and the
-                countries of the European Union will be involved in the development of the Index criteria and mechanism
-                of usage. The creation of such network is indicated in goal number 1.
 
+                    {% include 'translates/en/vision.html' %}
 
                 {% endif %}
             </p>

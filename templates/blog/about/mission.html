@@ -12,53 +12,15 @@
     <div class="shadow p-3 mb-5 bg-body rounded w-100">
         <p>
                 {% if CURRENT_LANGUAGE == "uk" %}
-                «ERGOSUM» – Європейська Дослідницька Група Підтримки Членства України. Це науково-дослідницький проект
-                спрямований на всебічну експертну підтримку вступу України до Європейського Союзу
-                Вторгнення Росії в Україну викликало значне посилення зусиль щодо поглиблення асоціації України з
-                Європейським Союзом та дало старт підготовці ґрунту для повноцінної інтеграції України в ЄС.
-                Факт зближення України та ЄС, означає, що концептуальні та політичні «орієнтири» відносин між ЄС та
-                Україною змінюються. Такий стан речей викликає гостру потребу в інформованих дослідженнях, свіжих
-                знаннях та експертному потенціалі з питань європейської інтеграції для підтримки України на її шляху до
-                Європейського Союзу.
-                По всій Європі існує величезна політична воля та підтримка «європейської перспективи» України, і
-                оскільки наша держава є асоційованим членом ЄС з 2014 року, країна вже пройшла значну частину
-                перетворень пов’язаних з адаптацією до законів та інших норм ЄС. Однак вступ до ЄС — це ретельний
-                кропіткий процес, який передбачає величезні бюрократичні зусилля та технічні трансформації, при цьому
-                кандидат повинен довести свою готовність і здатність стати членом Європейського Союзу і відповідати
-                вимогам, висунутим ЄС. А факти показують, що Україна постійно демонструє погані результати у
-                фундаментальних сферах, пов’язаних із верховенством права, демократією та належним врядуванням – які є
-                ключовою частиною Копенгагенських критеріїв і, ймовірно, найбільш фундаментальним вираженням цінностей
-                ЄС.
-                «ERGOSUM» як проект ставить собі на меті допомогти вирішенню проблем та подоланню потенційних перешкод,
-                що виникатимуть у таких сферах, як верховенство права, управління та економіка, демократія та
-                врядування, та можуть перешкоджати європеїзації країни. А також не допустити відкату інституційних
-                можливостей України взяти на себе зобов’язання ЄС. Завдяки своїй діяльності проект також розширить
-                експертний потенціал, який стане важливою основою для переходу України від статусу кандидата до
-                повноцінного членства та забезпечить професійну підтримку на цьому шляху.
+
+                {% include 'translates/uk/mission.html' %}
 
                 {% else %}
-                «ERGOSUM» – European Research Group Of Support for Ukrainian Membership.
-                The fact that Ukraine is edging closer to the EU, means that the conceptual and policy ‘goalposts’
-                regarding EU-Ukraine relations are evolving. This emerging situation has revealed an acute need for
-                informed research, fresh knowledge, and expert capacity on European integration to support Ukraine on
-                its way to European Union.
-                There is tremendous political will across Europe in support of Ukraine’s «European perspective», and
-                since it has been an Associated state since 2014, the country has already become aligned with much of
-                the EU’s body of laws and other norms. However, joining the EU is a meticulous process, involving
-                massive bureaucratic effort, and technical transformation, with the onus on the candidate to prove their
-                readiness and capacity to be a member against the conditions set by the EU. Evidence also shows that
-                Ukraine has been a persistently bad performer in fundamental areas to do with the rule of law, democracy
-                and good governance – which are key parts of the Copenhagen Criteria, and probably the most fundamental
-                and expressions of EU values.
-                «ERGOSUM» project aims to help solve problems and overcome potential obstacles that will arise in such
-                areas as the rule of law, governance and economy, democracy and governance, and may hinder the
-                Europeanization of the country. And also to prevent a rollback of Ukraine's legal-administrative and
-                institutional capacities to assume the obligations of the EU. Thanks to its activities, the project will
-                also expand expert capabilities, which will become an important basis for Ukraine's transition from
-                candidate status to full membership, and will provide professional support along the way.
+
+                {% include 'translates/en/mission.html' %}
 
                 {% endif %}
-            </p>
+        </p>
     </div>
 </div>
 {% endblock content %}

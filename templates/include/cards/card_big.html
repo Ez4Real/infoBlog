@@ -1,0 +1,25 @@
+<div class="card mb-5">
+    <a href="{% url 'post-detail' type=news.type.slug slug=news.slug %}" class="text-dark text-decoration-none">
+        <div class="card-foto w-100">
+            <img src="{{ news.banner.url }}"
+                 class="card-img-top d-block mx-auto w-100 h-100 ob-cover" alt="...">
+        </div>
+        <div class="card-body">
+
+                    {% if CURRENT_LANGUAGE == "uk" %}
+                        <h5 class="card-title">{{ news.uk_title }}</h5>
+                        <p class="card-text">{{ news.uk_subtitle }}...</p>
+                    {% else %}
+                        <h5 class="card-title">{{ news.en_title }}</h5>
+                        <p class="card-text">{{ news.en_subtitle }}...</p>
+                    {% endif %}
+
+        </div>
+        <div class="d-flex justify-content-between card-footer bg-transparent border-secondary">
+            <small class="text-muted">{{ news.date_of_creation }}</small>
+            <small class="text-primary">{{ news.policy_area }}</small>
+        </div>
+    </a>
+</div>
+
+
