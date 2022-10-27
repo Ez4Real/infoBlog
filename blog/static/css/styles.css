@@ -16,12 +16,9 @@ nav{
 
 }
 
-.logo{
+.logo {
     height: 160px;
     width: 160px;
-    background-color: navy;
-    margin: -16px 0px -16px 0px;
-    /* position: absolute; */
 }
 
 .header-nav-bar{
@@ -47,8 +44,11 @@ nav{
     .logo{
         height: 121.5px;
         width: 121.5px;
-        background-color: navy;
-        margin: -16px 0px -16px 0px;
+    }
+
+    .logo > img{
+        height: 121.5px;
+        width: 121.5px;
     }
 
     .cronis-carousel-control-next{
@@ -57,18 +57,66 @@ nav{
     .cronis-carousel-control-prev{
     }
 
-    main{
-        margin-top: 121.500px!important;
-    }
-
-    .beam-cronis{
-        height: 177px!important;
+    .lang_butt{
+        margin-left: 130px!important;
+        margin-top: -5px!important;
+        margin-bottom: -5px!important;
     }
 }
 
 @media (max-width: 1200px) {
-    .beam-cronis{
-        height: 147px!important;
+    .fs-4{
+        font-size: calc(1.275rem + .1vw)!important;
+    }
+
+    .lang_butt{
+        margin-left: 110px!important;
+        margin-top: -5px!important;
+        margin-bottom: -5px!important;
+    }
+
+    .card-custom{
+        height: 195px!important;
+    }
+}
+
+@media (max-width: 991px) {
+
+    .fs-4{
+        font-size: 1rem!important
+    }
+
+    .text-cronis{
+        align-items: center!important;
+    }
+
+    .cronis-item-1{
+        text-align: center!important;
+        order: 1
+    }
+
+    .cronis-item-2{
+        text-align: center!important;
+        order: 0
+    }
+
+    .lang_butt{
+        justify-content: center!important;
+        margin-left: 0px!important;
+        margin-top: 0px!important;
+        margin-bottom: 0px!important;
+        order:1!important;
+    }
+
+    .card-custom{
+        height: 288px!important;
+    }
+}
+
+@media (max-width: 767px) {
+
+    .card-custom{
+        height: 125px!important;
     }
 }
 .testdiv{
@@ -116,16 +164,12 @@ footer{
 }
 
 .join-us-foto{
-    height: 300px;
+    height: 500px;
     width: 100%;
     position: relative;
 }
 .join-us-text{
     position: absolute;
-}
-
-main{
-    margin-top: 160px;
 }
 
 .card-foto{
@@ -138,10 +182,16 @@ main{
     margin-right: auto;
 }
 
-.beam-cronis{
+/*.beam-cronis{
     height: 207px;
-}
+}*/
 
 .card-custom{
-    height: 250px;
+    height: 170px;
+}
+
+.lang_butt{
+    justify-content: flex-end;
+    margin-left: 130px;
+    margin-bottom: 25px;
 }

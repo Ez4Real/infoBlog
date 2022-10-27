@@ -13,53 +13,23 @@
     <title>{% trans "Home" %}</title>
 </head>
 <body>
-
-<header class="p-3 bg-dark text-white fixed-top">
+<header class="bg-dark text-white sticky-top">
     <div class="container">
-        <div class="d-flex flex-wrap">
-            <a href="/" class="logo">
-                <!-- <img src="" alt="" class="logo"> -->
+        <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+          <div class="container-fluid align-items-end text-cronis">
+            <a class="navbar-brand logo m-0 p-0" href="{% url 'homepage' %}">
+                <img src="https://source.unsplash.com/featured/160x160">
             </a>
-
-            <div class="me-lg-auto"></div>
-
-            <div class="d-flex flex-column">
-
-                {% get_current_language as CURRENT_LANGUAGE %}
-                {% get_available_languages as AVAILABLE_LANGUAGES %}
-                {% get_language_info_list for AVAILABLE_LANGUAGES as languages %}
-
-                <ul class="nav position-absolute end-0 translate-middle-y lang_butt p-3">
-                    <li class="nav-item dropdown ">
-                        <a class="nav-link dropdown-toggle text-white" href="#" id="navbarDropdownMenuLink"
-                           role="button" data-bs-toggle="dropdown" aria-expanded="false">
-                           <span style="text-transform:uppercase">{{ CURRENT_LANGUAGE }}</span>
-                        </a>
-                        <ul class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
-                            {% for language in languages %}
-                            <li>
-                                <a class="dropdown-item"
-                                   href="/{{ language.code }}/{{ request.get_full_path|slice:" 4:" }}"
-                                {% if language.code == CURRENT_LANGUAGE %} class="active"{% endif %}>
-                                {% if language.name_local == "Українська" %}
-                                Українська 🇺🇦
-                                {% else %}
-                                English 🇬🇧
-                                {% endif %}
-                                </a>
-                            </li>
-                            {% endfor %}
-                        </ul>
-                    </li>
-                </ul>
-
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+              <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse justify-content-end h-100" id="navbarNav">
                 {% include 'include/header.html' %}
-
             </div>
-        </div>
+          </div>
+        </nav>
     </div>
 </header>
-
 <main>
 
     {% if messages %}
@@ -77,6 +47,7 @@
     {% block content %}
 
     {% endblock %}
+
 </main>
 
 {% include 'include/footer.html' %}

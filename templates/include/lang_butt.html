@@ -4,14 +4,13 @@
 {% get_available_languages as AVAILABLE_LANGUAGES %}
 {% get_language_info_list for AVAILABLE_LANGUAGES as languages %}
 
-<ul class="nav position-absolute end-0 translate-middle-y lang_butt p-3">
-    <li class="nav-item dropdown ">
+<ul class="col-12 order-0 text-end nav lang_butt">
+    <li class="nav-item dropdown">
         <a class="nav-link dropdown-toggle text-white" href="#" id="navbarDropdownMenuLink"
            role="button" data-bs-toggle="dropdown" aria-expanded="false">
-<!--            {% trans "Language" %}-->
             {{ CURRENT_LANGUAGE }}
         </a>
-        <ul class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
+        <ul class="dropdown-menu " aria-labelledby="navbarDropdownMenuLink">
             {% for language in languages %}
             <li>
                 <a class="dropdown-item"
