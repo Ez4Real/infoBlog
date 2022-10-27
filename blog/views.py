@@ -9,6 +9,7 @@ from django.shortcuts import render, redirect
 from django.template.loader import get_template
 from django.utils.encoding import force_bytes, force_str
 from django.utils.http import urlsafe_base64_encode, urlsafe_base64_decode
+from django.utils.translation import gettext_lazy as _
 from django.db.models import Q
 
 from .forms import SubscriberForm
@@ -16,7 +17,10 @@ from .models import News, Subscriber
 from .tokens import email_activation_token
 
 
+
 POSTS_PER_PAGE = 15
+UK_TITLE = 'Європейська Дослідницька Група Підтримки Членства України – ERGOSUM'
+EN_TITLE = 'European Research Group Of Support for Ukrainian Membership – ERGOSUM'
 
 
 def activateEmail(request, sub, to_email):
@@ -97,6 +101,12 @@ def paginate(queryset, request, context):
 
 def search(request):
     context = {}
+    match request.LANGUAGE_CODE:
+            case 'en':
+                context['title'] = ' | '.join(('Search results', EN_TITLE))
+            case 'uk':
+                context['title'] = ' | '.join(('Результати пошуку', UK_TITLE))
+    context['form'] = subscribeForm(request)
     if request.method == 'GET':
         query = request.GET.get('search', '')
         context['query'] = str(query)
@@ -120,18 +130,24 @@ def search(request):
         except EmptyPage:
             results = paginator.page(paginator.num_pages)
         context['blog_posts'] = results
-    context['form'] = subscribeForm(request)
 
     return render(request, 'blog/search.html', context)
 
 
 def homepage(request):
     context = {}
+    match request.LANGUAGE_CODE:
+        case 'en':
+            context['title'] = 'ERGOSUM – European Research Group Of Support for Ukrainian Membership'
+        case 'uk':
+            context['title'] = 'ERGOSUM – Європейська Дослідницька Група Підтримки Членства України'
     context['form'] = subscribeForm(request)
     last_news = News.objects.filter(type__type='News').order_by('-date_of_creation')[:5]
     last_opeds = News.objects.filter(type__type='Op-ed').order_by('-date_of_creation')[:3]
     last_analytics = News.objects.filter(type__type='Analytics').order_by('-date_of_creation')[:3]
     last_opinions = News.objects.filter(type__type='Opinion').order_by('-date_of_creation')[:3]
+
+    
     context['last_news'] = last_news
     context['last_opeds'] = last_opeds
     context['last_analytics'] = last_analytics
@@ -140,14 +156,22 @@ def homepage(request):
     return render(request, 'blog/homepage.html', context)
 
 
-def posts(request, type, slug):
+def post_detail(request, type, slug):
+    context = {}
+    context['form'] = subscribeForm(request)
     try:
         post = News.objects.get(slug=slug)
+        context['news'] = post
+        match request.LANGUAGE_CODE:
+            case 'en':
+                context['title'] = ' | '.join((post.en_title, EN_TITLE))
+            case 'uk':
+                context['title'] = ' | '.join((post.uk_title, UK_TITLE))
+
     except News.DoesNotExist:
         raise Http404('News does not exist')
 
-    return render(request, 'blog/post_detail.html',
-                  context={'news': post, 'form': subscribeForm(request)})
+    return render(request, 'blog/post_detail.html', context)
 
 
 """
@@ -157,23 +181,58 @@ About
 
 
 def board(request):
-    return render(request, 'blog/about/board.html', {'form': subscribeForm(request)})
+    context = {}
+    match request.LANGUAGE_CODE:
+        case 'en':
+            context['title'] = f'Board | {EN_TITLE}'
+        case 'uk':
+            context['title'] = f'Дошка | {UK_TITLE}'
+    context['form'] = subscribeForm(request)
+    return render(request, 'blog/about/board.html', context)
 
 
 def key_doc(request):
-    return render(request, 'blog/about/key_doc.html', {'form': subscribeForm(request)})
+    context = {}
+    match request.LANGUAGE_CODE:
+        case 'en':
+            context['title'] = f'Key Documents | {EN_TITLE}'
+        case 'uk':
+            context['title'] = f'Ключові документи | {UK_TITLE}'
+    context['form'] = subscribeForm(request)
+    return render(request, 'blog/about/key_doc.html', context)
 
 
 def mission(request):
-    return render(request, 'blog/about/mission.html', {'form': subscribeForm(request)})
+    context = {}
+    match request.LANGUAGE_CODE:
+        case 'en':
+            context['title'] = f'Mission | {EN_TITLE}'
+        case 'uk':
+            context['title'] = f'Місія | {UK_TITLE}'
+    context['form'] = subscribeForm(request)
+    return render(request, 'blog/about/mission.html', context)
 
 
 def team(request):
-    return render(request, 'blog/about/team.html', {'form': subscribeForm(request)})
+    context = {}
+    match request.LANGUAGE_CODE:
+        case 'en':
+            context['title'] = f'Team | {EN_TITLE}'
+        case 'uk':
+            context['title'] = f'Команда | {UK_TITLE}'
+    context['form'] = subscribeForm(request)
+    return render(request, 'blog/about/team.html', context)
 
 
 def vision(request):
-    return render(request, 'blog/about/vision.html', {'form': subscribeForm(request)})
+    context = {}
+    match request.LANGUAGE_CODE:
+        case 'en':
+            context['title'] = f'Vision | {EN_TITLE}'
+        case 'uk':
+            context['title'] = f'Візія | {UK_TITLE}'
+    context['form'] = subscribeForm(request)
+    return render(request, 'blog/about/vision.html', context)
 
 
 """
@@ -236,13 +295,24 @@ Policy Areas
 """
 def foreign_policy(request):
     context = {}
+    match request.LANGUAGE_CODE:
+        case 'en':
+            context['title'] = f'Foreign policy | {EN_TITLE}'
+        case 'uk':
+            context['title'] = f'Зовнішня політика | {UK_TITLE}'
     context['form'] = subscribeForm(request)
     blog_posts = News.objects.filter(policy_area__name='Foreign policy').order_by('-date_of_creation')
     context['blog_posts'] = paginate(blog_posts, request, context)
+    
     return render(request, 'blog/policy_areas/foreign_policy.html', context)
 
 def internal_policy(request):
     context = {}
+    match request.LANGUAGE_CODE:
+        case 'en':
+            context['title'] = f'Internal policy | {EN_TITLE}'
+        case 'uk':
+            context['title'] = f'Внутрішня політика | {UK_TITLE}'
     context['form'] = subscribeForm(request)
     blog_posts = News.objects.filter(policy_area__name='Internal policy').order_by('-date_of_creation')
     context['blog_posts'] = paginate(blog_posts, request, context)
@@ -250,6 +320,11 @@ def internal_policy(request):
 
 def economics(request):
     context = {}
+    match request.LANGUAGE_CODE:
+        case 'en':
+            context['title'] = f'Economics | {EN_TITLE}'
+        case 'uk':
+            context['title'] = f'Економіка | {UK_TITLE}'
     context['form'] = subscribeForm(request)
     blog_posts = News.objects.filter(policy_area__name='Economics').order_by('-date_of_creation')
     context['blog_posts'] = paginate(blog_posts, request, context)
@@ -257,6 +332,11 @@ def economics(request):
 
 def security(request):
     context = {}
+    match request.LANGUAGE_CODE:
+        case 'en':
+            context['title'] = f'Security | {EN_TITLE}'
+        case 'uk':
+            context['title'] = f'Безпека | {UK_TITLE}'
     context['form'] = subscribeForm(request)
     blog_posts = News.objects.filter(policy_area__name='Security').order_by('-date_of_creation')
     context['blog_posts'] = paginate(blog_posts, request, context)
@@ -264,6 +344,11 @@ def security(request):
 
 def education(request):
     context = {}
+    match request.LANGUAGE_CODE:
+        case 'en':
+            context['title'] = f'Education | {EN_TITLE}'
+        case 'uk':
+            context['title'] = f'Освіта | {UK_TITLE}'
     context['form'] = subscribeForm(request)
     blog_posts = News.objects.filter(policy_area__name='Education').order_by('-date_of_creation')
     context['blog_posts'] = paginate(blog_posts, request, context)
@@ -271,6 +356,11 @@ def education(request):
 
 def democracy(request):
     context = {}
+    match request.LANGUAGE_CODE:
+        case 'en':
+            context['title'] = f'Democracy | {EN_TITLE}'
+        case 'uk':
+            context['title'] = f'Демократія | {UK_TITLE}'
     context['form'] = subscribeForm(request)
     blog_posts = News.objects.filter(policy_area__name='Democracy').order_by('-date_of_creation')
     context['blog_posts'] = paginate(blog_posts, request, context)
@@ -278,6 +368,11 @@ def democracy(request):
 
 def human_rights(request):
     context = {}
+    match request.LANGUAGE_CODE:
+        case 'en':
+            context['title'] = f'Human rights | {EN_TITLE}'
+        case 'uk':
+            context['title'] = f'Права людини | {UK_TITLE}'
     context['form'] = subscribeForm(request)
     blog_posts = News.objects.filter(policy_area__name='Human rights').order_by('-date_of_creation')
     context['blog_posts'] = paginate(blog_posts, request, context)
@@ -285,6 +380,11 @@ def human_rights(request):
 
 def culture(request):
     context = {}
+    match request.LANGUAGE_CODE:
+        case 'en':
+            context['title'] = f'Culture | {EN_TITLE}'
+        case 'uk':
+            context['title'] = f'Культура | {UK_TITLE}'
     context['form'] = subscribeForm(request)
     blog_posts = News.objects.filter(policy_area__name='Culture').order_by('-date_of_creation')
     context['blog_posts'] = paginate(blog_posts, request, context)
@@ -296,6 +396,11 @@ Research
 """
 def analytics(request):
     context = {}
+    match request.LANGUAGE_CODE:
+        case 'en':
+            context['title'] = f'Analytics | {EN_TITLE}'
+        case 'uk':
+            context['title'] = f'Аналітика | {UK_TITLE}'
     context['form'] = subscribeForm(request)
     blog_posts = News.objects.filter(type__type='Analytics').order_by('-date_of_creation')
     context['blog_posts'] = paginate(blog_posts, request, context)
@@ -304,16 +409,33 @@ def analytics(request):
 
 def annual_report(request):
     context = {}
+    match request.LANGUAGE_CODE:
+        case 'en':
+            context['title'] = f'Annual report | {EN_TITLE}'
+        case 'uk':
+            context['title'] = f'Річний звіт | {UK_TITLE}'
     context['form'] = subscribeForm(request)
-    return render(request, 'blog/research/annual_report.html', {'form': subscribeForm(request)})
+    return render(request, 'blog/research/annual_report.html', context)
 
 
 def index_ergosum(request):
-    return render(request, 'blog/research/index_ergosum.html', {'form': subscribeForm(request)})
+    context = {}
+    match request.LANGUAGE_CODE:
+        case 'en':
+            context['title'] = f'Index ERGOSUM | {EN_TITLE}'
+        case 'uk':
+            context['title'] = f'ERGOSUM індекс | {UK_TITLE}'
+    context['form'] = subscribeForm(request)
+    return render(request, 'blog/research/index_ergosum.html', context)
 
 
 def opinion(request):
     context = {}
+    match request.LANGUAGE_CODE:
+        case 'en':
+            context['title'] = f'Opinion | {EN_TITLE}'
+        case 'uk':
+            context['title'] = f'Коментарі | {UK_TITLE}'
     context['form'] = subscribeForm(request)
     blog_posts = News.objects.filter(type__type='Opinion').order_by('-date_of_creation')
     context['blog_posts'] = paginate(blog_posts, request, context)
@@ -326,11 +448,23 @@ Main
 """
 
 def blog(request):
+    context = {}
+    match request.LANGUAGE_CODE:
+        case 'en':
+            context['title'] = f'Blog | {EN_TITLE}'
+        case 'uk':
+            context['title'] = f'Блог | {UK_TITLE}'
+    context['form'] = subscribeForm(request)
     return render(request, 'blog/blog.html', {'form': subscribeForm(request)})
 
 
 def events(request):
     context = {}
+    match request.LANGUAGE_CODE:
+        case 'en':
+            context['title'] = f'Events | {EN_TITLE}'
+        case 'uk':
+            context['title'] = f'Події | {UK_TITLE}'
     context['form'] = subscribeForm(request)
     blog_posts = News.objects.filter(type__type='Event').order_by('-date_of_creation')
     context['blog_posts'] = paginate(blog_posts, request, context)
@@ -339,6 +473,11 @@ def events(request):
 
 def news(request):
     context = {}
+    match request.LANGUAGE_CODE:
+        case 'en':
+            context['title'] = f'News | {EN_TITLE}'
+        case 'uk':
+            context['title'] = f'Новини | {UK_TITLE}'
     context['form'] = subscribeForm(request)
     blog_posts = News.objects.filter(type__type='News').order_by('-date_of_creation')
     context['blog_posts'] = paginate(blog_posts, request, context)
@@ -347,6 +486,11 @@ def news(request):
 
 def op_eds(request):
     context = {}
+    match request.LANGUAGE_CODE:
+        case 'en':
+            context['title'] = f'Op-eds | {EN_TITLE}'
+        case 'uk':
+            context['title'] = f'Статті | {UK_TITLE}'
     context['form'] = subscribeForm(request)
     blog_posts = News.objects.filter(type__type='Op-ed').order_by('-date_of_creation')
     context['blog_posts'] = paginate(blog_posts, request, context)

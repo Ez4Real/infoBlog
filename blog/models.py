@@ -1,5 +1,3 @@
-from email.policy import default
-from random import choices
 import requests
 from PIL import Image
 from io import BytesIO
@@ -121,7 +119,7 @@ class News(models.Model):
             if self.banner.url:
                 img_url = self.banner.url
                 context['img_url'] = img_url
-                img = Image.open(requests.get(img_url, stream=True).raw)
+                img = Image.open(requests.get(f'{img_url[:52]}c_scale,r_15,w_600/{img_url[52:]}', stream=True).raw)
                 byte_buffer = BytesIO()
                 img.save(byte_buffer, 'png')
                 img = MIMEImage(byte_buffer.getvalue())

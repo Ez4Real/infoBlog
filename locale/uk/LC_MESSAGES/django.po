@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2022-10-24 23:26+0300\n"
+"POT-Creation-Date: 2022-10-27 19:18+0300\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -21,84 +21,84 @@ msgstr ""
 "100 > 14) ? 1 : n % 1 == 0 && (n % 10 ==0 || (n % 10 >=5 && n % 10 <=9) || "
 "(n % 100 >=11 && n % 100 <=14 )) ? 2: 3);\n"
 
-#: .\blog\models.py:26
+#: .\blog\models.py:24
 msgid "News type"
 msgstr "Тип новини"
 
-#: .\blog\models.py:36
+#: .\blog\models.py:34
 msgid "News Types"
 msgstr "Типи новин"
 
-#: .\blog\models.py:46
+#: .\blog\models.py:44
 msgid "Policy area name"
 msgstr "Назва сфери дослідження"
 
-#: .\blog\models.py:48 .\templates\blog\base_generic.html:116
+#: .\blog\models.py:46 .\templates\include\header.html:79
 msgid "Policy areas"
 msgstr "Сфери досліджень"
 
-#: .\blog\models.py:60
+#: .\blog\models.py:58
 msgid "English title"
 msgstr "Заголовок англійською"
 
-#: .\blog\models.py:63
+#: .\blog\models.py:61
 msgid "Ukrainian title"
 msgstr "Заголовок українською"
 
-#: .\blog\models.py:66
+#: .\blog\models.py:64
 msgid "News banner"
 msgstr "Баннер новини"
 
-#: .\blog\models.py:70
+#: .\blog\models.py:68
 msgid "English subtitle"
 msgstr "Підзаголовок англійською"
 
-#: .\blog\models.py:73
+#: .\blog\models.py:71
 msgid "Ukrainian subtitle"
 msgstr "Підзаголовок українською"
 
-#: .\blog\models.py:76
+#: .\blog\models.py:74
 msgid "English content"
 msgstr "Контент англійською"
 
-#: .\blog\models.py:78
+#: .\blog\models.py:76
 msgid "Ukrainian content"
 msgstr "Контент українською"
 
-#: .\blog\models.py:83
+#: .\blog\models.py:81
 msgid "Type"
 msgstr "Тип"
 
-#: .\blog\models.py:89
+#: .\blog\models.py:87
 msgid "Policy area"
 msgstr "Сфера дослідження"
 
-#: .\blog\models.py:93 .\blog\models.py:164
+#: .\blog\models.py:91 .\blog\models.py:162
 msgid "Date of creation"
 msgstr "Дата створення"
 
-#: .\blog\models.py:100 .\templates\blog\base_generic.html:98
-#: .\templates\blog\news.html:10
+#: .\blog\models.py:98 .\templates\blog\news.html:10
+#: .\templates\include\header.html:60
 msgid "News"
 msgstr "Новини"
 
-#: .\blog\models.py:150 .\infoBlog\settings.py:136
+#: .\blog\models.py:148 .\infoBlog\settings.py:136
 msgid "English"
 msgstr "Англійська"
 
-#: .\blog\models.py:151 .\infoBlog\settings.py:135
+#: .\blog\models.py:149 .\infoBlog\settings.py:135
 msgid "Ukrainian"
 msgstr "Українська"
 
-#: .\blog\models.py:154
+#: .\blog\models.py:152
 msgid "Subscribers e-mails"
 msgstr "Електронні пошти підписників"
 
-#: .\blog\models.py:162
+#: .\blog\models.py:160
 msgid "Content"
 msgstr "Зміст"
 
-#: .\blog\models.py:167
+#: .\blog\models.py:165
 msgid "Video content"
 msgstr "Відеоконтент"
 
@@ -114,7 +114,7 @@ msgstr "Місія"
 msgid "Key Documents"
 msgstr "Ключові документи"
 
-#: .\templates\blog\about\mission.html:8 .\templates\blog\base_generic.html:56
+#: .\templates\blog\about\mission.html:8 .\templates\include\header.html:12
 msgid "Mission"
 msgstr "Місія"
 
@@ -126,152 +126,101 @@ msgstr ""
 msgid "Our The founders"
 msgstr ""
 
-#: .\templates\blog\about\vision.html:8 .\templates\blog\base_generic.html:57
+#: .\templates\blog\about\vision.html:8 .\templates\include\header.html:13
 msgid "Vision"
 msgstr "Візія"
 
-#: .\templates\blog\base_generic.html:13
-msgid "Home"
-msgstr "На головну"
-
-#: .\templates\blog\base_generic.html:53
-msgid "About"
-msgstr "Про нас"
-
-#: .\templates\blog\base_generic.html:58
-msgid "Key-documents"
-msgstr "Ключові документи"
-
-#: .\templates\blog\base_generic.html:59
-msgid "Team"
-msgstr "Команда"
-
-#: .\templates\blog\base_generic.html:60
-msgid "Board"
-msgstr "Дошка"
-
-#: .\templates\blog\base_generic.html:66
-#: .\templates\blog\join_us\join_team.html:7
-msgid "Join us"
-msgstr "Приєднатися"
-
-#: .\templates\blog\base_generic.html:69
-#: .\templates\blog\join_us\general_members.html:8
-msgid "General members"
-msgstr "Загальні члени"
-
-#: .\templates\blog\base_generic.html:70
-msgid "Join team"
-msgstr "Приєднатися до команди"
-
-#: .\templates\blog\base_generic.html:71
-#: .\templates\blog\join_us\voluntear.html:7
-msgid "Volunteering"
-msgstr "Волонтерство"
-
-#: .\templates\blog\base_generic.html:77
-#: .\templates\blog\donate\all_donate.html:8
-msgid "Donate"
-msgstr "Підтримка"
-
-#: .\templates\blog\base_generic.html:80
-msgid "Donates"
-msgstr "Підтримка"
-
-#: .\templates\blog\base_generic.html:89
-msgid "Search"
-msgstr "Пошук"
-
-#: .\templates\blog\base_generic.html:97 .\templates\blog\events.html:10
-msgid "Events"
-msgstr "Події"
-
-#: .\templates\blog\base_generic.html:102
-msgid "Research"
-msgstr "Дослідження"
-
-#: .\templates\blog\base_generic.html:105 .\templates\blog\homepage.html:65
-#: .\templates\blog\research\analytics.html:10
-msgid "Analytics"
-msgstr "Аналітика"
-
-#: .\templates\blog\base_generic.html:106
-#: .\templates\blog\research\anual_report.html:9
-msgid "Annual report"
-msgstr "Річний звіт"
-
-#: .\templates\blog\base_generic.html:107
-#: .\templates\blog\research\index_ergosum.html:9
-msgid "Index ERGOSUM"
-msgstr "ERGOSUM індекс"
-
-#: .\templates\blog\base_generic.html:108 .\templates\blog\homepage.html:156
-#: .\templates\blog\research\opinion.html:10
-msgid "Opinion"
-msgstr "Коментарі"
-
-#: .\templates\blog\base_generic.html:111 .\templates\blog\blog.html:10
+#: .\templates\blog\blog.html:10 .\templates\include\header.html:74
 msgid "Blog"
 msgstr "Блог"
 
+#: .\templates\blog\donate\all_donate.html:8 .\templates\include\header.html:35
+msgid "Donate"
+msgstr "Підтримка"
+
+#: .\templates\blog\events.html:10 .\templates\include\header.html:59
+msgid "Events"
+msgstr "Події"
+
+#: .\templates\blog\homepage.html:63
+#: .\templates\blog\research\analytics.html:10
+#: .\templates\include\header.html:67
+msgid "Analytics"
+msgstr "Аналітика"
+
 #  ==========================================================================
-#: .\templates\blog\base_generic.html:112 .\templates\blog\homepage.html:112
-#: .\templates\blog\op_eds.html:10
+#: .\templates\blog\homepage.html:79 .\templates\blog\op_eds.html:10
+#: .\templates\include\header.html:75
 msgid "Op-eds"
 msgstr "Статті"
 
-#: .\templates\blog\base_generic.html:119
-msgid "Foreign policy"
-msgstr "Зовнішня політика"
+#: .\templates\blog\homepage.html:96 .\templates\blog\research\opinion.html:10
+#: .\templates\include\header.html:71
+msgid "Opinion"
+msgstr "Коментарі"
 
-#: .\templates\blog\base_generic.html:120
-msgid "Internal policy"
-msgstr "Внутрішня політика"
+#: .\templates\blog\join_us\general_members.html:8
+#: .\templates\include\header.html:25
+msgid "General members"
+msgstr "Загальні члени"
 
-#: .\templates\blog\base_generic.html:121
-msgid "Economics"
-msgstr "Економіка"
+#: .\templates\blog\join_us\join_team.html:7 .\templates\include\header.html:22
+msgid "Join us"
+msgstr "Приєднатися"
 
-#: .\templates\blog\base_generic.html:122
-msgid "Security"
-msgstr "Безпека"
+#: .\templates\blog\join_us\voluntear.html:7 .\templates\include\header.html:28
+msgid "Volunteering"
+msgstr "Волонтерство"
 
-#: .\templates\blog\base_generic.html:123
-msgid "Education"
-msgstr "Освіта"
-
-#: .\templates\blog\base_generic.html:124
-msgid "Democracy"
-msgstr "Демократія"
-
-#: .\templates\blog\base_generic.html:125
-msgid "Human rights"
-msgstr "Права людини"
-
-#: .\templates\blog\base_generic.html:126
+#: .\templates\blog\policy_areas\culture.html:10
+#: .\templates\include\header.html:90
 msgid "Culture"
 msgstr "Культура"
 
-#: .\templates\blog\base_generic.html:132
-msgid "Media"
-msgstr "Медіа"
+#: .\templates\blog\policy_areas\democracy.html:10
+#: .\templates\include\header.html:88
+msgid "Democracy"
+msgstr "Демократія"
 
-#: .\templates\blog\base_generic.html:135
-msgid "Podcast"
-msgstr "Подкасти"
+#: .\templates\blog\policy_areas\economics.html:10
+#: .\templates\include\header.html:85
+msgid "Economics"
+msgstr "Економіка"
 
-#: .\templates\blog\base_generic.html:136
-msgid "Videos"
-msgstr "Відео"
+#: .\templates\blog\policy_areas\education.html:10
+#: .\templates\include\header.html:87
+msgid "Education"
+msgstr "Освіта"
 
-#: .\templates\blog\base_generic.html:238
-msgid "Enter"
-msgstr "Введіть"
+#: .\templates\blog\policy_areas\foreign_policy.html:10
+#: .\templates\include\header.html:82
+msgid "Foreign policy"
+msgstr "Зовнішня політика"
 
-#: .\templates\blog\base_generic.html:246
-#: .\templates\blog\base_generic.html:272
-msgid "Subscribe"
-msgstr "Підписатись"
+#: .\templates\blog\policy_areas\human_rights.html:10
+#: .\templates\include\header.html:89
+msgid "Human rights"
+msgstr "Права людини"
+
+#: .\templates\blog\policy_areas\internal_policy.html:10
+#: .\templates\include\header.html:83
+msgid "Internal policy"
+msgstr "Внутрішня політика"
+
+#: .\templates\blog\policy_areas\security.html:10
+#: .\templates\include\header.html:86
+msgid "Security"
+msgstr "Безпека"
+
+#: .\templates\blog\research\annual_report.html:9
+#: .\templates\include\header.html:69
+msgid "Annual report"
+msgstr "Річний звіт"
+
+#: .\templates\blog\research\index_ergosum.html:11
+#: .\templates\include\header.html:70
+msgid "Index ERGOSUM"
+msgstr "ERGOSUM індекс"
 
 #: .\templates\blog\search.html:8
 msgid "Search Results"
@@ -294,8 +243,54 @@ msgstr "результатів для"
 msgid "results"
 msgstr "результатів"
 
-#~ msgid "Title"
-#~ msgstr "Заголовок"
+#: .\templates\include\footer.html:77
+msgid "Enter"
+msgstr "Введіть"
 
-#~ msgid "Subtitle"
-#~ msgstr "Підзаголовок"
+#: .\templates\include\footer.html:85 .\templates\include\footer.html:111
+msgid "Subscribe"
+msgstr "Підписатись"
+
+#: .\templates\include\header.html:9
+msgid "About"
+msgstr "Про нас"
+
+#: .\templates\include\header.html:14
+msgid "Key-documents"
+msgstr "Ключові документи"
+
+#: .\templates\include\header.html:15
+msgid "Team"
+msgstr "Команда"
+
+#: .\templates\include\header.html:16
+msgid "Board"
+msgstr "Дошка"
+
+#: .\templates\include\header.html:26
+msgid "Join team"
+msgstr "Приєднатися до команди"
+
+#: .\templates\include\header.html:38
+msgid "Donates"
+msgstr "Підтримка"
+
+#: .\templates\include\header.html:50
+msgid "Search"
+msgstr "Пошук"
+
+#: .\templates\include\header.html:64
+msgid "Research"
+msgstr "Дослідження"
+
+#: .\templates\include\header.html:96
+msgid "Media"
+msgstr "Медіа"
+
+#: .\templates\include\header.html:99
+msgid "Podcast"
+msgstr "Подкасти"
+
+#: .\templates\include\header.html:100
+msgid "Videos"
+msgstr "Відео"
