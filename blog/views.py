@@ -455,7 +455,7 @@ def blog(request):
         case 'uk':
             context['title'] = f'Блог | {UK_TITLE}'
     context['form'] = subscribeForm(request)
-    return render(request, 'blog/blog.html', {'form': subscribeForm(request)})
+    return render(request, 'blog/blog.html', context)
 
 
 def events(request):
