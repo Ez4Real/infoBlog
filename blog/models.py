@@ -125,11 +125,11 @@ class News(models.Model):
                 img = MIMEImage(byte_buffer.getvalue())
                 img.add_header('Content-ID', f'<{img_url}>')
             if sub.mailing_language == 'en':
-                mail_subject = self.uk_title
-                context['subtitle'] = self.uk_subtitle
-            else:
                 mail_subject = self.en_title
                 context['subtitle'] = self.en_subtitle
+            else:
+                mail_subject = self.uk_title
+                context['subtitle'] = self.uk_subtitle
                 
             message = get_template('blog/newsletter/news.html').render(context)
             email = EmailMessage(mail_subject, message, to=[sub.email])
@@ -143,8 +143,8 @@ class Subscriber(models.Model):
                               max_length=254,
                               help_text='Enter e-mail')
     is_active = models.BooleanField(default=False)
-    mailing_language = models.CharField(default='en',
-                                        max_length=2,
+    mailing_language = models.CharField(max_length=2,
+                                        help_text='Choose mailing language',
                                         choices=[('en', _('English')),
                                                  ('uk', _('Ukrainian'))])
 
@@ -156,8 +156,19 @@ class Subscriber(models.Model):
 
 
 class Video(models.Model):
-    video = RichTextUploadingField(help_text='Upload video',
-                                   verbose_name=_('Content'))
+    en_title = models.CharField(max_length=45,
+                                help_text='Enter video title',
+                                verbose_name=_('English title'))
+    uk_title = models.CharField(max_length=45,
+                                help_text='Enter video title',
+                                verbose_name=_('Ukrainian title'))
+    type = models.CharField(max_length=2,
+                            help_text='Choose video type',
+                            choices=[('pc', _('Podcast')),
+                                     ('vd', _('Video'))])
+    url_path = models.URLField(help_text='Video URL path',
+                               max_length = 200,
+                               verbose_name=_('Content'))
     date_of_creation = models.DateTimeField(auto_now_add=True,
                                             verbose_name=_('Date of creation'))
 
@@ -165,4 +176,4 @@ class Video(models.Model):
         verbose_name_plural = _('Video content')
 
     def __str__(self):
-        return self.video
+        return self.en_title

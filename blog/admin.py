@@ -6,6 +6,7 @@ from .models import NewsType, PolicyArea, News, Subscriber, Video
 def send_newsletter(modeladmin, request, queryset):
     for newsletter in queryset:
         newsletter.send(request)
+
         
 send_newsletter.short_description = 'Send newsletter to subscribers'
 
@@ -37,4 +38,5 @@ class NewsAdmin(admin.ModelAdmin):
     
 @admin.register(Video)
 class Video(admin.ModelAdmin):
-    list_display = ('date_of_creation', 'video')
+    list_display = ('en_title', 'uk_title', 'date_of_creation')
+    list_filter = ('type', 'en_title', 'uk_title', 'date_of_creation')
