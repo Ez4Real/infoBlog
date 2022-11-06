@@ -166,9 +166,9 @@ class Video(models.Model):
                             help_text='Choose video type',
                             choices=[('pc', _('Podcast')),
                                      ('vd', _('Video'))])
-    url_path = models.URLField(help_text='Video URL path',
-                               max_length = 200,
-                               verbose_name=_('Content'))
+    url = models.URLField(help_text='Video URL path',
+                          max_length = 200,
+                          verbose_name=_('URL'))
     date_of_creation = models.DateTimeField(auto_now_add=True,
                                             verbose_name=_('Date of creation'))
 

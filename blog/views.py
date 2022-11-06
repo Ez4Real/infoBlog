@@ -13,7 +13,7 @@ from django.utils.translation import gettext_lazy as _
 from django.db.models import Q
 
 from .forms import SubscriberForm
-from .models import News, Subscriber
+from .models import News, Subscriber, Video
 from .tokens import email_activation_token
 
 
@@ -147,7 +147,6 @@ def homepage(request):
     last_analytics = News.objects.filter(type__type='Analytics').order_by('-date_of_creation')[:3]
     last_opinions = News.objects.filter(type__type='Opinion').order_by('-date_of_creation')[:3]
 
-    
     context['last_news'] = last_news
     context['last_opeds'] = last_opeds
     context['last_analytics'] = last_analytics
@@ -282,11 +281,29 @@ Media
 
 
 def podcast(request):
-    return render(request, 'blog/media/podcast.html', {'form': subscribeForm(request)})
+    context = {}
+    match request.LANGUAGE_CODE:
+        case 'en':
+            context['title'] = f'Podcasts | {EN_TITLE}'
+        case 'uk':
+            context['title'] = f'Подкасти | {UK_TITLE}'
+    context['form'] = subscribeForm(request)
+    blog_videos = Video.objects.filter(type='pc').order_by('-date_of_creation')
+    context['blog_videos'] = paginate(blog_videos, request, context)
+    return render(request, 'blog/media/podcast.html', context)
 
 
 def videos(request):
-    return render(request, 'blog/media/videos.html', {'form': subscribeForm(request)})
+    context = {}
+    match request.LANGUAGE_CODE:
+        case 'en':
+            context['title'] = f'Videos | {EN_TITLE}'
+        case 'uk':
+            context['title'] = f'Відео | {UK_TITLE}'
+    context['form'] = subscribeForm(request)
+    blog_videos = Video.objects.filter(type='vd').order_by('-date_of_creation')
+    context['blog_videos'] = paginate(blog_videos, request, context)
+    return render(request, 'blog/media/videos.html', context)
 
 
 """
