@@ -113,6 +113,12 @@ nav{
         height: 125px!important;
     }
 }
+
+@media (max-width: 400px) {
+    .card-video{
+        width:100%!important;
+    }
+}
 .testdiv{
     width: 100px;
     height: 100px;
