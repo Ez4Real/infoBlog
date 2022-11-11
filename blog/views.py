@@ -118,17 +118,8 @@ def search(request):
                                       Q(uk_content__icontains=query) |
                                       Q(type__type__icontains=query)).order_by('-date_of_creation')
         context['posts_num'] = str(len(results))
-        context['endswith1'] = True if context['posts_num'][-1] == '1' and context['posts_num'] != '11' else False
-        page = request.GET.get('page', 1)
-        context['page_num'] = page
-        paginator = Paginator(results, POSTS_PER_PAGE)
-        try:
-            results = paginator.page(page)
-        except PageNotAnInteger:
-            results = paginator.page(POSTS_PER_PAGE)
-        except EmptyPage:
-            results = paginator.page(paginator.num_pages)
-        context['blog_posts'] = results
+        context['endswith1'] = True if context['posts_num'].endswith('1') and context['posts_num'] != '11' else False
+        context['blog_posts'] = paginate(results, request, context)
 
     return render(request, 'blog/search.html', context)
 
