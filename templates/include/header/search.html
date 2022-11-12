@@ -1,0 +1,6 @@
+{% load i18n %}
+<form name="search" method="GET" action="{% url 'search' %}" class="col-12 order-0 col-lg-3 mb-lg-0 me-lg-3">
+    <input type="text" name="search" class="form-control form-control-dark"
+           placeholder="{% trans 'Search' %}..."
+           aria-label="Search">
+</form>
