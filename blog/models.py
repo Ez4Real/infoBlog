@@ -63,10 +63,10 @@ class News(models.Model):
     banner = models.ImageField(upload_to='uploads/banners', 
                                verbose_name=_('News banner'))
     
-    en_subtitle = models.TextField(max_length=150,
+    en_subtitle = models.TextField(max_length=300,
                                    help_text='Enter subtitle',
                                    verbose_name=_('English subtitle'))
-    uk_subtitle = models.TextField(max_length=150,
+    uk_subtitle = models.TextField(max_length=300,
                                    help_text='Enter subtitle',
                                    verbose_name=_('Ukrainian subtitle'))
 
@@ -171,6 +171,10 @@ class Video(models.Model):
                           verbose_name=_('URL'))
     date_of_creation = models.DateTimeField(auto_now_add=True,
                                             verbose_name=_('Date of creation'))
+    
+    def save(self, *args, **kwargs):
+        self.url = self.url.split('/')[-1]
+        super(Video, self).save(*args, **kwargs)
 
     class Meta:
         verbose_name_plural = _('Video content')

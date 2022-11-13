@@ -41,7 +41,8 @@ nav{
 }
 
 @media (max-width: 1400px) {
-    .logo{
+    .logo,
+    .logo-side{
         height: 121.5px;
         width: 121.5px;
     }
@@ -106,8 +107,12 @@ nav{
         height: 288px!important;
     }
 
-    .logo{
-        margin-left:-145px!important;
+    .logo-none{
+        visibility:hidden;
+    }
+
+    .side-navbar{
+    z-index: 1024;
     }
 }
 
@@ -117,16 +122,12 @@ nav{
         height: 125px!important;
     }
 
-    .logo{
-        margin-left:-128px!important;
-    }
+
 
 }
 
 @media (max-width: 575px) {
-    .logo{
-        margin-left: 0px!important;
-    }
+
 }
 
 @media (max-width: 400px) {
@@ -224,12 +225,14 @@ body {
 }
 
 .side-navbar {
-  width: 250px;
+  width: 300px;
   height: 100%;
   position: fixed;
-  left: 0;
+  right: 0;
   background-color: #100901;
   visibility: hidden;
+  border-left: 1px solid rgba(0, 0, 0, 0.2);
+}
 }
 
 .nav-link:active,
@@ -254,4 +257,20 @@ body {
 .my-container input {
   border-radius: 2rem;
   padding: 2px 20px;
+}
+
+.close-sidebar{
+    cursor:pointer;
+    transition: box-shadow .15s ease-in-out;
+}
+
+.site-dark:after{
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: rgba(0,0,0,.5);
+  z-index: 2;
 }
