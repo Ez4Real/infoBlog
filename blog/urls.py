@@ -14,9 +14,6 @@ urlpatterns = [
     path('about/team', views.team, name='team'),
     path('about/vision', views.vision, name='vision'),
     # Donate
-    path('donate/beav', views.beav, name='beav'),
-    path('donate/patrion', views.patrion, name='patrion'),
-    path('donate/pay-pal', views.pay_pal, name='pay_pal'),
     path('donate/', views.all_donate, name='all_donate'),
     # Join us
     path('join-us/general-members', views.general_members, name='general_members'),
