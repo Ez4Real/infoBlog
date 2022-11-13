@@ -3,17 +3,15 @@
 {% block content %}
 <div class="p-3"></div>
 <div class="container">
-    <div class="row row-cols-xl-2">
+    <div class="row row-cols-xl-2 gap-4">
         
         {% for video in blog_videos %}
-        
-            {{ video.en_title }}
-            {{ video.type }}
-            {{ video.url }}
-            {{ video.date_of_creation }}
-
+             {% include 'include/cards/card_video.html' %}
         {% endfor %}
 
     </div>
+
+    {% include 'include/pagination.html' %}
+
 </div>
 {% endblock content %}

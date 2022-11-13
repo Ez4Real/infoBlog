@@ -1,0 +1,42 @@
+{% load i18n %}
+<ul class="navbar-nav me-auto col order-2 justify-content-end" style="--bs-scroll-height: 100px;">
+    <li class="nav-item dropdown ">
+        <a class="nav-link dropdown-toggle text-white" href="#" id="navbarDropdownMenuLink"
+           role="button" data-bs-toggle="dropdown" aria-expanded="false">
+            {% trans "About" %}
+        </a>
+        <ul class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
+            <li><a class="dropdown-item" href="{% url 'mission' %}">{% trans "Mission" %}</a></li>
+            <li><a class="dropdown-item" href="{% url 'vision' %}">{% trans "Vision" %}</a></li>
+            <li><a class="dropdown-item" href="{% url 'key_documents' %}">{% trans "Key-documents" %}</a></li>
+            <li><a class="dropdown-item" href="{% url 'team' %}">{% trans "Team" %}</a></li>
+            <li><a class="dropdown-item" href="{% url 'board' %}">{% trans "Board" %}</a></li>
+        </ul>
+    </li>
+    <li class="nav-item dropdown ">
+        <a class="nav-link dropdown-toggle text-white" href="#" id="navbarDropdownMenuLink"
+           role="button" data-bs-toggle="dropdown" aria-expanded="false">
+            {% trans "Join us" %}
+        </a>
+        <ul class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
+            <li><a class="dropdown-item" href="{% url 'general_members' %}">{% trans "General members" %}</a></li>
+            <li><a class="dropdown-item" href="{% url 'join_team' %}">{% trans "Join team" %}</a>
+            </li>
+            <li><a class="dropdown-item" href="{% url 'voluntear' %}">{% trans "Volunteering" %}</a>
+            </li>
+        </ul>
+    </li>
+    <li class="nav-item dropdown ">
+        <a class="nav-link dropdown-toggle text-white" href="#" id="navbarDropdownMenuLink"
+           role="button" data-bs-toggle="dropdown" aria-expanded="false">
+            {% trans "Donate" %}
+        </a>
+        <ul class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
+            <li><a class="dropdown-item" href="{% url 'all_donate' %}">{% trans "Donates" %} </a>
+            </li>
+            <li><a class="dropdown-item" href="{% url 'patrion' %}">Patrion</a></li>
+            <li><a class="dropdown-item" href="{% url 'beav' %}">Beav</a></li>
+            <li><a class="dropdown-item" href="{% url 'pay_pal' %}">PayPal</a></li>
+        </ul>
+    </li>
+</ul>

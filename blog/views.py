@@ -17,7 +17,6 @@ from .models import News, Subscriber, Video
 from .tokens import email_activation_token
 
 
-
 POSTS_PER_PAGE = 15
 UK_TITLE = 'Європейська Дослідницька Група Підтримки Членства України – ERGOSUM'
 EN_TITLE = 'European Research Group Of Support for Ukrainian Membership – ERGOSUM'
@@ -301,6 +300,8 @@ def videos(request):
 ________________________________________________________________________________________________________________________
 Policy Areas
 """
+
+
 def foreign_policy(request):
     context = {}
     match request.LANGUAGE_CODE:
@@ -314,6 +315,7 @@ def foreign_policy(request):
     
     return render(request, 'blog/policy_areas/foreign_policy.html', context)
 
+
 def internal_policy(request):
     context = {}
     match request.LANGUAGE_CODE:
@@ -325,6 +327,7 @@ def internal_policy(request):
     blog_posts = News.objects.filter(policy_area__name='Internal policy').order_by('-date_of_creation')
     context['blog_posts'] = paginate(blog_posts, request, context)
     return render(request, 'blog/policy_areas/internal_policy.html', context)
+
 
 def economics(request):
     context = {}
@@ -338,6 +341,7 @@ def economics(request):
     context['blog_posts'] = paginate(blog_posts, request, context)
     return render(request, 'blog/policy_areas/economics.html', context)
 
+
 def security(request):
     context = {}
     match request.LANGUAGE_CODE:
@@ -349,6 +353,7 @@ def security(request):
     blog_posts = News.objects.filter(policy_area__name='Security').order_by('-date_of_creation')
     context['blog_posts'] = paginate(blog_posts, request, context)
     return render(request, 'blog/policy_areas/security.html', context)
+
 
 def education(request):
     context = {}
@@ -362,6 +367,7 @@ def education(request):
     context['blog_posts'] = paginate(blog_posts, request, context)
     return render(request, 'blog/policy_areas/education.html', context)
 
+
 def democracy(request):
     context = {}
     match request.LANGUAGE_CODE:
@@ -373,6 +379,7 @@ def democracy(request):
     blog_posts = News.objects.filter(policy_area__name='Democracy').order_by('-date_of_creation')
     context['blog_posts'] = paginate(blog_posts, request, context)
     return render(request, 'blog/policy_areas/democracy.html', context)
+
 
 def human_rights(request):
     context = {}
@@ -386,6 +393,7 @@ def human_rights(request):
     context['blog_posts'] = paginate(blog_posts, request, context)
     return render(request, 'blog/policy_areas/human_rights.html', context)
 
+
 def culture(request):
     context = {}
     match request.LANGUAGE_CODE:
@@ -398,10 +406,13 @@ def culture(request):
     context['blog_posts'] = paginate(blog_posts, request, context)
     return render(request, 'blog/policy_areas/culture.html', context)
 
+
 """
 ________________________________________________________________________________________________________________________
 Research
 """
+
+
 def analytics(request):
     context = {}
     match request.LANGUAGE_CODE:
@@ -454,6 +465,7 @@ def opinion(request):
 ________________________________________________________________________________________________________________________
 Main
 """
+
 
 def blog(request):
     context = {}

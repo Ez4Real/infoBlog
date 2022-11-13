@@ -105,6 +105,10 @@ nav{
     .card-custom{
         height: 288px!important;
     }
+
+    .logo{
+        margin-left:-145px!important;
+    }
 }
 
 @media (max-width: 767px) {
@@ -112,7 +116,25 @@ nav{
     .card-custom{
         height: 125px!important;
     }
+
+    .logo{
+        margin-left:-128px!important;
+    }
+
 }
+
+@media (max-width: 575px) {
+    .logo{
+        margin-left: 0px!important;
+    }
+}
+
+@media (max-width: 400px) {
+    .card-video{
+        width:100%!important;
+    }
+}
+
 .testdiv{
     width: 100px;
     height: 100px;
@@ -188,4 +210,48 @@ footer{
     justify-content: flex-end;
     margin-left: 130px;
     margin-bottom: 25px;
+}
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  min-height: 100vh;
+  background-color: #fff;
+}
+
+.side-navbar {
+  width: 250px;
+  height: 100%;
+  position: fixed;
+  left: 0;
+  background-color: #100901;
+  visibility: hidden;
+}
+
+.nav-link:active,
+.nav-link:focus,
+.nav-link:hover {
+  background-color: #ffffff26;
+}
+
+.my-container {
+  transition: 0.4s;
+}
+
+.active-nav {
+  visibility: visible;
+}
+
+/* for main section */
+.active-cont {
+  margin-left: 250px;
+}
+
+.my-container input {
+  border-radius: 2rem;
+  padding: 2px 20px;
 }
