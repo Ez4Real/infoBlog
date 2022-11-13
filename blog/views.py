@@ -234,18 +234,6 @@ def all_donate(request):
     return render(request, 'blog/donate/all_donate.html', {'form': subscribeForm(request)})
 
 
-def beav(request):
-    return render(request, 'blog/donate/beav.html', {'form': subscribeForm(request)})
-
-
-def patrion(request):
-    return render(request, 'blog/donate/patrion.html', {'form': subscribeForm(request)})
-
-
-def pay_pal(request):
-    return render(request, 'blog/donate/pay_pal.html', {'form': subscribeForm(request)})
-
-
 """
 ________________________________________________________________________________________________________________________
 Join Us

@@ -12,7 +12,7 @@
       <div class="d-flex justify-content-between card-footer bg-transparent border-secondary">
           <small class="text-muted">{{ video.date_of_creation }}</small>
           <small class="text-primary">
-              {% if  video.type = pc%}
+              {% if video.type == 'pc' %}
                   podcasts
               {% else %}
                   video
