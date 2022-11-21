@@ -51,29 +51,36 @@ class PolicyArea(models.Model):
 class News(models.Model):
 
     def get_absolute_url(self):
-        return reverse('news-detail', args=[str(self.id)])
+        return reverse('post-detail', args=[self.type.slug, self.slug])
 
     en_title = models.CharField(max_length=45,
                                 help_text='Enter news title',
-                                verbose_name=_('English title'))
+                                verbose_name=_('English title')
+                                )
     uk_title = models.CharField(max_length=45,
                                 help_text='Enter news title',
-                                verbose_name=_('Ukrainian title'))
+                                verbose_name=_('Ukrainian title')
+                                )
 
     banner = models.ImageField(upload_to='uploads/banners', 
-                               verbose_name=_('News banner'))
+                               verbose_name=_('News banner')
+                               )
     
     en_subtitle = models.TextField(max_length=300,
                                    help_text='Enter subtitle',
-                                   verbose_name=_('English subtitle'))
+                                   verbose_name=_('English subtitle')
+                                   )
     uk_subtitle = models.TextField(max_length=300,
                                    help_text='Enter subtitle',
-                                   verbose_name=_('Ukrainian subtitle'))
+                                   verbose_name=_('Ukrainian subtitle')
+                                   )
 
     en_content = RichTextUploadingField(help_text='Enter news content',
-                                        verbose_name=_('English content'))
+                                        verbose_name=_('English content')
+                                        )
     uk_content = RichTextUploadingField(help_text='Enter news content',
-                                        verbose_name=_('Ukrainian content'))
+                                        verbose_name=_('Ukrainian content')
+                                        )
 
     type = models.ForeignKey(NewsType,
                              on_delete=models.PROTECT,
@@ -156,6 +163,13 @@ class Subscriber(models.Model):
 
 
 class Video(models.Model):
+    PODCAST = 'pc'
+    VIDEO = 'vd'
+    MEDIA_CHOICES = (
+        (PODCAST, 'Podcasts'),
+        (VIDEO, 'Videos')
+    )
+    
     en_title = models.CharField(max_length=45,
                                 help_text='Enter video title',
                                 verbose_name=_('English title'))
@@ -164,8 +178,7 @@ class Video(models.Model):
                                 verbose_name=_('Ukrainian title'))
     type = models.CharField(max_length=2,
                             help_text='Choose video type',
-                            choices=[('pc', _('Podcast')),
-                                     ('vd', _('Video'))])
+                            choices=MEDIA_CHOICES)
     url = models.URLField(help_text='Video URL path',
                           max_length = 200,
                           verbose_name=_('URL'))

@@ -8,6 +8,5 @@ class SubscribeActivationTokenGenerator(PasswordResetTokenGenerator):
                 six.text_type(sub.pk) + six.text_type(timestamp) + six.text_type(sub.is_active)
         )
 
-
 email_activation_token = SubscribeActivationTokenGenerator()
 email_unsubscribe_token = SubscribeActivationTokenGenerator()

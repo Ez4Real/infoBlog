@@ -201,3 +201,12 @@ SECURE_SSL_REDIRECT = bool(os.getenv('SECURE_SSL_REDIRECT'))
 SESSION_COOKIE_SECURE = bool(os.getenv('SESSION_COOKIE_SECURE'))
 CSRF_COOKIE_SECURE = bool(os.getenv('CSRF_COOKIE_SECURE'))
 
+# blog underhood settings
+POSTS_PER_PAGE = 1
+TITLE = _('European Research Group Of Support for Ukrainian Membership – ERGOSUM')
+HOMEPAGE_CONTENT = (
+    (5, 'News', 'last_news'),
+    (3, 'Op-eds', 'last_opeds'),
+    (3, 'Analytics', 'last_analytics'),
+    (3, 'Opinion', 'last_opinions'),
+)

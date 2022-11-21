@@ -1,5 +1,5 @@
 <div class="col">
-    <a href="{% url 'post-detail' type=news.type.slug slug=news.slug %}"
+    <a href="{{ news.get_absolute_url }}"
        class="text-dark text-decoration-none">
         <div class="card">
             <div class="d-flex align-items-center justify-content-center" style="height: 150px;">
