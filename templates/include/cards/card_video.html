@@ -1,5 +1,5 @@
 <div class="card card-video p-0" style="width:47%;">
-    <div class="card-body">
+    <div class="p-2">
         {% if CURRENT_LANGUAGE == "uk" %}
             <h5 class="card-title">{{ video.uk_title }}</h5>
         {% else %}
@@ -12,8 +12,8 @@
       <div class="d-flex justify-content-between card-footer bg-transparent border-secondary">
           <small class="text-muted">{{ video.date_of_creation }}</small>
           <small class="text-primary">
-              {% if video.type == 'pc' %}
-                  podcasts
+              {% if  video.type == "pc" %}
+                  podcast
               {% else %}
                   video
               {% endif %}
