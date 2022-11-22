@@ -1,13 +1,7 @@
 {% if blog_posts %}
 {% for news in blog_posts %}
-{% if forloop.first %}
 
-{% include 'include/cards/card_big.html' %}
+{% include 'include/cards/card_home_page.html' %}
 
-{% else %}
-
-{% include 'include/cards/card_small.html' %}
-
-{% endif %}
 {% endfor %}
 {% endif %}

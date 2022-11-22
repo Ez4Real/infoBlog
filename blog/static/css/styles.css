@@ -16,11 +16,6 @@ nav{
 
 }
 
-.logo {
-    height: 160px;
-    width: 160px;
-}
-
 .header-nav-bar{
     height: 224px;
 }
@@ -40,17 +35,19 @@ nav{
     margin-top: 45px;
 }
 
-@media (max-width: 1400px) {
+.logo,
+.logo-side{
+    height: 155px;
+    width: 155px;
+}
+
+@media (max-width: 1440px) {
     .logo,
     .logo-side{
-        height: 121.5px;
-        width: 121.5px;
+        height: 150px;
+        width: 150px;
     }
 
-    .logo > img{
-        height: 121.5px;
-        width: 121.5px;
-    }
 
     .lang_butt{
         margin-left: 130px!important;
@@ -59,19 +56,21 @@ nav{
     }
 }
 
-@media (max-width: 1200px) {
+@media (max-width: 1024px) {
     .fs-4{
         font-size: calc(1.275rem + .1vw)!important;
+    }
+
+    .logo,
+    .logo-side{
+        height: 140px;
+        width: 140px;
     }
 
     .lang_butt{
         margin-left: 110px!important;
         margin-top: -5px!important;
         margin-bottom: -5px!important;
-    }
-
-    .card-custom{
-        height: 195px!important;
     }
 }
 
@@ -103,10 +102,6 @@ nav{
         order:1!important;
     }
 
-    .card-custom{
-        height: 288px!important;
-    }
-
     .logo-none{
         visibility:hidden;
     }
@@ -116,25 +111,34 @@ nav{
     }
 }
 
-@media (max-width: 767px) {
-
-    .card-custom{
-        height: 125px!important;
-    }
-
-
-
-}
-
-@media (max-width: 575px) {
-
-}
-
-@media (max-width: 400px) {
+@media (max-width: 425px) {
     .card-video{
         width:100%!important;
     }
+    .logo,
+    .logo-side{
+        height: 100px;
+        width: 100px;
+    }
 }
+
+
+@media (max-width: 375px) {
+    .logo,
+    .logo-side{
+        height: 95px;
+        width: 95px;
+    }
+}
+
+@media (max-width: 320px) {
+    .logo,
+    .logo-side{
+        height: 85px;
+        width: 85px;
+    }
+}
+
 
 .testdiv{
     width: 100px;
@@ -203,9 +207,6 @@ footer{
     height: 207px;
 }*/
 
-.card-custom{
-    height: 170px;
-}
 
 .lang_butt{
     justify-content: flex-end;

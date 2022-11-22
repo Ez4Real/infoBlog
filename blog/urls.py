@@ -22,7 +22,7 @@ urlpatterns = [
     # Join us
     path('join-us/general-members', views.general_members, name='general_members'),
     path('join-us/join-team', views.join_team, name='join_team'),
-    path('join-us/volunteering', views.volunteering, name='voluntear'),
+    path('join-us/volunteering', views.volunteering, name='volunteering'),
     # Policy areas
     path('policy-areas/foreign-policy', views.foreign_policy, name='foreign_policy'),
     path('policy-areas/internal-policy', views.internal_policy, name='internal_policy'),

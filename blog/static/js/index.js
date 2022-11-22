@@ -20,14 +20,15 @@ var sb2 = document.querySelector(".sb-2");
 var sb_search = document.querySelector("form");
 var header_dark = document.querySelector("header");
 var main_dark = document.querySelector("main");
+var logo_dark = document.querySelector("a");
 
 menu_btn_open.addEventListener("click", () => {
   sidebar.classList.toggle("active-nav");
   sb1.classList.toggle("ps-3");
   sb2.classList.toggle("ps-3");
   sb_search.classList.toggle("px-3");
-  header_dark.classList.toggle("site-dark");
   main_dark.classList.toggle("site-dark");
+  logo_main.classList.toggle("site-dark");
 });
 
 menu_btn_close.addEventListener("click", () => {
@@ -35,6 +36,5 @@ menu_btn_close.addEventListener("click", () => {
   sb1.classList.toggle("ps-3");
   sb2.classList.toggle("ps-3");
   sb_search.classList.toggle("px-3");
-  header_dark.classList.toggle("site-dark");
   main_dark.classList.toggle("site-dark");
 });

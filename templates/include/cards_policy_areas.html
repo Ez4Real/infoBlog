@@ -1,3 +1,6 @@
+{% if blog_posts %}
+{% for news in blog_posts %}
+
 <div class="col">
     <a href="{{ news.get_absolute_url }}"
        class="text-dark text-decoration-none">
@@ -28,8 +31,11 @@
             </div>
             <div class="d-flex justify-content-between card-footer bg-transparent border-secondary">
                 <small class="text-muted">{{ news.date_of_creation }}</small>
-                <small class="text-primary">{{ news.policy_areas }}</small>
+                <small class="text-primary">{{ news.type }}</small>
             </div>
         </div>
     </a>
 </div>
+
+{% endfor %}
+{% endif %}
