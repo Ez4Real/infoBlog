@@ -1,10 +1,12 @@
 <div class="card card-video p-0" style="width:47%;">
     <div class="p-2">
+        <h5 class="card-title text-center">
         {% if CURRENT_LANGUAGE == "uk" %}
-            <h5 class="card-title">{{ video.uk_title }}</h5>
+            {{ video.uk_title }}
         {% else %}
-            <h5 class="card-title">{{ video.en_title }}</h5>
+            {{ video.en_title }}
         {% endif %}
+        </h5>
     </div>
     <div class="ratio ratio-16x9">
       <iframe width="560" height="315" src="https://www.youtube.com/embed/{{ video.url }}" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>

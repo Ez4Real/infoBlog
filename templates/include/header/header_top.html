@@ -10,6 +10,7 @@
             <li><a class="dropdown-item" href="{% url 'vision' %}">{% trans "Vision" %}</a></li>
             <li><a class="dropdown-item" href="{% url 'key_documents' %}">{% trans "Key-documents" %}</a></li>
             <li><a class="dropdown-item" href="{% url 'team' %}">{% trans "Team" %}</a></li>
+            <li><a class="dropdown-item" href="{% url 'general_members' %}">{% trans "General members" %}</a></li>
             <li><a class="dropdown-item" href="{% url 'board' %}">{% trans "Board" %}</a></li>
         </ul>
     </li>
@@ -19,7 +20,6 @@
             {% trans "Join us" %}
         </a>
         <ul class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
-            <li><a class="dropdown-item" href="{% url 'general_members' %}">{% trans "General members" %}</a></li>
             <li><a class="dropdown-item" href="{% url 'join_team' %}">{% trans "Join team" %}</a>
             </li>
             <li><a class="dropdown-item" href="{% url 'volunteering' %}">{% trans "Volunteering" %}</a>
