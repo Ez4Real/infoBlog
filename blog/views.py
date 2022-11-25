@@ -1,9 +1,6 @@
-from django.contrib import messages
-from django.http import HttpRequest
-from django.shortcuts import render, redirect
+from django.shortcuts import render
+from django.conf import settings
 
-from .services.subscribe_services import get_subscriber_by_uid, \
-    check_subscriber_and_token
 from .services.db_services import get_news_by_slug, \
     get_blog_search_results
 from .services.blog_services import paginate, \
@@ -12,8 +9,8 @@ from .services.blog_services import paginate, \
     add_page_title_to_context_by_language
 from .services.context_services import get_static_page_context, \
     get_policy_area_context, get_news_type_context, get_media_views_context
+from .services.subscribe_services import get_join_team_form
 from .models import Video
-from django.conf import settings
 
 
 def homepage(request, context = {}):
@@ -45,36 +42,6 @@ def search(request, context = {}):
         context['blog_posts'] = paginate(results, request)
 
     return render(request, 'blog/search.html', context)
-
-def activate_user_subscription(request: HttpRequest, uidb64: str, 
-                               token: str, lang: str) -> redirect:
-    """ Activates user newsletter subscription with chosen language """
-    sub = get_subscriber_by_uid(uidb64)
-
-    if check_subscriber_and_token(get_subscriber_by_uid(uidb64), 
-                                  token):
-        sub.is_active = True
-        sub.mailing_language = lang
-        sub.save()
-        messages.success(request, 'Thank you for subscription.')
-    else:
-        messages.error(request, 'Activation link is invalid!')
-        
-    return redirect('homepage')
-
-def deactivate_user_subscription(request: HttpRequest, 
-                                 uidb64: str, 
-                                 token:str) -> redirect:
-    """ Deactivates user newsletter subscription """
-    sub = get_subscriber_by_uid(uidb64)
-
-    if check_subscriber_and_token(sub, token):
-        sub.delete()
-        messages.success(request, 'Unsubscribed successfully')
-    else:
-        messages.error(request, 'Activation link is invalid!')
-        
-    return redirect('homepage')
 
 '''\About views/'''
 def board(request):
@@ -129,10 +96,12 @@ def general_members(request):
                   )
 
 def join_team(request):
+    context=get_static_page_context('Join team',
+                                    request)
+    context['join_form'] = get_join_team_form(request)
     return render(request,
                   template_name='blog/join_us/join_team.html',
-                  context=get_static_page_context('Join team',
-                                                   request)
+                  context=context
                   )
 
 def volunteering(request):

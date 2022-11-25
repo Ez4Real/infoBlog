@@ -25,6 +25,7 @@ def get_dynamic_page_title_by_language(request: HttpRequest, post: str) -> str:
     return format_lazy('{} | {}', pre_vbar, settings.TITLE)
 
 def check_if_number_endswith_one(amount: str) -> bool:
+    """ Checks if results number endswith 1  """
     return True if amount.endswith('1') and amount != '11' else False
 
 def add_last_news_to_context(context: dict, 
@@ -52,11 +53,13 @@ def add_posts_by_policy_area_to_context(context: dict,
 def add_videocontent_by_type_to_context(context: dict,
                                         request: HttpRequest,
                                         type: str) -> None:
+    """ Adds paginated video posts by type """
     context['blog_videos'] = paginate(get_videocontent_by_type(type), 
                                       request)
     
 def add_posts_by_type_to_context(context: dict,
                                  request: HttpRequest,
                                  type: str) -> None:
+    """ Adds paginated blog posts by type """
     context['blog_posts'] = paginate(get_news_by_type(type), 
                                      request)

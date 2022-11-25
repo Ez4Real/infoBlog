@@ -10,39 +10,21 @@
 <div class="p-3"></div>
 <div class="container">
 
-    <p>
-        Lorem ipsum dolor sit amet consectetur, adipisicing elit. Perspiciatis fugit veniam molestiae voluptates
-        suscipit molestias libero eum ad facere optio officia adipisci explicabo beatae, iusto voluptas nisi cum labore
-        delectus.
-        Lorem, ipsum dolor sit amet consectetur adipisicing elit. Consectetur, explicabo illum! Tempore, a. Debitis vel
-        blanditiis quasi similique consequuntur maiores eos, dolorum officiis accusantium magni, dolores error commodi
-        qui! Culpa?
-        Lorem ipsum dolor sit amet consectetur adipisicing elit. Reiciendis quae, cumque quidem labore eligendi delectus
-        velit sapiente repudiandae maxime, voluptas atque facilis voluptates ullam quo hic porro qui minima voluptate.
-        Lorem ipsum dolor sit amet consectetur, adipisicing elit. Perspiciatis fugit veniam molestiae voluptates
-        suscipit molestias libero eum ad facere optio officia adipisci explicabo beatae, iusto voluptas nisi cum labore
-        delectus.
-        Lorem, ipsum dolor sit amet consectetur adipisicing elit. Consectetur, explicabo illum! Tempore, a. Debitis vel
-        blanditiis quasi similique consequuntur maiores eos, dolorum officiis accusantium magni, dolores error commodi
-        qui! Culpa?
-        Lorem ipsum dolor sit amet consectetur adipisicing elit. Reiciendis quae, cumque quidem labore eligendi delectus
-        velit sapiente repudiandae maxime, voluptas atque facilis voluptates ullam quo hic porro qui minima voluptate.
-        Lorem ipsum dolor sit amet consectetur, adipisicing elit. Perspiciatis fugit veniam molestiae voluptates
-        suscipit molestias libero eum ad facere optio officia adipisci explicabo beatae, iusto voluptas nisi cum labore
-        delectus.
-        Lorem, ipsum dolor sit amet consectetur adipisicing elit. Consectetur, explicabo illum! Tempore, a. Debitis vel
-        blanditiis quasi similique consequuntur maiores eos, dolorum officiis accusantium magni, dolores error commodi
-        qui! Culpa?
-        Lorem ipsum dolor sit amet consectetur adipisicing elit. Reiciendis quae, cumque quidem labore eligendi delectus
-        velit sapiente repudiandae maxime, voluptas atque facilis voluptates ullam quo hic porro qui minima voluptate.
-        Lorem ipsum dolor sit amet consectetur, adipisicing elit. Perspiciatis fugit veniam molestiae voluptates
-        suscipit molestias libero eum ad facere optio officia adipisci explicabo beatae, iusto voluptas nisi cum labore
-        delectus.
-        Lorem, ipsum dolor sit amet consectetur adipisicing elit. Consectetur, explicabo illum! Tempore, a. Debitis vel
-        blanditiis quasi similique consequuntur maiores eos, dolorum officiis accusantium magni, dolores error commodi
-        qui! Culpa?
-        Lorem ipsum dolor sit amet consectetur adipisicing elit. Reiciendis quae, cumque quidem labore eligendi delectus
-        velit sapiente repudiandae maxime, voluptas atque facilis voluptates ullam quo hic porro qui minima voluptate.
-    </p>
+    {% if join_form %}
+            <form method="post">
+                <div class="row  d-flex justify-content-center">
+                    <div class="col-auto">
+                    </div>
+                    <div class="col-md-5 col-12">
+                        {% csrf_token %}
+                        {{ join_form }}
+                    </div>
+                    <div class="col-auto" style="background: black">
+                        <button type="submit" name="join_team" class="btn btn-outline-light mb-4">{% trans 'Subscribe' %}</button>
+                    </div>
+                </div>
+            </form>
+            {% endif %}
+
 </div>
 {% endblock content %}

@@ -1,0 +1,15 @@
+<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet"
+          integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
+
+{% autoescape off %}
+
+<p>Інформація про претендента</p>
+<p>
+    Повне ім'я: {{ full_name }}<br>
+    E-mail: {{ email }}<br>
+    Рівень освіти: {{ education_level }}<br>
+    Сфера експертизи: {{ expertise_area }}<br>
+    Очікування: {{ expectations }}<br>
+</p>
+
+{% endautoescape %}
