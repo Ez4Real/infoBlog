@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2022-11-20 23:56+0200\n"
+"POT-Creation-Date: 2022-12-06 20:32+0200\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -17,6 +17,46 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
+
+#: .\blog\forms.py:27
+msgid "Secondary"
+msgstr ""
+
+#: .\blog\forms.py:28
+msgid "High"
+msgstr ""
+
+#: .\blog\forms.py:29
+msgid "Doctor or candidate of sciences"
+msgstr ""
+
+#: .\blog\forms.py:30
+msgid "Other"
+msgstr ""
+
+#: .\blog\forms.py:33
+msgid "First name"
+msgstr ""
+
+#: .\blog\forms.py:34
+msgid "Last name"
+msgstr ""
+
+#: .\blog\forms.py:36
+msgid "Your level of education"
+msgstr ""
+
+#: .\blog\forms.py:37
+msgid "Briefly describe your area of expertise"
+msgstr ""
+
+#: .\blog\forms.py:39
+msgid "What do you expect from cooperation with us?"
+msgstr ""
+
+#: .\blog\forms.py:41
+msgid "Resume"
+msgstr ""
 
 #: .\blog\models.py:24
 msgid "News type"
@@ -34,11 +74,11 @@ msgstr ""
 msgid "Policy areas"
 msgstr ""
 
-#: .\blog\models.py:58 .\blog\models.py:168
+#: .\blog\models.py:58 .\blog\models.py:175
 msgid "English title"
 msgstr ""
 
-#: .\blog\models.py:62 .\blog\models.py:171
+#: .\blog\models.py:62 .\blog\models.py:178
 msgid "Ukrainian title"
 msgstr ""
 
@@ -70,7 +110,7 @@ msgstr ""
 msgid "Policy area"
 msgstr ""
 
-#: .\blog\models.py:98 .\blog\models.py:180
+#: .\blog\models.py:98 .\blog\models.py:186
 msgid "Date of creation"
 msgstr ""
 
@@ -91,23 +131,11 @@ msgstr ""
 msgid "Subscribers e-mails"
 msgstr ""
 
-#: .\blog\models.py:174 .\templates\include\header\header_bottom.html:43
-msgid "Podcast"
-msgstr ""
-
-#: .\blog\models.py:175
-msgid "Video"
-msgstr ""
-
-#: .\blog\models.py:178
-msgid "URL"
-msgstr ""
-
-#: .\blog\models.py:187
+#: .\blog\models.py:193
 msgid "Video content"
 msgstr ""
 
-#: .\blog\views.py:23
+#: .\infoBlog\settings.py:206
 msgid "European Research Group Of Support for Ukrainian Membership – ERGOSUM"
 msgstr ""
 
@@ -115,8 +143,9 @@ msgstr ""
 msgid "admin/"
 msgstr ""
 
-#: .\templates\blog\about\board.html:10
-msgid "Our Mission"
+#: .\templates\blog\about\board.html:8
+#: .\templates\include\header\header_top.html:14
+msgid "Board"
 msgstr ""
 
 #: .\templates\blog\about\key_doc.html:8
@@ -128,12 +157,8 @@ msgstr ""
 msgid "Mission"
 msgstr ""
 
-#: .\templates\blog\about\team.html:9
+#: .\templates\blog\about\team.html:8
 msgid "Our team"
-msgstr ""
-
-#: .\templates\blog\about\team.html:16
-msgid "Our The founders"
 msgstr ""
 
 #: .\templates\blog\about\vision.html:8
@@ -141,7 +166,7 @@ msgstr ""
 msgid "Vision"
 msgstr ""
 
-#: .\templates\blog\base_generic.html:61 .\templates\blog\base_generic.html:95
+#: .\templates\blog\base_generic.html:61 .\templates\blog\base_generic.html:91
 #: .\templates\include\header\search.html:4
 msgid "Search"
 msgstr ""
@@ -152,7 +177,7 @@ msgid "Blog"
 msgstr ""
 
 #: .\templates\blog\donate\all_donate.html:8
-#: .\templates\include\header\header_top.html:32
+#: .\templates\include\header\header_top.html:29
 msgid "Donate"
 msgstr ""
 
@@ -178,16 +203,21 @@ msgid "Opinion"
 msgstr ""
 
 #: .\templates\blog\join_us\general_members.html:8
-#: .\templates\include\header\header_top.html:22
+#: .\templates\include\header\header_top.html:13
 msgid "General members"
 msgstr ""
 
 #: .\templates\blog\join_us\join_team.html:7
-#: .\templates\include\header\header_top.html:19
-msgid "Join us"
+#: .\templates\include\header\header_top.html:23
+msgid "Join team"
 msgstr ""
 
-#: .\templates\blog\join_us\voluntear.html:7
+#: .\templates\blog\join_us\join_team.html:23
+#: .\templates\include\footer.html:39 .\templates\include\footer.html:65
+msgid "Subscribe"
+msgstr ""
+
+#: .\templates\blog\join_us\volunteering.html:7
 #: .\templates\include\header\header_top.html:25
 msgid "Volunteering"
 msgstr ""
@@ -263,12 +293,8 @@ msgstr ""
 msgid "results"
 msgstr ""
 
-#: .\templates\include\footer.html:36
+#: .\templates\include\footer.html:31
 msgid "Enter"
-msgstr ""
-
-#: .\templates\include\footer.html:44 .\templates\include\footer.html:70
-msgid "Subscribe"
 msgstr ""
 
 #: .\templates\include\header\header_bottom.html:8
@@ -277,6 +303,10 @@ msgstr ""
 
 #: .\templates\include\header\header_bottom.html:40
 msgid "Media"
+msgstr ""
+
+#: .\templates\include\header\header_bottom.html:43
+msgid "Podcasts"
 msgstr ""
 
 #: .\templates\include\header\header_bottom.html:44
@@ -295,14 +325,6 @@ msgstr ""
 msgid "Team"
 msgstr ""
 
-#: .\templates\include\header\header_top.html:13
-msgid "Board"
-msgstr ""
-
-#: .\templates\include\header\header_top.html:23
-msgid "Join team"
-msgstr ""
-
-#: .\templates\include\header\header_top.html:35
-msgid "Donates"
+#: .\templates\include\header\header_top.html:20
+msgid "Join us"
 msgstr ""

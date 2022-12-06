@@ -30,7 +30,7 @@ def get_subscriber_form(request: HttpRequest) -> SubscriberForm:
 def get_join_team_form(request: HttpRequest) -> ContactForm:
     """ Returns form for Joining Team """
     if 'join_team' in request.POST:
-        form = ContactForm(request.POST)
+        form = ContactForm(request.POST, request.FILES)
         if form.is_valid():
             send_join_team_message(request, form, settings.EMAIL_FROM)
             

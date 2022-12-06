@@ -131,12 +131,13 @@ class News(models.Model):
                 img.save(byte_buffer, 'png')
                 img = MIMEImage(byte_buffer.getvalue())
                 img.add_header('Content-ID', f'<{img_url}>')
-            if sub.mailing_language == 'en':
-                mail_subject = self.en_title
-                context['subtitle'] = self.en_subtitle
-            else:
-                mail_subject = self.uk_title
-                context['subtitle'] = self.uk_subtitle
+            match sub.mailing_language:
+                case 'en':
+                    mail_subject = self.en_title
+                    context['subtitle'] = self.en_subtitle
+                case 'uk':
+                    mail_subject = self.uk_title
+                    context['subtitle'] = self.uk_subtitle
                 
             message = get_template('blog/newsletter/news.html').render(context)
             email = EmailMessage(mail_subject, message, to=[sub.email])
@@ -169,7 +170,6 @@ class Video(models.Model):
         (PODCAST, 'Podcasts'),
         (VIDEO, 'Videos')
     )
-    
     en_title = models.CharField(max_length=45,
                                 help_text='Enter video title',
                                 verbose_name=_('English title'))
@@ -181,7 +181,7 @@ class Video(models.Model):
                             choices=MEDIA_CHOICES)
     url = models.URLField(help_text='Video URL path',
                           max_length = 200,
-                          verbose_name=_('URL'))
+                          verbose_name=('URL'))
     date_of_creation = models.DateTimeField(auto_now_add=True,
                                             verbose_name=_('Date of creation'))
     
@@ -189,8 +189,8 @@ class Video(models.Model):
         self.url = self.url.split('/')[-1]
         super(Video, self).save(*args, **kwargs)
 
-    class Meta:
-        verbose_name_plural = _('Video content')
-
     def __str__(self):
         return self.en_title
+    
+    class Meta:
+        verbose_name_plural = _('Video content')
