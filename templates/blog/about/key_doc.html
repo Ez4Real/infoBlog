@@ -4,26 +4,42 @@
 {% block content %}
 <div class="p-3"></div>
 <div class="container">
-    <div class="text-center">
-        <h1> {% trans "Key Documents" %}</h1>
-    </div>
-    <br>
-    <div class="shadow p-3 mb-5 bg-body rounded w-100">
-        <p class="fw-bold">Key documents:</p>
-        <ol>
-            <li>Accession criteria (Copenhagen criteria)
-                https://eur-lex.europa.eu/EN/legal-content/glossary/accession-criteria-copenhagen-criteria.html
-            </li>
-            <li>Association Agreement between the European Union and its Member States, of the one part, and Ukraine, of
-                the other part https://eur-lex.europa.eu/legal-content/EN/ALL/?uri=CELEX%3A22014A0529%2801%29
-            </li>
-            <li>Council of the European Union, “EU/Ukraine Action Plan”,
-                http://ec.europa.eu/world/enp/pdf/action_plans/ukraine_enp_ap_final_en.pdf
-            </li>
-            <li>Treaty on European Union — Joining the EU
-                https://eur-lex.europa.eu/legal-content/EN/TXT/?uri=LEGISSUM:l14536
-            </li>
-        </ol>
+
+    <div class="shadow p-3 mb-5 bg-body rounded w-100 text-center">
+
+        <div class="text-center">
+            <h1> {% trans "Key Documents" %}</h1>
+        </div>
+
+        <div class="pb-3 pt-2 key-doc-link">
+            <a href="https://eur-lex.europa.eu/EN/legal-content/glossary/accession-criteria-copenhagen-criteria.html">
+                <img class="img-fluid" src="https://picsum.photos/700/500">
+                <p>1. Accession criteria (Copenhagen criteria)</p>
+            </a>
+        </div>
+
+        <div class="pb-3 pt-2 key-doc-link">
+            <a href="https://eur-lex.europa.eu/legal-content/EN/ALL/?uri=CELEX%3A22014A0529%2801%29">
+                <img class="img-fluid" src="https://picsum.photos/700/500">
+                <p>2. Association Agreement between the European Union and its Member States, of the one part, and Ukraine, of
+                    the other part</p>
+            </a>
+        </div>
+
+        <div class="pb-3 pt-2 key-doc-link">
+            <a href="http://ec.europa.eu/world/enp/pdf/action_plans/ukraine_enp_ap_final_en.pdf">
+                <img class="img-fluid" src="https://picsum.photos/700/500">
+                <p>3. Council of the European Union, “EU/Ukraine Action Plan”,</p>
+            </a>
+        </div>
+
+        <div class="pb-3 pt-2 key-doc-link">
+            <a href="https://eur-lex.europa.eu/legal-content/EN/TXT/?uri=LEGISSUM:l14536">
+                <img class="img-fluid" src="https://picsum.photos/700/500">
+                <p>4. Treaty on European Union — Joining the EU</p>
+            </a>
+        </div>
+
     </div>
 </div>
 {% endblock content %}

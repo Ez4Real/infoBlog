@@ -11,20 +11,60 @@
 <div class="container">
 
     {% if join_form %}
-            <form method="post", enctype="multipart/form-data">
-                <div class="row  d-flex justify-content-center">
-                    <div class="col-auto">
-                    </div>
-                    <div class="col-md-5 col-12">
-                        {% csrf_token %}
-                        {{ join_form }}
-                    </div>
-                    <div class="col-auto" style="background: black">
-                        <button type="submit" name="join_team" class="btn btn-outline-light mb-4">{% trans 'Subscribe' %}</button>
-                    </div>
-                </div>
-            </form>
-            {% endif %}
+    <form class="main-join-team" method="post", enctype="multipart/form-data">
+        <div class="position-relative">
+          <h1 class="">{% trans "Join team" %}</h1>
+          {% csrf_token %}
+          <div class="row">
+            <div class="col-md-6 form-group">
+              <label for="{{ join_form.first_name.id_for_label }}">{{ join_form.first_name.label }}</label>
+              {{ join_form.first_name }}
+            </div>
+      
+            <div class="col-md-6 form-group">
+              <label for="{{ join_form.last_name.id_for_label }}">{{ join_form.last_name.label }}</label>
+              {{ join_form.last_name }}
+            </div>
+          </div>
+          <div class="row">
+            <div class="col-md-6 group-control">
+              <label for="{{ join_form.email.id_for_label }}">{{ join_form.email.label }}</label>
+              {{ join_form.email }}
+            </div>
+      
+            <div class="col-md-6 group-control">
+                <label for="{{ join_form.education_level.id_for_label }}">{{ join_form.education_level.label }}</label>
+                {{ join_form.education_level }}
+            </div>
+          </div>
+      
+          <div class="group-control">
+            <label for="{{ join_form.expertise_area.id_for_label }}">{{ join_form.expertise_area.label }}</label>
+            {{ join_form.expertise_area }}
+          </div>
+
+          <div class="group-control">
+            <label for="{{ join_form.expectations.id_for_label }}">{{ join_form.expectations.label }}</label>
+            {{ join_form.expectations }}
+          </div>
+
+          <div class="row">
+            <div class="col-md-6 group-control">
+                <label for="{{ join_form.resume.id_for_label }}">{{ join_form.resume.label }}</label>
+                {{ join_form.resume }}
+            </div>
+
+            <div class="col-md-6 group-control align-self-end text-end">
+                <button type="submit" name="join_team" class="form-group btn btn-primary ">
+                    {% trans 'Send' %}
+                </button>
+            </div>
+          </div>
+
+        </div>
+    </form>
+    {% endif %}
+
 
 </div>
 {% endblock content %}

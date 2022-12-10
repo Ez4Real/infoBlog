@@ -10,38 +10,57 @@
 {% load static %}
 <div class="container">
     <div class="p-4"></div>
-    <div class="row row-cols-xl-3">
-        <div class="col">
-            <div class="card mb-4" style="min-width:250px;">
-                <img class="card-img-top" alt="Team o"
-                     src="https://cdn.worldvectorlogo.com/logos/patreon.svg"
-                     style="height: 200px">
-                <hr style="margin:0px;">
-                <div class="card-body">
-                    <p class="card-text">{href}</p>
-                </div>
-            </div>
+    <div class="card2 card mb-3 " style="max-width: 540px; height: 105px">
+      <div class="row g-0 align-items-center">
+        <div class="col-sm-2 col-5" style="margin: 10px 0px 10px 15px">
+          <img src="https://cdn.worldvectorlogo.com/logos/patreon.svg" class="img-fluid rounded-start" style="height: 83px;" alt="...">
         </div>
-        <div class="col">
-            <div class="card mb-4" style="min-width:250px;">
-                <img class="card-img-top" alt="Team foto"
-                     src="https://cdn.worldvectorlogo.com/logos/paypal-3.svg"
-                     style="height: 200px">
-                <hr style="margin:0px;">
-                <div class="card-body">
-                    <p class="card-text">{href}</p>
-                </div>
-            </div>
+        <div class="col-sm-8 col-7">
+          <div class="card-body">
+            <p class="card-text">
+                <a href="#">
+                    PATREON
+                </a>
+            </p>
+          </div>
         </div>
-        <div class="col">
-            <div class="card mb-4" style="min-width:250px;">
-                <div style="height:200px;" class="m-auto">bank card</div>
-                <hr style="margin:0px;">
-                <div class="card-body">
-                    <p class="card-text">{href}</p>
-                </div>
-            </div>
-        </div>
+      </div>
     </div>
+
+    <div class="card2 card mb-3 " style="max-width: 540px; height: 105px;">
+      <div class="row g-0 align-items-center">
+        <div class="col-sm-2 col-5" style="margin-left:15px">
+          <img src="https://www.svgrepo.com/show/349473/paypal.svg" class="img-fluid rounded-start card-img-donate" style="height: 103px;" alt="...">
+        </div>
+        <div class="col-sm-8 col-7">
+          <div class="card-body">
+            <p class="card-text">
+                <a href="#">
+                    PAYPAL
+                </a>
+            </p>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="card2 card mb-3" style="max-width: 540px;">
+      <div class="row g-0 align-items-center">
+        <div class="col-sm-2 col-5" style="margin-left:15px">
+          <img src="https://www.svgrepo.com/show/355367/visa.svg"  class="img-fluid rounded-start" style="height: 83px;" alt="...">
+        </div>
+        <div class="col-sm-8 col-7">
+          <div class="card-body">
+            <p class="card-text">
+                <a href="#">
+                    E-PAYMENTS
+                </a>
+            </p>
+          </div>
+        </div>
+      </div>
+    </div>
+
+
 </div>
 {% endblock content %}
