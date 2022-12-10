@@ -38,8 +38,15 @@
                          alt="{{ news.title }}"
                          class="d-block mx-auto w-100 h-100 ob-cover">
                     <div class="carousel-caption">
-                        <h3>{{ news.title }}</h3>
-                        {{ news.subtitle }}
+
+                        {% if CURRENT_LANGUAGE == "uk" %}
+                        <h3>{{ news.uk_title }}</h3>
+                        {{ news.uk_subtitle }}
+                        {% else %}
+                        <h3>{{ news.en_title }}</h3>
+                        {{ news.en_subtitle }}
+                        {% endif %}
+
                     </div>
                 </div>
             {% endif %}
