@@ -239,6 +239,7 @@ body {
   transition: all .3s ease;
 }
 .nav-link:hover{
+    color: #326aab !important;
     transform: translate(0px,-7px);
 }
 
