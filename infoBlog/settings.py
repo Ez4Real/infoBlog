@@ -90,7 +90,7 @@ WSGI_APPLICATION = 'infoBlog.wsgi.application'
 
 DATABASES = {
     'default': {
-        'ENGINE': 'django.db.backends.postgresql',
+        'ENGINE': 'django.db.backends.mysql',
         'NAME': os.getenv('DB_NAME'),
         'USER': os.getenv('DB_USER'),
         'PASSWORD': os.getenv('DB_PASSWORD'),
@@ -146,10 +146,7 @@ LOCALE_PATHS = [
 # https://docs.djangoproject.com/en/4.0/howto/static-files/
 
 STATIC_URL = '/static/'
-STATIC_ROOT = BASE_DIR / 'blog/static'
-
-MEDIA_URL = 'media/'
-MEDIA_ROOT = BASE_DIR / 'media'
+STATIC_ROOT = '/home/dh_vhba7v/antmih2.dreamhosters.com/public/static/'
 
 # Ckeditor Code Snippet
 CKEDITOR_UPLOAD_PATH = 'uploads'
