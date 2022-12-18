@@ -43,7 +43,7 @@ msgstr "Ім'я"
 
 #: .\blog\forms.py:34
 msgid "Last name"
-msgstr "Фамілія"
+msgstr "Прізвище"
 
 #: .\blog\forms.py:36
 msgid "Your level of education"
