@@ -95,9 +95,6 @@ DATABASES = {
         'USER': os.getenv('DB_USER'),
         'PASSWORD': os.getenv('DB_PASSWORD'),
         'HOST': os.getenv('DB_HOST'),
-        'OPTIONS': {
-            'sql_mode': 'traditional',
-        }
     }
 }
 
@@ -146,7 +143,7 @@ LOCALE_PATHS = [
 # https://docs.djangoproject.com/en/4.0/howto/static-files/
 
 STATIC_URL = '/static/'
-STATIC_ROOT = '/home/dh_vhba7v/antmih2.dreamhosters.com/public/static/'
+STATIC_ROOT = '/home/ergosumuser/ergosum.dreamhosters.com/public/static/'
 
 # Ckeditor Code Snippet
 CKEDITOR_UPLOAD_PATH = 'uploads'
