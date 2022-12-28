@@ -174,7 +174,7 @@ EMAIL_HOST = 'smtp.dreamhost.com'
 DEFAULT_FROM_EMAIL = 'info@ergosum-europa.eu'
 EMAIL_FROM = 'info@ergosum-europa.eu'
 EMAIL_HOST_USER = 'info@ergosum-europa.eu'
-EMAIL_HOST_PASSWORD = 'StandWithUkraine'
+EMAIL_HOST_PASSWORD = ''
 EMAIL_PORT = 465
 EMAIL_USE_TLS = True
 
