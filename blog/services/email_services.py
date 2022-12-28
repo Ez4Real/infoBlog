@@ -64,11 +64,11 @@ def get_join_team_email_object(message: SafeString, to_email: str) -> EmailMessa
 
 def send_subscribe_email_message(request: HttpRequest, email: EmailMessage) -> None:
     """ Tryes to send email to user for subscribe """
-    try:
-        email.send()
-        messages.success(request, 'Please, сonfirm your subscription via email')
-    except:
-        messages.error(request, 'Problem sending email to this adress, check if you typed it correctly')
+    # try:
+    email.send()
+    messages.success(request, 'Please, сonfirm your subscription via email')
+    # except:
+    #     messages.error(request, 'Problem sending email to this adress, check if you typed it correctly')
 
 def send_join_team_email_message(request: HttpRequest, email: EmailMessage) -> None:
     """ Tryes to send email to user for join team """
