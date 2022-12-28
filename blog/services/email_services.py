@@ -97,3 +97,4 @@ def send_user_subscribe_activation(request: HttpRequest,
                              message,
                              sub.email)
     send_subscribe_email_message(request, email)
+    

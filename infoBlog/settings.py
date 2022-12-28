@@ -143,7 +143,7 @@ LOCALE_PATHS = [
 # https://docs.djangoproject.com/en/4.0/howto/static-files/
 
 STATIC_URL = '/static/'
-STATIC_ROOT = '/home/ergosumuser/ergosum.dreamhosters.com/public/static/'
+STATIC_ROOT = '/home/ergosum/ergosum-europa.eu/public/static/'
 
 # Ckeditor Code Snippet
 CKEDITOR_UPLOAD_PATH = 'uploads'
@@ -169,12 +169,13 @@ DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 
 
 # Emailing settings
-EMAIL_BACKEND = 'django.core.mail.backends.smtp.EmailBackend'
-EMAIL_HOST = 'smtp.gmail.com'
-EMAIL_FROM = os.getenv('EMAIL_FROM')
-EMAIL_HOST_USER = os.getenv('EMAIL_HOST_USER')
-EMAIL_HOST_PASSWORD = os.getenv('EMAIL_HOST_PASSWORD')
-EMAIL_PORT = 587
+EMAIL_BACKEND = 'django_smtp_ssl.SSLEmailBackend'
+EMAIL_HOST = 'smtp.dreamhost.com'
+DEFAULT_FROM_EMAIL = 'info@ergosum-europa.eu'
+EMAIL_FROM = 'info@ergosum-europa.eu'
+EMAIL_HOST_USER = 'info@ergosum-europa.eu'
+EMAIL_HOST_PASSWORD = 'StandWithUkraine'
+EMAIL_PORT = 465
 EMAIL_USE_TLS = True
 
 PASSWORD_RESET_TIMEOUT = 14400
