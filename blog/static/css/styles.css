@@ -1,0 +1,327 @@
+.sidebar-nav {
+    margin-top: 20px;
+    padding: 0;
+    list-style: none;
+}
+/* .main-header{
+    height: 200px;
+} */
+
+nav{
+    padding: 0px !important;
+}
+
+.nav-div{
+    padding-left: 0 px !important;
+
+}
+
+.header-nav-bar{
+    height: 224px;
+}
+
+.custom-font-size{
+    font-size: 25px;
+}
+
+.header-content{
+    margin: 0;
+    padding: 0;
+}
+
+.font-size-custom-navbar{
+    font-size: 25px;
+    margin-bottom: -20px;
+    margin-top: 45px;
+}
+
+.logo,
+.logo-side{
+    height: 155px;
+    width: 155px;
+}
+
+@media (max-width: 1440px) {
+    .logo,
+    .logo-side{
+        height: 150px;
+        width: 150px;
+    }
+
+
+    .lang_butt{
+        margin-left: 130px!important;
+        margin-top: -5px!important;
+        margin-bottom: -5px!important;
+    }
+}
+
+@media (max-width: 1024px) {
+    .fs-4{
+        font-size: calc(1.275rem + .1vw)!important;
+    }
+
+    .logo,
+    .logo-side{
+        height: 140px;
+        width: 140px;
+    }
+
+    .lang_butt{
+        margin-left: 110px!important;
+        margin-top: -5px!important;
+        margin-bottom: -5px!important;
+    }
+}
+
+@media (max-width: 991px) {
+
+    .fs-4{
+        font-size: 1rem!important
+    }
+
+    .text-cronis{
+        align-items: center!important;
+    }
+
+    .cronis-item-1{
+        text-align: center!important;
+        order: 1
+    }
+
+    .cronis-item-2{
+        text-align: center!important;
+        order: 0
+    }
+
+    .lang_butt{
+        justify-content: center!important;
+        margin-left: 0px!important;
+        margin-top: 0px!important;
+        margin-bottom: 0px!important;
+        order:1!important;
+    }
+
+    .logo-none{
+        visibility:hidden;
+    }
+
+    .side-navbar{
+    z-index: 1024;
+    }
+}
+
+@media (max-width: 425px) {
+    .card-video{
+        width:100%!important;
+    }
+    .logo,
+    .logo-side{
+        height: 100px;
+        width: 100px;
+    }
+}
+
+
+@media (max-width: 375px) {
+    .logo,
+    .logo-side{
+        height: 95px;
+        width: 95px;
+    }
+}
+
+@media (max-width: 320px) {
+    .logo,
+    .logo-side{
+        height: 85px;
+        width: 85px;
+    }
+}
+
+
+.testdiv{
+    width: 100px;
+    height: 100px;
+    background-color: red;
+}
+
+.ob-cover{
+    object-fit: cover;
+}
+
+.icon-bg-d{
+    height: 50px;
+    width: 50px;
+    background: #000;
+    border-radius: 50%;
+    /* margin-left: -20px; */
+}
+
+.cronis-nav-button-carousel {
+    margin-right: 35%;
+}
+
+.cronis-carousel-control-prev{
+    position: absolute;
+    left: -150px;
+}
+
+.cronis-carousel-control-next{
+    position: absolute;
+    left: 1250px;
+}
+
+.font-bold {
+  font-weight: bold;
+}
+
+footer{
+    margin-top: 10%;
+}
+
+.our-team-foto{
+    justify-content: center;
+}
+
+.join-us-foto{
+    height: 500px;
+    width: 100%;
+    position: relative;
+}
+.join-us-text{
+    position: absolute;
+}
+
+.card-foto{
+    height: 400px;
+}
+
+.body-cronis-post img{
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+/*.beam-cronis{
+    height: 207px;
+}*/
+
+
+.lang_butt{
+    justify-content: flex-end;
+    margin-left: 130px;
+    margin-bottom: 25px;
+}
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  min-height: 100vh;
+  background-color: #fff;
+}
+
+.side-navbar {
+  width: 300px;
+  height: 100%;
+  position: fixed;
+  right: 0;
+  background-color: #100901;
+  visibility: hidden;
+  border-left: 1px solid rgba(0, 0, 0, 0.2);
+}
+
+.nav-link{
+  transition: all .3s ease;
+}
+.nav-link:hover{
+    color: #326aab !important;
+    transform: translate(0px,-7px);
+}
+
+.my-container {
+  transition: 0.4s;
+}
+
+.active-nav {
+  visibility: visible;
+}
+
+/* for main section */
+.active-cont {
+  margin-left: 250px;
+}
+
+.my-container input {
+  border-radius: 2rem;
+  padding: 2px 20px;
+}
+
+.close-sidebar{
+    cursor:pointer;
+    transition: box-shadow .15s ease-in-out;
+}
+
+.site-dark:after{
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: rgba(0,0,0,.5);
+  z-index: 2;
+}
+
+.card{
+    margin: 33px 0px;
+}
+
+.card > img {
+    height: 500px;
+}
+
+.card-donate {
+    max-width: 540px;
+    height: 105px;
+}
+
+.main-join-team {
+
+}
+
+.main-join-team * {
+    padding-top: 7px;
+}
+
+.checkbox-join-team {
+  margin: 10px auto;
+}
+
+.cronis-nav-anime1 a:hover{
+    color:black !important;
+}
+
+.special-link{
+    display:block;
+    text-decoration: none;
+    padding: 0.5rem 1rem;
+}
+
+.key-doc-link a{
+    text-decoration: none;
+    color: black;
+}
+
+.card-text{
+    text-align: justify;
+    word-spacing: -1px
+}
+
+/*footer{
+    margin-top: 0px;
+}*/

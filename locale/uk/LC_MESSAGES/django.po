@@ -30,7 +30,7 @@ msgid "High"
 msgstr "Вища"
 
 #: .\blog\forms.py:29
-msgid "Doctor or candidate of sciences"
+msgid "PhD"
 msgstr "Доктор або кандидат наук"
 
 #: .\blog\forms.py:30
@@ -149,7 +149,7 @@ msgstr ""
 #: .\templates\blog\about\board.html:8
 #: .\templates\include\header\header_top.html:14
 msgid "Board"
-msgstr "Дошка"
+msgstr "Рада"
 
 #: .\templates\blog\about\key_doc.html:8
 msgid "Key Documents"
@@ -182,7 +182,7 @@ msgstr "Блог"
 #: .\templates\blog\donate\all_donate.html:8
 #: .\templates\include\header\header_top.html:29
 msgid "Donate"
-msgstr "Підтримка"
+msgstr "Підтримати"
 
 #: .\templates\blog\events.html:10
 #: .\templates\include\header\header_bottom.html:3
@@ -209,12 +209,12 @@ msgstr "Коментарі"
 #: .\templates\blog\join_us\general_members.html:8
 #: .\templates\include\header\header_top.html:13
 msgid "General members"
-msgstr "Загальні члени"
+msgstr "Організації і члени"
 
 #: .\templates\blog\join_us\join_team.html:7
 #: .\templates\include\header\header_top.html:23
 msgid "Join team"
-msgstr "Приєднатися до команди"
+msgstr "Приєднатись до команди"
 
 #: .\templates\blog\join_us\join_team.html:23
 #: .\templates\include\footer.html:39 .\templates\include\footer.html:65

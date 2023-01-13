@@ -1,5 +1,5 @@
 {% load i18n %}
-<ul class="navbar-nav sb-2 me-auto order-1 cronis-nav-anime col justify-content-around ">
+<ul class="navbar-nav sb-2 me-auto order-1 cronis-nav-anime col justify-content-between " style="padding-right:20px;">
     <li><a href="{% url 'events' %}" class="nav-link text-white">{% trans "Events" %}</a></li>
     <li><a href="{% url 'news' %}" class="nav-link text-white">{% trans "News" %}</a></li>
     <li class="nav-item dropdown ">
@@ -8,11 +8,10 @@
             {% trans "Research" %}
         </a>
         <ul class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
-            <li><a class="dropdown-item" href="{% url 'analytics' %}">{% trans "Analytics" %}</a>
-            </li>
-            <li><a class="dropdown-item" href="{% url 'annual_report' %}">{% trans "Annual report" %}</a></li>
-            <li><a class="dropdown-item" href="{% url 'index_ergosum' %}">{% trans "Index ERGOSUM" %}</a></li>
+            <li><a class="dropdown-item" href="{% url 'analytics' %}">{% trans "Analytics" %}</a></li>
             <li><a class="dropdown-item" href="{% url 'opinion' %}">{% trans "Opinion" %}</a></li>
+            <li><a class="dropdown-item" href="{% url 'index_ergosum' %}">{% trans "Index ERGOSUM" %}</a></li>
+            <li><a class="dropdown-item" href="{% url 'annual_report' %}">{% trans "Annual report" %}</a></li>
         </ul>
     </li>
     <li><a href="{% url 'blog' %}" class="nav-link text-white">{% trans "Blog" %}</a></li>

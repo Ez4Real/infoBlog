@@ -82,7 +82,7 @@ def vision(request):
 '''\Donate views/'''
 def all_donate(request):
     return render(request,
-                  template_name='blog/donate/all_donate.html',
+                  template_name='blog/donate/all_donate(old).html',
                   context=get_static_page_context('Donate',
                                                    request)
                   )
@@ -104,9 +104,9 @@ def join_team(request):
                   context=context
                   )
 
-def volunteering(request):
+def volunteer(request):
     return render(request,
-                  template_name='blog/join_us/volunteering.html',
+                  template_name='blog/join_us/volunteer.html',
                   context=get_static_page_context('Volunteering',
                                                    request)
                   )

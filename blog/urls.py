@@ -31,9 +31,9 @@ urlpatterns = [
     path('join-us/join-team',
          views.join_team,
          name='join_team'),
-    path('join-us/volunteering',
-         views.volunteering,
-         name='volunteering'),
+    path('join-us/volunteer',
+         views.volunteer,
+         name='volunteer'),
     
     # Policy areas
     path('policy-areas/foreign-policy',

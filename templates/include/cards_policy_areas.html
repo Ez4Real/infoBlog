@@ -1,41 +1,51 @@
 {% if blog_posts %}
 {% for news in blog_posts %}
 
-<div class="col">
-    <a href="{{ news.get_absolute_url }}"
-       class="text-dark text-decoration-none">
-        <div class="card">
-            <div class="d-flex align-items-center justify-content-center" style="height: 300px;">
-                <img src="{{ news.banner.url }}"
-                     class="img-fluid rounded-start d-block mx-auto w-100 h-100 ob-cover"
-                     alt="...">
-            </div>
-            <div class="card-body card-custom">
+    {% if forloop.first %}
+        {% include 'include/cards/card_big.html' %}
+    {% else %}
+        <div class="row row-cols-1 row-cols-md-3 g-4">
 
-                {% if CURRENT_LANGUAGE == "uk" %}
-                <h5 class="card-title">
-                    {{ news.uk_title }}
-                </h5>
-                <p class="card-text">
-                    {{ news.uk_subtitle }}
-                </p>
-                {% else %}
-                <h5 class="card-title">
-                    {{ news.en_title }}
-                </h5>
-                <p class="card-text">
-                    {{ news.en_subtitle }}
-                </p>
-                {% endif %}
+            {% include 'include/cards/card_home_page.html' %}
 
-            </div>
-            <div class="d-flex justify-content-between card-footer bg-transparent border-secondary">
-                <small class="text-muted">{{ news.date_of_creation }}</small>
-                <small class="text-primary">{{ news.type }}</small>
-            </div>
         </div>
-    </a>
-</div>
+    {% endif %}
+
+<!--<div class="col">-->
+<!--    <a href="{{ news.get_absolute_url }}"-->
+<!--       class="text-dark text-decoration-none">-->
+<!--        <div class="card">-->
+<!--            <div class="d-flex align-items-center justify-content-center" style="height: 300px;">-->
+<!--                <img src="{{ news.banner.url }}"-->
+<!--                     class="img-fluid rounded-start d-block mx-auto w-100 h-100 ob-cover"-->
+<!--                     alt="...">-->
+<!--            </div>-->
+<!--            <div class="card-body card-custom">-->
+
+<!--                {% if CURRENT_LANGUAGE == "uk" %}-->
+<!--                <h5 class="card-title">-->
+<!--                    {{ news.uk_title }}-->
+<!--                </h5>-->
+<!--                <p class="card-text">-->
+<!--                    {{ news.uk_subtitle }}-->
+<!--                </p>-->
+<!--                {% else %}-->
+<!--                <h5 class="card-title">-->
+<!--                    {{ news.en_title }}-->
+<!--                </h5>-->
+<!--                <p class="card-text">-->
+<!--                    {{ news.en_subtitle }}-->
+<!--                </p>-->
+<!--                {% endif %}-->
+
+<!--            </div>-->
+<!--            <div class="d-flex justify-content-between card-footer bg-transparent border-secondary">-->
+<!--                <small class="text-muted">{{ news.date_of_creation }}</small>-->
+<!--                <small class="text-primary">{{ news.type }}</small>-->
+<!--            </div>-->
+<!--        </div>-->
+<!--    </a>-->
+<!--</div>-->
 
 {% endfor %}
 {% endif %}
