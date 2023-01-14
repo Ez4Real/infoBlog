@@ -24,7 +24,7 @@ class ContactForm(forms.Form):
     EDUCATION_LEVELS = (
     ('1', _('Secondary')),
     ('2', _('High')),
-    ('3', _('Doctor or candidate of sciences')),
+    ('3', _('Doctor or PhD')),
     ('4', _('Other'))
     )
     first_name = forms.CharField(label=_('First name'),
