@@ -9,7 +9,7 @@ from .services.blog_services import paginate, \
     add_page_title_to_context_by_language
 from .services.context_services import get_static_page_context, \
     get_policy_area_context, get_news_type_context, get_media_views_context
-from .services.subscribe_services import get_join_team_form
+from .services.subscribe_services import get_join_team_form, get_volunteer_form
 from .models import Video
 
 
@@ -96,8 +96,7 @@ def general_members(request):
                   )
 
 def join_team(request):
-    context=get_static_page_context('Join team',
-                                    request)
+    context=get_static_page_context('Join team', request)
     context['join_form'] = get_join_team_form(request)
     return render(request,
                   template_name='blog/join_us/join_team.html',
@@ -105,10 +104,11 @@ def join_team(request):
                   )
 
 def volunteer(request):
+    context = get_static_page_context('Volunteering', request)
+    context['volunteer_form'] = get_volunteer_form(request)
     return render(request,
                   template_name='blog/join_us/volunteer.html',
-                  context=get_static_page_context('Volunteering',
-                                                   request)
+                  context=context
                   )
 
 '''\Media views/'''

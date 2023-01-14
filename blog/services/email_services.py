@@ -8,7 +8,7 @@ from django.utils.http import urlsafe_base64_encode
 from django.utils.safestring import SafeString
 
 from ..models import Subscriber
-from ..forms import ContactForm
+from ..forms import ContactForm, VolunteerForm
 from ..tokens import email_activation_token
 
 def get_subscribe_email_template(request: HttpRequest,
@@ -33,6 +33,19 @@ def get_join_team_email_template(form: ContactForm) -> SafeString:
         'education_level': dict(form.fields['education_level'].choices)[education_level],
         'expertise_area': form.cleaned_data['expertise_area'],
         'expectations': form.cleaned_data['expectations']
+    })
+    
+def get_volunteer_email_template(form: VolunteerForm) -> SafeString:
+    """ Returns email message template for volunteering """
+    first_name = form.cleaned_data['first_name']
+    last_name = form.cleaned_data['last_name']
+    return get_template('blog/email/volunteer.html').render({
+        'full_name': f'{last_name} {first_name}',
+        'dob': form.cleaned_data['dob'],
+        'city': form.cleaned_data['city'],
+        'email': form.cleaned_data['email'],
+        'phone': form.cleaned_data['phone'],
+        'employment': form.cleaned_data['employment'],
     })
     
 def get_email_object(subject: str,
@@ -64,11 +77,11 @@ def get_join_team_email_object(message: SafeString, to_email: str) -> EmailMessa
 
 def send_subscribe_email_message(request: HttpRequest, email: EmailMessage) -> None:
     """ Tryes to send email to user for subscribe """
-    # try:
-    email.send()
-    messages.success(request, 'Please, сonfirm your subscription via email')
-    # except:
-    #     messages.error(request, 'Problem sending email to this adress, check if you typed it correctly')
+    try:
+        email.send()
+        messages.success(request, 'Please, сonfirm your subscription via email')
+    except:
+        messages.error(request, 'Problem sending email to this adress, check if you typed it correctly')
 
 def send_join_team_email_message(request: HttpRequest, email: EmailMessage) -> None:
     """ Tryes to send email to user for join team """
@@ -77,11 +90,21 @@ def send_join_team_email_message(request: HttpRequest, email: EmailMessage) -> N
         messages.success(request, 'Thanks. We will contact you shortly')
     except:
         messages.error(request, 'Problem with sharing your contacts. Please, try again later')
+        
+def send_volunteer_message(request: HttpRequest,
+                           form: VolunteerForm,
+                           email_to: str) -> None:
+    """ Sends to service email message for volunteering """
+    message = get_volunteer_email_template(form)
+    email = get_email_object('Інформація про волонтера',
+                             message,
+                             email_to)
+    send_join_team_email_message(request, email)
 
 def send_join_team_message(request: HttpRequest,
                            form: ContactForm,
                            email_to: str) -> None:
-    """ Sends to user email message for joining team """
+    """ Sends to service email message for joining team """
     message = get_join_team_email_template(form)
     email = get_email_object('Інформація про претендента у команду',
                              message,

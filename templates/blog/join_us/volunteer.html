@@ -10,39 +10,60 @@
 <div class="p-3"></div>
 <div class="container">
 
-    <p>
-        Lorem ipsum dolor sit amet consectetur, adipisicing elit. Perspiciatis fugit veniam molestiae voluptates
-        suscipit molestias libero eum ad facere optio officia adipisci explicabo beatae, iusto voluptas nisi cum labore
-        delectus.
-        Lorem, ipsum dolor sit amet consectetur adipisicing elit. Consectetur, explicabo illum! Tempore, a. Debitis vel
-        blanditiis quasi similique consequuntur maiores eos, dolorum officiis accusantium magni, dolores error commodi
-        qui! Culpa?
-        Lorem ipsum dolor sit amet consectetur adipisicing elit. Reiciendis quae, cumque quidem labore eligendi delectus
-        velit sapiente repudiandae maxime, voluptas atque facilis voluptates ullam quo hic porro qui minima voluptate.
-        Lorem ipsum dolor sit amet consectetur, adipisicing elit. Perspiciatis fugit veniam molestiae voluptates
-        suscipit molestias libero eum ad facere optio officia adipisci explicabo beatae, iusto voluptas nisi cum labore
-        delectus.
-        Lorem, ipsum dolor sit amet consectetur adipisicing elit. Consectetur, explicabo illum! Tempore, a. Debitis vel
-        blanditiis quasi similique consequuntur maiores eos, dolorum officiis accusantium magni, dolores error commodi
-        qui! Culpa?
-        Lorem ipsum dolor sit amet consectetur adipisicing elit. Reiciendis quae, cumque quidem labore eligendi delectus
-        velit sapiente repudiandae maxime, voluptas atque facilis voluptates ullam quo hic porro qui minima voluptate.
-        Lorem ipsum dolor sit amet consectetur, adipisicing elit. Perspiciatis fugit veniam molestiae voluptates
-        suscipit molestias libero eum ad facere optio officia adipisci explicabo beatae, iusto voluptas nisi cum labore
-        delectus.
-        Lorem, ipsum dolor sit amet consectetur adipisicing elit. Consectetur, explicabo illum! Tempore, a. Debitis vel
-        blanditiis quasi similique consequuntur maiores eos, dolorum officiis accusantium magni, dolores error commodi
-        qui! Culpa?
-        Lorem ipsum dolor sit amet consectetur adipisicing elit. Reiciendis quae, cumque quidem labore eligendi delectus
-        velit sapiente repudiandae maxime, voluptas atque facilis voluptates ullam quo hic porro qui minima voluptate.
-        Lorem ipsum dolor sit amet consectetur, adipisicing elit. Perspiciatis fugit veniam molestiae voluptates
-        suscipit molestias libero eum ad facere optio officia adipisci explicabo beatae, iusto voluptas nisi cum labore
-        delectus.
-        Lorem, ipsum dolor sit amet consectetur adipisicing elit. Consectetur, explicabo illum! Tempore, a. Debitis vel
-        blanditiis quasi similique consequuntur maiores eos, dolorum officiis accusantium magni, dolores error commodi
-        qui! Culpa?
-        Lorem ipsum dolor sit amet consectetur adipisicing elit. Reiciendis quae, cumque quidem labore eligendi delectus
-        velit sapiente repudiandae maxime, voluptas atque facilis voluptates ullam quo hic porro qui minima voluptate.
-    </p>
+    {% if volunteer_form %}
+    <form class="main-join-team" method="post", enctype="multipart/form-data">
+        <div class="position-relative">
+          <h1 class="">{% trans "Volunteer" %}</h1>
+          {% csrf_token %}
+          <div class="row">
+            <div class="col-md-6 form-group">
+              <label for="{{ volunteer_form.first_name.id_for_label }}">{{ volunteer_form.first_name.label }}</label>
+              {{ volunteer_form.first_name }}
+            </div>
+      
+            <div class="col-md-6 form-group">
+              <label for="{{ volunteer_form.last_name.id_for_label }}">{{ volunteer_form.last_name.label }}</label>
+              {{ volunteer_form.last_name }}
+            </div>
+          </div>
+          <div class="row">
+            <div class="col-md-6 group-control">
+              <label for="{{ volunteer_form.dob.id_for_label }}">{{ volunteer_form.dob.label }}</label>
+              {{ volunteer_form.dob }}
+            </div>
+
+            <div class="col-md-6 group-control">
+              <label for="{{ volunteer_form.city.id_for_label }}">{{ volunteer_form.city.label }}</label>
+              {{ volunteer_form.city }}
+            </div>
+          </div>
+
+          <div class="row">
+            <div class="col-md-6 group-control">
+              <label for="{{ volunteer_form.email.id_for_label }}">{{ volunteer_form.email.label }}</label>
+              {{ volunteer_form.email }}
+            </div>
+
+            <div class="col-md-6 group-control">
+              <label for="{{ volunteer_form.phone.id_for_label }}">{{ volunteer_form.phone.label }}</label>
+              {{ volunteer_form.phone }}
+            </div>
+          </div>
+
+          <div class="col-md-6 group-control">
+            <label for="{{ volunteer_form.employment.id_for_label }}">{{ volunteer_form.employment.label }}</label>
+            {{ volunteer_form.employment }}
+          </div>
+
+          <div class="col-md-6 group-control align-self-end text-end">
+            <button type="submit" name="volunteer" class="form-group btn btn-primary ">
+                {% trans 'Send' %}
+            </button>
+          </div>
+
+        </div>
+    </form>
+    {% endif %}
+    
 </div>
 {% endblock content %}
