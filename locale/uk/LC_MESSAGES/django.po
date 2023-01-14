@@ -209,7 +209,7 @@ msgstr "Коментарі"
 #: .\templates\blog\join_us\general_members.html:8
 #: .\templates\include\header\header_top.html:13
 msgid "General members"
-msgstr "Організація-члени"
+msgstr "Організації-члени"
 
 #: .\templates\blog\join_us\join_team.html:7
 #: .\templates\include\header\header_top.html:23
@@ -223,7 +223,7 @@ msgstr "Підписатись"
 
 #: .\templates\blog\join_us\volunteering.html:7
 #: .\templates\include\header\header_top.html:25
-msgid "Volunteer"
+msgid "Volunteering"
 msgstr "Волонтерство"
 
 #: .\templates\blog\policy_areas\culture.html:10
