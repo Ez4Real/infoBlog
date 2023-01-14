@@ -1,6 +1,7 @@
 from django.contrib.auth import get_user_model
 from django.utils.translation import gettext_lazy as _
 from django import forms
+from phonenumber_field.formfields import PhoneNumberField
 
 class SubscriberForm(forms.ModelForm):
     email = forms.EmailField(label='',
@@ -24,7 +25,7 @@ class ContactForm(forms.Form):
     EDUCATION_LEVELS = (
     ('1', _('Secondary')),
     ('2', _('High')),
-    ('3', _('Doctor or candidate of sciences')),
+    ('3', _('Doctor or PhD')),
     ('4', _('Other'))
     )
     first_name = forms.CharField(label=_('First name'),
@@ -47,3 +48,28 @@ class ContactForm(forms.Form):
                                    widget=forms.Textarea(attrs={'type': 'text', 'class': 'form-control', 'style': 'max-height: 90px'}))
     resume = forms.FileField(label=_('Resume'),
                              widget=forms.FileInput(attrs={'class': 'form-control', 'style': 'max-width: 50%'}))
+    
+
+class VolunteerForm(forms.Form):
+    first_name = forms.CharField(label=_('First name'),
+                                 max_length=100,
+                                 widget=forms.TextInput(attrs={'type': 'text', 'class': 'form-control'}))
+    last_name = forms.CharField(label=_('Last name'),
+                                max_length=100,
+                                widget=forms.TextInput(attrs={'type': 'text', 'class': 'form-control'}))
+    
+    dob = forms.DateField(label=_('Date of Birth'),
+                          widget=forms.DateInput(attrs={'type': 'date', 'class': 'form-control'}))
+    city = forms.CharField(label=_('City'),
+                           max_length=100,
+                           widget=forms.TextInput(attrs={'type': 'text', 'class': 'form-control'}))
+    email = forms.EmailField(label='E-mail',
+                             max_length=100,
+                             widget=forms.EmailInput(attrs={'type': 'email', 'class': 'form-control'}))
+    phone = PhoneNumberField(label=_('Phone'),
+                             widget=forms.TextInput(attrs={'placeholder': _('+380 (___) ___ __ __'), 'class': 'form-control'})
+                             )
+    employment = forms.CharField(label=('What do you do in life?'),
+                                 max_length=600,
+                                 widget=forms.Textarea(attrs={'type': 'text', 'class': 'form-control', 'style': 'max-height: 160px; width: 100%;'}))
+    

@@ -7,11 +7,11 @@ from django.utils.http import urlsafe_base64_decode
 from django.shortcuts import redirect
 from django.conf import settings
 
-from ..forms import SubscriberForm, ContactForm
+from ..forms import SubscriberForm, ContactForm, VolunteerForm
 from ..models import Subscriber
 from ..tokens import email_activation_token
 from .email_services import send_user_subscribe_activation, \
-    send_join_team_message
+    send_join_team_message, send_volunteer_message
 
 def get_subscriber_form(request: HttpRequest) -> SubscriberForm:
     """ Returns Subcriber form """
@@ -35,6 +35,16 @@ def get_join_team_form(request: HttpRequest) -> ContactForm:
             send_join_team_message(request, form, settings.EMAIL_FROM)
             
     return ContactForm()
+
+def get_volunteer_form(request: HttpRequest) -> VolunteerForm:
+    """ Returns form for Volunteer """
+    if 'volunteer' in request.POST:
+        form = VolunteerForm(request.POST)
+        if form.is_valid():
+            send_volunteer_message(request, form, settings.EMAIL_FROM)
+        else: messages.error(request, 'Form is not valid. Phone number must be in format +380*********')
+        
+    return VolunteerForm()
 
 def get_subscriber_by_uid(uidb64: str) -> Subscriber:
     """ Returns Subcriber by uidb64 decoding """

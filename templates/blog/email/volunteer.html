@@ -3,13 +3,14 @@
 
 {% autoescape off %}
 
-<p>Інформація про претендента у команду</p>
+<p>Інформація про волонтера</p>
 <p>
     Повне ім'я: {{ full_name }}<br>
+    Дата народження {{ dob }}<br>
+    Місто {{ city }}<br>
     E-mail: {{ email }}<br>
-    Рівень освіти: {{ education_level }}<br>
-    Сфера експертизи: {{ expertise_area }}<br>
-    Очікування: {{ expectations }}<br>
+    Номер телефону: {{ phone }}<br>
+    Сфера занятості: {{ employment }}<br>
 </p>
 
 {% endautoescape %}

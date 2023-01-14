@@ -325,3 +325,7 @@ body {
 /*footer{
     margin-top: 0px;
 }*/
+
+.card-img-top{
+    padding: 10px;
+}

@@ -50,6 +50,7 @@ INSTALLED_APPS = [
     'ckeditor_uploader',
     'cloudinary_storage',
     'cloudinary',
+    "phonenumber_field",
 ]
 
 MIDDLEWARE = [
@@ -171,10 +172,10 @@ DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 # Emailing settings
 EMAIL_BACKEND = 'django_smtp_ssl.SSLEmailBackend'
 EMAIL_HOST = 'smtp.dreamhost.com'
-DEFAULT_FROM_EMAIL = 'info@ergosum-europa.eu'
-EMAIL_FROM = 'info@ergosum-europa.eu'
-EMAIL_HOST_USER = 'info@ergosum-europa.eu'
-EMAIL_HOST_PASSWORD = ''
+DEFAULT_FROM_EMAIL = os.getenv('EMAIL_FROM')
+EMAIL_FROM = os.getenv('EMAIL_FROM')
+EMAIL_HOST_USER = os.getenv('EMAIL_FROM')
+EMAIL_HOST_PASSWORD = os.getenv('EMAIL_HOST_PASSWORD')
 EMAIL_PORT = 465
 EMAIL_USE_TLS = True
 
