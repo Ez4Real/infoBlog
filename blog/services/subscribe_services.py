@@ -42,7 +42,7 @@ def get_volunteer_form(request: HttpRequest) -> VolunteerForm:
         form = VolunteerForm(request.POST)
         if form.is_valid():
             send_volunteer_message(request, form, settings.EMAIL_FROM)
-        else: messages.error(request, 'Form is not valid. Phone number must be in format +380*********')
+        else: messages.error(request, 'Form is not valid. Check if you typed phone correctly.')
         
     return VolunteerForm()
 

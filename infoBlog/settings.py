@@ -50,7 +50,7 @@ INSTALLED_APPS = [
     'ckeditor_uploader',
     'cloudinary_storage',
     'cloudinary',
-    "phonenumber_field",
+    'phonenumber_field',
 ]
 
 MIDDLEWARE = [
