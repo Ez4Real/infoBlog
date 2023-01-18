@@ -67,8 +67,9 @@ class VolunteerForm(forms.Form):
     email = forms.EmailField(label='E-mail',
                              max_length=100,
                              widget=forms.EmailInput(attrs={'type': 'email', 'class': 'form-control'}))
-    # phone = PhoneNumberField(label=_('Phone'),
-    #                          widget=PhoneNumberPrefixWidget(initial='UA', attrs={'class': 'form-control'}))
+    phone = PhoneNumberField(label=_('Phone'),
+                             widget=PhoneNumberPrefixWidget(initial='UA', attrs={'class': 'form-control'}))
     employment = forms.CharField(label=('What do you do in life?'),
                                  max_length=600,
-                                 widget=forms.Textarea(attrs={'type': 'text', 'class': 'form-control', 'style': 'max-height: 160px; width: 100%;'}))
+                                 widget=forms.Textarea(attrs={'type': 'text','class': 'form-control', 'style': 'max-height: 160px; width: 100%;'}))
+    
