@@ -4,11 +4,9 @@
     {% if forloop.first %}
         {% include 'include/cards/card_big.html' %}
     {% else %}
-        <div class="row row-cols-1 row-cols-md-3 g-4">
 
-            {% include 'include/cards/card_home_page.html' %}
+        {% include 'include/cards/card_small.html' %}
 
-        </div>
     {% endif %}
 {% endfor %}
 {% endif %}

@@ -1,9 +1,9 @@
 {% load i18n %}
 <ul class="navbar-nav sb-2 me-auto order-1 cronis-nav-anime col justify-content-between " style="padding-right:20px;">
-    <li><a href="{% url 'events' %}" class="nav-link text-white">{% trans "Events" %}</a></li>
-    <li><a href="{% url 'news' %}" class="nav-link text-white">{% trans "News" %}</a></li>
+    <li><a href="{% url 'events' %}" class="nav-link">{% trans "Events" %}</a></li>
+    <li><a href="{% url 'news' %}" class="nav-link">{% trans "News" %}</a></li>
     <li class="nav-item dropdown ">
-        <a class="nav-link dropdown-toggle text-white" href="#" id="navbarDropdownMenuLink"
+        <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownMenuLink"
            role="button" data-bs-toggle="dropdown" aria-expanded="false">
             {% trans "Research" %}
         </a>
@@ -14,10 +14,10 @@
             <li><a class="dropdown-item" href="{% url 'annual_report' %}">{% trans "Annual report" %}</a></li>
         </ul>
     </li>
-    <li><a href="{% url 'blog' %}" class="nav-link text-white">{% trans "Blog" %}</a></li>
-    <li><a href="{% url 'op_eds' %}" class="nav-link text-white">{% trans "Op-eds" %}</a></li>
+    <li><a href="{% url 'blog' %}" class="nav-link">{% trans "Blog" %}</a></li>
+    <li><a href="{% url 'op_eds' %}" class="nav-link">{% trans "Op-eds" %}</a></li>
     <li class="nav-item dropdown ">
-        <a class="nav-link dropdown-toggle text-white" href="#" id="navbarDropdownMenuLink"
+        <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownMenuLink"
            role="button" data-bs-toggle="dropdown" aria-expanded="false">
             {% trans "Policy areas" %}
         </a>
@@ -34,7 +34,7 @@
         </ul>
     </li>
     <li class="nav-item dropdown ">
-        <a class="nav-link dropdown-toggle text-white" href="#" id="navbarDropdownMenuLink"
+        <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownMenuLink"
            role="button" data-bs-toggle="dropdown" aria-expanded="false">
             {% trans "Media" %}
         </a>

@@ -188,7 +188,7 @@ def culture(request):
 def analytics(request):
     return render(request,
                   template_name='blog/research/analytics.html',
-                  context=get_news_type_context('Events',
+                  context=get_news_type_context('Analytics',
                                                 request)
                   )
 
