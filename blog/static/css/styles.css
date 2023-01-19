@@ -359,14 +359,20 @@ body{
 }
 
 header{
-    background-color: #576fadf3;
-    backdrop-filter: blur(3px);
+    /* background-color: #576fad00; */
+    /* backdrop-filter: blur(3px); */
+    background: url("https://res.cloudinary.com/infoblog567/image/upload/v1674141572/static/header_logo/i01_european-union-metallic-flag-textured-flag-grunge-flag_559531-11180_frh5x1.jpg") no-repeat center center fixed;
+    -webkit-background-size: cover;
+    -moz-background-size: cover;
+    -o-background-size: cover;
+    background-size: cover;
+    width: 100%;
 }
 
 .bg-header{
     width: 100%;
-    height: 141.6px;
-    background-color: #576fad;
+    height: 132px;
+    
     position: absolute;
 }
 
