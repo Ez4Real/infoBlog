@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2023-01-19 23:05+0200\n"
+"POT-Creation-Date: 2023-01-20 22:01+0200\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -68,6 +68,10 @@ msgstr ""
 
 #: .\blog\forms.py:70
 msgid "Phone"
+msgstr ""
+
+#: .\blog\forms.py:72
+msgid "What do you do in life?"
 msgstr ""
 
 #: .\blog\models.py:24
@@ -160,7 +164,7 @@ msgstr ""
 msgid "Key Documents"
 msgstr ""
 
-#: .\templates\blog\about\mission.html:7
+#: .\templates\blog\about\mission.html:8
 #: .\templates\include\header\header_top.html:10
 msgid "Mission"
 msgstr ""
@@ -169,12 +173,12 @@ msgstr ""
 msgid "Our team"
 msgstr ""
 
-#: .\templates\blog\about\vision.html:7
+#: .\templates\blog\about\vision.html:8
 #: .\templates\include\header\header_top.html:11
 msgid "Vision"
 msgstr ""
 
-#: .\templates\blog\base_generic.html:61 .\templates\blog\base_generic.html:96
+#: .\templates\blog\base_generic.html:61 .\templates\blog\base_generic.html:92
 #: .\templates\include\header\search.html:4
 msgid "Search"
 msgstr ""
@@ -184,8 +188,8 @@ msgstr ""
 msgid "Blog"
 msgstr ""
 
-#: .\templates\blog\donate\all_donate(old).html:7
-#: .\templates\blog\donate\all_donate.html:7
+#: .\templates\blog\donate\all_donate(old).html:8
+#: .\templates\blog\donate\all_donate.html:8
 #: .\templates\include\header\header_top.html:30
 msgid "Donate"
 msgstr ""
@@ -216,19 +220,19 @@ msgstr ""
 msgid "General members"
 msgstr ""
 
-#: .\templates\blog\join_us\join_team.html:7
-#: .\templates\blog\join_us\join_team.html:16
+#: .\templates\blog\join_us\join_team.html:8
+#: .\templates\blog\join_us\join_team.html:17
 #: .\templates\include\header\header_top.html:24
 msgid "Join team"
 msgstr ""
 
-#: .\templates\blog\join_us\join_team.html:59
-#: .\templates\blog\join_us\volunteer.html:73
+#: .\templates\blog\join_us\join_team.html:60
+#: .\templates\blog\join_us\volunteer.html:79
 msgid "Send"
 msgstr ""
 
-#: .\templates\blog\join_us\volunteer.html:8
-#: .\templates\blog\join_us\volunteer.html:29
+#: .\templates\blog\join_us\volunteer.html:9
+#: .\templates\blog\join_us\volunteer.html:30
 #: .\templates\include\header\header_top.html:26
 msgid "Volunteer"
 msgstr ""
@@ -312,8 +316,16 @@ msgstr ""
 msgid "Subscribe"
 msgstr ""
 
-#: .\templates\include\footer.html:65
+#: .\templates\include\footer.html:64
 msgid "Contacts"
+msgstr ""
+
+#: .\templates\include\footer.html:91
+msgid "Locate"
+msgstr ""
+
+#: .\templates\include\footer.html:93
+msgid "Lobanovskogo Avenue 4a, Kyiv, Ukraine"
 msgstr ""
 
 #: .\templates\include\header\header_bottom.html:8
