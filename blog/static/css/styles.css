@@ -74,13 +74,13 @@ nav{
     }
 
     .phone-volunteer input{
-        width: 338px !important;
+        width: 325px !important;
     }
 }
 
 @media (max-width: 768px) {
     .phone-volunteer input{
-        width: 218px !important;
+        width: 205px !important;
     }
 }
 
@@ -134,7 +134,7 @@ nav{
         width: 130px !important;;
     }
     .phone-volunteer input{
-        width: 283px !important;;
+        width: 271px !important;;
     }
 }
 
@@ -149,7 +149,7 @@ nav{
         width: 127px !important;;
     }
     .phone-volunteer input{
-        width: 236px !important;;
+        width: 224px !important;;
     }
 }
 
@@ -437,5 +437,5 @@ header{
 }
 
 .phone-volunteer input{
-    width:517px;
+    width:505px;
 }

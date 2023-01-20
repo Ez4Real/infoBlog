@@ -53,15 +53,17 @@
       </div>
 
       <div class="row">
-        <div class="col-md-6 group-control">
+        <div class="col-md-6 group-control align-self-center" style="height: 84px;">
           <label for="{{ volunteer_form.email.id_for_label }}">{{ volunteer_form.email.label }}</label>
+          <div class="row row-cols-2" style="padding: 7px 12px 0;">
           {{ volunteer_form.email }}
+          </div>
         </div>
 
 
         <div class="col-md-6 group-control">
           <label for="{{ volunteer_form.phone.id_for_label }}">{{ volunteer_form.phone.label }}</label>
-          <div class="row row-cols-2 phone-volunteer">
+          <div class="row row-cols-2 phone-volunteer" style="padding: 7px 12px 0;">
           {{ volunteer_form.phone }}
           </div>
         </div>
