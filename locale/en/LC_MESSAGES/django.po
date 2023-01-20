@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2022-12-06 20:32+0200\n"
+"POT-Creation-Date: 2023-01-19 23:05+0200\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -27,35 +27,47 @@ msgid "High"
 msgstr ""
 
 #: .\blog\forms.py:29
-msgid "Doctor or candidate of sciences"
+msgid "Doctor or PhD"
 msgstr ""
 
 #: .\blog\forms.py:30
 msgid "Other"
 msgstr ""
 
-#: .\blog\forms.py:33
+#: .\blog\forms.py:32 .\blog\forms.py:55
 msgid "First name"
 msgstr ""
 
-#: .\blog\forms.py:34
+#: .\blog\forms.py:35 .\blog\forms.py:58
 msgid "Last name"
 msgstr ""
 
-#: .\blog\forms.py:36
+#: .\blog\forms.py:41
 msgid "Your level of education"
 msgstr ""
 
-#: .\blog\forms.py:37
+#: .\blog\forms.py:44
 msgid "Briefly describe your area of expertise"
 msgstr ""
 
-#: .\blog\forms.py:39
+#: .\blog\forms.py:47
 msgid "What do you expect from cooperation with us?"
 msgstr ""
 
-#: .\blog\forms.py:41
+#: .\blog\forms.py:50
 msgid "Resume"
+msgstr ""
+
+#: .\blog\forms.py:62
+msgid "Date of Birth"
+msgstr ""
+
+#: .\blog\forms.py:64
+msgid "City"
+msgstr ""
+
+#: .\blog\forms.py:70
+msgid "Phone"
 msgstr ""
 
 #: .\blog\models.py:24
@@ -70,7 +82,7 @@ msgstr ""
 msgid "Policy area name"
 msgstr ""
 
-#: .\blog\models.py:46 .\templates\include\header\header_bottom.html:23
+#: .\blog\models.py:46 .\templates\include\header\header_bottom.html:22
 msgid "Policy areas"
 msgstr ""
 
@@ -119,41 +131,37 @@ msgstr ""
 msgid "News"
 msgstr ""
 
-#: .\blog\models.py:155 .\infoBlog\settings.py:136
+#: .\blog\models.py:156 .\infoBlog\settings.py:136
 msgid "English"
 msgstr ""
 
-#: .\blog\models.py:156 .\infoBlog\settings.py:135
+#: .\blog\models.py:157 .\infoBlog\settings.py:135
 msgid "Ukrainian"
 msgstr ""
 
-#: .\blog\models.py:159
+#: .\blog\models.py:160
 msgid "Subscribers e-mails"
 msgstr ""
 
-#: .\blog\models.py:193
+#: .\blog\models.py:196
 msgid "Video content"
 msgstr ""
 
-#: .\infoBlog\settings.py:206
+#: .\infoBlog\settings.py:204
 msgid "European Research Group Of Support for Ukrainian Membership – ERGOSUM"
 msgstr ""
 
-#: .\infoBlog\urls.py:9
-msgid "admin/"
-msgstr ""
-
 #: .\templates\blog\about\board.html:8
-#: .\templates\include\header\header_top.html:14
+#: .\templates\include\header\header_top.html:15
 msgid "Board"
 msgstr ""
 
-#: .\templates\blog\about\key_doc.html:8
+#: .\templates\blog\about\key_doc.html:11
 msgid "Key Documents"
 msgstr ""
 
-#: .\templates\blog\about\mission.html:8
-#: .\templates\include\header\header_top.html:9
+#: .\templates\blog\about\mission.html:7
+#: .\templates\include\header\header_top.html:10
 msgid "Mission"
 msgstr ""
 
@@ -161,23 +169,24 @@ msgstr ""
 msgid "Our team"
 msgstr ""
 
-#: .\templates\blog\about\vision.html:8
-#: .\templates\include\header\header_top.html:10
+#: .\templates\blog\about\vision.html:7
+#: .\templates\include\header\header_top.html:11
 msgid "Vision"
 msgstr ""
 
-#: .\templates\blog\base_generic.html:61 .\templates\blog\base_generic.html:91
+#: .\templates\blog\base_generic.html:61 .\templates\blog\base_generic.html:96
 #: .\templates\include\header\search.html:4
 msgid "Search"
 msgstr ""
 
 #: .\templates\blog\blog.html:10
-#: .\templates\include\header\header_bottom.html:18
+#: .\templates\include\header\header_bottom.html:17
 msgid "Blog"
 msgstr ""
 
-#: .\templates\blog\donate\all_donate.html:8
-#: .\templates\include\header\header_top.html:29
+#: .\templates\blog\donate\all_donate(old).html:7
+#: .\templates\blog\donate\all_donate.html:7
+#: .\templates\include\header\header_top.html:30
 msgid "Donate"
 msgstr ""
 
@@ -186,89 +195,91 @@ msgstr ""
 msgid "Events"
 msgstr ""
 
-#: .\templates\blog\homepage.html:63
+#: .\templates\blog\homepage.html:70
 #: .\templates\blog\research\analytics.html:10
 #: .\templates\include\header\header_bottom.html:11
 msgid "Analytics"
 msgstr ""
 
-#: .\templates\blog\homepage.html:79 .\templates\blog\op_eds.html:10
-#: .\templates\include\header\header_bottom.html:19
+#: .\templates\blog\homepage.html:84 .\templates\blog\op_eds.html:10
+#: .\templates\include\header\header_bottom.html:18
 msgid "Op-eds"
 msgstr ""
 
-#: .\templates\blog\homepage.html:96 .\templates\blog\research\opinion.html:10
-#: .\templates\include\header\header_bottom.html:15
+#: .\templates\blog\homepage.html:99 .\templates\blog\research\opinion.html:10
+#: .\templates\include\header\header_bottom.html:12
 msgid "Opinion"
 msgstr ""
 
 #: .\templates\blog\join_us\general_members.html:8
-#: .\templates\include\header\header_top.html:13
+#: .\templates\include\header\header_top.html:14
 msgid "General members"
 msgstr ""
 
 #: .\templates\blog\join_us\join_team.html:7
-#: .\templates\include\header\header_top.html:23
+#: .\templates\blog\join_us\join_team.html:16
+#: .\templates\include\header\header_top.html:24
 msgid "Join team"
 msgstr ""
 
-#: .\templates\blog\join_us\join_team.html:23
-#: .\templates\include\footer.html:39 .\templates\include\footer.html:65
-msgid "Subscribe"
+#: .\templates\blog\join_us\join_team.html:59
+#: .\templates\blog\join_us\volunteer.html:73
+msgid "Send"
 msgstr ""
 
-#: .\templates\blog\join_us\volunteering.html:7
-#: .\templates\include\header\header_top.html:25
-msgid "Volunteering"
+#: .\templates\blog\join_us\volunteer.html:8
+#: .\templates\blog\join_us\volunteer.html:29
+#: .\templates\include\header\header_top.html:26
+msgid "Volunteer"
 msgstr ""
 
 #: .\templates\blog\policy_areas\culture.html:10
-#: .\templates\include\header\header_bottom.html:34
+#: .\templates\include\header\header_bottom.html:33
 msgid "Culture"
 msgstr ""
 
 #: .\templates\blog\policy_areas\democracy.html:10
-#: .\templates\include\header\header_bottom.html:32
+#: .\templates\include\header\header_bottom.html:31
 msgid "Democracy"
 msgstr ""
 
 #: .\templates\blog\policy_areas\economics.html:10
-#: .\templates\include\header\header_bottom.html:29
+#: .\templates\include\header\header_bottom.html:28
 msgid "Economics"
 msgstr ""
 
 #: .\templates\blog\policy_areas\education.html:10
-#: .\templates\include\header\header_bottom.html:31
+#: .\templates\include\header\header_bottom.html:30
 msgid "Education"
 msgstr ""
 
 #: .\templates\blog\policy_areas\foreign_policy.html:10
-#: .\templates\include\header\header_bottom.html:26
+#: .\templates\include\header\header_bottom.html:25
 msgid "Foreign policy"
 msgstr ""
 
 #: .\templates\blog\policy_areas\human_rights.html:10
-#: .\templates\include\header\header_bottom.html:33
+#: .\templates\include\header\header_bottom.html:32
 msgid "Human rights"
 msgstr ""
 
 #: .\templates\blog\policy_areas\internal_policy.html:10
-#: .\templates\include\header\header_bottom.html:27
+#: .\templates\include\header\header_bottom.html:26
 msgid "Internal policy"
 msgstr ""
 
 #: .\templates\blog\policy_areas\security.html:10
-#: .\templates\include\header\header_bottom.html:30
+#: .\templates\include\header\header_bottom.html:29
 msgid "Security"
 msgstr ""
 
 #: .\templates\blog\research\annual_report.html:9
-#: .\templates\include\header\header_bottom.html:13
+#: .\templates\include\header\header_bottom.html:14
 msgid "Annual report"
 msgstr ""
 
 #: .\templates\blog\research\index_ergosum.html:11
-#: .\templates\include\header\header_bottom.html:14
+#: .\templates\include\header\header_bottom.html:13
 msgid "Index ERGOSUM"
 msgstr ""
 
@@ -297,34 +308,42 @@ msgstr ""
 msgid "Enter"
 msgstr ""
 
+#: .\templates\include\footer.html:39
+msgid "Subscribe"
+msgstr ""
+
+#: .\templates\include\footer.html:65
+msgid "Contacts"
+msgstr ""
+
 #: .\templates\include\header\header_bottom.html:8
 msgid "Research"
 msgstr ""
 
-#: .\templates\include\header\header_bottom.html:40
+#: .\templates\include\header\header_bottom.html:39
 msgid "Media"
 msgstr ""
 
-#: .\templates\include\header\header_bottom.html:43
+#: .\templates\include\header\header_bottom.html:42
 msgid "Podcasts"
 msgstr ""
 
-#: .\templates\include\header\header_bottom.html:44
+#: .\templates\include\header\header_bottom.html:43
 msgid "Videos"
 msgstr ""
 
-#: .\templates\include\header\header_top.html:6
+#: .\templates\include\header\header_top.html:7
 msgid "About"
 msgstr ""
 
-#: .\templates\include\header\header_top.html:11
+#: .\templates\include\header\header_top.html:12
 msgid "Key-documents"
 msgstr ""
 
-#: .\templates\include\header\header_top.html:12
+#: .\templates\include\header\header_top.html:13
 msgid "Team"
 msgstr ""
 
-#: .\templates\include\header\header_top.html:20
+#: .\templates\include\header\header_top.html:21
 msgid "Join us"
 msgstr ""

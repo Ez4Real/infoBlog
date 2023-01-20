@@ -236,11 +236,16 @@ body {
 }
 
 .nav-link{
-  transition: all .3s ease;
+    color: #fff;
+    transition: all .3s ease;
 }
 .nav-link:hover{
     color: #fcff55 !important;
     transform: translate(0px,-7px);
+}
+
+.nav-link:focus{
+    color: #fcff55 !important;
 }
 
 .my-container {
@@ -348,6 +353,7 @@ body {
 
 .header-bg{
     background-color: #576fad;
+
 }
 
 footer{
@@ -361,18 +367,27 @@ body{
 header{
     /* background-color: #576fad00; */
     /* backdrop-filter: blur(3px); */
-    background: url("https://res.cloudinary.com/infoblog567/image/upload/v1674141572/static/header_logo/i01_european-union-metallic-flag-textured-flag-grunge-flag_559531-11180_frh5x1.jpg") no-repeat center center fixed;
-    -webkit-background-size: cover;
-    -moz-background-size: cover;
-    -o-background-size: cover;
-    background-size: cover;
+
     width: 100%;
+}
+
+
+.bg-header::before{
+    content: '';
+    height: 100%;
+    width: 100%;
+    position: absolute;
+    background-color: rgba(0,0,0,0.3);
 }
 
 .bg-header{
     width: 100%;
-    height: 132px;
-    
+    height: 100%;
+    background: url("https://res.cloudinary.com/infoblog567/image/upload/v1674141572/static/header_logo/desktop-1920x1080_1_1_k6azgx.jpg") no-repeat center center fixed;
+    -webkit-background-size: cover;
+    -moz-background-size: cover;
+    -o-background-size: cover;
+    background-size: cover;
     position: absolute;
 }
 
@@ -380,7 +395,7 @@ header{
     color: #000;
 }
 
-.nav-link{
+.navbar-dark .navbar-nav .nav-link{
     color: #fff;
 }
 

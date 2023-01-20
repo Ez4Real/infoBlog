@@ -28,7 +28,6 @@ menu_btn_open.addEventListener("click", () => {
   sb2.classList.toggle("ps-3");
   sb_search.classList.toggle("px-3");
   main_dark.classList.toggle("site-dark");
-  logo_main.classList.toggle("site-dark");
 });
 
 menu_btn_close.addEventListener("click", () => {
