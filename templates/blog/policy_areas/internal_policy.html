@@ -10,7 +10,9 @@
         <h1>{% trans "Internal policy" %}</h1>
     </div>
 
-    {% include 'include/cards_policy_areas.html' %}
+    <div class="row row-cols-1 row-cols-md-3 g-4">
+        {% include 'include/cards_policy_areas.html' %}
+    </div>
 
     {% include 'include/pagination.html' %}
 
