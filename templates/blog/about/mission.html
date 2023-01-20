@@ -3,7 +3,8 @@
 
 {% block content %}
 <div class="text-center join-us-foto d-flex align-items-center justify-content-center">
-    {% include 'include/media/bg_photo_mission.html' %}
+    <img src="https://images.unsplash.com/photo-1447078806655-40579c2520d6?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=2070&q=80" class="d-block mx-auto w-100 h-100 ob-cover">
+    <div class="bg-dark-for-photo w-100 h-100"></div>
     <p class="h1 text-white join-us-text"> {% trans "Mission" %}</p>
 </div>
 <div class="p-3"></div>
@@ -24,8 +25,7 @@
         </div>
         <div class="col">
             <div class="misio-img">
-                <img src="https://images.unsplash.com/photo-1447078806655-40579c2520d6?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=2070&q=80"
-                     class="img-thumbnail" alt="">
+                {% include 'include/media/bg_photo_mission.html' %}
             </div>
         </div>
     </div>

@@ -2,80 +2,84 @@
 {% load i18n %}
 
 {% block content %}
-    <div class="text-center join-us-foto d-flex align-items-center justify-content-center">
-      {% include 'include/media/bg_photo_vision.html' %}
-      <p class="h1 text-white join-us-text">
-        {% trans "Volunteer" %}
-      </p>
-    </div>
+  <div class="text-center join-us-foto d-flex align-items-center justify-content-center">
+    <img src="https://images.unsplash.com/photo-1447078806655-40579c2520d6?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=2070&q=80" class="d-block mx-auto w-100 h-100 ob-cover">
+    <div class="bg-dark-for-photo w-100 h-100"></div>
+    <p class="h1 text-white join-us-text">
+      {% trans "Volunteer" %}
+    </p>
+  </div>
 
 <div class="p-3"></div>
 <div class="container">
-    <p class="card-text">
-        {% if CURRENT_LANGUAGE == "uk" %}
+  <p class="card-text">
+    {% if CURRENT_LANGUAGE == "uk" %}
 
-            {% include 'translates/uk/volunteer.html' %}
+      {% include 'translates/uk/volunteer.html' %}
 
-        {% else %}
+    {% else %}
 
-            {% include 'translates/en/volunteer.html' %}
+      {% include 'translates/en/volunteer.html' %}
 
-        {% endif %}
-    </p>
-
-    {% if volunteer_form %}
-    <form class="main-join-team" method="post" enctype="multipart/form-data">
-        <div class="position-relative">
-          <h1 class="">{% trans "Volunteer" %}</h1>
-          {% csrf_token %}
-          <div class="row">
-            <div class="col-md-6 form-group">
-              <label for="{{ volunteer_form.first_name.id_for_label }}">{{ volunteer_form.first_name.label }}</label>
-              {{ volunteer_form.first_name }}
-            </div>
-
-            <div class="col-md-6 form-group">
-              <label for="{{ volunteer_form.last_name.id_for_label }}">{{ volunteer_form.last_name.label }}</label>
-              {{ volunteer_form.last_name }}
-            </div>
-          </div>
-          <div class="row">
-            <div class="col-md-6 group-control">
-              <label for="{{ volunteer_form.dob.id_for_label }}">{{ volunteer_form.dob.label }}</label>
-              {{ volunteer_form.dob }}
-            </div>
-
-            <div class="col-md-6 group-control">
-              <label for="{{ volunteer_form.city.id_for_label }}">{{ volunteer_form.city.label }}</label>
-              {{ volunteer_form.city }}
-            </div>
-          </div>
-
-          <div class="row">
-            <div class="col-md-6 group-control">
-              <label for="{{ volunteer_form.email.id_for_label }}">{{ volunteer_form.email.label }}</label>
-              {{ volunteer_form.email }}
-            </div>
-
-            <div class="col-md-6 group-control">
-              <label for="{{ volunteer_form.phone.id_for_label }}">{{ volunteer_form.phone.label }}</label>
-              {{ volunteer_form.phone }}
-            </div>
-          </div>
-
-          <div class="col-md-12 group-control">
-            <label for="{{ volunteer_form.employment.id_for_label }}">{{ volunteer_form.employment.label }}</label>
-            {{ volunteer_form.employment }}
-          </div>
-
-          <div class="col-md-12 group-control align-self-end text-end mt-1">
-            <button type="submit" name="volunteer" class="form-group btn btn-primary ">
-                {% trans 'Send' %}
-            </button>
-          </div>
-
-        </div>
-    </form>
     {% endif %}
+  </p>
+
+  {% if volunteer_form %}
+  <form class="main-join-team" method="post" enctype="multipart/form-data">
+    <div class="position-relative">
+      <h1 class="">{% trans "Volunteer" %}</h1>
+      {% csrf_token %}
+      <div class="row">
+        <div class="col-md-6 form-group">
+          <label for="{{ volunteer_form.first_name.id_for_label }}">{{ volunteer_form.first_name.label }}</label>
+          {{ volunteer_form.first_name }}
+        </div>
+
+        <div class="col-md-6 form-group">
+          <label for="{{ volunteer_form.last_name.id_for_label }}">{{ volunteer_form.last_name.label }}</label>
+          {{ volunteer_form.last_name }}
+        </div>
+      </div>
+      <div class="row">
+        <div class="col-md-6 group-control">
+          <label for="{{ volunteer_form.dob.id_for_label }}">{{ volunteer_form.dob.label }}</label>
+          {{ volunteer_form.dob }}
+        </div>
+
+        <div class="col-md-6 group-control">
+          <label for="{{ volunteer_form.city.id_for_label }}">{{ volunteer_form.city.label }}</label>
+          {{ volunteer_form.city }}
+        </div>
+      </div>
+
+      <div class="row">
+        <div class="col-md-6 group-control">
+          <label for="{{ volunteer_form.email.id_for_label }}">{{ volunteer_form.email.label }}</label>
+          {{ volunteer_form.email }}
+        </div>
+
+
+        <div class="col-md-6 group-control">
+          <label for="{{ volunteer_form.phone.id_for_label }}">{{ volunteer_form.phone.label }}</label>
+          <div class="row row-cols-2 phone-volunteer">
+          {{ volunteer_form.phone }}
+          </div>
+        </div>
+      </div>
+
+      <div class="col-md-12 group-control">
+        <label for="{{ volunteer_form.employment.id_for_label }}">{{ volunteer_form.employment.label }}</label>
+        {{ volunteer_form.employment }}
+      </div>
+
+      <div class="col-md-12 group-control align-self-end text-end mt-1">
+        <button type="submit" name="volunteer" class="form-group btn btn-primary ">
+            {% trans 'Send' %}
+        </button>
+      </div>
+
+    </div>
+  </form>
+  {% endif %}
 </div>
 {% endblock content %}

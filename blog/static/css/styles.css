@@ -72,6 +72,16 @@ nav{
         margin-top: -5px!important;
         margin-bottom: -5px!important;
     }
+
+    .phone-volunteer input{
+        width: 338px !important;
+    }
+}
+
+@media (max-width: 768px) {
+    .phone-volunteer input{
+        width: 218px !important;
+    }
 }
 
 @media (max-width: 991px) {
@@ -120,6 +130,12 @@ nav{
         height: 100px;
         width: 100px;
     }
+    .phone-volunteer select{
+        width: 130px !important;;
+    }
+    .phone-volunteer input{
+        width: 283px !important;;
+    }
 }
 
 
@@ -129,6 +145,12 @@ nav{
         height: 95px;
         width: 95px;
     }
+    .phone-volunteer select{
+        width: 127px !important;;
+    }
+    .phone-volunteer input{
+        width: 236px !important;;
+    }
 }
 
 @media (max-width: 320px) {
@@ -136,6 +158,12 @@ nav{
     .logo-side{
         height: 85px;
         width: 85px;
+    }
+    .phone-volunteer select{
+        width: 308px !important;;
+    }
+    .phone-volunteer input{
+        width: 308px !important;;
     }
 }
 
@@ -400,6 +428,14 @@ header{
 }
 
 .bg-dark-for-photo{
-    background: rgba(0, 0, 0, 0.205);
+    /* background: rgba(0, 0, 0, 0.205); */
     position: absolute;
+}
+
+.phone-volunteer select{
+    width:130px;
+}
+
+.phone-volunteer input{
+    width:517px;
 }
