@@ -5,7 +5,7 @@
 <div class="p-3"></div>
 <div class="container">
 
-    <div class="shadow p-3 mb-5 bg-body rounded w-100 text-center row row-cols-3">
+    <div class="shadow p-3 mb-5 bg-body rounded w-100 text-center row row-cols-3 key-doc">
 
         <div class="text-center col-12">
             <h1> {% trans "Key Documents" %}</h1>
@@ -14,16 +14,14 @@
         <div class="pb-3 pt-2 key-doc-link">
             {% if CURRENT_LANGUAGE == "uk" %}
 
-            <a href="https://eur-lex.europa.eu/EN/legal-content/glossary/accession-criteria-copenhagen-criteria.html">
-                <img class="img-fluid" src="https://res.cloudinary.com/infoblog567/image/upload/v1674063960/static/key-dock/ua/Ergo_copenhagen_ukr_kpq6a7.jpg">
-                <p>1. Accession criteria (Copenhagen criteria)</p>
+            <a target="_blank" href="https://eur-lex.europa.eu/EN/legal-content/glossary/accession-criteria-copenhagen-criteria.html">
+                <img class="img-fluid" src="https://res.cloudinary.com/infoblog567/image/upload/v1674394725/static/key-dock/ua/1._Ergo_copenhagen_ukr_1_qoyi92.jpg">
             </a>
 
             {% else %}
 
-            <a href="https://eur-lex.europa.eu/EN/legal-content/glossary/accession-criteria-copenhagen-criteria.html">
-                <img class="img-fluid" src="https://res.cloudinary.com/infoblog567/image/upload/v1674064220/static/key-dock/en/Ergo_copenhagen_eng_iycygy.jpg">
-                <p>1. Accession criteria (Copenhagen criteria)</p>
+            <a target="_blank" href="https://eur-lex.europa.eu/EN/legal-content/glossary/accession-criteria-copenhagen-criteria.html">
+                <img class="img-fluid" src="https://res.cloudinary.com/infoblog567/image/upload/v1674394800/static/key-dock/en/1._Ergo_copenhagen_eng_1_kp0bdk.jpg">
             </a>
 
             {% endif %}
@@ -31,32 +29,173 @@
         </div>
 
         <div class="pb-3 pt-2 key-doc-link">
-            <a href="https://eur-lex.europa.eu/legal-content/EN/ALL/?uri=CELEX%3A22014A0529%2801%29">
-                <img class="img-fluid" src="https://res.cloudinary.com/infoblog567/image/upload/v1674140965/static/bg_foto/mission_yd2glu.jpg">
-                <p>2. Association Agreement between the European Union and its Member States, of the one part, and Ukraine, of
-                    the other part</p>
+            {% if CURRENT_LANGUAGE == "uk" %}
+
+            <a target="_blank" href="https://www.kmu.gov.ua/storage/app/sites/1/ugoda-pro-asociaciyu/00ukraine-euassociationagreementbody.pdf">
+                <img class="img-fluid" src="https://res.cloudinary.com/infoblog567/image/upload/v1674394728/static/key-dock/ua/2._Assosiation_ukr_v5ugxt.jpg">
             </a>
+
+            {% else %}
+
+            <a target="_blank" href="https://eur-lex.europa.eu/legal-content/EN/TXT/PDF/?uri=CELEX:22014A0529(01)&amp;from=EN">
+                <img class="img-fluid" src="https://res.cloudinary.com/infoblog567/image/upload/v1674394800/static/key-dock/en/2._Assosiation_eng_e9urin.jpg">
+            </a>
+
+            {% endif %}
+
         </div>
 
         <div class="pb-3 pt-2 key-doc-link">
-            <a href="http://ec.europa.eu/world/enp/pdf/action_plans/ukraine_enp_ap_final_en.pdf">
-                <img class="img-fluid" src="https://res.cloudinary.com/infoblog567/image/upload/v1674140964/static/bg_foto/vision_s8yq4v.jpg">
-                <p>3. Council of the European Union, “EU/Ukraine Action Plan”,</p>
+            {% if CURRENT_LANGUAGE == "uk" %}
+
+            <a target="_blank" href="https://rm.coe.int/council-of-europe-action-plan-for-ukraine-web/1680a0b0cc">
+                <img class="img-fluid" src="https://res.cloudinary.com/infoblog567/image/upload/v1674394726/static/key-dock/ua/3._action_plan_ukr_beby31.jpg">
             </a>
+
+            {% else %}
+
+            <a target="_blank" href="https://rm.coe.int/council-of-europe-action-plan-for-ukraine-web/1680a0b0cc">
+                <img class="img-fluid" src="https://res.cloudinary.com/infoblog567/image/upload/v1674394796/static/key-dock/en/3._action_plan_eng_rei1qf.jpg">
+            </a>
+
+            {% endif %}
+
         </div>
 
         <div class="pb-3 pt-2 key-doc-link">
-            <a href="https://eur-lex.europa.eu/legal-content/EN/TXT/?uri=LEGISSUM:l14536">
-                <img class="img-fluid" src="https://res.cloudinary.com/infoblog567/image/upload/v1674140956/static/bg_foto/anual_gir2mj.jpg">
-                <p>4. Treaty on European Union — Joining the EU</p>
+            {% if CURRENT_LANGUAGE == "uk" %}
+
+            <a target="_blank" href="https://zakon.rada.gov.ua/laws/show/994_017#Text">
+                <img class="img-fluid" src="https://res.cloudinary.com/infoblog567/image/upload/v1674394727/static/key-dock/ua/4._Treaty_on_European_Union_ukr_svoqr1.jpg">
             </a>
+
+            {% else %}
+
+            <a target="_blank" href="https://eur-lex.europa.eu/legal-content/EN/TXT/?uri=LEGISSUM:l14536">
+                <img class="img-fluid" src="https://res.cloudinary.com/infoblog567/image/upload/v1674394796/static/key-dock/en/4_mzit0t.jpg">
+            </a>
+
+            {% endif %}
+
         </div>
 
         <div class="pb-3 pt-2 key-doc-link">
-            <a href="https://eur-lex.europa.eu/legal-content/EN/TXT/?uri=LEGISSUM:l14536">
-                <img class="img-fluid" src="https://res.cloudinary.com/infoblog567/image/upload/v1674064346/static/bg_foto/index_qsbs8t.png">
-                <p>5. Text</p>
+            {% if CURRENT_LANGUAGE == "uk" %}
+
+            <a target="_blank" href="https://neighbourhood-enlargement.ec.europa.eu/system/files/2022-01/C_2021_9351_F1_ANNEX_EN_V2_P1_1618650.PDF">
+                <img class="img-fluid" src="https://res.cloudinary.com/infoblog567/image/upload/v1674394728/static/key-dock/ua/5._na6bns.jpg">
             </a>
+
+            {% else %}
+
+            <a target="_blank" href="https://neighbourhood-enlargement.ec.europa.eu/system/files/2022-01/C_2021_9351_F1_ANNEX_EN_V2_P1_1618650.PDF">
+                <img class="img-fluid" src="https://res.cloudinary.com/infoblog567/image/upload/v1674394801/static/key-dock/en/5._Global_Europe_eng_k5qckm.jpg">
+            </a>
+
+            {% endif %}
+
+        </div>
+
+        <div class="pb-3 pt-2 key-doc-link">
+            {% if CURRENT_LANGUAGE == "uk" %}
+
+            <a target="_blank" href="https://www.consilium.europa.eu/en/press/press-releases/2022/06/23/european-council-conclusions-on-ukraine-the-membership-applications-of-ukraine-the-republic-of-moldova-and-georgia-western-balkans-and-external-relations-23-june-2022/">
+                <img class="img-fluid" src="https://res.cloudinary.com/infoblog567/image/upload/v1674394727/static/key-dock/ua/6._Conclusions_ukr_nm8ouv.jpg">
+            </a>
+
+            {% else %}
+
+            <a target="_blank" href="https://www.consilium.europa.eu/en/press/press-releases/2022/06/23/european-council-conclusions-on-ukraine-the-membership-applications-of-ukraine-the-republic-of-moldova-and-georgia-western-balkans-and-external-relations-23-june-2022/">
+                <img class="img-fluid" src="https://res.cloudinary.com/infoblog567/image/upload/v1674394799/static/key-dock/en/6._Conclusions_eng_ienfue.jpg">
+            </a>
+
+            {% endif %}
+
+        </div>
+
+        <div class="pb-3 pt-2 key-doc-link">
+            {% if CURRENT_LANGUAGE == "uk" %}
+
+            <a target="_blank" href="https://neighbourhood-enlargement.ec.europa.eu/system/files/2022-06/Ukraine%20Opinion%20and%20Annex.pdf">
+                <img class="img-fluid" src="https://res.cloudinary.com/infoblog567/image/upload/v1674394738/static/key-dock/ua/7._Commission_Opinion_ukr_trcg1a.jpg">
+            </a>
+
+            {% else %}
+
+            <a target="_blank" href="https://neighbourhood-enlargement.ec.europa.eu/system/files/2022-06/Ukraine%20Opinion%20and%20Annex.pdf">
+                <img class="img-fluid" src="https://res.cloudinary.com/infoblog567/image/upload/v1674394812/static/key-dock/en/7._Commission_Opinion_eng_i1d8qq.jpg">
+            </a>
+
+            {% endif %}
+
+        </div>
+
+        <div class="pb-3 pt-2 key-doc-link">
+            {% if CURRENT_LANGUAGE == "uk" %}
+
+            <a target="_blank" href="https://ccl.org.ua/posts/2021/11/hartiya-osnovnyh-prav-yevropejskogo-soyuzu/">
+                <img class="img-fluid" src="https://res.cloudinary.com/infoblog567/image/upload/v1674394740/static/key-dock/ua/8._Charter_ukr_qh0wrm.jpg">
+            </a>
+
+            {% else %}
+
+            <a target="_blank" href="https://eur-lex.europa.eu/legal-content/EN/TXT/PDF/?uri=CELEX:12016P/TXT&amp;from=EN">
+                <img class="img-fluid" src="https://res.cloudinary.com/infoblog567/image/upload/v1674394813/static/key-dock/en/8._u5gfmp.jpg">
+            </a>
+
+            {% endif %}
+
+        </div>
+
+        <div class="pb-3 pt-2 key-doc-link">
+            {% if CURRENT_LANGUAGE == "uk" %}
+
+            <a target="_blank" href="https://zakononline.com.ua/documents/show/153773___595905">
+                <img class="img-fluid" src="https://res.cloudinary.com/infoblog567/image/upload/v1674394739/static/key-dock/ua/9._maastriht_ukr_rgclkl.jpg">
+            </a>
+
+            {% else %}
+
+            <a target="_blank" href="https://eur-lex.europa.eu/legal-content/EN/TXT/PDF/?uri=OJ:C:1992:191:FULL&amp;from=EN">
+                <img class="img-fluid" src="https://res.cloudinary.com/infoblog567/image/upload/v1674394813/static/key-dock/en/9._maastriht_eng_z7go3z.jpg">
+            </a>
+
+            {% endif %}
+
+        </div>
+
+        <div class="pb-3 pt-2 key-doc-link">
+            {% if CURRENT_LANGUAGE == "uk" %}
+
+            <a target="_blank" href="https://eur-lex.europa.eu/legal-content/EN/TXT/PDF/?uri=CELEX:11997D/TXT&amp;from=EN">
+                <img class="img-fluid" src="https://res.cloudinary.com/infoblog567/image/upload/v1674394736/static/key-dock/ua/10._amsterdam_ukr_mauhvz.jpg">
+            </a>
+
+            {% else %}
+
+            <a target="_blank" href="https://eur-lex.europa.eu/legal-content/EN/TXT/PDF/?uri=CELEX:11997D/TXT&amp;from=EN">
+                <img class="img-fluid" src="https://res.cloudinary.com/infoblog567/image/upload/v1674394809/static/key-dock/en/10._amsterdam_eng_ec3wdi.jpg">
+            </a>
+
+            {% endif %}
+
+        </div>
+
+        <div class="pb-3 pt-2 key-doc-link">
+            {% if CURRENT_LANGUAGE == "uk" %}
+
+            <a target="_blank" href="https://zakon.rada.gov.ua/laws/show/994_261#Text">
+                <img class="img-fluid" src="https://res.cloudinary.com/infoblog567/image/upload/v1674394741/static/key-dock/ua/11._Nice_ukr_vpcrmj.jpg">
+            </a>
+
+            {% else %}
+
+            <a target="_blank" href="https://eur-lex.europa.eu/legal-content/EN/TXT/?uri=CELEX:12001C/TXT">
+                <img class="img-fluid" src="https://res.cloudinary.com/infoblog567/image/upload/v1674394812/static/key-dock/en/11._Nice_eng_zfvggl.jpg">
+            </a>
+
+            {% endif %}
+
         </div>
 
     </div>

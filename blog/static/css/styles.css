@@ -311,7 +311,7 @@ body {
 }
 
 .card{
-    margin: 33px 0px;
+    margin: 20px 0px;
 }
 
 .card > img {
@@ -367,7 +367,7 @@ body {
     background-color: #004494;
 } */
 
-.card-title, main h1 {
+.card-title, main h1,main h3 {
     color:#004494;
 }
 
@@ -399,25 +399,31 @@ header{
     width: 100%;
 }
 
+.bg-header{
+    width: 100%;
+    height: 100%;
+    /* background: url("https://res.cloudinary.com/infoblog567/image/upload/v1674400490/static/header_logo/euro-flag-banner-bottom_w4rwpz.png") no-repeat center center fixed;
+    -webkit-background-size: cover;
+    -moz-background-size: cover;
+    -o-background-size: cover;
+    background-size: cover; */
+    position: absolute;
+}
+
+.bg-header img{
+    width: 100%;
+    height: 100%;
+}
 
 .bg-header::before{
     content: '';
     height: 100%;
     width: 100%;
     position: absolute;
-    background-color: rgba(0,0,0,0.3);
+    background-color: rgba(0,0,0,0.4);
 }
 
-.bg-header{
-    width: 100%;
-    height: 100%;
-    background: url("https://res.cloudinary.com/infoblog567/image/upload/v1674141572/static/header_logo/desktop-1920x1080_1_1_k6azgx.jpg") no-repeat center center fixed;
-    -webkit-background-size: cover;
-    -moz-background-size: cover;
-    -o-background-size: cover;
-    background-size: cover;
-    position: absolute;
-}
+
 
 .dropdown-item{
     color: #000;
@@ -438,4 +444,16 @@ header{
 
 .phone-volunteer input{
     width:505px;
+}
+
+.card-gm{
+    min-width:250px; 
+    height:288px;
+    text-align: center;
+    word-spacing: -1px;
+}
+
+.key-doc img{
+    width: 90%;
+    height: 95%;
 }
