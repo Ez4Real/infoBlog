@@ -17,16 +17,18 @@
         <a href="{% url 'post-detail' type=news.type.slug slug=news.slug %}">
             {% if forloop.first %}
                 <div class="carousel-item active" style="height: 500px;">
-                    <img src="{{ news.banner.url }}"
-                         alt="{{ news.title }}"
-                         class="d-block mx-auto w-100 h-100 ob-cover">
+                    <div class="carousel-img d-block mx-auto w-100 h-100 ob-cover">
+                        <img src="{{ news.banner.url }}"
+                            alt="{{ news.title }}"
+                            class="d-block mx-auto w-100 h-100 ob-cover">
+                    </div>
                     <div class="carousel-caption">
 
                         {% if CURRENT_LANGUAGE == "uk" %}
-                        <h3>{{ news.uk_title }}</h3>
+                        <h3 class="text-white">{{ news.uk_title }}</h3>
                         {{ news.uk_subtitle }}
                         {% else %}
-                        <h3>{{ news.en_title }}</h3>
+                        <h3 class="text-white">{{ news.en_title }}</h3>
                         {{ news.en_subtitle }}
                         {% endif %}
 
@@ -34,16 +36,18 @@
                 </div>
             {% else %}
                 <div class="carousel-item" style="height: 500px;">
-                    <img src="{{ news.banner.url }}"
-                         alt="{{ news.title }}"
-                         class="d-block mx-auto w-100 h-100 ob-cover">
+                    <div class="carousel-img d-block mx-auto w-100 h-100 ob-cover">
+                        <img src="{{ news.banner.url }}"
+                            alt="{{ news.title }}"
+                            class="d-block mx-auto w-100 h-100 ob-cover">
+                    </div>
                     <div class="carousel-caption">
 
                         {% if CURRENT_LANGUAGE == "uk" %}
-                        <h3>{{ news.uk_title }}</h3>
+                        <h3 class="text-white">{{ news.uk_title }}</h3>
                         {{ news.uk_subtitle }}
                         {% else %}
-                        <h3>{{ news.en_title }}</h3>
+                        <h3 class="text-white">{{ news.en_title }}</h3>
                         {{ news.en_subtitle }}
                         {% endif %}
 

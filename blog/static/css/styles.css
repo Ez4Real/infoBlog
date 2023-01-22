@@ -457,3 +457,16 @@ header{
     width: 90%;
     height: 95%;
 }
+
+.carousel-img::before{
+    content: '';
+    height: 100%;
+    width: 100%;
+    background: linear-gradient(rgba(0,0,0,0),rgba(0,0,0,0.7));
+    position: absolute;
+}
+
+.dropdown-menu-media[data-bs-popper] {
+    top: 100%;
+    left: -10%;
+  }
