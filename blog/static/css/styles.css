@@ -421,7 +421,19 @@ header{
     width: 100%;
     position: absolute;
     background-color: rgba(0,0,0,0.4);
+    /* background: linear-gradient(rgba(0, 0, 0, 0.45),rgba(255, 255, 255, 1)); */
 }
+
+/* .bg-header::after{
+    content: '';
+    height: 100%;
+    width: 100%;
+    top: 0;
+    left: 0;
+    position: absolute;
+    z-index: 300000;
+    background: linear-gradient(rgba(255, 255, 255, 0),rgba(255, 255, 255, 1));
+} */
 
 
 
@@ -469,4 +481,45 @@ header{
 .dropdown-menu-media[data-bs-popper] {
     top: 100%;
     left: -10%;
-  }
+}
+
+header{
+    position: relative;
+    height: 300px;
+}
+
+header a{
+    font-size: 27px;
+}
+
+.navbar-brand::before{
+    content: 'European Research Group Of Support for Ukrainian Membership';
+    position: absolute;
+    top: 100%;
+    left: 0;
+}
+
+.navbar-brand{
+    height: 160px;
+    width: 150px;
+}
+
+.donate-img{
+    height: 250px;
+    width: 250px;
+}
+
+/* .pay-pal::before{
+    content: '';
+    position: absolute;
+    height: 101%;
+    width: 101%;
+    background-color: #000;
+    border-radius: 590%;
+    z-index: -1;
+} */
+
+.pay{
+    border: solid 3px black;
+    border-radius: 50%;
+}

@@ -10,7 +10,9 @@
         <h1>{% trans "Op-eds" %}</h1>
     </div>
 
-    {% include 'include/cards_news.html' %}
+    <div class="row row-cols-1 row-cols-md-2 g-4">
+        {% include 'include/cards_news.html' %}
+    </div>
 
     {% include 'include/pagination.html' %}
 

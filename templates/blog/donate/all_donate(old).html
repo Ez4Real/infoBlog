@@ -2,30 +2,35 @@
 {% block content %}
 {% load i18n %}
 
-<div class="text-center join-us-foto d-flex align-items-center justify-content-center">
+<!-- <div class="text-center join-us-foto d-flex align-items-center justify-content-center">
     <img src="https://images.unsplash.com/photo-1447078806655-40579c2520d6?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=2070&q=80" class="d-block mx-auto w-100 h-100 ob-cover">
     <div class="bg-dark-for-photo w-100 h-100"></div>
     <p class="h1 text-white join-us-text">{% trans "Donate" %}</p>
-</div>
+</div> -->
 {% load static %}
 <div class="container">
+    <div class="p-1"></div>
+    <p class="h1 text-dark join-us-text">{% trans "Donate" %}</p>
     <div class="p-4"></div>
-    <div class="row row-cols-xl-3">
-        <div class="col">
-            <a href="#" class="text-decoration-none text-dark">
-                <div class="card mb-4" style="min-width:250px;">
-                        <img class="card-img-top" alt="Team o"
-                             src="https://cdn.worldvectorlogo.com/logos/patreon.svg"
-                             style="height: 200px">
-                        <hr style="margin:0px;">
-                        <div class="card-body">
-                            <p class="card-text text-center">PATREON</p>
-                        </div>
+
+    <div class="row row-cols-xl-3 justify-content-around">
+        <a href="#" class="text-decoration-none text-dark" style="width: 250px;">
+            <img src="https://res.cloudinary.com/infoblog567/image/upload/v1674684637/static/donate/patreon_logo_icon_147253_xmek6x.svg" alt="" class="donate-img pay">
+            
+            <!-- <div class="card mb-4" style="min-width:250px;">
+                    <img class="card-img-top" alt="Team o"
+                            src="https://cdn.worldvectorlogo.com/logos/patreon.svg"
+                            style="height: 200px">
+                    <hr style="margin:0px;">
+                    <div class="card-body">
+                        <p class="card-text text-center">PATREON</p>
                     </div>
-            </a>
-        </div>
-        <a href="#" class="text-decoration-none text-dark">
-            <div class="col">
+                </div> -->
+        </a>
+        <a href="#" class="text-decoration-none text-dark " style="width: 250px; position:absolute;">
+            <img src="https://res.cloudinary.com/infoblog567/image/upload/v1674684978/static/donate/paypal_logo_icon_147252_uzrz0k.svg" alt="" class="donate-img pay">
+
+            <!-- <div class="col">
                 <div class="card mb-4" style="min-width:250px;">
                     <img class="card-img-top" alt="Team foto"
                          src="https://cdn.worldvectorlogo.com/logos/paypal-3.svg"
@@ -35,10 +40,12 @@
                         <p class="card-text text-center">PAYPAL</p>
                     </div>
                 </div>
-            </div>
+            </div> -->
         </a>
-        <a href="#" class="text-decoration-none text-dark">
-            <div class="col">
+        <a href="#" class="text-decoration-none text-dark" style="width: 250px;">
+            <img src="https://www.svgrepo.com/show/355367/visa.svg" alt="" class="donate-img pay">
+
+            <!-- <div class="col">
                 <div class="card mb-4" style="min-width:250px;">
                     <img src="https://www.svgrepo.com/show/355367/visa.svg"
                          class="img-fluid rounded-start"
@@ -49,7 +56,7 @@
                         <p class="card-text text-center">E-PAYMENTS</p>
                     </div>
                 </div>
-            </div>
+            </div> -->
         </a>
     </div>
 </div>
