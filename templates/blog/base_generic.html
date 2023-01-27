@@ -77,6 +77,7 @@
     <nav class="navbar navbar-expand-lg navbar-dark">
         <a class="navbar-brand position-absolute top-0 start-0 p-0" href="{% url 'homepage' %}">
             {% include 'include/media/logo.html' %}
+            <div class="text-logo">European Research Group Of <br> Support for Ukrainian Membership</div>
         </a>
         <div style="width: 200px;"></div>
         <div class="d-flex align-items-end justify-content-end text-cronis w-100">
@@ -104,7 +105,7 @@
                         <li class="nav-item dropstart">
                             <a class="special-link dropdown-toggle text-white" href="#" id="navbarDropdownMenuLink"
                                 role="button" data-bs-toggle="dropdown" aria-expanded="false">
-                                <span style="text-transform:uppercase">{{ CURRENT_LANGUAGE }}</span>
+                                <span style="text-transform:uppercase; color: #ffcd00;">{{ CURRENT_LANGUAGE }}</span>
                             </a>
                             <ul class="dropdown-menu " aria-labelledby="navbarDropdownMenuLink">
                                 {% for language in languages %}

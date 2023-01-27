@@ -186,7 +186,7 @@ nav{
     /* margin-left: -20px; */
 }
 
-.cronis-nav-button-carousel {
+.cronis-nav-donate-button-carousel {
     margin-right: 35%;
 }
 
@@ -250,7 +250,8 @@ footer{
 
 body {
   min-height: 100vh;
-  background-color: #fff;
+  background: #f0f0f0;
+
 }
 
 .side-navbar {
@@ -438,7 +439,7 @@ header{
 
 
 .dropdown-item{
-    color: #000;
+    color: #00309a;
 }
 
 .navbar-dark .navbar-nav .nav-link{
@@ -483,6 +484,10 @@ header{
     left: -10%;
 }
 
+.dropdown-menu[data-bs-popper] a {
+    font-size: 19px !important;
+}
+
 header{
     position: relative;
     height: 300px;
@@ -492,16 +497,23 @@ header a{
     font-size: 27px;
 }
 
-.navbar-brand::before{
+/* .navbar-brand::before{
     content: 'European Research Group Of Support for Ukrainian Membership';
     position: absolute;
     top: 100%;
     left: 0;
-}
+} */
 
 .navbar-brand{
     height: 160px;
     width: 150px;
+}
+
+.navbar-brand svg{
+    height: 200px;
+    position: absolute;
+    top: -20%;
+    left: 25%;
 }
 
 .donate-img{
@@ -522,4 +534,28 @@ header a{
 .pay{
     border: solid 3px black;
     border-radius: 50%;
+}
+
+.text-logo{
+    position: absolute;
+    top: 80%;
+    left: 7%;
+    color: #ffcd00;
+}
+
+
+.donate-button img{
+    height: 150px;
+}
+
+.donate-button{
+    display: flex;
+    justify-content: center;
+    height: 170px;
+    width: 250px;
+    padding: 10px;
+    border-radius: 18px;
+    background: #f0f0f0;
+    box-shadow:  6px 6px 12px #c7c7c7,
+                 -6px -6px 12px #ffffff;
 }
