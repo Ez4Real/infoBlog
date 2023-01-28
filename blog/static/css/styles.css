@@ -54,6 +54,10 @@ nav{
         margin-top: -5px!important;
         margin-bottom: -5px!important;
     }
+
+    .cronis-nav-anime{
+        gap: 5px !important;
+    }
 }
 
 @media (max-width: 1024px) {
@@ -76,15 +80,10 @@ nav{
     .phone-volunteer input{
         width: 325px !important;
     }
-}
-
-@media (max-width: 768px) {
-    .phone-volunteer input{
-        width: 205px !important;
+    
+    .side-navbar{
+        z-index: 1024;
     }
-}
-
-@media (max-width: 991px) {
 
     .fs-4{
         font-size: 1rem!important
@@ -115,10 +114,18 @@ nav{
     .logo-none{
         visibility:hidden;
     }
+}
 
-    .side-navbar{
-    z-index: 1024;
+@media (max-width: 768px) {
+    .phone-volunteer input{
+        width: 205px !important;
     }
+}
+
+@media (max-width: 991px) {
+
+
+
 }
 
 @media (max-width: 425px) {
@@ -135,6 +142,10 @@ nav{
     }
     .phone-volunteer input{
         width: 271px !important;;
+    }
+    .body-cronis-post img{
+        height: 100% !important;
+        width: 100% !important;
     }
 }
 
@@ -225,10 +236,15 @@ footer{
     height: 400px;
 }
 
+.body-cronis-post p{
+    text-align: justify;
+}
+
 .body-cronis-post img{
     display: block;
     margin-left: auto;
     margin-right: auto;
+
 }
 
 /*.beam-cronis{
@@ -410,6 +426,7 @@ header{
 .bg-header img{
     width: 100%;
     height: 100%;
+    object-fit: cover;
 }
 
 .bg-header::before{
