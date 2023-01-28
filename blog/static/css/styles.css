@@ -114,18 +114,17 @@ nav{
     .logo-none{
         visibility:hidden;
     }
+
+    .body-cronis-post img{
+        height: 100% !important;
+        width: 100% !important;
+    }
 }
 
 @media (max-width: 768px) {
     .phone-volunteer input{
         width: 205px !important;
     }
-}
-
-@media (max-width: 991px) {
-
-
-
 }
 
 @media (max-width: 425px) {
@@ -143,10 +142,7 @@ nav{
     .phone-volunteer input{
         width: 271px !important;;
     }
-    .body-cronis-post img{
-        height: 100% !important;
-        width: 100% !important;
-    }
+
 }
 
 
