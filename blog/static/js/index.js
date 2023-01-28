@@ -21,19 +21,22 @@ var sb_search = document.querySelector("form");
 var header_dark = document.querySelector("header");
 var main_dark = document.querySelector("main");
 var logo_dark = document.querySelector("a");
+var top_header = document.querySelector(".cronis-nav-anime");
 
 menu_btn_open.addEventListener("click", () => {
   sidebar.classList.toggle("active-nav");
-  sb1.classList.toggle("ps-3");
-  sb2.classList.toggle("ps-3");
+  sb1.classList.toggle("px-3");
+  sb2.classList.toggle("px-3");
   sb_search.classList.toggle("px-3");
   main_dark.classList.toggle("site-dark");
+  top_header.classList.toggle("fix-side-opt");
 });
 
 menu_btn_close.addEventListener("click", () => {
   sidebar.classList.toggle("active-nav");
-  sb1.classList.toggle("ps-3");
-  sb2.classList.toggle("ps-3");
+  sb1.classList.toggle("px-3");
+  sb2.classList.toggle("px-3");
   sb_search.classList.toggle("px-3");
   main_dark.classList.toggle("site-dark");
+  top_header.classList.toggle("fix-side-opt");
 });

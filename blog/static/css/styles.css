@@ -336,10 +336,6 @@ body {
   margin: 10px auto;
 }
 
-.cronis-nav-anime1 a:hover{
-    color:black !important;
-}
-
 .special-link{
     display:block;
     text-decoration: none;
@@ -587,4 +583,8 @@ header a{
         background: #f0f0f0;
         box-shadow:  6px 6px 12px #c7c7c7, -6px -6px 12px #ffffff;
     }
+}
+
+.fix-side-opt{
+    gap: 0rem !important;
 }
