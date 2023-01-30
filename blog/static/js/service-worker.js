@@ -1,15 +1,3 @@
-if ('serviceWorker' in navigator) {
-  window.addEventListener('load', function() {
-    navigator.serviceWorker.register(reg)
-      .then(function(registration) {
-        console.log('Service Worker registered: ', registration);
-      })
-      .catch(function(error) {
-        console.error('Service Worker registration failed: ', error);
-      });
-  });
-}
-
 self.addEventListener('install', function(event) {
   event.waitUntil(
     caches.open(cacheName)
@@ -45,3 +33,15 @@ self.addEventListener('activate', function(event) {
     })
   );
 });
+
+if ('serviceWorker' in navigator) {
+  window.addEventListener('load', function() {
+    navigator.serviceWorker.register(reg)
+      .then(function(registration) {
+        console.log('Service Worker registered: ', registration);
+      })
+      .catch(function(error) {
+        console.error('Service Worker registration failed: ', error);
+      });
+  });
+}
