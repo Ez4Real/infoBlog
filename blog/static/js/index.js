@@ -40,3 +40,20 @@ menu_btn_close.addEventListener("click", () => {
   main_dark.classList.toggle("site-dark");
   top_header.classList.toggle("fix-side-opt");
 });
+
+// window.addEventListener('load', async () => {
+//   if ('serviceWorker' in navigator) {
+//     try {
+//       registration = await navigator.serviceWorker.register(reg)
+//       console.log('Service Worker registered: ', registration);
+//     } catch (e){
+//       console.error('Service Worker registration failed: ', e);
+//     }
+//   }
+// });
+
+$.ajaxSetup({
+  headers: {
+     'Cache-Control': 'no-cache'
+  }
+});

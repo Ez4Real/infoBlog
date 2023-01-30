@@ -167,14 +167,13 @@
         integrity="sha384-A3rJD856KowSb7dwlZdYEkO39Gagi7vIsF0jrRAoQmDKKtQBHUuLZ9AsSv4jD4Xa"
         crossorigin="anonymous"></script>
 <script src="https://code.jquery.com/jquery-3.4.1.js"></script>
-<script src="{% static '/js/index.js' %}"></script>
 <script>
     var reg = "{% static '/js/service-worker.js' %}";
-    var cacheName = 'my-site-cache-v1';
+    var cacheName = 'Cache-v1';
     var filesToCache = [
         "{% static '/css/styles.css' %}"
     ];
 </script>
-<script src="{% static '/js/service-worker.js' %}"></script>
+<script src="{% static '/js/index.js' %}"></script>
 </body>
 </html>
