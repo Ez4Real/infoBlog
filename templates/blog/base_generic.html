@@ -168,12 +168,13 @@
         crossorigin="anonymous"></script>
 <script src="https://code.jquery.com/jquery-3.4.1.js"></script>
 <script src="{% static '/js/index.js' %}"></script>
-<script src="{% static '/js/service-worker.js' %}">
+<script>
     var reg = "{% static '/js/service-worker.js' %}";
     var cacheName = 'my-site-cache-v1';
     var filesToCache = [
         "{% static '/css/styles.css' %}"
     ];
 </script>
+<script src="{% static '/js/service-worker.js' %}"></script>
 </body>
 </html>
