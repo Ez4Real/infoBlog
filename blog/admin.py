@@ -1,6 +1,6 @@
 from django.contrib import admin
 
-from .models import NewsType, PolicyArea, News, Subscriber, Video
+from .models import NewsType, PolicyArea, News, Subscriber, Video, BlogScholar, Blog
 
 
 def send_newsletter(modeladmin, request, queryset):
@@ -35,6 +35,23 @@ class NewsAdmin(admin.ModelAdmin):
               ('en_subtitle', 'uk_subtitle'),
               ('en_content', 'uk_content')]
     actions = [send_newsletter]
+    
+@admin.register(BlogScholar)
+class BlogScholarAdmin(admin.ModelAdmin):
+    list_display = ('en_full_name', 'uk_full_name', 'en_position', 'uk_position')
+    list_filter = ('en_full_name', 'uk_full_name', 'en_position', 'uk_position')
+    fields = [('image',), 
+              ('en_full_name', 'uk_full_name'),
+              ('en_position', 'uk_position'),
+              ('link')]
+    
+@admin.register(Blog)
+class BlogAdmin(admin.ModelAdmin):
+    list_display = ('author', 'en_title', 'uk_title', 'date_of_creation')
+    list_filter = ('author', 'en_title', 'uk_title', 'date_of_creation')
+    fields = [('author'), 
+              ('en_title', 'uk_title'),
+              ('en_content', 'uk_content')]
     
 @admin.register(Video)
 class Video(admin.ModelAdmin):

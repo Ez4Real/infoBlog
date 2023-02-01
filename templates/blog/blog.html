@@ -7,13 +7,23 @@
 <div class="container">
 
     <div class="text-center">
-        <!-- <h1>{% trans "Blog" %}</h1> -->
-        {% if CURRENT_LANGUAGE ==  "uk" %}
-            <h1>Персональний блог</h1>
-        {% else %}
-            <h1>Personal blog</h1>
-        {% endif %}
+        <h1>{% trans "Personal blog" %}</h1>
     </div>
+
+    {% for scholar in blog_scholars %}
+        <a href="#" class="text-dark text-decoration-none">
+            <img src="{{ scholar.image.url }}"
+                class="img-fluid rounded-start d-block mx-auto w-100 h-100 ob-cover"
+                alt="..."
+                height="50px"
+            >
+        </a>
+        {{ scholar.en_full_name }} - {{ scholar.uk_full_name }}
+        <br>
+        {{ scholar.en_position }} - {{ scholar.uk_position }}
+        <br>
+        {{ scholar.link }}
+    {% endfor %}
 
     {% include 'include/cards_news.html' %}
 

@@ -8,7 +8,8 @@ from .services.blog_services import paginate, \
     add_last_news_to_context, get_dynamic_page_title_by_language, \
     add_page_title_to_context_by_language
 from .services.context_services import get_static_page_context, \
-    get_policy_area_context, get_news_type_context, get_media_views_context
+    get_policy_area_context, get_news_type_context, get_media_views_context, \
+    get_blog_scholars_page_context
 from .services.subscribe_services import get_join_team_form, get_volunteer_form
 from .models import Video
 
@@ -219,8 +220,7 @@ def opinion(request):
 def blog(request):
     return render(request,
                   template_name='blog/blog.html',
-                  context=get_static_page_context('Blog',
-                                                   request)
+                  context=get_blog_scholars_page_context(request)
                   )
 
 def events(request):

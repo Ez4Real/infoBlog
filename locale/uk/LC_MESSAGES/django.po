@@ -37,8 +37,9 @@ msgstr "Доктор або кандидат наук"
 msgid "Other"
 msgstr "Інше"
 
-#: .\blog\forms.py:32 .\blog\forms.py:55
+#: .\blog\forms.py:32 .\blog\forms.py:55 .\blog\models.py:154
 msgid "First name"
+msgid "Name"
 msgstr "Ім'я"
 
 #: .\blog\forms.py:35 .\blog\forms.py:58

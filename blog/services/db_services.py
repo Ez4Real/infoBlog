@@ -1,5 +1,5 @@
 from django.db.models import Q, QuerySet
-from ..models import News, Video
+from ..models import News, Video, BlogScholar
 
 
 def get_news_by_policy_area(policy_area: str) -> QuerySet:
@@ -23,3 +23,7 @@ def get_blog_search_results(query: str) -> QuerySet:
                                Q(en_subtitle__icontains=query) | Q(uk_subtitle__icontains=query) |
                                Q(en_content__icontains=query) | Q(uk_content__icontains=query)
                                ).order_by('-date_of_creation')
+
+def get_all_blog_scholars() -> QuerySet:
+    """ Returns QuerySet of all Blog Scholars """
+    return BlogScholar().get_all_objects()

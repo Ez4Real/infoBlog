@@ -34,7 +34,7 @@ class NewsType(models.Model):
         verbose_name_plural = _('News Types')
 
     def __str__(self):
-        return f'{self.type}'
+        return self.type
 
 
 class PolicyArea(models.Model):
@@ -46,7 +46,78 @@ class PolicyArea(models.Model):
         verbose_name_plural = _('Policy areas')
 
     def __str__(self):
-        return f'{self.name}'
+        return self.name
+    
+    
+class BlogScholar(models.Model):
+    def get_absolute_url(self):
+        return reverse('scholar-posts-detail', args=self.slug)
+    
+    image = models.ImageField(upload_to='uploads/blog-scholars', 
+                              verbose_name=_('News banner')
+                              )
+    en_full_name = models.CharField(max_length=45,
+                                help_text='Enter name',
+                                verbose_name=_('Name on english')
+                                )
+    uk_full_name = models.CharField(max_length=45,
+                                help_text='Enter name',
+                                verbose_name=_('Name on ukrainian')
+                                )
+    en_position = models.TextField(max_length=255,
+                                   help_text='Enter position',
+                                   verbose_name=_('English position')
+                                   )
+    uk_position = models.TextField(max_length=255,
+                                   help_text='Enter position',
+                                   verbose_name=_('Ukrainian position')
+                                   )
+    link = models.URLField(help_text='Enter link',
+                           max_length = 200,
+                           verbose_name=_('University link'))
+    
+    slug = models.SlugField(help_text='Slug',
+                            unique=True)
+    
+    def save(self, *args, **kwargs):
+        self.slug = slugify(self.en_full_name.lower())
+        super(BlogScholar, self).save(*args, **kwargs)
+    
+    def get_all_objects(self):
+        return self._meta.model.objects.all()
+    
+    def __str__(self):
+        return self.en_full_name
+    
+class Article(models.Model):
+    def get_absolute_url(self):
+        return reverse('post-detail', args=[self.type.slug, self.slug])
+    
+    en_title = models.CharField(max_length=75,
+                                help_text='Enter news title',
+                                verbose_name=_('English title')
+                                )
+    uk_title = models.CharField(max_length=75,
+                                help_text='Enter news title',
+                                verbose_name=_('Ukrainian title')
+                                )
+    en_content = RichTextUploadingField(help_text='Enter news content',
+                                        verbose_name=_('English content')
+                                        )
+    uk_content = RichTextUploadingField(help_text='Enter news content',
+                                        verbose_name=_('Ukrainian content')
+                                        )
+    date_of_creation = models.DateTimeField(auto_now_add=True,
+                                            verbose_name=_('Date of creation'))
+    
+class Blog(Article):
+    
+    author = models.ForeignKey(BlogScholar,
+                               on_delete=models.PROTECT,
+                               help_text='Choose blog scholar',
+                               verbose_name=_('Author')
+                               )
+
 
 class News(models.Model):
 
@@ -144,7 +215,6 @@ class News(models.Model):
             email.content_subtype = 'html'
             if img_url: email.attach(img)
             email.send()
-
 
 class Subscriber(models.Model):
     email = models.EmailField(unique=True,
