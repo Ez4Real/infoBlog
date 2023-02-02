@@ -51,7 +51,7 @@ class PolicyArea(models.Model):
     
 class BlogScholar(models.Model):
     def get_scholar_posts(self):
-        return reverse('scholar-posts', args=self.slug)
+        return reverse('scholar-posts', args=[self.slug])
     
     image = models.ImageField(upload_to='uploads/blog-scholars', 
                               verbose_name=_('News banner')

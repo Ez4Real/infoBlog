@@ -11,8 +11,8 @@ urlpatterns = [
     path('activate/<uidb64>/<token>/<lang>/',
          activate_user_subscription,
          name='activate'),
-    path('<type>/<slug:slug>/', views.post_detail, name='post-detail'),
     path('blog/<slug:slug>/', views.scholar_posts, name='scholar-posts'),
+    path('<type>/<slug:slug>/', views.post_detail, name='post-detail'),
     path('search/', views.search, name='search'),
     
     # About

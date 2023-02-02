@@ -19,8 +19,8 @@ def get_news_by_slug(slug: SafeText) -> QuerySet:
     return News.objects.get(slug=slug)
 
 def get_posts_by_author_slug(slug: SafeText) -> QuerySet:
-    """ Returns QuerySet of Blog Posts by slug """
-    return Blog.objects.get(slug=slug)
+    """ Returns QuerySet of Blog Posts by author """
+    return Blog.objects.filter(author__slug=slug)
     
 def get_blog_search_results(query: str) -> QuerySet:
     """ Returns QuerySet of News by query """

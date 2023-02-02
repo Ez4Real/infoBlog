@@ -6,15 +6,14 @@
 
 <div class="container">
 
-    <div class="text-center">
-        <h1>{% trans "Op-eds" %}</h1>
-    </div>
-
-    <div class="row row-cols-1 row-cols-md-2 g-4">
-        {% include 'include/cards_news.html' %}
-    </div>
-
-    {% include 'include/pagination.html' %}
+    {% for post in blog_posts %}
+        <strong>Title:</strong> {{ post.en_title }}
+        <br>
+        <strong>Author:</strong> {{ post.author.en_full_name }}
+        <br>
+        <strong>Date:</strong> {{ post.date_of_creation }}
+        <br><br>
+    {% endfor %}
 
 </div>
 {% endblock content %}

@@ -36,7 +36,6 @@ def scholar_posts(request: HttpRequest,
                   slug: SafeText,
                   context: dict = {}) -> HttpResponse:
     add_subscriber_form_to_context(context, request)
-    context['author']
     context['blog_posts'] = get_posts_by_author_slug(slug)
     return render(request, 'blog/scholar_posts.html', context)
 
