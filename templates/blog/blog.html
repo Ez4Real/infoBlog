@@ -17,12 +17,15 @@
                 alt="..."
                 height="50px"
             >
+        
+            <strong>Name:</strong> {{ scholar.en_full_name }} - {{ scholar.uk_full_name }}
+            <br>
+            <strong>Position:</strong> {{ scholar.en_position }} - {{ scholar.uk_position }}
+            <br>
+            <strong>Link to resource:</strong> {{ scholar.link }}
+            <br>
+            <strong>Slug:</strong> {{ scholar.slug }}
         </a>
-        {{ scholar.en_full_name }} - {{ scholar.uk_full_name }}
-        <br>
-        {{ scholar.en_position }} - {{ scholar.uk_position }}
-        <br>
-        {{ scholar.link }}
     {% endfor %}
 
     {% include 'include/cards_news.html' %}

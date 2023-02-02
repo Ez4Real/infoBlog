@@ -1,8 +1,10 @@
 from django.shortcuts import render
 from django.conf import settings
+from django.http import HttpResponse, HttpRequest
+from django.utils.safestring import SafeText
 
 from .services.db_services import get_news_by_slug, \
-    get_blog_search_results
+    get_blog_search_results, get_posts_by_author_slug
 from .services.blog_services import paginate, \
     check_if_number_endswith_one, add_subscriber_form_to_context, \
     add_last_news_to_context, get_dynamic_page_title_by_language, \
@@ -14,14 +16,14 @@ from .services.subscribe_services import get_join_team_form, get_volunteer_form
 from .models import Video
 
 
-def homepage(request, context = {}):
+def homepage(request, context = {}) -> HttpResponse:
     context['title'] = settings.TITLE    
     add_subscriber_form_to_context(context, request)
     add_last_news_to_context(context)
     
     return render(request, 'blog/homepage.html', context)
 
-def post_detail(request, type, slug, context = {}):
+def post_detail(request, type, slug, context = {}) -> HttpResponse:
     add_subscriber_form_to_context(context, request)
     context['post'] = post = get_news_by_slug(slug)
     add_page_title_to_context_by_language(
@@ -29,6 +31,14 @@ def post_detail(request, type, slug, context = {}):
         context
     )
     return render(request, 'blog/post_detail.html', context)
+
+def scholar_posts(request: HttpRequest,
+                  slug: SafeText,
+                  context: dict = {}) -> HttpResponse:
+    add_subscriber_form_to_context(context, request)
+    context['author']
+    context['blog_posts'] = get_posts_by_author_slug(slug)
+    return render(request, 'blog/scholar_posts.html', context)
 
 def search(request, context = {}):
     add_page_title_to_context_by_language('Search Results', context)
@@ -45,42 +55,42 @@ def search(request, context = {}):
     return render(request, 'blog/search.html', context)
 
 '''\About views/'''
-def board(request):
+def board(request) -> HttpResponse:
     return render(request, 
                   template_name='blog/about/board.html',
                   context=get_static_page_context('Board',
                                                   request)
                   )
 
-def key_doc(request):
+def key_doc(request) -> HttpResponse:
     return render(request, 
                   template_name='blog/about/key_doc.html',
                   context=get_static_page_context('Key Documents',
                                                   request)
                   )
 
-def mission(request):
+def mission(request) -> HttpResponse:
     return render(request, 
                   template_name='blog/about/mission.html',
                   context=get_static_page_context('Mission',
                                                   request)
                   )
 
-def team(request):
+def team(request) -> HttpResponse:
     return render(request,
                   template_name='blog/about/team.html',
                   context=get_static_page_context('Team',
                                                    request)
                   )
 
-def profile(request):
+def profile(request) -> HttpResponse:
     return render(request,
                   template_name='blog/profile/profile.html',
                   context=get_static_page_context('Team',
                                                    request)
                   )
 
-def vision(request):
+def vision(request) -> HttpResponse:
     return render(request, 
                   template_name='blog/about/vision.html',
                   context=get_static_page_context('Vision',
@@ -88,7 +98,7 @@ def vision(request):
                   )
 
 '''\Donate views/'''
-def all_donate(request):
+def all_donate(request) -> HttpResponse:
     return render(request,
                   template_name='blog/donate/all_donate(old).html',
                   context=get_static_page_context('Donate',
@@ -96,14 +106,14 @@ def all_donate(request):
                   )
 
 '''\Join us views/'''
-def general_members(request):
+def general_members(request) -> HttpResponse:
     return render(request,
                   template_name='blog/join_us/general_members.html',
                   context=get_static_page_context('General members',
                                                    request)
                   )
 
-def join_team(request):
+def join_team(request) -> HttpResponse:
     context=get_static_page_context('Join team', request)
     context['join_form'] = get_join_team_form(request)
     return render(request,
@@ -111,7 +121,7 @@ def join_team(request):
                   context=context
                   )
 
-def volunteer(request):
+def volunteer(request) -> HttpResponse:
     context = get_static_page_context('Volunteering', request)
     context['volunteer_form'] = get_volunteer_form(request)
     return render(request,
@@ -120,14 +130,14 @@ def volunteer(request):
                   )
 
 '''\Media views/'''
-def podcast(request):
+def podcast(request) -> HttpResponse:
     return render(request, 
                   template_name='blog/media/podcast.html',
                   context=get_media_views_context(Video.MEDIA_CHOICES[0],
                                                   request)
                   )
 
-def videos(request):
+def videos(request) -> HttpResponse:
     return render(request,
                   template_name='blog/media/videos.html',
                   context=get_media_views_context(Video.MEDIA_CHOICES[1],
@@ -135,50 +145,50 @@ def videos(request):
                   )
 
 '''\Policy areas views/'''
-def foreign_policy(request):
+def foreign_policy(request) -> HttpResponse:
     return render(request, 
                   template_name='blog/policy_areas/foreign_policy.html', 
                   context=get_policy_area_context('Foreign policy', request)
                   )
 
-def internal_policy(request):
+def internal_policy(request) -> HttpResponse:
     return render(request, 
                   template_name='blog/policy_areas/internal_policy.html', 
                   context=get_policy_area_context('Internal policy', request)
                   )
 
-def economics(request):
+def economics(request) -> HttpResponse:
     return render(request, 
                   template_name='blog/policy_areas/economics.html', 
                   context=get_policy_area_context('Economics', request)
                   )
 
 
-def security(request):
+def security(request) -> HttpResponse:
     return render(request, 
                   template_name='blog/policy_areas/security.html',
                   context=get_policy_area_context('Security', request)
                   )
 
-def education(request):
+def education(request) -> HttpResponse:
     return render(request,
                   template_name='blog/policy_areas/education.html',
                   context=get_policy_area_context('Education', request)
                   )
 
-def democracy(request):
+def democracy(request) -> HttpResponse:
     return render(request, 
                   template_name='blog/policy_areas/democracy.html',
                   context=get_policy_area_context('Democracy', request)
                   )
 
-def human_rights(request):
+def human_rights(request) -> HttpResponse:
     return render(request,
                   template_name='blog/policy_areas/human_rights.html',
                   context=get_policy_area_context('Human rights', request)
                   )
 
-def culture(request):
+def culture(request) -> HttpResponse:
     return render(request, 
                   template_name='blog/policy_areas/culture.html',
                   context=get_policy_area_context('Culture', request)
@@ -186,14 +196,14 @@ def culture(request):
 
 
 '''\Research views/'''
-def analytics(request):
+def analytics(request) -> HttpResponse:
     return render(request,
                   template_name='blog/research/analytics.html',
                   context=get_news_type_context('Analytics',
                                                 request)
                   )
 
-def annual_report(request):
+def annual_report(request) -> HttpResponse:
     return render(request,
                   template_name='blog/research/annual_report.html',
                   context=get_static_page_context('Annual report',
@@ -201,14 +211,14 @@ def annual_report(request):
                   )
 
 
-def index_ergosum(request):
+def index_ergosum(request) -> HttpResponse:
     return render(request,
                   template_name='blog/research/index_ergosum.html',
                   context=get_static_page_context('Index ERGOSUM',
                                                    request)
                   )
 
-def opinion(request):
+def opinion(request) -> HttpResponse:
     return render(request,
                   template_name='blog/research/opinion.html',
                   context=get_news_type_context('Opinion', 
@@ -217,27 +227,27 @@ def opinion(request):
 
 
 '''\Main views/'''
-def blog(request):
+def blog(request) -> HttpResponse:
     return render(request,
                   template_name='blog/blog.html',
                   context=get_blog_scholars_page_context(request)
                   )
 
-def events(request):
+def events(request) -> HttpResponse:
     return render(request,
                   template_name='blog/events.html',
                   context=get_news_type_context('Events',
                                                 request)
                   )
 
-def news(request):
+def news(request) -> HttpResponse:
     return render(request,
                   template_name='blog/news.html',
                   context=get_news_type_context('News',
                                                 request)
                   )
 
-def op_eds(request):
+def op_eds(request) -> HttpResponse:
     return render(request,
                   template_name='blog/op_eds.html',
                   context=get_news_type_context('Op-eds',
