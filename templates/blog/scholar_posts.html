@@ -6,13 +6,25 @@
 
 <div class="container">
 
+    {% if CURRENT_LANGUAGE == "uk" %}
+    <h5>
+        {{ author.uk_full_name }}
+    </h5>
+    {% else %}
+    <h5>
+        by {{ author.en_full_name }}
+    </h5>
+    {% endif %}    
+
     {% for post in blog_posts %}
-        <strong>Title:</strong> {{ post.en_title }}
-        <br>
-        <strong>Author:</strong> {{ post.author.en_full_name }}
-        <br>
-        <strong>Date:</strong> {{ post.date_of_creation }}
-        <br><br>
+        <a href="{{ post.get_absolute_url }}">
+            <strong>Title:</strong> {{ post.en_title }}
+            <br>
+            <strong>Author:</strong> {{ post.author.en_full_name }}
+            <br>
+            <strong>Date:</strong> {{ post.date_of_creation }}
+            <br><br>
+        </a>
     {% endfor %}
 
 </div>

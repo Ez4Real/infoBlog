@@ -3,8 +3,8 @@ from django.conf import settings
 from django.http import HttpResponse, HttpRequest
 from django.utils.safestring import SafeText
 
-from .services.db_services import get_news_by_slug, \
-    get_blog_search_results, get_posts_by_author_slug
+from .services.db_services import get_news_by_slug, get_blog_scholar_by_slug, \
+    get_blog_search_results, get_posts_by_author_slug, get_blog_post_by_slug 
 from .services.blog_services import paginate, \
     check_if_number_endswith_one, add_subscriber_form_to_context, \
     add_last_news_to_context, get_dynamic_page_title_by_language, \
@@ -32,11 +32,24 @@ def post_detail(request, type, slug, context = {}) -> HttpResponse:
     )
     return render(request, 'blog/post_detail.html', context)
 
+def blog_post_detail(request: HttpRequest,
+                     author_slug: SafeText,
+                     slug: SafeText,
+                     context: dict = {}) -> HttpResponse:
+    add_subscriber_form_to_context(context, request)
+    context['post'] = post = get_blog_post_by_slug(slug)
+    add_page_title_to_context_by_language(
+        get_dynamic_page_title_by_language(request, post),
+        context
+    )
+    return render(request, 'blog/blog_post_detail.html', context)
+
 def scholar_posts(request: HttpRequest,
                   slug: SafeText,
                   context: dict = {}) -> HttpResponse:
     add_subscriber_form_to_context(context, request)
     context['blog_posts'] = get_posts_by_author_slug(slug)
+    context['author'] = get_blog_scholar_by_slug(slug)
     return render(request, 'blog/scholar_posts.html', context)
 
 def search(request, context = {}):

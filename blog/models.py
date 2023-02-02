@@ -18,38 +18,40 @@ from .tokens import email_unsubscribe_token
 
 
 class NewsType(models.Model):
-    type = models.CharField(help_text='Enter news type',
-                            max_length=25,
-                            unique=True,
-                            verbose_name=_('News type'))
-    
-    slug = models.SlugField(help_text='Slug',
-                            unique=True,)
-    
+    class Meta:
+        verbose_name_plural = _('News Types')
+        
+    def __str__(self):
+        return self.type
+        
     def save(self, *args, **kwargs):
         self.slug = slugify(self.type.lower())
         super(NewsType, self).save(*args, **kwargs)
         
-    class Meta:
-        verbose_name_plural = _('News Types')
-
-    def __str__(self):
-        return self.type
-
-
-class PolicyArea(models.Model):
-    name = models.CharField(help_text='Enter policy area name',
+    
+    type = models.CharField(help_text='Enter news type',
                             max_length=25,
                             unique=True,
-                            verbose_name=_('Policy area name'))
+                            verbose_name=_('News type'))
+    slug = models.SlugField(help_text='Slug',
+                            unique=True,)
+    
+
+class PolicyArea(models.Model):
     class Meta:
         verbose_name_plural = _('Policy areas')
 
     def __str__(self):
         return self.name
     
+    name = models.CharField(help_text='Enter policy area name',
+                            max_length=25,
+                            unique=True,
+                            verbose_name=_('Policy area name'))
+    
     
 class BlogScholar(models.Model):
+    
     def get_scholar_posts(self):
         return reverse('scholar-posts', args=[self.slug])
     
@@ -78,20 +80,23 @@ class BlogScholar(models.Model):
     
     slug = models.SlugField(help_text='Slug',
                             unique=True)
+        
+    def __str__(self):
+        return self.en_full_name
     
     def save(self, *args, **kwargs):
         self.slug = slugify(self.en_full_name.lower())
         super(BlogScholar, self).save(*args, **kwargs)
     
     def get_all_objects(self):
+        print(self._meta.model)
         return self._meta.model.objects.all()
-    
-    def __str__(self):
-        return self.en_full_name
+
     
 class Article(models.Model):
-    def get_absolute_url(self):
-        return reverse('post-detail', args=[self.type.slug, self.slug])
+        
+    slug = models.SlugField(help_text='Slug',
+                            unique=True,)
     
     en_title = models.CharField(max_length=75,
                                 help_text='Enter news title',
@@ -110,7 +115,15 @@ class Article(models.Model):
     date_of_creation = models.DateTimeField(auto_now_add=True,
                                             verbose_name=_('Date of creation'))
     
+    
 class Blog(Article):
+    
+    def save(self, *args, **kwargs):
+        self.slug = slugify(self.en_title.lower())
+        super(Blog, self).save(*args, **kwargs)
+    
+    def get_absolute_url(self):
+        return reverse('blog-post-detail', args=[self.author.slug, self.slug])
     
     author = models.ForeignKey(BlogScholar,
                                on_delete=models.PROTECT,
@@ -119,19 +132,21 @@ class Blog(Article):
                                )
 
 
-class News(models.Model):
-
+class News(Article):
+    class Meta:
+        ordering = ['en_title', 'uk_title', 'type', 'date_of_creation']
+        verbose_name_plural = _('News')
+        
+    def __str__(self):
+        return f'{self.en_title}, {self.uk_title}, {self.date_of_creation}'
+        
     def get_absolute_url(self):
         return reverse('post-detail', args=[self.type.slug, self.slug])
 
-    en_title = models.CharField(max_length=45,
-                                help_text='Enter news title',
-                                verbose_name=_('English title')
-                                )
-    uk_title = models.CharField(max_length=45,
-                                help_text='Enter news title',
-                                verbose_name=_('Ukrainian title')
-                                )
+    def save(self, *args, **kwargs):
+        self.slug = slugify(self.en_title.lower())
+        super(News, self).save(*args, **kwargs)
+        
 
     banner = models.ImageField(upload_to='uploads/banners', 
                                verbose_name=_('News banner')
@@ -145,14 +160,7 @@ class News(models.Model):
                                    help_text='Enter subtitle',
                                    verbose_name=_('Ukrainian subtitle')
                                    )
-
-    en_content = RichTextUploadingField(help_text='Enter news content',
-                                        verbose_name=_('English content')
-                                        )
-    uk_content = RichTextUploadingField(help_text='Enter news content',
-                                        verbose_name=_('Ukrainian content')
-                                        )
-
+    
     type = models.ForeignKey(NewsType,
                              on_delete=models.PROTECT,
                              help_text='Choose news type',
@@ -165,23 +173,7 @@ class News(models.Model):
                                      verbose_name=_('Policy area'),
                                      default='Foreign policy')
     
-    date_of_creation = models.DateTimeField(auto_now_add=True,
-                                            verbose_name=_('Date of creation'))
-
-    slug = models.SlugField(help_text='Slug',
-                            unique=True,)
-
-    class Meta:
-        ordering = ['en_title', 'uk_title', 'type', 'date_of_creation']
-        verbose_name_plural = _('News')
-
-    def __str__(self):
-        return f'{self.en_title}, {self.uk_title}, {self.date_of_creation}'
     
-    def save(self, *args, **kwargs):
-        self.slug = slugify(self.en_title.lower())
-        super(News, self).save(*args, **kwargs)
-
     def send(self, request):
         context = {}
         context['domain'] = get_current_site(request).domain
@@ -217,6 +209,12 @@ class News(models.Model):
             email.send()
 
 class Subscriber(models.Model):
+    class Meta:
+        verbose_name_plural = _('Subscribers e-mails')
+
+    def __str__(self):
+        return self.email + " (" + ("not " if not self.is_active else "") + "confirmed)"
+    
     email = models.EmailField(unique=True,
                               max_length=254,
                               help_text='Enter e-mail')
@@ -226,12 +224,6 @@ class Subscriber(models.Model):
                                         choices=[('en', _('English')),
                                                  ('uk', _('Ukrainian'))])
 
-    class Meta:
-        verbose_name_plural = _('Subscribers e-mails')
-
-    def __str__(self):
-        return self.email + " (" + ("not " if not self.is_active else "") + "confirmed)"
-
 
 class Video(models.Model):
     PODCAST = 'pc'
@@ -240,6 +232,18 @@ class Video(models.Model):
         (PODCAST, 'Podcasts'),
         (VIDEO, 'Videos')
     )
+    
+    class Meta:
+        verbose_name_plural = _('Video content')
+    
+    def __str__(self):
+        return self.en_title
+    
+    def save(self, *args, **kwargs):
+        self.url = self.url.split('/')[-1]
+        super(Video, self).save(*args, **kwargs)
+
+    
     en_title = models.CharField(max_length=45,
                                 help_text='Enter video title',
                                 verbose_name=_('English title'))
@@ -255,12 +259,4 @@ class Video(models.Model):
     date_of_creation = models.DateTimeField(auto_now_add=True,
                                             verbose_name=_('Date of creation'))
     
-    def save(self, *args, **kwargs):
-        self.url = self.url.split('/')[-1]
-        super(Video, self).save(*args, **kwargs)
 
-    def __str__(self):
-        return self.en_title
-    
-    class Meta:
-        verbose_name_plural = _('Video content')
