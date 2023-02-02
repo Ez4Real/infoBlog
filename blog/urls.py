@@ -13,7 +13,7 @@ urlpatterns = [
          name='activate'),
     path('<type>/<slug:slug>/', views.post_detail, name='post-detail'),
     path('blog/scholar-posts/<slug:slug>/', views.scholar_posts, name='scholar-posts'),
-    path('blog/<author>/<slug:slug>/', views.blog_post_detail, name='blog-post-detail'),
+    path('blog/<author_slug>/<slug:slug>/', views.blog_post_detail, name='blog-post-detail'),
     path('search/', views.search, name='search'),
     
     # About

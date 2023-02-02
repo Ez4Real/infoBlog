@@ -94,6 +94,9 @@ class BlogScholar(models.Model):
 
     
 class Article(models.Model):
+    def save(self, *args, **kwargs):
+        self.slug = slugify(self.en_title.lower())
+        super(Article, self).save(*args, **kwargs)
         
     slug = models.SlugField(help_text='Slug',
                             unique=True,)
@@ -118,10 +121,6 @@ class Article(models.Model):
     
 class Blog(Article):
     
-    def save(self, *args, **kwargs):
-        self.slug = slugify(self.en_title.lower())
-        super(Blog, self).save(*args, **kwargs)
-    
     def get_absolute_url(self):
         return reverse('blog-post-detail', args=[self.author.slug, self.slug])
     
@@ -142,10 +141,6 @@ class News(Article):
         
     def get_absolute_url(self):
         return reverse('post-detail', args=[self.type.slug, self.slug])
-
-    def save(self, *args, **kwargs):
-        self.slug = slugify(self.en_title.lower())
-        super(News, self).save(*args, **kwargs)
         
 
     banner = models.ImageField(upload_to='uploads/banners', 
