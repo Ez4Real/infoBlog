@@ -1,6 +1,7 @@
 from django.contrib import admin
 
-from .models import NewsType, PolicyArea, News, Subscriber, Video, BlogScholar, Blog
+from .models import NewsType, PolicyArea, News, Subscriber, Video, \
+    BlogScholar, Blog, TeamMember
 
 
 def send_newsletter(modeladmin, request, queryset):
@@ -26,12 +27,22 @@ class SubscriberAdmin(admin.ModelAdmin):
     list_display = ('email', 'is_active', 'mailing_language')
     fields = [('email', 'is_active'), 'mailing_language']
     
+@admin.register(TeamMember)
+class TeamMemberAdmin(admin.ModelAdmin):
+    list_display = ('en_full_name', 'uk_full_name', 'en_position', 'uk_position')
+    list_filter = ('en_full_name', 'uk_full_name', 'en_position', 'uk_position')
+    fields = [('image',), 
+              ('en_full_name', 'uk_full_name'),
+              ('en_position', 'uk_position'),
+              ('en_content', 'uk_content'),
+              ('link')]
+    
 @admin.register(News)
 class NewsAdmin(admin.ModelAdmin):
-    list_display = ('en_title', 'uk_title', 'type', 'policy_area', 'date_of_creation')
-    list_filter = ('type', 'policy_area', 'en_title', 'uk_title', 'date_of_creation')
+    list_display = ('en_title', 'uk_title', 'type', 'policy_area', 'author', 'date_of_creation')
+    list_filter = ('type', 'policy_area', 'author', 'en_title', 'uk_title', 'date_of_creation')
     fields = [('type', 'policy_area', 'banner'), 
-              ('en_title', 'uk_title'),
+              ('en_title', 'uk_title', 'author'),
               ('en_subtitle', 'uk_subtitle'),
               ('en_content', 'uk_content')]
     actions = [send_newsletter]

@@ -59,13 +59,13 @@ class BlogScholar(models.Model):
                               verbose_name=_('News banner')
                               )
     en_full_name = models.CharField(max_length=45,
-                                help_text='Enter name',
-                                verbose_name=_('Name on english')
-                                )
+                                    help_text='Enter name',
+                                    verbose_name=_('Name on english')
+                                    )
     uk_full_name = models.CharField(max_length=45,
-                                help_text='Enter name',
-                                verbose_name=_('Name on ukrainian')
-                                )
+                                    help_text='Enter name',
+                                    verbose_name=_('Name on ukrainian')
+                                    )
     en_position = models.TextField(max_length=255,
                                    help_text='Enter position',
                                    verbose_name=_('English position')
@@ -77,7 +77,6 @@ class BlogScholar(models.Model):
     link = models.URLField(help_text='Enter link',
                            max_length = 200,
                            verbose_name=_('University link'))
-    
     slug = models.SlugField(help_text='Slug',
                             unique=True)
         
@@ -89,7 +88,6 @@ class BlogScholar(models.Model):
         super(BlogScholar, self).save(*args, **kwargs)
     
     def get_all_objects(self):
-        print(self._meta.model)
         return self._meta.model.objects.all()
 
     
@@ -131,6 +129,14 @@ class Blog(Article):
                                )
 
 
+class TeamMember(BlogScholar):
+    en_content = RichTextUploadingField(help_text='Enter news content',
+                                        verbose_name=_('English content')
+                                        )
+    uk_content = RichTextUploadingField(help_text='Enter news content',
+                                        verbose_name=_('Ukrainian content')
+                                        )
+
 class News(Article):
     class Meta:
         ordering = ['en_title', 'uk_title', 'type', 'date_of_creation']
@@ -140,8 +146,7 @@ class News(Article):
         return f'{self.en_title}, {self.uk_title}, {self.date_of_creation}'
         
     def get_absolute_url(self):
-        return reverse('post-detail', args=[self.type.slug, self.slug])
-        
+        return reverse('post-detail', args=[self.type.slug, self.slug]) 
 
     banner = models.ImageField(upload_to='uploads/banners', 
                                verbose_name=_('News banner')
@@ -161,13 +166,17 @@ class News(Article):
                              help_text='Choose news type',
                              verbose_name=_('Type'),
                              default='News')
-    
     policy_area = models.ForeignKey(PolicyArea,
-                                     on_delete=models.PROTECT,
-                                     help_text='Choose policy area',
-                                     verbose_name=_('Policy area'),
-                                     default='Foreign policy')
-    
+                                    on_delete=models.PROTECT,
+                                    help_text='Choose policy area',
+                                    verbose_name=_('Policy area'),
+                                    default='Foreign policy')
+    author = models.ForeignKey(TeamMember,
+                               on_delete=models.PROTECT,
+                               help_text='Select an author if needed',
+                               verbose_name=_('Author'),
+                               blank=True,
+                               null=True)
     
     def send(self, request):
         context = {}

@@ -1,6 +1,6 @@
 from django.db.models import Q, QuerySet
 from django.utils.safestring import SafeText
-from ..models import News, Video, BlogScholar, Blog
+from ..models import News, Video, BlogScholar, Blog, TeamMember
 
 
 def get_news_by_policy_area(policy_area: str) -> QuerySet:
@@ -29,6 +29,10 @@ def get_blog_post_by_slug(slug: SafeText) -> Blog:
 def get_all_blog_scholars() -> QuerySet:
     """ Returns QuerySet of all Blog Scholars """
     return BlogScholar().get_all_objects()
+
+def get_all_team_members():
+    """ Returns QuerySet of all Team Members """
+    return TeamMember().get_all_objects()
     
 def get_blog_scholar_by_slug(slug: SafeText) -> BlogScholar:
     """ Returns BlogScholar object by slug """

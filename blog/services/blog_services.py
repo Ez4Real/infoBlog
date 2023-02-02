@@ -5,8 +5,8 @@ from django.utils.text import format_lazy
 from django.db.models import QuerySet
 
 from .subscribe_services import get_subscriber_form
-from .db_services import get_news_by_type, get_news_by_policy_area, \
-    get_videocontent_by_type, get_all_blog_scholars
+from .db_services import get_all_team_members, get_news_by_policy_area, \
+    get_videocontent_by_type, get_all_blog_scholars, get_news_by_type
 from django.conf import settings
 
 def paginate(queryset: QuerySet, request: HttpRequest) -> Page:
@@ -64,7 +64,11 @@ def add_posts_by_type_to_context(context: dict,
     context['blog_posts'] = paginate(get_news_by_type(type), 
                                      request)
     
-def add_blog_scholars_to_context(context: dict
-                                ) -> None:
+def add_blog_scholars_to_context(context: dict) -> None:
     """ Adds Blog Scholars to context """
     context['blog_scholars'] = get_all_blog_scholars()
+    
+def add_team_members_to_context(context: dict) -> None:
+    """ Adds Team Members to context """
+    context['team_members'] = get_all_team_members()
+    
