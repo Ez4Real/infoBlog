@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2023-02-02 16:54+0200\n"
+"POT-Creation-Date: 2023-02-03 14:35+0200\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -90,88 +90,92 @@ msgstr ""
 msgid "Policy area name"
 msgstr ""
 
-#: .\blog\models.py:59 .\blog\models.py:147
-msgid "News banner"
+#: .\blog\models.py:66
+msgid "Photo of the represent"
 msgstr ""
 
-#: .\blog\models.py:63
+#: .\blog\models.py:70
 msgid "Name on english"
 msgstr ""
 
-#: .\blog\models.py:67
+#: .\blog\models.py:74
 msgid "Name on ukrainian"
 msgstr ""
 
-#: .\blog\models.py:71
+#: .\blog\models.py:78
 msgid "English position"
 msgstr ""
 
-#: .\blog\models.py:75
+#: .\blog\models.py:82
 msgid "Ukrainian position"
 msgstr ""
 
-#: .\blog\models.py:79
+#: .\blog\models.py:94
 msgid "University link"
 msgstr ""
 
-#: .\blog\models.py:106 .\blog\models.py:244
-msgid "English title"
-msgstr ""
-
-#: .\blog\models.py:110 .\blog\models.py:247
-msgid "Ukrainian title"
-msgstr ""
-
-#: .\blog\models.py:113
+#: .\blog\models.py:102 .\blog\models.py:126
 msgid "English content"
 msgstr ""
 
-#: .\blog\models.py:116
+#: .\blog\models.py:105 .\blog\models.py:129
 msgid "Ukrainian content"
 msgstr ""
 
-#: .\blog\models.py:119 .\blog\models.py:255
+#: .\blog\models.py:119 .\blog\models.py:260
+msgid "English title"
+msgstr ""
+
+#: .\blog\models.py:123 .\blog\models.py:263
+msgid "Ukrainian title"
+msgstr ""
+
+#: .\blog\models.py:132 .\blog\models.py:271
 msgid "Date of creation"
 msgstr ""
 
-#: .\blog\models.py:130
+#: .\blog\models.py:143 .\blog\models.py:184
 msgid "Author"
 msgstr ""
 
-#: .\blog\models.py:137 .\templates\blog\news.html:10
+#: .\blog\models.py:150 .\templates\blog\news.html:10
 #: .\templates\include\header\header_bottom.html:4
 msgid "News"
 msgstr ""
 
-#: .\blog\models.py:152
+#: .\blog\models.py:159
+msgid "News banner"
+msgstr ""
+
+#: .\blog\models.py:164
 msgid "English subtitle"
 msgstr ""
 
-#: .\blog\models.py:156
+#: .\blog\models.py:168
 msgid "Ukrainian subtitle"
 msgstr ""
 
-#: .\blog\models.py:162
+#: .\blog\models.py:174
 msgid "Type"
 msgstr ""
 
-#: .\blog\models.py:168
+#: .\blog\models.py:179
 msgid "Policy area"
 msgstr ""
 
-#: .\blog\models.py:208
+#: .\blog\models.py:224
 msgid "Subscribers e-mails"
 msgstr ""
 
-#: .\blog\models.py:219 .\infoBlog\settings.py:136
+#: .\blog\models.py:235 .\infoBlog\settings.py:136
 msgid "English"
 msgstr ""
 
-#: .\blog\models.py:220 .\infoBlog\settings.py:135
+#: .\blog\models.py:236 .\infoBlog\settings.py:135
 msgid "Ukrainian"
 msgstr ""
 
-#: .\blog\models.py:232
+#: .\blog\models.py:248
 msgid "Video content"
 msgstr ""
 

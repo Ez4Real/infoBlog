@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2023-01-20 22:01+0200\n"
+"POT-Creation-Date: 2023-02-03 14:37+0200\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -37,9 +37,8 @@ msgstr "Доктор або кандидат наук"
 msgid "Other"
 msgstr "Інше"
 
-#: .\blog\forms.py:32 .\blog\forms.py:55 .\blog\models.py:154
+#: .\blog\forms.py:32 .\blog\forms.py:55
 msgid "First name"
-msgid "Name"
 msgstr "Ім'я"
 
 #: .\blog\forms.py:35 .\blog\forms.py:58
@@ -78,80 +77,110 @@ msgstr "Телефон"
 msgid "What do you do in life?"
 msgstr "Чим Ви займаєтесь у житті"
 
-#: .\blog\models.py:24
-msgid "News type"
-msgstr "Тип новини"
-
-#: .\blog\models.py:34
+#: .\blog\models.py:22
 msgid "News Types"
 msgstr "Типи новин"
 
-#: .\blog\models.py:44
-msgid "Policy area name"
-msgstr "Назва сфери дослідження"
+#: .\blog\models.py:35
+msgid "News type"
+msgstr "Тип новини"
 
-#: .\blog\models.py:46 .\templates\include\header\header_bottom.html:22
+#: .\blog\models.py:42 .\templates\include\header\header_bottom.html:22
 msgid "Policy areas"
 msgstr "Сфери досліджень"
 
-#: .\blog\models.py:58 .\blog\models.py:175
-msgid "English title"
-msgstr "Заголовок англійською"
-
-#: .\blog\models.py:62 .\blog\models.py:178
-msgid "Ukrainian title"
-msgstr "Заголовок українською"
+#: .\blog\models.py:50
+msgid "Policy area name"
+msgstr "Назва сфери дослідження"
 
 #: .\blog\models.py:66
-msgid "News banner"
-msgstr "Баннер новини"
+msgid "Photo of the represent"
+msgstr "Фото представника"
 
-#: .\blog\models.py:71
-msgid "English subtitle"
-msgstr "Підзаголовок англійською"
+#: .\blog\models.py:70
+msgid "Name on english"
+msgstr "Ім'я англійською"
 
-#: .\blog\models.py:75
-msgid "Ukrainian subtitle"
-msgstr "Підзаголовок українською"
+#: .\blog\models.py:74
+msgid "Name on ukrainian"
+msgstr "Ім'я українською"
 
-#: .\blog\models.py:79
-msgid "English content"
+#: .\blog\models.py:78
+#, fuzzy
+#| msgid "English content"
+msgid "English position"
 msgstr "Контент англійською"
 
 #: .\blog\models.py:82
+msgid "Ukrainian position"
+msgstr "Контент українською"
+
+#: .\blog\models.py:94
+msgid "University link"
+msgstr "Лінк університету"
+
+#: .\blog\models.py:102 .\blog\models.py:126
+msgid "English content"
+msgstr "Контент англійською"
+
+#: .\blog\models.py:105 .\blog\models.py:129
 msgid "Ukrainian content"
 msgstr "Контент українською"
 
-#: .\blog\models.py:88
-msgid "Type"
-msgstr "Тип"
+#: .\blog\models.py:119 .\blog\models.py:260
+msgid "English title"
+msgstr "Заголовок англійською"
 
-#: .\blog\models.py:94
-msgid "Policy area"
-msgstr "Сфера дослідження"
+#: .\blog\models.py:123 .\blog\models.py:263
+msgid "Ukrainian title"
+msgstr "Заголовок українською"
 
-#: .\blog\models.py:98 .\blog\models.py:186
+#: .\blog\models.py:132 .\blog\models.py:271
 msgid "Date of creation"
 msgstr "Дата створення"
 
-#: .\blog\models.py:105 .\templates\blog\news.html:10
+#: .\blog\models.py:143 .\blog\models.py:184
+msgid "Author"
+msgstr "Автор"
+
+#: .\blog\models.py:150 .\templates\blog\news.html:10
 #: .\templates\include\header\header_bottom.html:4
 msgid "News"
 msgstr "Новини"
 
-#: .\blog\models.py:156 .\infoBlog\settings.py:136
-msgid "English"
-msgstr "Англійська"
+#: .\blog\models.py:159
+msgid "News banner"
+msgstr "Баннер новини"
 
-#: .\blog\models.py:157 .\infoBlog\settings.py:135
-msgid "Ukrainian"
-msgstr "Українська"
+#: .\blog\models.py:164
+msgid "English subtitle"
+msgstr "Підзаголовок англійською"
 
-#: .\blog\models.py:160
+#: .\blog\models.py:168
+msgid "Ukrainian subtitle"
+msgstr "Підзаголовок українською"
+
+#: .\blog\models.py:174
+msgid "Type"
+msgstr "Тип"
+
+#: .\blog\models.py:179
+msgid "Policy area"
+msgstr "Сфера дослідження"
+
+#: .\blog\models.py:224
 msgid "Subscribers e-mails"
 msgstr "Електронні пошти підписників"
 
-#: .\blog\models.py:196
+#: .\blog\models.py:235 .\infoBlog\settings.py:136
+msgid "English"
+msgstr "Англійська"
+
+#: .\blog\models.py:236 .\infoBlog\settings.py:135
+msgid "Ukrainian"
+msgstr "Українська"
+
+#: .\blog\models.py:248
 msgid "Video content"
 msgstr "Відеоконтент"
 
@@ -160,7 +189,7 @@ msgid "European Research Group Of Support for Ukrainian Membership – ERGOSUM"
 msgstr "Європейська Дослідницька Група Підтримки Членства України – ERGOSUM"
 
 #: .\templates\blog\about\board.html:8
-#: .\templates\include\header\header_top.html:15
+#: .\templates\include\header\header_top.html:14
 msgid "Board"
 msgstr "Рада"
 
@@ -168,8 +197,8 @@ msgstr "Рада"
 msgid "Key Documents"
 msgstr "Ключові документи"
 
-#: .\templates\blog\about\mission.html:8
-#: .\templates\include\header\header_top.html:10
+#: .\templates\blog\about\mission.html:8 .\templates\blog\about\mission.html:15
+#: .\templates\include\header\header_top.html:9
 msgid "Mission"
 msgstr "Місія"
 
@@ -177,24 +206,24 @@ msgstr "Місія"
 msgid "Our team"
 msgstr "Наша команда"
 
-#: .\templates\blog\about\vision.html:8
-#: .\templates\include\header\header_top.html:11
+#: .\templates\blog\about\vision.html:12
+#: .\templates\include\header\header_top.html:10
 msgid "Vision"
 msgstr "Візія"
 
-#: .\templates\blog\base_generic.html:61 .\templates\blog\base_generic.html:92
+#: .\templates\blog\base_generic.html:62 .\templates\blog\base_generic.html:97
 #: .\templates\include\header\search.html:4
 msgid "Search"
 msgstr "Пошук"
 
 #: .\templates\blog\blog.html:10
-#: .\templates\include\header\header_bottom.html:17
-msgid "Blog"
-msgstr "Блог"
+msgid "Personal blog"
+msgstr "Персональний блог"
 
 #: .\templates\blog\donate\all_donate(old).html:8
+#: .\templates\blog\donate\all_donate(old).html:13
 #: .\templates\blog\donate\all_donate.html:8
-#: .\templates\include\header\header_top.html:30
+#: .\templates\include\header\header_top.html:29
 msgid "Donate"
 msgstr "Підтримати"
 
@@ -203,42 +232,42 @@ msgstr "Підтримати"
 msgid "Events"
 msgstr "Події"
 
-#: .\templates\blog\homepage.html:70
+#: .\templates\blog\homepage.html:74
 #: .\templates\blog\research\analytics.html:10
 #: .\templates\include\header\header_bottom.html:11
 msgid "Analytics"
 msgstr "Аналітика"
 
 #  ==========================================================================
-#: .\templates\blog\homepage.html:84 .\templates\blog\op_eds.html:10
+#: .\templates\blog\homepage.html:88 .\templates\blog\op_eds.html:10
 #: .\templates\include\header\header_bottom.html:18
 msgid "Op-eds"
 msgstr "Статті"
 
-#: .\templates\blog\homepage.html:99 .\templates\blog\research\opinion.html:10
+#: .\templates\blog\homepage.html:103 .\templates\blog\research\opinion.html:10
 #: .\templates\include\header\header_bottom.html:12
 msgid "Opinion"
 msgstr "Коментарі"
 
 #: .\templates\blog\join_us\general_members.html:8
-#: .\templates\include\header\header_top.html:14
+#: .\templates\include\header\header_top.html:13
 msgid "General members"
 msgstr "Організації-члени"
 
 #: .\templates\blog\join_us\join_team.html:8
 #: .\templates\blog\join_us\join_team.html:17
-#: .\templates\include\header\header_top.html:24
+#: .\templates\include\header\header_top.html:23
 msgid "Join team"
 msgstr "Приєднатися до команди"
 
 #: .\templates\blog\join_us\join_team.html:60
-#: .\templates\blog\join_us\volunteer.html:79
+#: .\templates\blog\join_us\volunteer.html:80
 msgid "Send"
 msgstr "Надіслати"
 
-#: .\templates\blog\join_us\volunteer.html:9
-#: .\templates\blog\join_us\volunteer.html:30
-#: .\templates\include\header\header_top.html:26
+#: .\templates\blog\join_us\volunteer.html:14
+#: .\templates\blog\join_us\volunteer.html:31
+#: .\templates\include\header\header_top.html:25
 msgid "Volunteer"
 msgstr "Волонтерство"
 
@@ -337,6 +366,10 @@ msgstr "Проспект Лобановського 4а, Київ, Україн�
 msgid "Research"
 msgstr "Дослідження"
 
+#: .\templates\include\header\header_bottom.html:17
+msgid "Blog"
+msgstr "Блог"
+
 #: .\templates\include\header\header_bottom.html:39
 msgid "Media"
 msgstr "Медіа"
@@ -349,18 +382,18 @@ msgstr "Подкасти"
 msgid "Videos"
 msgstr "Відео"
 
-#: .\templates\include\header\header_top.html:7
+#: .\templates\include\header\header_top.html:6
 msgid "About"
 msgstr "Про нас"
 
-#: .\templates\include\header\header_top.html:12
+#: .\templates\include\header\header_top.html:11
 msgid "Key-documents"
 msgstr "Ключові документи"
 
-#: .\templates\include\header\header_top.html:13
+#: .\templates\include\header\header_top.html:12
 msgid "Team"
 msgstr "Команда"
 
-#: .\templates\include\header\header_top.html:21
+#: .\templates\include\header\header_top.html:20
 msgid "Join us"
 msgstr "Приєднатися"
