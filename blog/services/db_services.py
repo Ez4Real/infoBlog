@@ -33,6 +33,10 @@ def get_all_blog_scholars() -> QuerySet:
 def get_all_team_members():
     """ Returns QuerySet of all Team Members """
     return TeamMember().get_all_objects()
+
+def get_member_by_slug(slug: SafeText) -> TeamMember:
+    """ Returns Team Member object by slug """
+    return TeamMember.objects.get(slug=slug)
     
 def get_blog_scholar_by_slug(slug: SafeText) -> BlogScholar:
     """ Returns BlogScholar object by slug """

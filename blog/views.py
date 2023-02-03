@@ -4,7 +4,8 @@ from django.http import HttpResponse, HttpRequest
 from django.utils.safestring import SafeText
 
 from .services.db_services import get_news_by_slug, get_blog_scholar_by_slug, \
-    get_blog_search_results, get_posts_by_author_slug, get_blog_post_by_slug 
+    get_blog_search_results, get_posts_by_author_slug, get_blog_post_by_slug, \
+    get_member_by_slug
 from .services.blog_services import paginate, \
     check_if_number_endswith_one, add_subscriber_form_to_context, \
     add_last_news_to_context, get_dynamic_page_title_by_language, \
@@ -27,11 +28,25 @@ def post_detail(request, type, slug, context = {}) -> HttpResponse:
     add_subscriber_form_to_context(context, request)
     context['post'] = post = get_news_by_slug(slug)
     add_page_title_to_context_by_language(
-        get_dynamic_page_title_by_language(request, post),
+        get_dynamic_page_title_by_language(request,
+                                           post.en_title,
+                                           post.uk_title),
         context
     )
     return render(request, 'blog/post_detail.html', context)
 
+def team_member_detail(request: HttpRequest,
+                       slug: SafeText,
+                       context: dict = {}) -> HttpResponse:
+    context['post'] = post = get_member_by_slug(slug)
+    add_page_title_to_context_by_language(
+        get_dynamic_page_title_by_language(request,
+                                           post.en_full_name,
+                                           post.uk_full_name),
+        context
+    )
+    return render(request, 'blog/team_member_detail.html', context)
+    
 def blog_post_detail(request: HttpRequest,
                      author_slug: SafeText,
                      slug: SafeText,
@@ -39,7 +54,9 @@ def blog_post_detail(request: HttpRequest,
     add_subscriber_form_to_context(context, request)
     context['post'] = post = get_blog_post_by_slug(slug)
     add_page_title_to_context_by_language(
-        get_dynamic_page_title_by_language(request, post),
+        get_dynamic_page_title_by_language(request,
+                                           post.en_title,
+                                           post.uk_title),
         context
     )
     return render(request, 'blog/blog_post_detail.html', context)
@@ -48,11 +65,17 @@ def scholar_posts(request: HttpRequest,
                   slug: SafeText,
                   context: dict = {}) -> HttpResponse:
     add_subscriber_form_to_context(context, request)
-    context['blog_posts'] = get_posts_by_author_slug(slug)
     context['author'] = get_blog_scholar_by_slug(slug)
+    context['blog_posts'] = get_posts_by_author_slug(slug)
+    add_page_title_to_context_by_language(
+        get_dynamic_page_title_by_language(request,
+                                           context['author'].en_full_name,
+                                           context['author'].uk_full_name),
+        context
+    )
     return render(request, 'blog/scholar_posts.html', context)
 
-def search(request, context = {}):
+def search(request: HttpRequest, context: dict = {}):
     add_page_title_to_context_by_language('Search Results', context)
     add_subscriber_form_to_context(context, request)
     

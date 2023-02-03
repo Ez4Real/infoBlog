@@ -9,21 +9,23 @@
         <div class="row row-cols-xl-4">
             <div class="col">
                 {% for member in team_members %}
-                    <div class="card mb-4" style="min-width:250px;">
-                        <img class="card-img-top" alt="Team photo" style="height: 225px; width: 100%; display: block;"
-                            src="{{ member.image.url }}">
-                        <div class="card-body">
-                            <p class="card-text">
-                                {% if CURRENT_LANGUAGE == "uk" %}
-                                    <p>{{ member.uk_full_name }}</p>
-                                    {{ member.uk_position }}
-                                {% else %}
-                                    <p>{{ member.en_full_name }}</p>
-                                    {{ member.en_position }}
-                                {% endif %}    
-                            </p>
+                    <a href="{{member.get_absolute_url}}" >
+                        <div class="card mb-4" style="min-width:250px;">
+                            <img class="card-img-top" alt="Team photo" style="height: 225px; width: 100%; display: block;"
+                                src="{{ member.image.url }}">
+                            <div class="card-body">
+                                <p class="card-text">
+                                    {% if CURRENT_LANGUAGE == "uk" %}
+                                        <p>{{ member.uk_full_name }}</p>
+                                        {{ member.uk_position }}
+                                    {% else %}
+                                        <p>{{ member.en_full_name }}</p>
+                                        {{ member.en_position }}
+                                    {% endif %}    
+                                </p>
+                            </div>
                         </div>
-                    </div>
+                    </a>
                 {% endfor %}
             </div>
         </div>

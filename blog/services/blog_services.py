@@ -9,19 +9,22 @@ from .db_services import get_all_team_members, get_news_by_policy_area, \
     get_videocontent_by_type, get_all_blog_scholars, get_news_by_type
 from django.conf import settings
 
+
 def paginate(queryset: QuerySet, request: HttpRequest) -> Page:
     """ Returns Page object of queryset """
     return Paginator(queryset,
                      settings.POSTS_PER_PAGE
                      ).get_page(request.GET.get('page', 1))
 
-def get_dynamic_page_title_by_language(request: HttpRequest, post: str) -> str:
-    """ Returns dynamic page title in current language """
+def get_dynamic_page_title_by_language(request: HttpRequest,
+                                       en_version: str,
+                                       uk_version: str) -> str:
+    """ Returns dynamic page title by article title language """
     match request.LANGUAGE_CODE:
         case 'en':
-            pre_vbar = post.en_title
+            pre_vbar = en_version
         case 'uk':
-            pre_vbar = post.uk_title
+            pre_vbar = uk_version
     return format_lazy('{} | {}', pre_vbar, settings.TITLE)
 
 def check_if_number_endswith_one(amount: str) -> bool:

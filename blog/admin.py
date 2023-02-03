@@ -34,8 +34,7 @@ class TeamMemberAdmin(admin.ModelAdmin):
     fields = [('image',), 
               ('en_full_name', 'uk_full_name'),
               ('en_position', 'uk_position'),
-              ('en_content', 'uk_content'),
-              ('link')]
+              ('en_content', 'uk_content')]
     
 @admin.register(News)
 class NewsAdmin(admin.ModelAdmin):
@@ -58,8 +57,8 @@ class BlogScholarAdmin(admin.ModelAdmin):
     
 @admin.register(Blog)
 class BlogAdmin(admin.ModelAdmin):
-    list_display = ('author', 'en_title', 'uk_title', 'date_of_creation')
-    list_filter = ('author', 'en_title', 'uk_title', 'date_of_creation')
+    list_display = ('en_title', 'uk_title', 'author', 'date_of_creation')
+    list_filter = ('en_title', 'uk_title', 'author', 'date_of_creation')
     fields = [('author'), 
               ('en_title', 'uk_title'),
               ('en_content', 'uk_content')]

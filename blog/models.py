@@ -48,15 +48,22 @@ class PolicyArea(models.Model):
                             max_length=25,
                             unique=True,
                             verbose_name=_('Policy area name'))
+
+
+class Person(models.Model):
     
+    def __str__(self):
+        return f'{self.en_full_name} - {self.uk_full_name}'
     
-class BlogScholar(models.Model):
+    def save(self, *args, **kwargs):
+        self.slug = slugify(self.en_full_name.lower())
+        super(Person, self).save(*args, **kwargs)
     
-    def get_scholar_posts(self):
-        return reverse('scholar-posts', args=[self.slug])
+    def get_all_objects(self):
+        return self._meta.model.objects.all()
     
     image = models.ImageField(upload_to='uploads/blog-scholars', 
-                              verbose_name=_('News banner')
+                              verbose_name=_('Photo of the represent')
                               )
     en_full_name = models.CharField(max_length=45,
                                     help_text='Enter name',
@@ -74,21 +81,29 @@ class BlogScholar(models.Model):
                                    help_text='Enter position',
                                    verbose_name=_('Ukrainian position')
                                    )
-    link = models.URLField(help_text='Enter link',
-                           max_length = 200,
-                           verbose_name=_('University link'))
     slug = models.SlugField(help_text='Slug',
                             unique=True)
         
-    def __str__(self):
-        return self.en_full_name
+
+class BlogScholar(Person):
+    def get_scholar_posts(self):
+        return reverse('scholar-posts', args=[self.slug])
     
-    def save(self, *args, **kwargs):
-        self.slug = slugify(self.en_full_name.lower())
-        super(BlogScholar, self).save(*args, **kwargs)
+    link = models.URLField(help_text='Enter link',
+                           max_length = 200,
+                           verbose_name=_('University link'))
+
+
+class TeamMember(Person):
+    def get_absolute_url(self):
+        return reverse('team-member-detail', args=[self.slug])
     
-    def get_all_objects(self):
-        return self._meta.model.objects.all()
+    en_content = RichTextUploadingField(help_text='Enter news content',
+                                        verbose_name=_('English content')
+                                        )
+    uk_content = RichTextUploadingField(help_text='Enter news content',
+                                        verbose_name=_('Ukrainian content')
+                                        )
 
     
 class Article(models.Model):
@@ -128,14 +143,6 @@ class Blog(Article):
                                verbose_name=_('Author')
                                )
 
-
-class TeamMember(BlogScholar):
-    en_content = RichTextUploadingField(help_text='Enter news content',
-                                        verbose_name=_('English content')
-                                        )
-    uk_content = RichTextUploadingField(help_text='Enter news content',
-                                        verbose_name=_('Ukrainian content')
-                                        )
 
 class News(Article):
     class Meta:
