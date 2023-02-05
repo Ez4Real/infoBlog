@@ -125,6 +125,9 @@ nav{
     .phone-volunteer input{
         width: 205px !important;
     }
+    header{
+        height: 270px!important;
+    }
 }
 
 @media (max-width: 425px) {
@@ -142,7 +145,12 @@ nav{
     .phone-volunteer input{
         width: 271px !important;;
     }
-
+    .form-control{
+        margin-bottom: 10px!important;
+    }
+    .sub-butt{
+        width: 377px!important;
+    }
 }
 
 
@@ -157,6 +165,9 @@ nav{
     }
     .phone-volunteer input{
         width: 224px !important;;
+    }
+    .sub-butt{
+        width: 274px!important;
     }
 }
 
@@ -234,6 +245,10 @@ footer{
 
 .body-cronis-post p{
     text-align: justify;
+}
+
+.card-title{
+    text-align: center;
 }
 
 .body-cronis-post img{
@@ -511,11 +526,24 @@ header a{
 }
 
 .navbar-brand svg{
+
     height: 200px;
     position: absolute;
     top: -20%;
     left: 10%;
 }
+
+/* .navbar-brand-side{
+    height: 160px;
+    width: 150px;
+}
+
+.navbar-brand-side svg{
+    height: 200px;
+    position: absolute;
+    top: -20%;
+    left: 10%;
+} */
 
 .donate-img{
     height: 250px;
