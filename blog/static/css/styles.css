@@ -41,6 +41,10 @@ nav{
     width: 155px;
 }
 
+.card-custom-blog{
+    height: 75px;
+}
+
 @media (max-width: 1440px) {
     .logo,
     .logo-side{
@@ -119,6 +123,12 @@ nav{
         height: 100% !important;
         width: 100% !important;
     }
+    .card-custom{
+        height: 300px !important;
+    }
+    .card-custom-blog{
+        height: 300px !important;
+    }
 }
 
 @media (max-width: 768px) {
@@ -127,6 +137,12 @@ nav{
     }
     header{
         height: 270px!important;
+    }
+    .card-custom{
+        height: 150px !important;
+    }
+    .card-custom-blog{
+        height: 160px !important;
     }
 }
 
@@ -151,6 +167,12 @@ nav{
     .sub-butt{
         width: 377px!important;
     }
+    .card-custom{
+        height: 225px !important;
+    }
+    .card-custom-blog{
+        height: 240px !important;
+    }
 }
 
 
@@ -169,6 +191,12 @@ nav{
     .sub-butt{
         width: 274px!important;
     }
+    .card-custom{
+        height: 255px !important;
+    }
+    .card-custom-blog{
+        height: 266px !important;
+    }
 }
 
 @media (max-width: 320px) {
@@ -182,6 +210,12 @@ nav{
     }
     .phone-volunteer input{
         width: 308px !important;;
+    }
+    .card-custom{
+        height: 290px !important;
+    }
+    .card-custom-blog{
+        height: 290px !important;
     }
 }
 
@@ -278,7 +312,7 @@ footer{
 body {
     min-height: 100vh;
     background: #f0f0f0;
-    font-size: 19px;
+    font-size: 18px;
 }
 
 .side-navbar {
@@ -593,6 +627,33 @@ header a{
     animation-duration: 0.10s;
 }
 
+.fix-side-opt{
+    gap: 0rem !important;
+}
+
+.card-custom{
+    height: 208px;
+}
+
+.blog-person-card{
+    height: 95px!important;
+}
+
+.text-align-justify{
+    text-align: justify;
+}
+
+.hr-blog{
+    position: absolute;
+    right: 0;
+    top: 2.9%;
+    background: #f0f0f0;
+    padding: 0 10px;
+}
+
+.container-for-hr-blog{
+    position: relative;
+}
 @keyframes press{
     0% {
         border-radius: 15px;
@@ -618,6 +679,3 @@ header a{
     }
 }
 
-.fix-side-opt{
-    gap: 0rem !important;
-}
