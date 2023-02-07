@@ -4,28 +4,32 @@
 {% block content %}
 
 <div class="m-5"></div>
-    <div class="container text-break">
+    <div class="container text-break container-for-hr-blog">
 
     {% if CURRENT_LANGUAGE == "uk" %}
-        <h5 class="card-title">
+        <h1 class="card-title">
             {{ post.uk_title }}
-        </h5>
-        <span><a href={{ post.author.link }}>{{ post.author.uk_full_name }}</a></span>
+        </h1>
+        <div class="p-1"></div>
+        <hr>
+        <h4 class="text-end "><a class="text-primary hr-blog" style="text-decoration: none" href={{ post.author.link }}>{{ post.author.uk_full_name }}</a></h4><br>
         <div class="body-cronis-post ">
             {{ post.uk_content | safe }}
         </div>
-        {% else %}
-        <h5 class="card-title">
+    {% else %}
+        <h1 class="card-title">
             {{ post.en_title }}
-        </h5>
-        <span>by <a href={{ post.author.link }}>{{ post.author.en_full_name }}</a></span>
+        </h1>
+        <div class="p-1"></div>
+        <hr>
+        <h4 class="text-end "><a class="text-primary hr-blog" style="text-decoration: none" href={{ post.author.link }}>{{ post.author.en_full_name }}</a></h4><br>
         <div class="body-cronis-post ">
             {{ post.en_content | safe }}
         </div>
     {% endif %}
     <div class="p-4"></div>
     <div class="row bg-gray">
-        <div class="col">{{ post.date_of_creation }}</div>
+        <div class="col text-end">{{ post.date_of_creation }}</div>
     </div>
     <hr>
 </div>

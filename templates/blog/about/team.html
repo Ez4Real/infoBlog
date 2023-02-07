@@ -5,29 +5,42 @@
 <div class="p-3"></div>
 <div class="container">
     <div class="team ">
+
         <h1 class="text-center"> {% trans "Our team" %}</h1>
-        <div class="row row-cols-xl-4">
-            <div class="col">
-                {% for member in team_members %}
-                    <a href="{{member.get_absolute_url}}" >
+
+        <div class="row row-cols-1 row-cols-lg-2 row-cols-xl-3">
+            
+            {% for member in team_members %}
+                <div class="col">
+
+                    <a href="{{member.get_absolute_url}}" class="text-decoration-none">
                         <div class="card mb-4" style="min-width:250px;">
-                            <img class="card-img-top" alt="Team photo" style="height: 225px; width: 100%; display: block;"
+
+                            <img class="" alt="Team photo" style="height: 225px; width: 100%; display: block;"
                                 src="{{ member.image.url }}">
-                            <div class="card-body">
-                                <p class="card-text">
+
+                            <div class="card-body text-dark">
                                     {% if CURRENT_LANGUAGE == "uk" %}
-                                        <p>{{ member.uk_full_name }}</p>
-                                        {{ member.uk_position }}
+                                        <div class="card-title">
+                                            {{ member.uk_full_name }}
+                                        </div>
+                                        <div class="card-text">
+                                            {{ member.uk_position }}
+                                        </div>
                                     {% else %}
-                                        <p>{{ member.en_full_name }}</p>
-                                        {{ member.en_position }}
+                                        <div class="card-title">
+                                            {{ member.en_full_name }}
+                                        </div>
+                                        <div class="card-text">
+                                            {{ member.en_position }}
+                                        </div>
                                     {% endif %}    
-                                </p>
                             </div>
                         </div>
                     </a>
-                {% endfor %}
-            </div>
+
+                </div>
+            {% endfor %}
         </div>
 
     </div>

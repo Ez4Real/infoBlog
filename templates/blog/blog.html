@@ -10,22 +10,11 @@
         <h1>{% trans "Personal blog" %}</h1>
     </div>
 
-    {% for scholar in blog_scholars %}
-        <a href="{{ scholar.get_scholar_posts }}" class="text-dark text-decoration-none">
-            <img src="{{ scholar.image.url }}"
-                class="img-fluid rounded-start d-block mx-auto w-100 h-100 ob-cover"
-                alt="..."
-            >
-        
-            <strong>Name:</strong> {{ scholar.en_full_name }} - {{ scholar.uk_full_name }}
-            <br>
-            <strong>Position:</strong> {{ scholar.en_position }} - {{ scholar.uk_position }}
-            <br>
-            <strong>Link to resource:</strong> {{ scholar.link }}
-            <br>
-            <strong>Slug:</strong> {{ scholar.slug }}
-        </a>
-    {% endfor %}
+    <div class="row row-cols-1 row-cols-lg-3 g-4">
+        {% for scholar in blog_scholars %}
+            {% include 'include/cards_blogs/card_home_page.html' %}
+        {% endfor %}
+    </div>
 
 </div>
 {% endblock content %}

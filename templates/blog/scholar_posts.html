@@ -5,27 +5,22 @@
 <div class="p-1"></div>
 
 <div class="container">
+    <div class="text-center">
+        {% if CURRENT_LANGUAGE == "uk" %}
+            <h1>
+                {{ author.uk_full_name }}
+            </h1>
+        {% else %}
+            <h1>
+                by {{ author.en_full_name }}
+            </h1>
+        {% endif %}    
+    </div>
 
-    {% if CURRENT_LANGUAGE == "uk" %}
-    <h5>
-        {{ author.uk_full_name }}
-    </h5>
-    {% else %}
-    <h5>
-        by {{ author.en_full_name }}
-    </h5>
-    {% endif %}    
-
-    {% for post in blog_posts %}
-        <a href="{{ post.get_absolute_url }}">
-            <strong>Title:</strong> {{ post.en_title }}
-            <br>
-            <strong>Author:</strong> {{ post.author.en_full_name }}
-            <br>
-            <strong>Date:</strong> {{ post.date_of_creation }}
-            <br><br>
-        </a>
-    {% endfor %}
-
+    <div class="row row-cols-1 row-cols-lg-4 g-4">
+        {% for post in blog_posts %}
+            {% include 'include/cards_blogs/card_blogs.html' %}
+        {% endfor %}
+    </div>
 </div>
 {% endblock content %}
