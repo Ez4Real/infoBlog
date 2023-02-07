@@ -20,21 +20,21 @@
                                 src="{{ member.image.url }}">
 
                             <div class="card-body text-dark">
-                                    {% if CURRENT_LANGUAGE == "uk" %}
-                                        <div class="card-title">
-                                            {{ member.uk_full_name }}
-                                        </div>
-                                        <div class="card-text">
-                                            {{ member.uk_position }}
-                                        </div>
-                                    {% else %}
-                                        <div class="card-title">
-                                            {{ member.en_full_name }}
-                                        </div>
-                                        <div class="card-text">
-                                            {{ member.en_position }}
-                                        </div>
-                                    {% endif %}    
+                                {% if CURRENT_LANGUAGE == "uk" %}
+                                    <div class="card-title">
+                                        {{ member.uk_full_name }}
+                                    </div>
+                                    <div class="card-text">
+                                        {{ member.uk_position }}
+                                    </div>
+                                {% else %}
+                                    <div class="card-title">
+                                        {{ member.en_full_name }}
+                                    </div>
+                                    <div class="card-text">
+                                        {{ member.en_position }}
+                                    </div>
+                                {% endif %}    
                             </div>
                         </div>
                     </a>
