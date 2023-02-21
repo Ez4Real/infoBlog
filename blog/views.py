@@ -38,6 +38,7 @@ def post_detail(request, type, slug, context = {}) -> HttpResponse:
 def team_member_detail(request: HttpRequest,
                        slug: SafeText,
                        context: dict = {}) -> HttpResponse:
+    add_subscriber_form_to_context(context, request)
     context['post'] = post = get_member_by_slug(slug)
     add_page_title_to_context_by_language(
         get_dynamic_page_title_by_language(request,

@@ -114,11 +114,11 @@ class Article(models.Model):
     slug = models.SlugField(help_text='Slug',
                             unique=True,)
     
-    en_title = models.CharField(max_length=50,
+    en_title = models.CharField(max_length=100,
                                 help_text='Enter news title',
                                 verbose_name=_('English title')
                                 )
-    uk_title = models.CharField(max_length=50,
+    uk_title = models.CharField(max_length=100,
                                 help_text='Enter news title',
                                 verbose_name=_('Ukrainian title')
                                 )
