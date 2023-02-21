@@ -654,6 +654,16 @@ header a{
 .container-for-hr-blog{
     position: relative;
 }
+
+.misio-img{
+    padding-top: 60px;
+}
+
+.misio-img img{
+    width: 640px; 
+    height: 880px;
+}
+
 @keyframes press{
     0% {
         border-radius: 15px;
