@@ -6,6 +6,7 @@ from email.mime.image import MIMEImage
 from ckeditor_uploader.fields import RichTextUploadingField
 from django.contrib.sites.shortcuts import get_current_site
 from django.core.mail import EmailMessage
+from django.core.validators import MaxLengthValidator
 from django.db import models
 from django.template.loader import get_template
 from django.urls import reverse
@@ -108,17 +109,18 @@ class TeamMember(Person):
     
 class Article(models.Model):
     def save(self, *args, **kwargs):
-        self.slug = slugify(self.en_title.lower())
+        self.slug = slugify(self.en_title.lower())[:50]
         super(Article, self).save(*args, **kwargs)
         
     slug = models.SlugField(help_text='Slug',
-                            unique=True,)
+                            unique=True,
+                            validators=[MaxLengthValidator(50)])
     
-    en_title = models.CharField(max_length=50,
+    en_title = models.CharField(max_length=100,
                                 help_text='Enter news title',
                                 verbose_name=_('English title')
                                 )
-    uk_title = models.CharField(max_length=50,
+    uk_title = models.CharField(max_length=100,
                                 help_text='Enter news title',
                                 verbose_name=_('Ukrainian title')
                                 )

@@ -1,13 +1,3 @@
-/* @import url('./font/Web-PS/MacPawFixelDisplay-Black.css');
-@import url('./font/Web-PS/MacPawFixelDisplay-Bold.css');
-@import url('./font/Web-PS/MacPawFixelDisplay-ExtraBold.css');
-@import url('./font/Web-PS/MacPawFixelDisplay-ExtraLight.css');
-@import url('./font/Web-PS/MacPawFixelDisplay-Light.css');
-@import url('./font/Web-PS/MacPawFixelDisplay-Medium.css');
-@import url('./font/Web-PS/MacPawFixelDisplay-Regular.css');
-@import url('./font/Web-PS/MacPawFixelDisplay-SemiBold.css');
-@import url('./font/Web-PS/MacPawFixelDisplay-Thin.css'); */
-
 @font-face {
     font-family: "MacPawFixel";
     src: url('./font/MacPawFixel-VF.ttf') format('truetype');
