@@ -1,4 +1,4 @@
-@import url('./font/Web-PS/MacPawFixelDisplay-Black.css');
+/* @import url('./font/Web-PS/MacPawFixelDisplay-Black.css');
 @import url('./font/Web-PS/MacPawFixelDisplay-Bold.css');
 @import url('./font/Web-PS/MacPawFixelDisplay-ExtraBold.css');
 @import url('./font/Web-PS/MacPawFixelDisplay-ExtraLight.css');
@@ -6,14 +6,20 @@
 @import url('./font/Web-PS/MacPawFixelDisplay-Medium.css');
 @import url('./font/Web-PS/MacPawFixelDisplay-Regular.css');
 @import url('./font/Web-PS/MacPawFixelDisplay-SemiBold.css');
-@import url('./font/Web-PS/MacPawFixelDisplay-Thin.css');
+@import url('./font/Web-PS/MacPawFixelDisplay-Thin.css'); */
 
+@font-face {
+    font-family: "MacPawFixel";
+    src: url('./font/MacPawFixel-VF.ttf') format('truetype');
+    font-weight: normal;
+    font-style: normal;
+}
 
 body{
     min-height: 100vh;
     background: #f0f0f0;
     font-size: 18px;
-    font-family: "MacPawFixelDisplaySemiBold", Georgia !important;
+    font-family: "MacPawFixel", Georgia !important;
 }
 
 .sidebar-nav {
