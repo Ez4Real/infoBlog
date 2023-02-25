@@ -24,6 +24,9 @@ urlpatterns = [
     path('about/team', views.team, name='team'),
     path('about/vision', views.vision, name='vision'),
     
+    # Library
+    path('library/', views.library, name='library'),
+    
     # Donate
     path('donate/', views.all_donate, name='all_donate'),
     
