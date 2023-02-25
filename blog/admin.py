@@ -41,8 +41,8 @@ class TeamMemberAdmin(admin.ModelAdmin):
 
 @admin.register(LibraryMember)
 class LibraryMemberAdmin(admin.ModelAdmin):
-    # def has_add_permission(self, request):
-    #     return False
+    def has_add_permission(self, request):
+        return False
     list_display = ('last_name', 'first_name', 'education_level', 'institution')
     list_filter = ('last_name', 'first_name', 'education_level', 'institution')
     fields = [('first_name', 'last_name'), 
