@@ -7,8 +7,8 @@
 
 body{
     min-height: 100vh;
-    background: #f0f0f0;
-    font-size: 18px;
+    background: #f4f4f4;
+    font-size: 19px;
     font-family: "MacPawFixel", Georgia !important;
 }
 
@@ -291,8 +291,20 @@ footer{
     height: 400px;
 }
 
+.body-cronis-post{
+    margin: auto;
+    width: 800px;
+}
+
 .body-cronis-post p{
-    text-align: justify;
+    /* text-align: justify; */
+    padding-bottom: 21px;
+}
+
+.post-foto{
+    height: 600px;
+    width: 100%;
+    position: relative;
 }
 
 .card-title{
