@@ -7,7 +7,8 @@ from django.utils.http import urlsafe_base64_decode
 from django.shortcuts import redirect
 from django.conf import settings
 
-from ..forms import SubscriberForm, ContactForm, VolunteerForm
+from ..forms import SubscriberForm, ContactForm, \
+    VolunteerForm, LibraryMemberForm
 from ..models import Subscriber
 from ..tokens import email_activation_token
 from .email_services import send_user_subscribe_activation, \
@@ -16,8 +17,8 @@ from .email_services import send_user_subscribe_activation, \
 def get_subscriber_form(request: HttpRequest) -> SubscriberForm:
     """ Returns Subcriber form """
     if 'subscribe' in request.POST:
-        sub = Subscriber(email=request.POST['email'])
-        if Subscriber.objects.filter(email=sub.email):
+        sub = Subscriber.objects.get(email=request.POST['email'])
+        if sub.is_active:
             messages.warning(request, 'This address is already subscribed!')
         elif not re.match(r"^\w+([-+.']\w+)*@\w+([-.]\w+)*\.\w+([-.]\w+)*$", sub.email):
             messages.error(request, 'This address is not valid!')
@@ -45,6 +46,16 @@ def get_volunteer_form(request: HttpRequest) -> VolunteerForm:
         else: messages.error(request, 'Form is not valid. Check if you typed phone correctly.')
         
     return VolunteerForm()
+
+def get_library_member_form(request: HttpRequest) -> LibraryMemberForm:
+    """ Returns form for Library member """
+    if 'library_form' in request.POST:
+        form = LibraryMemberForm(request.POST)
+        if form.is_valid():
+            print('\n\nOKAY\n\n')
+        else: messages.error(request, 'Form is not valid. Check if you typed phone correctly.')
+    
+    return LibraryMemberForm()
 
 def get_subscriber_by_uid(uidb64: str) -> Subscriber:
     """ Returns Subcriber by uidb64 decoding """

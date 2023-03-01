@@ -5,7 +5,9 @@ from email.mime.image import MIMEImage
 
 from ckeditor_uploader.fields import RichTextUploadingField
 from django.contrib.sites.shortcuts import get_current_site
+from django.contrib.auth.hashers import make_password, check_password
 from django.core.mail import EmailMessage
+from django.core.validators import MaxLengthValidator
 from django.db import models
 from django.template.loader import get_template
 from django.urls import reverse
@@ -51,6 +53,8 @@ class PolicyArea(models.Model):
 
 
 class Person(models.Model):
+    class Meta:
+        ordering = ['-date_of_creation']
     
     def __str__(self):
         return f'{self.en_full_name} - {self.uk_full_name}'
@@ -66,12 +70,12 @@ class Person(models.Model):
                               verbose_name=_('Photo of the represent')
                               )
     en_full_name = models.CharField(max_length=45,
-                                    help_text='Enter name',
-                                    verbose_name=_('Name on english')
+                                    help_text='Enter full name on english',
+                                    verbose_name=_('Full name on english')
                                     )
     uk_full_name = models.CharField(max_length=45,
-                                    help_text='Enter name',
-                                    verbose_name=_('Name on ukrainian')
+                                    help_text='Enter full name on ukrainian',
+                                    verbose_name=_('Full name on ukrainian')
                                     )
     en_position = models.TextField(max_length=255,
                                    help_text='Enter position',
@@ -83,9 +87,14 @@ class Person(models.Model):
                                    )
     slug = models.SlugField(help_text='Slug',
                             unique=True)
+    date_of_creation = models.DateTimeField(auto_now_add=True,
+                                            verbose_name=_('Date of creation'))
         
 
 class BlogScholar(Person):
+    class Meta:
+        verbose_name_plural = _('Blog Scholars')
+        
     def get_scholar_posts(self):
         return reverse('scholar-posts', args=[self.slug])
     
@@ -95,6 +104,9 @@ class BlogScholar(Person):
 
 
 class TeamMember(Person):
+    class Meta:
+        verbose_name_plural = _('Team Members')
+        
     def get_absolute_url(self):
         return reverse('team-member-detail', args=[self.slug])
     
@@ -105,20 +117,78 @@ class TeamMember(Person):
                                         verbose_name=_('Ukrainian content')
                                         )
 
+
+class LibraryMember(models.Model):
+    EDUCATION_LEVELS = (
+    (1, _('Master')),
+    (2, _('Doctor or PhD')),
+    (3, _('Postgraduate')),
+    (4, _('Doctorate'))
+    )
     
+    def __str__(self):
+        return f'{self.first_name} {self.last_name}'
+    
+    def set_password(self, raw_password):
+        self.password = make_password(raw_password)
+
+    def check_password(self, raw_password):
+        return check_password(raw_password, self.password)
+    
+    first_name = models.CharField(verbose_name=_('First name'),
+                                  max_length=100)
+    last_name = models.CharField(verbose_name=_('Last name'),
+                                 max_length=100)
+    email = models.EmailField(unique=True,
+                              verbose_name='E-mail',
+                              max_length=100)
+    phone_number = models.CharField(unique=True,
+                                    verbose_name=_('Phone number'),
+                                    max_length=20)
+    password = models.CharField(max_length=255, null=False)
+    institution = models.CharField(verbose_name=_('Higher Education or Research Institution'),
+                                   max_length=200)
+    department = models.CharField(verbose_name=_('Research Unit/Department/Chair'),
+                                  max_length=200)
+    specialization = models.CharField(verbose_name=_('Scientific Specialization'),
+                                      max_length=200)
+    education_level = models.CharField(verbose_name = _('Level of education'),
+                                       choices=EDUCATION_LEVELS,
+                                       max_length=1)
+    supervisor = models.CharField(verbose_name=_('Academic Supervisor/Cosultant'),
+                                  max_length=200,
+                                  null=True,
+                                  blank=True)
+    google_scholar = models.CharField(verbose_name=_('ORCHID/Google Scholar'),
+                                      max_length=200,
+                                      blank=True,
+                                      null=True)
+    resume = models.FileField(verbose_name=_('Academic CV'),
+                              blank=True,
+                              null=True)
+    resource_plans = models.TextField(verbose_name=_('Resource Plans'),
+                                      max_length=600)
+
 class Article(models.Model):
+    class Meta:
+        ordering = ['-date_of_creation', 'en_title']
+        
+    def __str__(self):
+        return f'{self.en_title} - {self.date_of_creation}'
+    
     def save(self, *args, **kwargs):
-        self.slug = slugify(self.en_title.lower())
+        self.slug = slugify(self.en_title.lower())[:50]
         super(Article, self).save(*args, **kwargs)
         
     slug = models.SlugField(help_text='Slug',
-                            unique=True,)
+                            unique=True,
+                            validators=[MaxLengthValidator(50)])
     
-    en_title = models.CharField(max_length=50,
+    en_title = models.CharField(max_length=100,
                                 help_text='Enter news title',
                                 verbose_name=_('English title')
                                 )
-    uk_title = models.CharField(max_length=50,
+    uk_title = models.CharField(max_length=100,
                                 help_text='Enter news title',
                                 verbose_name=_('Ukrainian title')
                                 )
@@ -133,7 +203,9 @@ class Article(models.Model):
     
     
 class Blog(Article):
-    
+    class Meta:
+        verbose_name_plural = _('Blog Articles')
+        
     def get_absolute_url(self):
         return reverse('blog-post-detail', args=[self.author.slug, self.slug])
     
@@ -146,11 +218,7 @@ class Blog(Article):
 
 class News(Article):
     class Meta:
-        ordering = ['en_title', 'uk_title', 'type', 'date_of_creation']
         verbose_name_plural = _('News')
-        
-    def __str__(self):
-        return f'{self.en_title}, {self.uk_title}, {self.date_of_creation}'
         
     def get_absolute_url(self):
         return reverse('post-detail', args=[self.type.slug, self.slug]) 
@@ -221,31 +289,33 @@ class News(Article):
 
 class Subscriber(models.Model):
     class Meta:
-        verbose_name_plural = _('Subscribers e-mails')
+        verbose_name_plural = _('Subscribers')
+        ordering = ['-date_of_creation', 'email']
 
     def __str__(self):
         return self.email + " (" + ("not " if not self.is_active else "") + "confirmed)"
     
     email = models.EmailField(unique=True,
-                              max_length=254,
-                              help_text='Enter e-mail')
-    is_active = models.BooleanField(default=False)
+                              max_length=255
+                              )
+    is_active = models.BooleanField(default=False,
+                                    verbose_name=_('Is Active'))
     mailing_language = models.CharField(max_length=2,
-                                        help_text='Choose mailing language',
                                         choices=[('en', _('English')),
                                                  ('uk', _('Ukrainian'))])
+    date_of_creation = models.DateTimeField(auto_now_add=True,
+                                            verbose_name=_('Date of creation'))
 
 
 class Video(models.Model):
-    PODCAST = 'pc'
-    VIDEO = 'vd'
     MEDIA_CHOICES = (
-        (PODCAST, 'Podcasts'),
-        (VIDEO, 'Videos')
+        ('pc', 'Podcasts'),
+        ('vd', 'Videos')
     )
     
     class Meta:
         verbose_name_plural = _('Video content')
+        ordering = ['-date_of_creation', 'type']
     
     def __str__(self):
         return self.en_title
@@ -269,5 +339,3 @@ class Video(models.Model):
                           verbose_name=('URL'))
     date_of_creation = models.DateTimeField(auto_now_add=True,
                                             verbose_name=_('Date of creation'))
-    
-

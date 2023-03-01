@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2023-02-03 14:35+0200\n"
+"POT-Creation-Date: 2023-02-24 14:30+0200\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -19,163 +19,183 @@ msgstr ""
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
 
 #: .\blog\forms.py:27
-msgid "Secondary"
-msgstr ""
-
-#: .\blog\forms.py:28
-msgid "High"
-msgstr ""
-
-#: .\blog\forms.py:29
-msgid "Doctor or PhD"
-msgstr ""
-
-#: .\blog\forms.py:30
-msgid "Other"
-msgstr ""
-
-#: .\blog\forms.py:32 .\blog\forms.py:55
 msgid "First name"
 msgstr ""
 
-#: .\blog\forms.py:35 .\blog\forms.py:58
+#: .\blog\forms.py:30
 msgid "Last name"
 msgstr ""
 
-#: .\blog\forms.py:41
-msgid "Your level of education"
+#: .\blog\forms.py:41 .\blog\forms.py:74
+msgid "Secondary"
 msgstr ""
 
-#: .\blog\forms.py:44
+#: .\blog\forms.py:42 .\blog\forms.py:75
+msgid "High"
+msgstr ""
+
+#: .\blog\forms.py:43 .\blog\forms.py:76
+msgid "Doctor or PhD"
+msgstr ""
+
+#: .\blog\forms.py:44 .\blog\forms.py:77
+msgid "Other"
+msgstr ""
+
+#: .\blog\forms.py:46 .\blog\forms.py:85
+msgid "Level of education"
+msgstr ""
+
+#: .\blog\forms.py:49
 msgid "Briefly describe your area of expertise"
 msgstr ""
 
-#: .\blog\forms.py:47
+#: .\blog\forms.py:52
 msgid "What do you expect from cooperation with us?"
 msgstr ""
 
-#: .\blog\forms.py:50
+#: .\blog\forms.py:55
 msgid "Resume"
 msgstr ""
 
-#: .\blog\forms.py:62
+#: .\blog\forms.py:60
 msgid "Date of Birth"
 msgstr ""
 
-#: .\blog\forms.py:64
+#: .\blog\forms.py:62
 msgid "City"
 msgstr ""
 
-#: .\blog\forms.py:70
+#: .\blog\forms.py:65
 msgid "Phone"
 msgstr ""
 
-#: .\blog\forms.py:72
+#: .\blog\forms.py:67
 msgid "What do you do in life?"
 msgstr ""
 
-#: .\blog\models.py:22
+#: .\blog\forms.py:79
+msgid "Higher Education or Research Institution"
+msgstr ""
+
+#: .\blog\forms.py:82
+msgid "Research Unit/Department/Chair"
+msgstr ""
+
+#: .\blog\models.py:23
 msgid "News Types"
 msgstr ""
 
-#: .\blog\models.py:35
+#: .\blog\models.py:36
 msgid "News type"
 msgstr ""
 
-#: .\blog\models.py:42 .\templates\include\header\header_bottom.html:22
+#: .\blog\models.py:43 .\templates\include\header\header_bottom.html:22
 msgid "Policy areas"
 msgstr ""
 
-#: .\blog\models.py:50
+#: .\blog\models.py:51
 msgid "Policy area name"
 msgstr ""
 
-#: .\blog\models.py:66
+#: .\blog\models.py:69
 msgid "Photo of the represent"
 msgstr ""
 
-#: .\blog\models.py:70
+#: .\blog\models.py:73
 msgid "Name on english"
 msgstr ""
 
-#: .\blog\models.py:74
+#: .\blog\models.py:77
 msgid "Name on ukrainian"
 msgstr ""
 
-#: .\blog\models.py:78
+#: .\blog\models.py:81
 msgid "English position"
 msgstr ""
 
-#: .\blog\models.py:82
+#: .\blog\models.py:85
 msgid "Ukrainian position"
 msgstr ""
 
-#: .\blog\models.py:94
-msgid "University link"
-msgstr ""
-
-#: .\blog\models.py:102 .\blog\models.py:126
-msgid "English content"
-msgstr ""
-
-#: .\blog\models.py:105 .\blog\models.py:129
-msgid "Ukrainian content"
-msgstr ""
-
-#: .\blog\models.py:119 .\blog\models.py:260
-msgid "English title"
-msgstr ""
-
-#: .\blog\models.py:123 .\blog\models.py:263
-msgid "Ukrainian title"
-msgstr ""
-
-#: .\blog\models.py:132 .\blog\models.py:271
+#: .\blog\models.py:90 .\blog\models.py:147 .\blog\models.py:289
 msgid "Date of creation"
 msgstr ""
 
-#: .\blog\models.py:143 .\blog\models.py:184
+#: .\blog\models.py:95
+msgid "Blog Scholars"
+msgstr ""
+
+#: .\blog\models.py:102
+msgid "University link"
+msgstr ""
+
+#: .\blog\models.py:107
+msgid "Team Members"
+msgstr ""
+
+#: .\blog\models.py:113 .\blog\models.py:141
+msgid "English content"
+msgstr ""
+
+#: .\blog\models.py:116 .\blog\models.py:144
+msgid "Ukrainian content"
+msgstr ""
+
+#: .\blog\models.py:134 .\blog\models.py:278
+msgid "English title"
+msgstr ""
+
+#: .\blog\models.py:138 .\blog\models.py:281
+msgid "Ukrainian title"
+msgstr ""
+
+#: .\blog\models.py:152
+msgid "Blog Articles"
+msgstr ""
+
+#: .\blog\models.py:160 .\blog\models.py:200
 msgid "Author"
 msgstr ""
 
-#: .\blog\models.py:150 .\templates\blog\news.html:10
+#: .\blog\models.py:166 .\templates\blog\news.html:10
 #: .\templates\include\header\header_bottom.html:4
 msgid "News"
 msgstr ""
 
-#: .\blog\models.py:159
+#: .\blog\models.py:175
 msgid "News banner"
 msgstr ""
 
-#: .\blog\models.py:164
+#: .\blog\models.py:180
 msgid "English subtitle"
 msgstr ""
 
-#: .\blog\models.py:168
+#: .\blog\models.py:184
 msgid "Ukrainian subtitle"
 msgstr ""
 
-#: .\blog\models.py:174
+#: .\blog\models.py:190
 msgid "Type"
 msgstr ""
 
-#: .\blog\models.py:179
+#: .\blog\models.py:195
 msgid "Policy area"
 msgstr ""
 
-#: .\blog\models.py:224
-msgid "Subscribers e-mails"
+#: .\blog\models.py:240
+msgid "Subscribers"
 msgstr ""
 
-#: .\blog\models.py:235 .\infoBlog\settings.py:136
+#: .\blog\models.py:252 .\infoBlog\settings.py:136
 msgid "English"
 msgstr ""
 
-#: .\blog\models.py:236 .\infoBlog\settings.py:135
+#: .\blog\models.py:253 .\infoBlog\settings.py:135
 msgid "Ukrainian"
 msgstr ""
 
-#: .\blog\models.py:248
+#: .\blog\models.py:265
 msgid "Video content"
 msgstr ""
 
@@ -192,12 +212,12 @@ msgstr ""
 msgid "Key Documents"
 msgstr ""
 
-#: .\templates\blog\about\mission.html:8 .\templates\blog\about\mission.html:15
+#: .\templates\blog\about\mission.html:10
 #: .\templates\include\header\header_top.html:9
 msgid "Mission"
 msgstr ""
 
-#: .\templates\blog\about\team.html:8
+#: .\templates\blog\about\team.html:9
 msgid "Our team"
 msgstr ""
 
@@ -206,7 +226,7 @@ msgstr ""
 msgid "Vision"
 msgstr ""
 
-#: .\templates\blog\base_generic.html:62 .\templates\blog\base_generic.html:97
+#: .\templates\blog\base_generic.html:61 .\templates\blog\base_generic.html:100
 #: .\templates\include\header\search.html:4
 msgid "Search"
 msgstr ""
@@ -218,7 +238,7 @@ msgstr ""
 #: .\templates\blog\donate\all_donate(old).html:8
 #: .\templates\blog\donate\all_donate(old).html:13
 #: .\templates\blog\donate\all_donate.html:8
-#: .\templates\include\header\header_top.html:29
+#: .\templates\include\header\header_top.html:30
 msgid "Donate"
 msgstr ""
 
@@ -344,15 +364,15 @@ msgstr ""
 msgid "Subscribe"
 msgstr ""
 
-#: .\templates\include\footer.html:64
+#: .\templates\include\footer.html:54
 msgid "Contacts"
 msgstr ""
 
-#: .\templates\include\footer.html:91
+#: .\templates\include\footer.html:81
 msgid "Locate"
 msgstr ""
 
-#: .\templates\include\footer.html:93
+#: .\templates\include\footer.html:83
 msgid "Lobanovskogo Avenue 4a, Kyiv, Ukraine"
 msgstr ""
 
@@ -390,4 +410,8 @@ msgstr ""
 
 #: .\templates\include\header\header_top.html:20
 msgid "Join us"
+msgstr ""
+
+#: .\templates\include\header\header_top.html:29
+msgid "Library"
 msgstr ""

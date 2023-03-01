@@ -1,3 +1,17 @@
+@font-face {
+    font-family: "MacPawFixel";
+    src: url('./font/MacPawFixel-VF.ttf') format('truetype');
+    font-weight: normal;
+    font-style: normal;
+}
+
+body{
+    min-height: 100vh;
+    background: #f0f0f0;
+    font-size: 18px;
+    font-family: "MacPawFixel", Georgia !important;
+}
+
 .sidebar-nav {
     margin-top: 20px;
     padding: 0;
@@ -42,7 +56,7 @@ nav{
 }
 
 .card-custom-blog{
-    height: 75px;
+    height: 165px;
 }
 
 @media (max-width: 1440px) {
@@ -307,12 +321,6 @@ footer{
   margin: 0;
   padding: 0;
   box-sizing: border-box;
-}
-
-body {
-    min-height: 100vh;
-    background: #f0f0f0;
-    font-size: 18px;
 }
 
 .side-navbar {
@@ -654,6 +662,20 @@ header a{
 .container-for-hr-blog{
     position: relative;
 }
+
+.misio-img{
+    padding-top: 60px;
+}
+
+.misio-img img{
+    width: 640px; 
+    height: 880px;
+}
+
+.form-library > div{
+    padding-bottom: 10px;
+}
+
 @keyframes press{
     0% {
         border-radius: 15px;
