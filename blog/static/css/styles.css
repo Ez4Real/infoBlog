@@ -367,6 +367,13 @@ footer{
   border-left: 1px solid rgba(0, 0, 0, 0.2);
 }
 
+.side-navbar ul {
+    align-items: start !important;
+}
+
+.sidebar-home{
+    align-items: end !important;
+}
 .nav-link{
     color: #fff;
     transition: all .3s ease;

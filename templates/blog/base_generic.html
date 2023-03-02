@@ -32,8 +32,8 @@
         {% get_available_languages as AVAILABLE_LANGUAGES %}
         {% get_language_info_list for AVAILABLE_LANGUAGES as languages %}
 
-        <ul class="col-12 text-end nav lang_butt mb-3 mb-lg-0 me-lg-3">
-            <li class="nav-item dropdown">
+        <ul class="col-12 text-end nav lang_butt mx-3 mb-lg-0 me-lg-3">
+            <li class="nav-item w-100 dropdown">
                 <a class="nav-link dropdown-toggle text-white" href="#" id="navbarDropdownMenuLink"
                    role="button" data-bs-toggle="dropdown" aria-expanded="false">
                     <span style="text-transform:uppercase">{{ CURRENT_LANGUAGE }}</span>
@@ -62,7 +62,7 @@
                    aria-label="Search">
         </form>
         
-        <a class="text-center nav-link m-2 p-0" href="{% url 'homepage' %}">
+        <a class="text-center sidebar-home nav-link m-2 p-0" style="width: 281px;" href="{% url 'homepage' %}">
             Home
         </a>
         
