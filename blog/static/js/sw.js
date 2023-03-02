@@ -1,6 +1,6 @@
 console.log('Service worker loaded');
 
-const CACHE_NAME = 'Cache-v6';
+const CACHE_NAME = 'Cache-v1';
 const urlsToCache = [
 	"/static/css/styles.css",
 	"/static/js/index.js"
@@ -21,7 +21,7 @@ self.addEventListener('activate', function(event) {
       caches.keys().then(function(cacheNames) {
         return Promise.all(
           cacheNames.map(function(cache) {
-            if (cache !== cacheName) {
+            if (cache !== CACHE_NAME) {
               console.log('Deleting old cache:', cache);
               return caches.delete(cache);
             }
