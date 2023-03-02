@@ -7,8 +7,9 @@ from django.utils.http import urlsafe_base64_decode
 from django.shortcuts import redirect
 from django.conf import settings
 
+
 from ..forms import SubscriberForm, ContactForm, \
-    VolunteerForm, LibraryMemberForm
+    VolunteerForm
 from ..models import Subscriber
 from ..tokens import email_activation_token
 from .email_services import send_user_subscribe_activation, \
@@ -30,7 +31,7 @@ def get_subscriber_form(request: HttpRequest) -> SubscriberForm:
 
 def get_join_team_form(request: HttpRequest) -> ContactForm:
     """ Returns form for Joining Team """
-    if 'join_team' in request.POST:
+    if request.method == 'POST' and 'join_team' in request.POST:
         form = ContactForm(request.POST, request.FILES)
         if form.is_valid():
             send_join_team_message(request, form, settings.EMAIL_FROM)
@@ -38,24 +39,19 @@ def get_join_team_form(request: HttpRequest) -> ContactForm:
     return ContactForm()
 
 def get_volunteer_form(request: HttpRequest) -> VolunteerForm:
-    """ Returns form for Volunteer """
-    if 'volunteer' in request.POST:
+    """
+    Returns a VolunteerForm instance and handles submission if POST request
+    """
+    if request.method == 'POST' and 'volunteer' in request.POST:
         form = VolunteerForm(request.POST)
         if form.is_valid():
             send_volunteer_message(request, form, settings.EMAIL_FROM)
-        else: messages.error(request, 'Form is not valid. Check if you typed phone correctly.')
-        
-    return VolunteerForm()
-
-def get_library_member_form(request: HttpRequest) -> LibraryMemberForm:
-    """ Returns form for Library member """
-    if 'library_form' in request.POST:
-        form = LibraryMemberForm(request.POST)
-        if form.is_valid():
-            print('\n\nOKAY\n\n')
-        else: messages.error(request, 'Form is not valid. Check if you typed phone correctly.')
+        else: 
+            messages.error(request, 'Form is not valid. Check if you typed phone correctly.')
+    else: 
+        form = VolunteerForm()
     
-    return LibraryMemberForm()
+    return form
 
 def get_subscriber_by_uid(uidb64: str) -> Subscriber:
     """ Returns Subcriber by uidb64 decoding """

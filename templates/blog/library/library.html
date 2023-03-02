@@ -3,99 +3,17 @@
 
 {% block content %}
 
+
 <div class="container">
     
-    {% if form %}
-        <form method="post">
-            <div class="position-relative">
-                <div class="col-md-6 form-group">
-                    {% csrf_token %}
-                    <div class="row">
-                        <div class="col-md-6 group-control">
-                          <label for="{{library_form.first_name.id_for_label }}">{{library_form.first_name.label }}</label>
-                          {{library_form.first_name }}
-                        </div>
-                  
-                        <div class="col-md-6 group-control">
-                            <label for="{{library_form.last_name.id_for_label }}">{{library_form.last_name.label }}</label>
-                            {{library_form.last_name }}
-                        </div>
-                    </div>
-                </div>
-                <div class="row">
-                    <div class="col-md-6 group-control align-self-center" style="height: 84px;">
-                      <label for="{{ library_form.email.id_for_label }}">{{ library_form.email.label }}</label>
-                      <div class="row row-cols-2" style="padding: 7px 12px 0;">
-                      {{ library_form.email }}
-                      </div>
-                    </div>
-            
-            
-                    <div class="col-md-6 group-control">
-                      <label for="{{ library_form.phone.id_for_label }}">{{ library_form.phone.label }}</label>
-                      <div class="row row-cols-2 phone-volunteer" style="padding: 7px 12px 0;">
-                      {{ library_form.phone }}
-                      </div>
-                    </div>
-                </div>
-
-                <div class="row">
-                    <div class="col-md-6 group-control">
-                      <label for="{{library_form.institution.id_for_label }}">{{library_form.institution.label }}</label>
-                      {{library_form.institution }}
-                    </div>
-              
-                    <div class="col-md-6 group-control">
-                      <label for="{{library_form.department.id_for_label }}">{{library_form.department.label }}</label>
-                      {{library_form.department }}
-                    </div>
-                </div>
-
-                <div class="row">
-                    <div class="col-md-6 group-control">
-                      <label for="{{library_form.specialization.id_for_label }}">{{library_form.specialization.label }}</label>
-                      {{library_form.specialization }}
-                    </div>
-              
-                    <div class="col-md-6 group-control">
-                      <label for="{{library_form.education_level.id_for_label }}">{{library_form.education_level.label }}</label>
-                      {{library_form.education_level }}
-                    </div>
-                </div>
-
-                <div class="row">
-                    <!-- !!!!!!!!!!!!!!!!!!Dynamically if Postgraduate or Doctorate -->
-                    <div class="col-md-6 group-control">
-                        <label for="{{library_form.supervisor.id_for_label }}">{{library_form.supervisor.label }}</label>
-                        {{library_form.supervisor }}
-                    </div>
-                    <!-- !!!!!!!!!!!!!!!!!!Dynamically if Postgraduate or Doctorate -->
-                    
-                    <div class="col-md-6 group-control">
-                        <label for="{{library_form.google_scholar.id_for_label }}">{{library_form.google_scholar.label }}</label>
-                        {{library_form.google_scholar }}
-                    </div>
-                    
-                </div>
-                
-                <div class="col-md-6 group-control">
-                    <label for="{{library_form.resource_plans.id_for_label }}">{{library_form.resource_plans.label }}</label>
-                    {{library_form.resource_plans }}
-                </div>
-
-                
-
-
-                <div class="col-md-6 group-control">
-                    <label for="{{ library_form.resume.id_for_label }}">{{ library_form.resume.label }}</label>
-                    {{ library_form.resume }}
-                </div>
-                
-
-                <button type="submit" name='library_form'>{% trans 'Sign up' %}</button>
-            </div>
-            
-        </form>
+    {% if user.is_authenticated %}
+        <p>Welcome, {{ user }}!</p>
+        <strong>CONTENT</strong>
+        <p><a href="{% url 'logout' %}" class="nav-link">{% trans "Log out" %}</a></p>
+    {% else %}
+        <p><a href="{% url 'login' %}" class="nav-link">{% trans "Log in" %}</a></p>
+        <p> or </p>
+        <p><a href="{% url 'register' %}" class="nav-link">{% trans "Sign up" %}</a></p>
     {% endif %}
 
 </div>

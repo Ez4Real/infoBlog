@@ -1,6 +1,8 @@
-from django.shortcuts import render
 from django.conf import settings
 from django.http import HttpResponse, HttpRequest
+from django.shortcuts import render, redirect
+from django.contrib import messages
+from django.contrib.auth import login, logout
 from django.utils.safestring import SafeText
 
 from .services.db_services import get_news_by_slug, get_blog_scholar_by_slug, \
@@ -13,9 +15,10 @@ from .services.blog_services import paginate, \
 from .services.context_services import get_static_page_context, \
     get_policy_area_context, get_news_type_context, get_media_views_context, \
     get_blog_scholars_page_context, get_team_page_context
-from .services.subscribe_services import get_join_team_form, get_volunteer_form, \
-    get_library_member_form
+from .services.subscribe_services import get_join_team_form, get_volunteer_form
+from .services.auth import login_user
 from .models import Video
+from .forms import LibraryMemberForm, LoginForm
 
 
 def homepage(request, context = {}) -> HttpResponse:
@@ -77,9 +80,49 @@ def scholar_posts(request: HttpRequest,
     )
     return render(request, 'blog/scholar_posts.html', context)
 
+'''\Authentication/Library/'''
+def register(request) -> HttpResponse:
+    context = get_static_page_context('Register', request)
+    if request.method == 'POST':
+        form = LibraryMemberForm(request.POST, request.FILES)
+        if form.is_valid():
+            form.save()
+            messages.success(request, 'Registration successful!')
+            return redirect('library')
+        else: 
+            for field, errors in form.errors.items():
+                for error in errors:
+                    messages.error(request, f'{field.capitalize()}: {(error)}')
+    else:
+        form = LibraryMemberForm()
+        
+    context['library_form'] = form
+    return render(request, 'blog/library/register.html', context)
+
+def login_view(request) -> HttpResponse:
+    context = get_static_page_context('Login', request)
+    
+    if request.method == 'POST':
+        form = LoginForm(request.POST)
+        if form.is_valid():
+            email = form.cleaned_data['email']
+            password = form.cleaned_data['password']
+            
+            if login_user(request, email, password):
+                return redirect('library')
+    else:
+        form = LoginForm()
+    
+    context['login_form'] = form
+    
+    return render(request, 'blog/library/login.html', context)
+
+def logout_view(request):
+    logout(request)
+    return redirect('library')
+
 def library(request) -> HttpResponse:
     context = get_static_page_context('Library', request)
-    context['library_form'] = get_library_member_form(request)
     return render(request, 'blog/library/library.html', context)
 
 def search(request: HttpRequest, context: dict = {}):

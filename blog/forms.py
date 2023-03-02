@@ -1,6 +1,11 @@
-from django.utils.translation import gettext_lazy as _
 from django import forms
+from django.utils.translation import gettext_lazy as _
+from django.contrib.auth import get_user_model
+from django.contrib.auth.forms import UserCreationForm
+
 from .models import Subscriber, LibraryMember
+from .services.validators import validate_password
+
 from phonenumber_field.formfields import PhoneNumberField
 from phonenumber_field.widgets import PhoneNumberPrefixWidget
 
@@ -9,6 +14,8 @@ TextInputWidget = forms.TextInput(attrs={'type': 'text', 'class': 'form-control'
 SelectWidget = forms.Select(attrs={'class': 'form-control'})
 FileInputWidget = forms.FileInput(attrs={'class': 'form-control', 'style': 'max-width: 50%'})
 PhoneNumberWidget = PhoneNumberPrefixWidget(initial='UA', attrs={'class': 'form-control'})
+EmailWidget = forms.EmailInput(attrs={'type': 'email', 'class': 'form-control'})
+MAX_RESUME_SIZE = 5242880
 
 
 class SubscriberForm(forms.ModelForm):
@@ -39,9 +46,8 @@ class BaseMemberForm(forms.Form):
                                 widget=TextInputWidget)
     email = forms.EmailField(label='E-mail',
                              max_length=100,
-                             widget=forms.EmailInput(attrs={'type': 'email', 'class': 'form-control'}))
+                             widget=EmailWidget)
     
-
 
 class ContactForm(BaseMemberForm):
     EDUCATION_LEVELS = (
@@ -76,19 +82,49 @@ class VolunteerForm(BaseMemberForm):
                                  widget=forms.Textarea(attrs={'type': 'text', 'class': 'form-control', 'style': 'max-height: 160px; width: 100%;'}))
     
 
-class LibraryMemberForm(BaseMemberForm):
+class LibraryMemberForm(UserCreationForm, BaseMemberForm):
     EDUCATION_LEVELS = (
     (1, _('Master')),
     (2, _('Doctor or PhD')),
     (3, _('Postgraduate')),
     (4, _('Doctorate'))
     )
+    class Meta:
+        model = LibraryMember
+        fields = ('first_name', 'last_name', 'email', 'phone_number', 'password1', 'password2', 'password_reveal',
+                  'institution', 'department', 'specialization', 'education_level', 'supervisor', 'google_scholar',
+                  'resume', 'resource_plans')
     
-    phone = PhoneNumberField(label=_('Phone'),
+    def __init__(self, *args, **kwargs):
+        super().__init__(*args, **kwargs)
+        self.fields['password1'].validators.append(validate_password)
+        self.fields['password_reveal'].widget.attrs.update({'onclick': 'togglePassword()'})
+        
+    def save(self, commit=True):
+        member = super(LibraryMemberForm, self).save(commit=False)
+        member.set_password(self.cleaned_data['password1'])
+        
+        if commit:
+            member.save()
+        return member
+    
+    def clean(self):
+        cleaned_data = super().clean()
+        education_level = cleaned_data.get('education_level')
+        supervisor = cleaned_data.get('supervisor')
+        if education_level in ['3', '4'] and not supervisor:
+            self.add_error('supervisor', _("This field is required for education levels 'Postgraduate' and 'Doctorate'."))
+            
+        resume = self.cleaned_data.get('resume', False)
+        if resume:
+            if resume.size > 5 * 1024 * 1024:
+                self.add_error('resume', _('Resume file size must be under 5MB.'))
+    
+    phone_number = PhoneNumberField(label=_('Phone'),
                              widget=PhoneNumberWidget)
-    password = forms.CharField(label=_('Password'),
-                               max_length=100,
-                               widget=forms.PasswordInput(attrs={'class': 'form-control'}))
+    password_reveal = forms.BooleanField(label=_('Show password'),
+                                          required=False,
+                                          widget=forms.CheckboxInput(attrs={'class': 'form-check-input', 'id': 'password-toggle'}))
     institution = forms.CharField(label=_('Higher Education or Research Institution'),
                                   max_length=200,
                                   widget=TextInputWidget)
@@ -101,16 +137,25 @@ class LibraryMemberForm(BaseMemberForm):
     education_level = forms.ChoiceField(label = _('Level of education'),
                                         choices=EDUCATION_LEVELS,
                                         widget=SelectWidget)
-    supervisor = forms.CharField(label=_('Academic Supervisor/Cosultant'),
+    supervisor = forms.CharField(label=_('Academic Supervisor/Consultant'),
                                  max_length=200,
-                                 widget=TextInputWidget)
+                                 widget=TextInputWidget,
+                                 required=False)
     resource_plans = forms.CharField(label=_('How do you plan to use the sources of ERGOSUM European Library?'),
                                      max_length=600,
                                      widget=forms.Textarea(attrs={'type': 'text', 'class': 'form-control', 'style': 'max-height: 90px'}))
-    google_scholar = forms.CharField(label=_('ORCHID/Google Scholar'),
+    google_scholar = forms.CharField(label='ORCHID/Google Scholar',
                                      required=False,
                                      max_length=200,
                                      widget=TextInputWidget)
     resume = forms.FileField(label=_('Academic CV'),
                              required=False,
                              widget=FileInputWidget)
+
+
+class LoginForm(forms.Form):
+    email = forms.EmailField(label='E-mail',
+                             max_length=100,
+                             widget=EmailWidget)
+    password = forms.CharField(label=_('Password'),
+                               widget=forms.PasswordInput(attrs={'class': 'form-control'}))
