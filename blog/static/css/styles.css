@@ -143,6 +143,7 @@ nav{
     .card-custom-blog{
         height: 300px !important;
     }
+
 }
 
 @media (max-width: 768px) {
@@ -157,6 +158,16 @@ nav{
     }
     .card-custom-blog{
         height: 160px !important;
+    }
+    .team_member_photo img{
+        height: 460px !important;
+        width: 335px !important;
+    }
+    .form-control{
+        margin-bottom: 10px!important;
+    }
+    .sub-butt{
+        width: 380px!important;
     }
 }
 
@@ -179,7 +190,7 @@ nav{
         margin-bottom: 10px!important;
     }
     .sub-butt{
-        width: 377px!important;
+        width: 328px!important;
     }
     .card-custom{
         height: 225px !important;
@@ -203,7 +214,7 @@ nav{
         width: 224px !important;;
     }
     .sub-butt{
-        width: 274px!important;
+        width: 328px !important;
     }
     .card-custom{
         height: 255px !important;

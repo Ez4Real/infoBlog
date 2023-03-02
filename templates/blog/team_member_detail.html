@@ -5,8 +5,8 @@
 
 <div class="m-5"></div>
     <div class="container text-break">
-        <div class="row row-cols-2 justify-content-center">
-            <div class="coll text-center team_member_photo d-flex align-items-center flex-column">
+        <div class="row row-cols-md-2 row-cols-1 justify-content-center">
+            <div class="col text-center team_member_photo d-flex align-items-center flex-column">
                 <img src="{{ post.image.url }}" class="d-block mx-auto ob-cover">
                 {% if CURRENT_LANGUAGE == "uk" %}
                     <h1 class="card-title text-dark">
@@ -19,7 +19,7 @@
                 {% endif %}
             </div>
     
-            <div class="coll  team-member-text">
+            <div class="col  team-member-text">
                 {% if CURRENT_LANGUAGE == "uk" %}
                     <div class="body-text-member">
                         {{ post.uk_content | safe }}
