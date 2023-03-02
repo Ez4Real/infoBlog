@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2023-02-24 14:30+0200\n"
+"POT-Creation-Date: 2023-03-02 20:10+0200\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -21,190 +21,253 @@ msgstr ""
 "100 > 14) ? 1 : n % 1 == 0 && (n % 10 ==0 || (n % 10 >=5 && n % 10 <=9) || "
 "(n % 100 >=11 && n % 100 <=14 )) ? 2: 3);\n"
 
-#: .\blog\forms.py:27
+#: .\blog\forms.py:41 .\blog\models.py:150
 msgid "First name"
 msgstr "Ім'я"
 
-#: .\blog\forms.py:30
+#: .\blog\forms.py:44 .\blog\models.py:152
 msgid "Last name"
 msgstr "Прізвище"
 
-#: .\blog\forms.py:41 .\blog\forms.py:74
+#: .\blog\forms.py:54
 msgid "Secondary"
 msgstr "Середня"
 
-#: .\blog\forms.py:42 .\blog\forms.py:75
+#: .\blog\forms.py:55
 msgid "High"
 msgstr "Вища"
 
-#: .\blog\forms.py:43 .\blog\forms.py:76
+#: .\blog\forms.py:56 .\blog\forms.py:88 .\blog\models.py:139
 msgid "Doctor or PhD"
 msgstr "Доктор або кандидат наук"
 
-#: .\blog\forms.py:44 .\blog\forms.py:77
+#: .\blog\forms.py:57
 msgid "Other"
 msgstr "Інше"
 
-#: .\blog\forms.py:46 .\blog\forms.py:85
+#: .\blog\forms.py:59 .\blog\forms.py:137 .\blog\models.py:166
 msgid "Level of education"
 msgstr "Рівень освіти"
 
-#: .\blog\forms.py:49
+#: .\blog\forms.py:62
 msgid "Briefly describe your area of expertise"
 msgstr "Коротко опишіть сферу вашої експертизи"
 
-#: .\blog\forms.py:52
+#: .\blog\forms.py:65
 msgid "What do you expect from cooperation with us?"
 msgstr "Чого ви очікуєте від співпраці з нами?"
 
-#: .\blog\forms.py:55
+#: .\blog\forms.py:68
 msgid "Resume"
 msgstr "Резюме"
 
-#: .\blog\forms.py:60
+#: .\blog\forms.py:73
 msgid "Date of Birth"
 msgstr "Дата народження"
 
-#: .\blog\forms.py:62
+#: .\blog\forms.py:75
 msgid "City"
 msgstr "Місто"
 
-#: .\blog\forms.py:65
+#: .\blog\forms.py:78 .\blog\forms.py:123
 msgid "Phone"
 msgstr "Телефон"
 
-#: .\blog\forms.py:67
+#: .\blog\forms.py:80
 msgid "What do you do in life?"
 msgstr "Чим Ви займаєтесь у житті"
 
-#: .\blog\forms.py:79
+#: .\blog\forms.py:87 .\blog\models.py:138
+msgid "Master"
+msgstr "Магістр"
+
+#: .\blog\forms.py:89 .\blog\models.py:140
+msgid "Postgraduate"
+msgstr "Аспірант"
+
+#: .\blog\forms.py:90 .\blog\models.py:141
+msgid "Doctorate"
+msgstr "Докторант"
+
+#: .\blog\forms.py:116
+msgid ""
+"This field is required for education levels 'Postgraduate' and 'Doctorate'."
+msgstr "Поле обов’язкове для освітніх рівнів «Аспірант» і «Докторант»"
+
+#: .\blog\forms.py:121
+msgid "Resume file size must be under 5MB."
+msgstr "Розмір файлу резюме має бути не більше 5 Мб."
+
+#: .\blog\forms.py:125
+msgid "Show password"
+msgstr "Показати пароль"
+
+#: .\blog\forms.py:128 .\blog\models.py:160
 msgid "Higher Education or Research Institution"
-msgstr ""
+msgstr "Вищий Навчальний Заклад або Дослідницька установа"
 
-#: .\blog\forms.py:82
+#: .\blog\forms.py:131 .\blog\models.py:162
 msgid "Research Unit/Department/Chair"
-msgstr ""
+msgstr "Підрозділ/Департамент/Кафедра"
 
-#: .\blog\models.py:23
+#: .\blog\forms.py:134 .\blog\models.py:164
+msgid "Scientific Specialization"
+msgstr "Наукова спеціальність"
+
+#: .\blog\forms.py:140 .\blog\models.py:169
+msgid "Academic Supervisor/Consultant"
+msgstr "Науковий керівник/консультант"
+
+#: .\blog\forms.py:144
+msgid "How do you plan to use the sources of ERGOSUM European Library?"
+msgstr ""
+"Як Ви плануєте використовувати ресурси Європейської Бібліотеки ERGOSUM?"
+
+#: .\blog\forms.py:151 .\blog\models.py:177
+msgid "Academic CV"
+msgstr "Академічне CV"
+
+#: .\blog\forms.py:160
+msgid "Password"
+msgstr "Пароль"
+
+#: .\blog\models.py:25
 msgid "News Types"
 msgstr "Типи новин"
 
-#: .\blog\models.py:36
+#: .\blog\models.py:38
 msgid "News type"
 msgstr "Тип новини"
 
-#: .\blog\models.py:43 .\templates\include\header\header_bottom.html:22
+#: .\blog\models.py:45 .\templates\include\header\header_bottom.html:22
 msgid "Policy areas"
 msgstr "Сфери досліджень"
 
-#: .\blog\models.py:51
+#: .\blog\models.py:53
 msgid "Policy area name"
 msgstr "Назва сфери дослідження"
 
-#: .\blog\models.py:69
+#: .\blog\models.py:71
 msgid "Photo of the represent"
 msgstr "Фото представника"
 
-#: .\blog\models.py:73
+#: .\blog\models.py:75
 msgid "Full name on english"
 msgstr "Повне ім'я англійською"
 
-#: .\blog\models.py:77
+#: .\blog\models.py:79
 msgid "Full name on ukrainian"
 msgstr "Повне ім'я українською"
 
-#: .\blog\models.py:81
+#: .\blog\models.py:83
 #, fuzzy
 #| msgid "English content"
 msgid "English position"
 msgstr "Контент англійською"
 
-#: .\blog\models.py:85
+#: .\blog\models.py:87
 msgid "Ukrainian position"
 msgstr "Контент українською"
 
-#: .\blog\models.py:90 .\blog\models.py:147 .\blog\models.py:289
+#: .\blog\models.py:92 .\blog\models.py:183 .\blog\models.py:223
+#: .\blog\models.py:328 .\blog\models.py:362
 msgid "Date of creation"
 msgstr "Дата створення"
 
-#: .\blog\models.py:95
+#: .\blog\models.py:97
 msgid "Blog Scholars"
 msgstr "Вчені блогу"
 
-#: .\blog\models.py:102
+#: .\blog\models.py:104
 msgid "University link"
 msgstr "Лінк університету"
 
-#: .\blog\models.py:107
+#: .\blog\models.py:109
 msgid "Team Members"
 msgstr "Організації-члени"
 
-#: .\blog\models.py:113 .\blog\models.py:141
+#: .\blog\models.py:115 .\blog\models.py:217
 msgid "English content"
 msgstr "Контент англійською"
 
-#: .\blog\models.py:116 .\blog\models.py:144
+#: .\blog\models.py:118 .\blog\models.py:220
 msgid "Ukrainian content"
 msgstr "Контент українською"
 
-#: .\blog\models.py:134 .\blog\models.py:278
+#: .\blog\models.py:134
+msgid "Library members"
+msgstr "Організації-члени"
+
+#: .\blog\models.py:158
+msgid "Phone number"
+msgstr "Номер телефону"
+
+#: .\blog\models.py:181
+msgid "Resource Plans"
+msgstr "Плани використання ресурсів"
+
+#: .\blog\models.py:210 .\blog\models.py:351
 msgid "English title"
 msgstr "Заголовок англійською"
 
-#: .\blog\models.py:138 .\blog\models.py:281
+#: .\blog\models.py:214 .\blog\models.py:354
 msgid "Ukrainian title"
 msgstr "Заголовок українською"
 
-#: .\blog\models.py:152
+#: .\blog\models.py:228
 msgid "Blog Articles"
 msgstr "Статті блогу"
 
-#: .\blog\models.py:160 .\blog\models.py:200
+#: .\blog\models.py:236 .\blog\models.py:273
 msgid "Author"
 msgstr "Автор"
 
-#: .\blog\models.py:166 .\templates\blog\news.html:10
+#: .\blog\models.py:242 .\templates\blog\news.html:10
 #: .\templates\include\header\header_bottom.html:4
 msgid "News"
 msgstr "Новини"
 
-#: .\blog\models.py:175
+#: .\blog\models.py:248
 msgid "News banner"
 msgstr "Баннер новини"
 
-#: .\blog\models.py:180
+#: .\blog\models.py:253
 msgid "English subtitle"
 msgstr "Підзаголовок англійською"
 
-#: .\blog\models.py:184
+#: .\blog\models.py:257
 msgid "Ukrainian subtitle"
 msgstr "Підзаголовок українською"
 
-#: .\blog\models.py:190
+#: .\blog\models.py:263
 msgid "Type"
 msgstr "Тип"
 
-#: .\blog\models.py:195
+#: .\blog\models.py:268
 msgid "Policy area"
 msgstr "Сфера дослідження"
 
-#: .\blog\models.py:240
+#: .\blog\models.py:313
 msgid "Subscribers"
 msgstr "Підписники"
 
-#: .\blog\models.py:252 .\infoBlog\settings.py:136
+#: .\blog\models.py:323
+msgid "Is Active"
+msgstr "Активний"
+
+#: .\blog\models.py:325 .\infoBlog\settings.py:141
 msgid "English"
 msgstr "Англійська"
 
-#: .\blog\models.py:253 .\infoBlog\settings.py:135
+#: .\blog\models.py:326 .\infoBlog\settings.py:140
 msgid "Ukrainian"
 msgstr "Українська"
 
-#: .\blog\models.py:265
+#: .\blog\models.py:338
 msgid "Video content"
 msgstr "Відеоконтент"
 
-#: .\infoBlog\settings.py:204
+#: .\infoBlog\settings.py:209
 msgid "European Research Group Of Support for Ukrainian Membership – ERGOSUM"
 msgstr "Європейська Дослідницька Група Підтримки Членства України – ERGOSUM"
 
@@ -290,6 +353,19 @@ msgstr "Надіслати"
 #: .\templates\include\header\header_top.html:25
 msgid "Volunteer"
 msgstr "Волонтерство"
+
+#: .\templates\blog\library\library.html:12
+msgid "Log out"
+msgstr "Вийти"
+
+#: .\templates\blog\library\library.html:15
+msgid "Log in"
+msgstr "Увійти"
+
+#: .\templates\blog\library\library.html:17
+#: .\templates\blog\library\register.html:121
+msgid "Sign up"
+msgstr "Зареєструватися"
 
 #: .\templates\blog\policy_areas\culture.html:10
 #: .\templates\include\header\header_bottom.html:33

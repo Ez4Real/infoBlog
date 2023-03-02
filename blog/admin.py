@@ -43,11 +43,21 @@ class TeamMemberAdmin(admin.ModelAdmin):
 class LibraryMemberAdmin(admin.ModelAdmin):
     def has_add_permission(self, request):
         return False
+    def has_change_permission(self, request, obj=None):
+        return False
+    
     list_display = ('last_name', 'first_name', 'education_level', 'institution')
-    list_filter = ('last_name', 'first_name', 'education_level', 'institution')
+    list_filter = ('last_name', 'first_name', 'education_level', 'institution', 'date_of_creation')
+    readonly_fields = ('first_name', 'last_name', 'email', 'phone_number',
+                       'education_level', 'institution', 'department', 'specialization',
+                       'supervisor', 'google_scholar', 'resource_plans', 'date_of_creation')
     fields = [('first_name', 'last_name'), 
               ('email', 'phone_number'),
-              ('education_level', 'institution', 'department')]
+              ('education_level', 'institution'),
+              ('department', 'specialization'),
+              ('supervisor', 'google_scholar'),
+              ('resource_plans'),
+              ('resume', 'date_of_creation')]
     
 @admin.register(News)
 class NewsAdmin(admin.ModelAdmin):

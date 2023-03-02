@@ -116,7 +116,7 @@ def send_user_subscribe_activation(request: HttpRequest,
                                    sub: Subscriber) -> None:
     """ Sends to user email message for activate subscription """
     message = get_subscribe_email_template(request, sub)
-    email = get_email_object('Activate your email newsletter subscription',
+    email = get_email_object('Activate your newsletter subscription',
                              message,
                              sub.email)
     send_subscribe_email_message(request, email)

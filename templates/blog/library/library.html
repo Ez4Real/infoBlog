@@ -4,12 +4,53 @@
 
 {% block content %}
 
+
+<div class="container">
+    <div class="p-3"></div>
+    {% if user.is_authenticated %}
+    <div class="row row-col-2">
+        <div class="d-flex col align-items-center">
+            Welcome, {{ user }}!
+        </div>
+        
+        <div class="col">
+            <a href="{% url 'logout' %}" class="nav-link text-end text-dark">
+                <button type="submit" name='library_form' class="form-group btn btn-primary">
+                    {% trans "Log out" %}
+                </button>
+                
+            </a>
+        </div>
+        
+    </div>
+    <hr>
+    <div class="col-12 text-center">
+        <strong>CONTENT</strong>
+    </div>
+    {% else %}
+    <div class="lib-chouse">
+        <div class="col-12 text-center login-text">
+            {% if CURRENT_LANGUAGE == "uk" %}
+
+                <h1>Увійдіть у свій профіль або зареєструйтеся для того щоб бачити бібліотеку сайту</h1>
+
+            {% else %}
+
+                <h1>Please log in to your profile or register to access the site's library.</h1>
+            {% endif %}
+        </div>
+        <a href="{% url 'login' %}" class="nav-link">{% trans "Log in" %}
+        
+        <a href="{% url 'register' %}" class="nav-link">{% trans "Sign up" %}
+    </div>
+    {% endif %}
+
 <div class="p-3"></div>
 
 <div class="container">
     
-    {% if form %}
 
+<!-- 
         <div class="col-md-12 text-for-lib d-flex align-items-center text-center justify-content-center">
             {% if CURRENT_LANGUAGE == "uk" %}
 
@@ -17,7 +58,7 @@
 
             {% else %}
 
-                Please leave your contact information so that we can grant you access to our website's library.
+                <h3>Please leave your contact information so that we can grant you access to our website's library.</h3>
 
             {% endif %}
         </div>
@@ -111,8 +152,8 @@
             </div>
             </div>
             
-        </form>
-    {% endif %}
+        </form> -->
+
 
 </div>
 <script src="{% static '/js/for_form_lib.js' %}"></script>

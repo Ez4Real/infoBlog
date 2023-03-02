@@ -5,7 +5,8 @@ from email.mime.image import MIMEImage
 
 from ckeditor_uploader.fields import RichTextUploadingField
 from django.contrib.sites.shortcuts import get_current_site
-from django.contrib.auth.hashers import make_password, check_password
+from django.contrib.auth.models import AbstractBaseUser, BaseUserManager
+from django.contrib.auth.hashers import check_password
 from django.core.mail import EmailMessage
 from django.core.validators import MaxLengthValidator
 from django.db import models
@@ -118,19 +119,30 @@ class TeamMember(Person):
                                         )
 
 
-class LibraryMember(models.Model):
+class LibraryMemberManager(BaseUserManager):
+    def create_user(self, email, password=None, **kwargs):
+        if not email:
+            raise ValueError('Email address is required')
+        user = self.model(email=self.normalize_email(email), **kwargs)
+        user.set_password(password)
+        user.save()
+        return user
+
+
+class LibraryMember(AbstractBaseUser):
+    class Meta:
+        verbose_name_plural = _('Library members')
+        ordering = ['-date_of_creation', 'last_name']
+
     EDUCATION_LEVELS = (
-    (1, _('Master')),
-    (2, _('Doctor or PhD')),
-    (3, _('Postgraduate')),
-    (4, _('Doctorate'))
+    ('1', _('Master')),
+    ('2', _('Doctor or PhD')),
+    ('3', _('Postgraduate')),
+    ('4', _('Doctorate'))
     )
     
     def __str__(self):
         return f'{self.first_name} {self.last_name}'
-    
-    def set_password(self, raw_password):
-        self.password = make_password(raw_password)
 
     def check_password(self, raw_password):
         return check_password(raw_password, self.password)
@@ -145,7 +157,6 @@ class LibraryMember(models.Model):
     phone_number = models.CharField(unique=True,
                                     verbose_name=_('Phone number'),
                                     max_length=20)
-    password = models.CharField(max_length=255, null=False)
     institution = models.CharField(verbose_name=_('Higher Education or Research Institution'),
                                    max_length=200)
     department = models.CharField(verbose_name=_('Research Unit/Department/Chair'),
@@ -155,19 +166,29 @@ class LibraryMember(models.Model):
     education_level = models.CharField(verbose_name = _('Level of education'),
                                        choices=EDUCATION_LEVELS,
                                        max_length=1)
-    supervisor = models.CharField(verbose_name=_('Academic Supervisor/Cosultant'),
+    supervisor = models.CharField(verbose_name=_('Academic Supervisor/Consultant'),
                                   max_length=200,
                                   null=True,
                                   blank=True)
-    google_scholar = models.CharField(verbose_name=_('ORCHID/Google Scholar'),
+    google_scholar = models.CharField(verbose_name='ORCHID/Google Scholar',
                                       max_length=200,
                                       blank=True,
                                       null=True)
     resume = models.FileField(verbose_name=_('Academic CV'),
+                              upload_to='uploads/Library Members Resumes',
                               blank=True,
                               null=True)
     resource_plans = models.TextField(verbose_name=_('Resource Plans'),
                                       max_length=600)
+    date_of_creation = models.DateTimeField(verbose_name=_('Date of creation'),
+                                            auto_now_add=True)
+
+    objects = LibraryMemberManager()
+
+    USERNAME_FIELD = 'email'
+    REQUIRED_FIELDS = ['first_name', 'last_name', 'phone_number', 'institution',
+                       'department', 'specialization', 'education_level', 'resource_plans']
+
 
 class Article(models.Model):
     class Meta:
