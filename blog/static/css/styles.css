@@ -66,7 +66,6 @@ nav{
         width: 150px;
     }
 
-
     .lang_butt{
         margin-left: 130px!important;
         margin-top: -5px!important;
@@ -166,12 +165,12 @@ nav{
     .form-control{
         margin-bottom: 10px!important;
     }
-    .sub-butt{
-        width: 380px!important;
+    .body-cronis-post{
+        width: 696px !important;
     }
 }
 
-@media (max-width: 425px) {
+@media (max-width: 426px) {
     .card-video{
         width:100%!important;
     }
@@ -190,7 +189,7 @@ nav{
         margin-bottom: 10px!important;
     }
     .sub-butt{
-        width: 328px!important;
+        width: 378px!important;
     }
     .card-custom{
         height: 225px !important;
@@ -198,10 +197,13 @@ nav{
     .card-custom-blog{
         height: 240px !important;
     }
+    .body-cronis-post{
+        width: 402px !important;
+    }
 }
 
 
-@media (max-width: 375px) {
+@media (max-width: 376px) {
     .logo,
     .logo-side{
         height: 95px;
@@ -222,6 +224,9 @@ nav{
     .card-custom-blog{
         height: 266px !important;
     }
+    .body-cronis-post{
+        width: 352px !important;
+    }
 }
 
 @media (max-width: 320px) {
@@ -241,6 +246,12 @@ nav{
     }
     .card-custom-blog{
         height: 290px !important;
+    }
+    .body-cronis-post{
+        width: 296px !important;
+    }
+    .sub-butt{
+        width: 272px !important;
     }
 }
 
