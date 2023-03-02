@@ -1,3 +1,13 @@
+if ('serviceWorker' in navigator) {
+  window.addEventListener('load', function() {
+    navigator.serviceWorker.register('/static/js/sw.js').then(function(registration) {
+      console.log('ServiceWorker registration successful with scope: ', registration.scope);
+    }, function(err) {
+      console.log('ServiceWorker registration failed: ', err);
+    });
+  });
+}
+
 window.setTimeout(function() {
     $(".alert").fadeTo(500, 0).slideUp(500, function(){
         $(this).remove();

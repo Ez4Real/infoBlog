@@ -1,5 +1,6 @@
 {% extends "blog/base_generic.html" %}
 {% load i18n %}
+{% load static %}
 
 {% block content %}
 
@@ -114,5 +115,5 @@
     {% endif %}
 
 </div>
-
+<script src="{% static '/js/for_form_lib.js' %}"></script>
 {% endblock %}
