@@ -3,30 +3,34 @@
 
 {% block content %}
 
-    <div class="text-center join-us-foto d-flex align-items-center justify-content-center">
-        <img src="{{ post.image.url }}" class="d-block mx-auto w-100 h-100 ob-cover">
-    </div>
-
 <div class="m-5"></div>
     <div class="container text-break">
-
-    {% if CURRENT_LANGUAGE == "uk" %}
-        <h5 class="card-title">
-            {{ post.uk_full_name }}
-        </h5>
-        <div class="body-cronis-post ">
-            {{ post.uk_content | safe }}
+        <div class="row row-cols-2 justify-content-center">
+            <div class="coll text-center team_member_photo d-flex align-items-center justify-content-center flex-column">
+                <img src="{{ post.image.url }}" class="d-block mx-auto w-100 h-100 ob-cover">
+                {% if CURRENT_LANGUAGE == "uk" %}
+                    <h1 class="card-title text-dark">
+                        <b>{{ post.uk_full_name }}</b>
+                    </h1>
+                {% else %}
+                    <h5 class="card-title text-dark">
+                        <b>{{ post.en_full_name }}</b>
+                    </h5>
+                {% endif %}
+            </div>
+    
+            <div class="coll  team-member-text">
+                {% if CURRENT_LANGUAGE == "uk" %}
+                    <div class="body-text-member">
+                        {{ post.uk_content | safe }}
+                    </div>
+                {% else %}
+                    <div class="body-text-member">
+                        {{ post.en_content | safe }}
+                    </div>
+                {% endif %}
+            </div>
         </div>
-        {% else %}
-        <h5 class="card-title">
-            {{ post.en_full_name }}
-        </h5>
-        <div class="body-cronis-post ">
-            {{ post.en_content | safe }}
-        </div>
-    {% endif %}
-    <div class="p-4"></div>
-    <hr>
 </div>
 
 {% endblock %}
