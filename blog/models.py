@@ -248,11 +248,11 @@ class News(Article):
                                verbose_name=_('News banner')
                                )
     
-    en_subtitle = models.TextField(max_length=255,
+    en_subtitle = models.TextField(max_length=100,
                                    help_text='Enter subtitle',
                                    verbose_name=_('English subtitle')
                                    )
-    uk_subtitle = models.TextField(max_length=255,
+    uk_subtitle = models.TextField(max_length=100,
                                    help_text='Enter subtitle',
                                    verbose_name=_('Ukrainian subtitle')
                                    )

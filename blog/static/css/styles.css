@@ -7,8 +7,8 @@
 
 body{
     min-height: 100vh;
-    background: #f0f0f0;
-    font-size: 18px;
+    background: #f4f4f4;
+    font-size: 19px;
     font-family: "MacPawFixel", Georgia !important;
 }
 
@@ -56,7 +56,7 @@ nav{
 }
 
 .card-custom-blog{
-    height: 75px;
+    height: 165px;
 }
 
 @media (max-width: 1440px) {
@@ -291,8 +291,20 @@ footer{
     height: 400px;
 }
 
+.body-cronis-post{
+    margin: auto;
+    width: 850px;
+}
+
 .body-cronis-post p{
-    text-align: justify;
+    /* text-align: justify; */
+    margin-bottom: 21px;
+}
+
+.post-foto{
+    height: 600px;
+    width: 100%;
+    position: relative;
 }
 
 .card-title{
@@ -393,10 +405,6 @@ footer{
     height: 105px;
 }
 
-.main-join-team {
-
-}
-
 .main-join-team * {
     padding-top: 7px;
 }
@@ -444,10 +452,6 @@ footer{
 
 footer{
     background-color: #003470;
-}
-
-body{
-    /* background-color: #0077ff00; */
 }
 
 header{
@@ -635,6 +639,31 @@ header a{
     animation-duration: 0.10s;
 }
 
+@keyframes press{
+    0% {
+        border-radius: 15px;
+        background: #f0f0f0;
+        box-shadow:  6px 6px 12px #c7c7c7, -6px -6px 12px #ffffff;
+    }
+    25% {
+        border-radius: 15px;
+        background: linear-gradient(145deg, #d8d8d8, #ffffff);
+        box-shadow:  5px 5px 10px #cecece,
+                    -5px -5px 10px #ffffff;
+    }
+    75% {
+        border-radius: 15px;
+        background: #f0f0f0;
+        box-shadow: inset 5px 5px 10px #cecece,
+                    inset -5px -5px 10px #ffffff;
+    }
+    100% {
+        border-radius: 15px;
+        background: #f0f0f0;
+        box-shadow:  6px 6px 12px #c7c7c7, -6px -6px 12px #ffffff;
+    }
+}
+
 .fix-side-opt{
     gap: 0rem !important;
 }
@@ -672,28 +701,19 @@ header a{
     height: 880px;
 }
 
-@keyframes press{
-    0% {
-        border-radius: 15px;
-        background: #f0f0f0;
-        box-shadow:  6px 6px 12px #c7c7c7, -6px -6px 12px #ffffff;
-    }
-    25% {
-        border-radius: 15px;
-        background: linear-gradient(145deg, #d8d8d8, #ffffff);
-        box-shadow:  5px 5px 10px #cecece,
-                    -5px -5px 10px #ffffff;
-    }
-    75% {
-        border-radius: 15px;
-        background: #f0f0f0;
-        box-shadow: inset 5px 5px 10px #cecece,
-                    inset -5px -5px 10px #ffffff;
-    }
-    100% {
-        border-radius: 15px;
-        background: #f0f0f0;
-        box-shadow:  6px 6px 12px #c7c7c7, -6px -6px 12px #ffffff;
-    }
+.form-library > div{
+    padding-bottom: 10px;
 }
+
+.team_member_photo img{
+    height: 715px;
+    width: 465px;
+    margin-top: 10px;
+}
+
+.body-text-member p{
+    text-align: justify;
+    margin-bottom: 21px;
+}
+
 

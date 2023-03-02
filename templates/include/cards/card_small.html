@@ -1,7 +1,7 @@
 <a href="{{ news.get_absolute_url }}" class="text-dark text-decoration-none">
     <div class="card mb-5">
         <div class="row g-0">
-            <div class="col-md-4" style="height: 273px;">
+            <div class="col-md-4" style="height: 282px;">
                 <img src="{{ news.banner.url }}"
                      class="img-fluid rounded-start d-block mx-auto w-100 h-100 ob-cover" alt="...">
                 <div class="card-img-overlay">
@@ -21,6 +21,15 @@
                 </div>
                 <div class="d-flex justify-content-between card-footer bg-transparent border-secondary">
                     <small class="text-muted fs-5">{{ news.date_of_creation }}</small>
+                    {% if news.author %}
+                        <small class="text-muted fs-5" style="padding-right: 70px;">
+                            {% if CURRENT_LANGUAGE == "uk" %}
+                                {{ news.author.uk_full_name }}
+                            {% else %}
+                                {{ news.author.en_full_name }}
+                            {% endif %}    
+                        </small>
+                    {% endif %}
                     <small class="text-primary fs-5">{{ news.policy_area }}</small>
                 </div>
             </div>
