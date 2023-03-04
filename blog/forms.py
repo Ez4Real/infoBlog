@@ -122,6 +122,10 @@ class LibraryMemberForm(UserCreationForm, BaseMemberForm):
     
     phone_number = PhoneNumberField(label=_('Phone'),
                              widget=PhoneNumberWidget)
+    password1 = forms.CharField(label=_('Password'),
+                                widget=forms.PasswordInput(attrs={'class': 'form-control'}))
+    password2 = forms.CharField(label=_('Password2'),
+                                widget=forms.PasswordInput(attrs={'class': 'form-control'}))
     password_reveal = forms.BooleanField(label=_('Show password'),
                                           required=False,
                                           widget=forms.CheckboxInput(attrs={'class': 'form-check-input', 'id': 'password-toggle'}))

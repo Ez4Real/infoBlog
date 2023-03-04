@@ -2,32 +2,43 @@
 {% load i18n %}
 
 {% block content %}
-
-<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
-<script>
-    function togglePassword() {
-        var passwordInput1 = $('#id_password1');
-        var passwordInput2 = $('#id_password2');
-        var passwordToggle = $('#password-toggle');
-
-        if (passwordToggle.is(':checked')) {
-            passwordInput1.attr('type', 'text');
-            passwordInput2.attr('type', 'text');
-        } else {
-            passwordInput1.attr('type', 'password');
-            passwordInput2.attr('type', 'password');
-        }
-    }
-</script>
-
 <div class="container">
-    
+
     {% if library_form %}
+
+    <div class="col-md-12 text-for-lib d-flex align-items-center text-center justify-content-center py-4">
+        {% if CURRENT_LANGUAGE == "uk" %}
+
+            <h3>Залиште свої контактні данні для того щоб ми дали вам доступ до бібліотеки нашого сайту.</h3>
+
+        {% else %}
+
+            <h3>Please leave your contact information so that we can grant you access to our website's library.</h3>
+
+        {% endif %}
+    </div>
+
+    <div class="p-2"></div>
         <form method="post", enctype="multipart/form-data">
             <div class="position-relative">
-                <div class="col-md-6 form-group">
+                <div class="form-group">
                     {% csrf_token %}
-                    <!-- <div class="row">
+                        <!-- <div class="row justify-content-center">
+                          <div class="col-6">
+                            <form>
+                                <div class="form-group">
+                                    <label>Password</label>
+                                    <div class="input-group" id="show_hide_password">
+                                        <input class="form-control" id="password_field" type="password">
+                                        <div class="eye-pass d-flex justify-content-center align-items-center input-group-addon">
+                                            <i class="fa fa-eye" aria-hidden="true"></i>
+                                        </div>
+                                    </div>
+                                </div>
+                            </form>
+                          </div>
+                        </div> -->
+                    <div class="row">
                         <div class="col-md-6 group-control">
                           <label for="{{library_form.first_name.id_for_label }}">{{library_form.first_name.label }}</label>
                           {{library_form.first_name }}
@@ -41,10 +52,8 @@
                     </div>
                     <div class="row">
                         <div class="col-md-6 group-control">
-                            <label for="{{ library_form.phone.id_for_label }}">{{ library_form.phone.label }}</label>
-                            <div class="row row-cols-2 phone-volunteer" style="padding: 7px 12px 0;">
-                            {{ library_form.phone }}
-                            </div>
+                            <label for="{{ library_form.password.id_for_label }}">{{ library_form.password1.label }}</label>
+                            {{ library_form.password1 }}
                         </div>
     
                         <div class="col-md-6 group-control align-self-center" style="height: 84px;">
@@ -57,9 +66,9 @@
                     
                 
                     <div class="col-md-6 group-control">
-                        <label for="{{ library_form.password.id_for_label }}">{{ library_form.password.label }}</label>
+                        <label for="{{ library_form.password.id_for_label }}">{{ library_form.password2.label }}</label>
                         <div class="row row-cols-2" style="padding: 7px 12px 0;">
-                        {{ library_form.password }}
+                        {{ library_form.password2 }}
                         </div>
                         <label for="{{ library_form.password_reveal.id_for_label }}">{{ library_form.password_reveal.label }}</label>
                         <div class="row row-cols-2" style="padding: 7px 12px 0;">
@@ -115,9 +124,9 @@
                     <div class="col-md-6 group-control">
                         <label for="{{ library_form.resume.id_for_label }}">{{ library_form.resume.label }}</label>
                         {{ library_form.resume }}
-                    </div> -->
+                    </div>
                     
-                    {{ library_form.as_p }}
+                    <!-- {{ library_form.as_p }} -->
                     <button type="submit" name='library_form'>{% trans 'Sign up' %}</button>
 
 
@@ -129,5 +138,24 @@
     {% endif %}
 
 </div>
+
+<script>
+const showHideBtn = document.getElementById('show_hide_password');
+const passwordField = document.getElementById('password_field');
+const showHideIcon = document.querySelector('#show_hide_password i');
+
+showHideBtn.addEventListener('click', function () {
+  if (passwordField.type === 'password') {
+    passwordField.type = 'text';
+    showHideIcon.classList.remove('fa-eye');
+    showHideIcon.classList.add('fa-eye-slash');
+  } else {
+    passwordField.type = 'password';
+    showHideIcon.classList.remove('fa-eye-slash');
+    showHideIcon.classList.add('fa-eye');
+  }
+});
+
+</script>
 
 {% endblock %}

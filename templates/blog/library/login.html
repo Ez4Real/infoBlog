@@ -5,12 +5,28 @@
 
 
 <div class="container">
-  <h2>Login</h2>
-  <form method="post">
-    {% csrf_token %}
-    {{ login_form.as_p }}
-    <button type="submit">Login</button>
-  </form>
+	<div class="col-4 text-center mx-auto">
+		<h2 class="py-3 pt-5">
+			{% if CURRENT_LANGUAGE == "uk" %}
+
+				Увійдіть у свій профіль
+
+			{% else %}
+
+				Login in our profile
+
+			{% endif %}
+		</h2>
+		<form method="post">
+			{% csrf_token %}
+			<div class="group-control">
+				{{ login_form.as_p }}
+			</div>
+			<button type="submit" class="form-group btn btn-primary">
+				{% trans "Log in" %}
+			</button>
+		</form>
+	</div>
 </div>
 
 {% endblock %}

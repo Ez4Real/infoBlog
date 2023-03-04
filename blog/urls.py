@@ -16,6 +16,7 @@ urlpatterns = [
     path('blog/<author_slug>/<slug:slug>/', views.blog_post_detail, name='blog-post-detail'),
     path('about/team/<slug:slug>/', views.team_member_detail, name='team-member-detail'),
     path('search/', views.search, name='search'),
+    path("sw.js", views.ServiceWorkerView.as_view(), name="sw.js"),
     
     # About
     path('about/board', views.board, name='board'),

@@ -1,16 +1,14 @@
-console.log('Service worker loaded');
-
-const CACHE_NAME = 'Cache-v1';
+const CACHE_NAME = 'Cache-v' + new Date().getTime();;
 const urlsToCache = [
-	"/static/css/styles.css",
-	"/static/js/index.js"
+	"{{ static_url }}css/styles.css",
+	"{{ static_url }}js/index.js",
+  "{{ static_url }}css/font/MacPawFixel-VF.ttf"
 ];
 
 self.addEventListener('install', function(event) {
   event.waitUntil(
     caches.open(CACHE_NAME)
       .then(function(cache) {
-        console.log('Cache opened');
         return cache.addAll(urlsToCache);
       })
   );
@@ -22,7 +20,6 @@ self.addEventListener('activate', function(event) {
         return Promise.all(
           cacheNames.map(function(cache) {
             if (cache !== CACHE_NAME) {
-              console.log('Deleting old cache:', cache);
               return caches.delete(cache);
             }
           })
@@ -36,10 +33,8 @@ self.addEventListener('fetch', function(event) {
     caches.match(event.request)
       .then(function(response) {
         if (response) {
-          console.log('Serving from cache');
           return response;
         }
-        console.log('Not found in cache. Fetching from network');
         return fetch(event.request);
       }
     )

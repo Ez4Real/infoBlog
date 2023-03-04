@@ -4,6 +4,7 @@ from django.shortcuts import render, redirect
 from django.contrib import messages
 from django.contrib.auth import login, logout
 from django.utils.safestring import SafeText
+from django.views.generic import TemplateView
 
 from .services.db_services import get_news_by_slug, get_blog_scholar_by_slug, \
     get_blog_search_results, get_posts_by_author_slug, get_blog_post_by_slug, \
@@ -20,6 +21,15 @@ from .services.auth import login_user
 from .models import Video
 from .forms import LibraryMemberForm, LoginForm
 
+
+class ServiceWorkerView(TemplateView):
+    template_name = 'utils/sw.js'
+    content_type = "application/javascript"
+
+    def get_context_data(self, **kwargs):
+        context = super().get_context_data(**kwargs)
+        context["static_url"] = settings.STATIC_URL
+        return context
 
 def homepage(request, context = {}) -> HttpResponse:
     context['title'] = settings.TITLE    

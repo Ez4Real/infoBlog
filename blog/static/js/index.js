@@ -1,12 +1,19 @@
-if ('serviceWorker' in navigator) {
-  window.addEventListener('load', function() {
-    navigator.serviceWorker.register('/static/js/sw.js').then(function(registration) {
-      console.log('ServiceWorker registration successful with scope: ', registration.scope);
-    }, function(err) {
-      console.log('ServiceWorker registration failed: ', err);
+window.addEventListener("load", async () => {
+  if ("serviceWorker" in navigator) {
+    try {
+      const pathname = window.location.pathname;
+      const language = pathname.split("/")[1];
+      await navigator.serviceWorker.register(`/${language}/sw.js`);
+    } catch (err) {
+      console.error(err);
+    }
+  }
+  if ("serviceWorker" in navigator && "SyncManager" in window) {
+    navigator.serviceWorker.ready.then((sw) => {
+      sw.sync.register("sync-request");
     });
-  });
-}
+  }
+});
 
 window.setTimeout(function() {
     $(".alert").fadeTo(500, 0).slideUp(500, function(){
