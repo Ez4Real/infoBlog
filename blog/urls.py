@@ -11,6 +11,7 @@ urlpatterns = [
     path('activate/<uidb64>/<token>/<lang>/',
          activate_user_subscription,
          name='activate'),
+    path('library/<str:type>/', views.resource_detail, name='resource-detail'),
     path('<type>/<slug:slug>/', views.post_detail, name='post-detail'),
     path('blog/scholar-posts/<slug:slug>/', views.scholar_posts, name='scholar-posts'),
     path('blog/<author_slug>/<slug:slug>/', views.blog_post_detail, name='blog-post-detail'),

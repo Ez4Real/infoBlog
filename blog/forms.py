@@ -124,11 +124,11 @@ class LibraryMemberForm(UserCreationForm, BaseMemberForm):
                              widget=PhoneNumberWidget)
     password1 = forms.CharField(label=_('Password'),
                                 widget=forms.PasswordInput(attrs={'class': 'form-control'}))
-    password2 = forms.CharField(label=_('Password2'),
+    password2 = forms.CharField(label=_('Password confirmation'),
                                 widget=forms.PasswordInput(attrs={'class': 'form-control'}))
     password_reveal = forms.BooleanField(label=_('Show password'),
-                                          required=False,
-                                          widget=forms.CheckboxInput(attrs={'class': 'form-check-input', 'id': 'password-toggle'}))
+                                         required=False,
+                                         widget=forms.CheckboxInput(attrs={'class': 'form-check-input', 'id': 'password-toggle'}))
     institution = forms.CharField(label=_('Higher Education or Research Institution'),
                                   max_length=200,
                                   widget=TextInputWidget)

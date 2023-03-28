@@ -1,6 +1,7 @@
 from django.db.models import Q, QuerySet
 from django.utils.safestring import SafeText
-from ..models import News, Video, BlogScholar, Blog, TeamMember
+from ..models import News, Video, BlogScholar, \
+    Blog, TeamMember, LibraryResource
 
 
 def get_news_by_policy_area(policy_area: str) -> QuerySet:
@@ -48,3 +49,11 @@ def get_blog_search_results(query: str) -> QuerySet:
                                Q(en_subtitle__icontains=query) | Q(uk_subtitle__icontains=query) |
                                Q(en_content__icontains=query) | Q(uk_content__icontains=query)
                                ).order_by('-date_of_creation')
+    
+def get_all_library_resources() -> QuerySet:
+    """ Returns QuerySet of all LibraryResources """
+    return LibraryResource.objects.all()
+
+def get_resource_by_type(type: SafeText) -> QuerySet: 
+    """ Returns LibraryResource object by type """
+    return LibraryResource.objects.get(type=type)
