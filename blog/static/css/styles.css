@@ -97,6 +97,10 @@ nav{
     .phone-volunteer input{
         width: 325px !important;
     }
+
+    .eye-pass{
+        height: 38.1px !important;
+    }
     
     .side-navbar{
         z-index: 1024;

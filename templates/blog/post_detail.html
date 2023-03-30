@@ -7,7 +7,7 @@
 <div class="container text-break">
 
     {% if CURRENT_LANGUAGE == "uk" %}
-        <h1 class="card-title text-start">
+        <h1 class="card-title">
             <b>{{ post.uk_title }}</b>
         </h1>
         
@@ -38,19 +38,21 @@
             <img src="{{ post.banner.url }}" class="d-block mx-auto w-100 h-100 ob-cover">
         </div>
         <div class="p-3"></div>
-        <div class="body-cronis-post ">
+        <div class="body-cronis-post fs-4 text-center">
             {{ post.uk_content | safe }}
         </div>
         
         {% else %}
 
-        <h5 class="card-title text-start">
-            {{ post.en_title }}
-        </h5>
+        <h1 class="card-title">
+            <b>{{ post.en_title }}</b>
+        </h1>
+        
+        <div class="p-3"></div>
 
         <div class="d-flex gap-3">
             <div class="post-author">
-                <b>{{ post.author.en_full_name }}</b>
+                <b>{{ post.author.enfull_name }}</b>
             </div>
             <div class="post-date text-muted">
                 <small>{{ post.date_of_creation }}</small>
@@ -66,16 +68,17 @@
             </div>
             {% endif %}
         </div>
-
+        
         <hr class="m-1 mb-4">
-
+        
         <div class="text-center post-foto d-flex align-items-center justify-content-center">
             <img src="{{ post.banner.url }}" class="d-block mx-auto w-100 h-100 ob-cover">
         </div>
         <div class="p-3"></div>
-        <div class="body-cronis-post ">
+        <div class="body-cronis-post fs-4 text-center">
             {{ post.en_content | safe }}
         </div>
+    
     {% endif %}
 
 </div>

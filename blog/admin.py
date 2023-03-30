@@ -1,7 +1,8 @@
 from django.contrib import admin
 
 from .models import NewsType, PolicyArea, News, Subscriber, Video, \
-    BlogScholar, Blog, TeamMember, LibraryMember
+    BlogScholar, Blog, TeamMember, LibraryMember, LibraryResource, \
+    LibrarySubresource
 
 
 def send_newsletter(modeladmin, request, queryset):
@@ -90,5 +91,19 @@ class BlogAdmin(admin.ModelAdmin):
 class Video(admin.ModelAdmin):
     list_display = ('en_title', 'uk_title', 'date_of_creation')
     list_filter = ('type', 'en_title', 'uk_title', 'date_of_creation')
+    
+@admin.register(LibraryResource)
+class LibraryResourceAdmin(admin.ModelAdmin):
+    list_display = ('type', 'en_title')
+    fields = [('type', 'banner'), 
+              ('en_title', 'uk_title'),
+              ('en_content', 'uk_content')]
+    
+@admin.register(LibrarySubresource)
+class LibrarySubresourceAdmin(admin.ModelAdmin):
+    list_display = ('topic', 'date', 'bounded_resource')
+    list_filter = ('topic', 'date', 'bounded_resource')
+    fields = [('topic', 'date'), 
+              ('bounded_resource', 'file',)]
     
 

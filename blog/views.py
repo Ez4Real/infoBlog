@@ -8,7 +8,7 @@ from django.views.generic import TemplateView
 
 from .services.db_services import get_news_by_slug, get_blog_scholar_by_slug, \
     get_blog_search_results, get_posts_by_author_slug, get_blog_post_by_slug, \
-    get_member_by_slug
+    get_member_by_slug, get_all_library_resources, get_resource_by_type
 from .services.blog_services import paginate, \
     check_if_number_endswith_one, add_subscriber_form_to_context, \
     add_last_news_to_context, get_dynamic_page_title_by_language, \
@@ -131,9 +131,16 @@ def logout_view(request):
     logout(request)
     return redirect('library')
 
-def library(request) -> HttpResponse:
+def library(request: HttpRequest) -> HttpResponse:
     context = get_static_page_context('Library', request)
+    context['library_resources'] = get_all_library_resources()
     return render(request, 'blog/library/library.html', context)
+
+def resource_detail(request: HttpRequest,
+                    type: str) -> HttpResponse:
+    context = get_static_page_context(type, request)
+    context['resource'] = get_resource_by_type(type)
+    return render(request, 'blog/library/resource_detail.html', context)
 
 def search(request: HttpRequest, context: dict = {}):
     add_page_title_to_context_by_language('Search Results', context)

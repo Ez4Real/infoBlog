@@ -7,7 +7,10 @@
                      class="img-fluid rounded-start d-block mx-auto w-100 h-100 ob-cover"
                      alt="...">
             </div>
-            <small class="text-muted fs-6">{{ news.policy_area }}</small>
+            <small class="text-muted fs-6">
+                {% if news.policy_area == "Human rights" %}
+                {% endif %}
+            </small>
 
             <div class="card-body card-castom d-flex align-content-center justify-content-center flex-wrap" style="height: 230px;">
 

@@ -16,6 +16,7 @@ from django.utils.encoding import force_bytes
 from django.utils.http import urlsafe_base64_encode
 from django.utils.text import slugify 
 from django.utils.translation import gettext_lazy as _
+from django.utils.timezone import now
 
 from .tokens import email_unsubscribe_token
 
@@ -360,3 +361,42 @@ class Video(models.Model):
                           verbose_name=('URL'))
     date_of_creation = models.DateTimeField(auto_now_add=True,
                                             verbose_name=_('Date of creation'))
+    
+
+class LibraryResource(Article):
+    RESOURCE_TOPICS = [
+        ('Journals', 'Journals'),
+        ('Magazines', 'Magazines'),
+        ('Books', 'Books'),
+        ('Newspapers', 'Newspapers'),
+        ('Brochures', 'Brochures'),
+        ('Other papers', 'Other papers'),
+    ]
+    
+    type = models.CharField(max_length=20, choices=RESOURCE_TOPICS, default='Journals')
+    
+    banner = models.ImageField(upload_to='uploads/library_banners', 
+                               verbose_name=_('News banner')
+                               )
+    
+    def __str__(self):
+        return f'{self.type} - {self.en_title}'
+    
+    def get_absolute_url(self):
+        return reverse('resource-detail', args=[self.type]) 
+    
+class LibrarySubresource(models.Model):
+    file = models.FileField(upload_to='uploads/resources', 
+                            verbose_name=_('Resource file')
+                            )
+    date = models.DateField(default=now,
+                            verbose_name=_('Date of creation'))
+    topic = models.CharField(max_length=45,
+                             help_text='Enter topic',
+                             verbose_name=_('Topic'))
+    bounded_resource = models.ForeignKey(LibraryResource,
+                                         on_delete=models.CASCADE,
+                                         related_name='subresources',
+                                         help_text='Choose bounded resource',
+                                         verbose_name=_('Bounded resource'),
+                                         )

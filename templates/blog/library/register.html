@@ -1,5 +1,7 @@
 {% extends "blog/base_generic.html" %}
 {% load i18n %}
+{% load static %}
+
 
 {% block content %}
 <div class="container">
@@ -20,24 +22,10 @@
 
     <div class="p-2"></div>
         <form method="post", enctype="multipart/form-data">
-            <div class="position-relative">
-                <div class="form-group">
+            <div class="position-relative ">
+                <div class="form-group form-library">
                     {% csrf_token %}
-                        <!-- <div class="row justify-content-center">
-                          <div class="col-6">
-                            <form>
-                                <div class="form-group">
-                                    <label>Password</label>
-                                    <div class="input-group" id="show_hide_password">
-                                        <input class="form-control" id="password_field" type="password">
-                                        <div class="eye-pass d-flex justify-content-center align-items-center input-group-addon">
-                                            <i class="fa fa-eye" aria-hidden="true"></i>
-                                        </div>
-                                    </div>
-                                </div>
-                            </form>
-                          </div>
-                        </div> -->
+
                     <div class="row">
                         <div class="col-md-6 group-control">
                           <label for="{{library_form.first_name.id_for_label }}">{{library_form.first_name.label }}</label>
@@ -51,9 +39,11 @@
                         
                     </div>
                     <div class="row">
-                        <div class="col-md-6 group-control">
-                            <label for="{{ library_form.password.id_for_label }}">{{ library_form.password1.label }}</label>
-                            {{ library_form.password1 }}
+                        <div class="col-md-6 group-control align-self-center" style="height: 84px;">
+                            <label for="{{ library_form.phone_number.id_for_label }}">{{ library_form.phone_number.label }}</label>
+                            <div class="row row-cols-2 phone-volunteer" style="padding: 7px 12px 0;">
+                            {{ library_form.phone_number }}
+                            </div>
                         </div>
     
                         <div class="col-md-6 group-control align-self-center" style="height: 84px;">
@@ -65,14 +55,25 @@
                     </div>
                     
                 
-                    <div class="col-md-6 group-control">
-                        <label for="{{ library_form.password.id_for_label }}">{{ library_form.password2.label }}</label>
-                        <div class="row row-cols-2" style="padding: 7px 12px 0;">
-                        {{ library_form.password2 }}
+                    <div class="row">
+                        <div class="col-md-6 group-control">
+                            <label for="{{ library_form.password.id_for_label }}">{{ library_form.password1.label }}</label>
+                            <div class="input-group" id="show_hide_password">
+                                {{ library_form.password1 }}
+                                <div class="eye-pass d-flex justify-content-center align-items-center input-group-addon" id="pass">
+                                    <i class="fa fa-eye" aria-hidden="true"></i>
+                                </div>
+                            </div>
                         </div>
-                        <label for="{{ library_form.password_reveal.id_for_label }}">{{ library_form.password_reveal.label }}</label>
-                        <div class="row row-cols-2" style="padding: 7px 12px 0;">
-                        {{ library_form.password_reveal }}
+
+                        <div class="col-md-6 group-control">
+                            <label for="{{ library_form.password.id_for_label }}">{{ library_form.password2.label }}</label>
+                            <div class="input-group" id="show_hide_conf_password">
+                                {{ library_form.password2 }}
+                                <div class="eye-pass d-flex justify-content-center align-items-center input-group-addon" id="re-pass">
+                                    <i class="fa fa-eye" aria-hidden="true"></i>
+                                </div>
+                            </div>
                         </div>
                     </div>
     
@@ -99,36 +100,38 @@
                           {{library_form.education_level }}
                         </div>
                     </div>
-    
+                    
                     <div class="row">
+
                         <div class="col-md-6 group-control">
-                            <label for="{{library_form.supervisor.id_for_label }}">{{library_form.supervisor.label }}</label>
+                            <label for="{{library_form.resource_plans.id_for_label }}">{{library_form.resource_plans.label }}</label>
+                            {{library_form.resource_plans }}
+                        </div>
+
+                        <div class="col-md-6 group-control" id="supervisor" style="display: none;">
+                            <label for="{{library_form.supervisor.id_for_label }}" style="padding-bottom: 25px;">{{library_form.supervisor.label }}</label>
                             {{library_form.supervisor }}
                         </div>
                         
-                        <div class="col-md-6 group-control">
-                            <label for="{{library_form.google_scholar.id_for_label }}">{{library_form.google_scholar.label }}</label>
+                        <div class="col-md-6 group-control" id="google_scholar" style="display: none;">
+                            <label for="{{library_form.google_scholar.id_for_label }}" style="padding-bottom: 25px;">{{library_form.google_scholar.label }}</label>
                             {{library_form.google_scholar }}
                         </div>
-                        
                     </div>
-                    
-                    <div class="col-md-6 group-control">
-                        <label for="{{library_form.resource_plans.id_for_label }}">{{library_form.resource_plans.label }}</label>
-                        {{library_form.resource_plans }}
-                    </div>
-    
-                    
-    
-    
-                    <div class="col-md-6 group-control">
-                        <label for="{{ library_form.resume.id_for_label }}">{{ library_form.resume.label }}</label>
-                        {{ library_form.resume }}
-                    </div>
-                    
-                    <!-- {{ library_form.as_p }} -->
-                    <button type="submit" name='library_form'>{% trans 'Sign up' %}</button>
 
+    
+                    <div class="row">
+                        <div class="col-md-6 group-control">
+                            <label for="{{ library_form.resume.id_for_label }}">{{ library_form.resume.label }}</label>
+                            {{ library_form.resume }}
+                        </div>
+                        
+                        <div class="col-md-6 group-control align-self-end text-end mt-1">
+                            <button type="submit" name='library_form' class="form-group btn btn-primary">
+                                {% trans 'Sign up' %}
+                            </button>
+                        </div>
+                    </div>
 
                 </div>
 
@@ -139,23 +142,8 @@
 
 </div>
 
-<script>
-const showHideBtn = document.getElementById('show_hide_password');
-const passwordField = document.getElementById('password_field');
-const showHideIcon = document.querySelector('#show_hide_password i');
+<script src="{% static '/js/eye-pass.js' %}"></script>
+<script src="{% static '/js/for_form_lib.js' %}"></script>
 
-showHideBtn.addEventListener('click', function () {
-  if (passwordField.type === 'password') {
-    passwordField.type = 'text';
-    showHideIcon.classList.remove('fa-eye');
-    showHideIcon.classList.add('fa-eye-slash');
-  } else {
-    passwordField.type = 'password';
-    showHideIcon.classList.remove('fa-eye-slash');
-    showHideIcon.classList.add('fa-eye');
-  }
-});
-
-</script>
 
 {% endblock %}
