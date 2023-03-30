@@ -7,7 +7,14 @@
 
 <div class="container">
     <div class="p-3"></div>
-    {% if user.is_authenticated %}
+
+    {% for resource in library_resources %}
+      <a href="{{ resource.get_absolute_url }}">
+        <p>{{ resource.en_title }}</p>
+        <img src="{{ resource.banner.url }}" alt="...">
+      </a>
+    {% endfor %}
+    <!-- {% if user.is_authenticated %}
     <div class="row row-col-2">
         <div class="d-flex col align-items-center">
             Welcome, {{ user }}!
@@ -54,7 +61,7 @@
             </a>
         </div>
     </div>
-    {% endif %}
+    {% endif %} -->
 
 <div class="p-3"></div>
 

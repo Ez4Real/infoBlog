@@ -1,0 +1,29 @@
+{% extends "blog/base_generic.html" %}
+{% load i18n %}
+{% load static %}
+
+{% block content %}
+
+
+<div class="container">
+
+  <div class="p-3"></div>
+    <p>{{ resource.en_title }}</p>
+    <p><img src="{{ resource.banner.url }}" alt="..."></p>
+    {{ resource.en_content | safe }}
+    <p></p>
+    <p>List of Volumes & Issues:</p>
+
+    {% for subresource in resource.subresources.all %}
+      <!-- Here will be the link to download resource -->
+      <a href="#">
+        <p>{{ subresource.topic }}</p>
+      </a>
+    {% endfor %}
+    
+  <div class="p-3"></div>
+
+<div class="container">
+
+</div>
+{% endblock %}
