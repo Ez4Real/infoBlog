@@ -31,6 +31,7 @@ urlpatterns = [
     path('login/', views.login_view, name='login'),
     path('logout/', views.logout_view, name='logout'),
     path('library/', views.library, name='library'),
+    path('subresource/<str:topic>', views.subresource_view, name='subresource-review'),
     
     # Donate
     path('donate/', views.all_donate, name='all_donate'),

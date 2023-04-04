@@ -12,14 +12,44 @@
     <p><img src="{{ resource.banner.url }}" alt="..."></p>
     {{ resource.en_content | safe }}
     <p></p>
-    <p>List of Volumes & Issues:</p>
 
-    {% for subresource in resource.subresources.all %}
-      <!-- Here will be the link to download resource -->
-      <a href="#">
-        <p>{{ subresource.topic }}</p>
+    <form method="GET" class="mb-3">
+      <div class="row">
+        <div class="col">
+          <input type="text" class="form-control" placeholder="Topic" name="topic">
+        </div>
+        <div class="col">
+          <select class="form-control" name="date_range">
+            <option value="">All time</option>
+            <option value="7">Last week</option>
+            <option value="30">Last month</option>
+            <option value="90">Last three months</option>
+            <option value="180">Last six months</option>
+            <option value="365">Last year</option>
+          </select>
+        </div>
+        <div class="col">
+          <button type="submit" class="btn btn-primary">Search</button>
+        </div>
+      </div>
+    </form>
+    
+    {% if user.is_authenticated %}
+    <p>List of Volumes & Issues:</p>
+      {% for subresource in subresources %}
+          <a href="{% url 'subresource-review' topic=subresource.topic %}">
+            <p>{{ subresource.topic }}</p>
+          </a>
+      
+      {% endfor %}
+    {% else %}
+      <p style="color: red;">Please login to reivew and download resources.</p>
+      <a href="{% url 'login' %}" class="text-center">
+        <button type="submit" name='library_form' class="form-group btn btn-primary">
+            {% trans "Log in" %}
+        </button>
       </a>
-    {% endfor %}
+    {% endif %}
     
   <div class="p-3"></div>
 

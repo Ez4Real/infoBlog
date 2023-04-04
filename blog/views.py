@@ -2,7 +2,8 @@ from django.conf import settings
 from django.http import HttpResponse, HttpRequest
 from django.shortcuts import render, redirect
 from django.contrib import messages
-from django.contrib.auth import login, logout
+from django.contrib.auth import logout
+from django.contrib.auth.decorators import login_required
 from django.utils.safestring import SafeText
 from django.views.generic import TemplateView
 
@@ -136,11 +137,46 @@ def library(request: HttpRequest) -> HttpResponse:
     context['library_resources'] = get_all_library_resources()
     return render(request, 'blog/library/library.html', context)
 
+
+from django.utils import timezone
+from datetime import timedelta
+
 def resource_detail(request: HttpRequest,
                     type: str) -> HttpResponse:
     context = get_static_page_context(type, request)
-    context['resource'] = get_resource_by_type(type)
+    context['resource'] = resource = get_resource_by_type(type)
+    
+    if request.method == 'GET':
+        topic = request.GET.get('topic', '')
+        date_range = request.GET.get('date_range', '')
+        
+        subresources = resource.subresources.all()
+        
+        if topic:
+            subresources = subresources.filter(topic__icontains=topic)
+            
+        if date_range:
+            today = timezone.now().date()
+            delta = timedelta(days=int(date_range))
+            date_filter = today - delta
+            subresources = subresources.filter(date__gte=date_filter)
+            
+        context['subresources'] = subresources
+    
     return render(request, 'blog/library/resource_detail.html', context)
+
+from django.shortcuts import get_object_or_404
+from django.http import FileResponse
+from .models import LibrarySubresource
+from django.http import HttpResponse
+
+@login_required
+def subresource_view(request: HttpRequest,
+                     topic: str) -> FileResponse:
+    document = get_object_or_404(LibrarySubresource, topic=topic)
+    response = FileResponse(document.file, content_type='application/pdf')
+    response['Content-Disposition'] = f'inline; filename="{document.topic}.pdf"'
+    return response
 
 def search(request: HttpRequest, context: dict = {}):
     add_page_title_to_context_by_language('Search Results', context)

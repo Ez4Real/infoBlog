@@ -13,7 +13,7 @@
 
 			{% else %}
 
-				Login in our profile
+				Log in to profile
 
 			{% endif %}
 		</h2>
@@ -26,6 +26,20 @@
 				{% trans "Log in" %}
 			</button>
 		</form>
+		{% if CURRENT_LANGUAGE == "uk" %}
+
+            Ще не зареєстровані?
+
+        {% else %}
+
+			Don't have an account?
+
+        {% endif %}
+        <a href="{% url 'register' %}" class="text-center">
+			<button type="submit" name='library_form' class="form-group btn btn-primary">
+				{% trans "Sign up" %}
+			</button>
+		</a>
 	</div>
 </div>
 

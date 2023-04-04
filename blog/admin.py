@@ -104,6 +104,7 @@ class LibrarySubresourceAdmin(admin.ModelAdmin):
     list_display = ('topic', 'date', 'bounded_resource')
     list_filter = ('topic', 'date', 'bounded_resource')
     fields = [('topic', 'date'), 
-              ('bounded_resource', 'file',)]
+              ('bounded_resource', 'file',),
+              ('cover')]
     
 
