@@ -376,7 +376,7 @@ class LibraryResource(Article):
     type = models.CharField(max_length=20, choices=RESOURCE_TOPICS, default='Journals')
     
     banner = models.ImageField(upload_to='uploads/library_banners', 
-                               verbose_name=_('News banner')
+                               verbose_name=_('Resource banner')
                                )
     
     def __str__(self):
@@ -393,10 +393,15 @@ class LibrarySubresource(models.Model):
                             verbose_name=_('Date of creation'))
     topic = models.CharField(max_length=45,
                              help_text='Enter topic',
-                             verbose_name=_('Topic'))
+                             verbose_name=_('Topic'),
+                             unique=True)
     bounded_resource = models.ForeignKey(LibraryResource,
                                          on_delete=models.CASCADE,
                                          related_name='subresources',
                                          help_text='Choose bounded resource',
                                          verbose_name=_('Bounded resource'),
                                          )
+    cover = models.ImageField(upload_to='uploads/resource_covers', 
+                              verbose_name=_('Subresource cover'),
+                              blank=True,
+                              null=True)

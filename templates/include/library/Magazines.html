@@ -1,0 +1,25 @@
+{% load i18n %}
+
+
+{% if user.is_authenticated %}
+  <div class="row row-cols-1 row-cols-md-2 row-cols-lg-3 row-cols-xl-4 g-4">
+  {% for subresource in subresources %}
+    <div class="col d-flex justify-content-center ">
+          <a href="{% url 'subresource-review' topic=subresource.topic %}">
+          <div class="lib-magazines-image">
+            <img src="https://i.pinimg.com/564x/c3/cc/5d/c3cc5df38a7134816cb3898034dc888d.jpg" alt="...">
+            <p class="text-center lib-magazines-text">{{ subresource.topic }}</p>
+          </div>
+          </a>
+    </div>
+  
+  {% endfor %}
+  </div>
+{% else %}
+  <p style="color: red;">Please login to reivew and download resources.</p>
+  <a href="{% url 'login' %}" class="text-center">
+    <button type="submit" name='library_form' class="form-group btn btn-primary">
+        {% trans "Log in" %}
+    </button>
+  </a>
+{% endif %}

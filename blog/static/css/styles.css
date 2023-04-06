@@ -759,3 +759,62 @@ header a{
 .eye-pass:hover{
     cursor: pointer;
 }
+
+.lib-journals-text{
+    text-align: center;
+    color: #fff;
+    font-size: 1.5rem;
+    font-weight: bold;
+    text-shadow: 2px 2px 4px #000000;
+    width: 100%;
+}
+
+.lib-journals-image{
+    position: relative;
+    width: 100%;
+    height: 110px;
+    
+}
+
+.lib-journals-image img{
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    border-radius: 10px;
+    
+}
+
+.lib-journals-overlay{
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.2);
+}
+
+.lib-magazines-text{
+    color: rgb(45,98,183);
+    font-size: 1.25rem;
+    font-weight: bold;
+
+}
+
+.lib-magazines-image{
+    width: 140px;
+    height: 210px;
+    padding-bottom: 25px;
+}
+
+.lib-magazines-image img{
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    
+}
+
+.lib-books-image{
+    width: 110px;
+    height: 150px;
+
+}

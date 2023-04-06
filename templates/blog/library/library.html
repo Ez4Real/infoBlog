@@ -3,18 +3,12 @@
 {% load static %}
 
 {% block content %}
-
+<link rel="stylesheet" href="{% static '/css/lib_style.css' %}">
 
 <div class="container">
     <div class="p-3"></div>
 
-    {% for resource in library_resources %}
-      <a href="{{ resource.get_absolute_url }}">
-        <p>{{ resource.en_title }}</p>
-        <img src="{{ resource.banner.url }}" alt="...">
-      </a>
-    {% endfor %}
-    <!-- {% if user.is_authenticated %}
+    {% if user.is_authenticated %}
     <div class="row row-col-2">
         <div class="d-flex col align-items-center">
             Welcome, {{ user }}!
@@ -30,9 +24,21 @@
         
     </div>
     <hr>
-    <div class="col-12 text-center">
-        <strong>CONTENT</strong>
+    <div class="row row-cols-1 row-cols-md-2 row-cols-lg-3 row-cols-xl-4 g-4">
+        {% for resource in library_resources %}
+        <div class="col">
+            <a href="{{ resource.get_absolute_url }}">
+                <div class="image-container">
+                    <img src="{{ resource.banner.url }}" alt="...">
+                    <div class="overlay">
+                        <p class="text">{{ resource.en_title }}</p>
+                    </div>
+                </div>
+            </a>
+        </div>
+        {% endfor %}
     </div>
+
     {% else %}
     <div class="row row-col-2 lib-chouse">
         <div class="col-12 text-center login-text">
@@ -61,7 +67,7 @@
             </a>
         </div>
     </div>
-    {% endif %} -->
+    {% endif %}
 
 <div class="p-3"></div>
 
