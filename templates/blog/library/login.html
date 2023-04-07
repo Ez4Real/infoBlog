@@ -32,19 +32,21 @@
 					</div>
 				</div>
 			</div>
-			<button type="submit" class="form-group btn btn-primary">
+			<button type="submit" class="form-group btn btn-primary mt-3">
 				{% trans "Log in" %}
 			</button>
 		</form>
+		
 		{% if CURRENT_LANGUAGE == "uk" %}
-
+			<p>або</p>
             Ще не зареєстровані?
 
         {% else %}
-
+			<p class="mb-1">or</p>
 			Don't have an account?
 
         {% endif %}
+		<br>
         <a href="{% url 'register' %}" class="text-center">
 			<button type="submit" name='library_form' class="form-group btn btn-primary">
 				{% trans "Sign up" %}

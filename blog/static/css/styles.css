@@ -328,7 +328,7 @@ footer{
 }
 
 .post-foto{
-    height: 600px;
+    height: 570px;
     width: 100%;
     position: relative;
 }
@@ -651,6 +651,13 @@ header a{
     color: #ffcd00;
 }
 
+.text-logo-ergs{
+    position: absolute;
+    top: 0;
+    left: 45%;
+    color: #ffcd00;
+}
+
 
 .donate-button img{
     height: 150px;
@@ -731,7 +738,34 @@ header a{
 
 .misio-img img{
     width: 640px; 
-    height: 880px;
+    height: 760px;
+}
+
+.visio-img{
+    padding-top: 60px;
+}
+
+.visio-img img{
+    height: 530px; 
+    width: 640px;
+}
+
+.index-img{
+    padding-top: 60px;
+}
+
+.index-img img{
+    width: 100%;
+    height: 350px;
+}
+
+.anual-img{
+    padding-top: 60px;
+}
+
+.anual-img img{
+    width: 100%;
+    height: 500px;
 }
 
 .form-library > div{

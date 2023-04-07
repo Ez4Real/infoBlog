@@ -6,25 +6,11 @@
 <link rel="stylesheet" href="{% static '/css/lib_style.css' %}">
 
 <div class="container">
-    <div class="p-3"></div>
+
 
     {% if user.is_authenticated %}
-    <div class="row row-col-2">
-        <div class="d-flex col align-items-center">
-            Welcome, {{ user }}!
-        </div>
-        
-        <div class="col">
-            <a href="{% url 'logout' %}" class="nav-link text-end text-dark">
-                <button type="submit" name='library_form' class="form-group btn btn-primary">
-                    {% trans "Log out" %}
-                </button>
-            </a>
-        </div>
-        
-    </div>
-    <hr>
-    <div class="row row-cols-1 row-cols-md-2 row-cols-lg-3 row-cols-xl-4 g-4">
+
+    <div class="row row-cols-1 row-cols-md-2 row-cols-lg-3 row-cols-xl-4 g-4 mt-1">
         {% for resource in library_resources %}
         <div class="col">
             <a href="{{ resource.get_absolute_url }}">
