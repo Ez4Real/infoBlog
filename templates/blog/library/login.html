@@ -1,5 +1,5 @@
 {% extends "blog/base_generic.html" %}
-{% load i18n %}
+{% load i18n static %}
 
 {% block content %}
 
@@ -19,21 +19,33 @@
 		<form method="post">
 			{% csrf_token %}
 			<div class="group-control">
-				{{ login_form.as_p }}
+				<label for="{{ login_form.email.id_for_label }}">{{ login_form.email.label }}</label>
+				<div class="row row-cols-2" style="padding: 7px 12px 0;">
+				{{ login_form.email }}
+				</div>
+				<label for="{{ login_form.password.id_for_label }}">{{ login_form.password.label }}</label>
+				<div class="input-group" id="show_hide_password">
+					{{ login_form.password }}
+					<div class="eye-pass d-flex justify-content-center align-items-center input-group-addon" id="pass">
+						<i class="fa fa-eye" aria-hidden="true"></i>
+					</div>
+				</div>
 			</div>
-			<button type="submit" class="form-group btn btn-primary">
+			<button type="submit" class="form-group btn btn-primary mt-3">
 				{% trans "Log in" %}
 			</button>
 		</form>
+		
 		{% if CURRENT_LANGUAGE == "uk" %}
-
+			<p>або</p>
             Ще не зареєстровані?
 
         {% else %}
-
+			<p class="mb-1">or</p>
 			Don't have an account?
 
         {% endif %}
+		<br>
         <a href="{% url 'register' %}" class="text-center">
 			<button type="submit" name='library_form' class="form-group btn btn-primary">
 				{% trans "Sign up" %}
@@ -42,4 +54,21 @@
 	</div>
 </div>
 
+<script>
+	const showHideBtnPass = document.getElementById('pass');
+	const passwordField = document.getElementById('id_password');
+	const showHideIcon = document.querySelector('#show_hide_password i');
+
+	showHideBtnPass.addEventListener('click', function () {
+	if (passwordField.type === 'password') {
+		passwordField.type = 'text';
+		showHideIcon.classList.remove('fa-eye');
+		showHideIcon.classList.add('fa-eye-slash');
+	} else {
+		passwordField.type = 'password';
+		showHideIcon.classList.remove('fa-eye-slash');
+		showHideIcon.classList.add('fa-eye');
+	}
+	});
+</script>
 {% endblock %}

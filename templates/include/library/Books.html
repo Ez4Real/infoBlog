@@ -7,7 +7,7 @@
     <div class="d-flex justify-content-center ">
           <a href="{% url 'subresource-review' topic=subresource.topic %}">
             <div class="row row-cols-2 gap-2 flex-nowrap">
-                <img class="lib-books-image" src="https://i.pinimg.com/564x/c3/cc/5d/c3cc5df38a7134816cb3898034dc888d.jpg" alt="...">
+                <img class="lib-books-image" src="{{ subresource.cover.url }}" alt="...">
                 <p class="lib-books-text">{{ subresource.topic }}</p>
             </div>
           </a>

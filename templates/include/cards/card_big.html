@@ -18,7 +18,7 @@
         <div class="d-flex justify-content-between card-footer bg-transparent border-secondary">
             <small class="text-muted fs-5">{{ news.date_of_creation }}</small>
             {% if news.author %}
-                <small class="text-muted fs-5" style="padding-right: 70px;">
+                <small class="text-muted fs-5">
                     {% if CURRENT_LANGUAGE == "uk" %}
                         {{ news.author.uk_full_name }}
                     {% else %}

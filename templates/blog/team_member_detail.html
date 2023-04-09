@@ -7,13 +7,13 @@
     <div class="container text-break">
         <div class="row row-cols-md-2 row-cols-1 justify-content-center">
             <div class="col text-center team_member_photo d-flex align-items-center flex-column">
-                <img src="{{ post.image.url }}" class="d-block mx-auto ob-cover">
+                <img src="{{ post.image.url }}" class="d-block mx-auto ob-cover pb-2">
                 {% if CURRENT_LANGUAGE == "uk" %}
-                    <h1 class="card-title text-dark">
+                    <h1 class="card-title text-dark fs-2">
                         <b>{{ post.uk_full_name }}</b>
                     </h1>
                 {% else %}
-                    <h5 class="card-title text-dark">
+                    <h5 class="card-title text-dark fs-2">
                         <b>{{ post.en_full_name }}</b>
                     </h5>
                 {% endif %}

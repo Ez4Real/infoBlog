@@ -10,12 +10,12 @@
         <ul class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
             <li><a class="dropdown-item" href="{% url 'analytics' %}">{% trans "Analytics" %}</a></li>
             <li><a class="dropdown-item" href="{% url 'opinion' %}">{% trans "Opinion" %}</a></li>
+            <li><a href="{% url 'op_eds' %}" class="dropdown-item">{% trans "Op-eds" %}</a></li>
             <li><a class="dropdown-item" href="{% url 'index_ergosum' %}">{% trans "Index ERGOSUM" %}</a></li>
             <li><a class="dropdown-item" href="{% url 'annual_report' %}">{% trans "Annual report" %}</a></li>
         </ul>
     </li>
     <li><a href="{% url 'blog' %}" class="nav-link">{% trans "Blog" %}</a></li>
-    <li><a href="{% url 'op_eds' %}" class="nav-link">{% trans "Op-eds" %}</a></li>
     <li class="nav-item dropdown ">
         <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownMenuLink"
            role="button" data-bs-toggle="dropdown" aria-expanded="false">
