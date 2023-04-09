@@ -16,21 +16,27 @@ from .email_services import send_user_subscribe_activation, \
     send_join_team_message, send_volunteer_message
 
 def get_subscriber_form(request: HttpRequest) -> SubscriberForm:
-    """ Returns Subcriber form """
+    """ Handles SubscriberForm and returns it """
     if 'subscribe' in request.POST:
-        sub = Subscriber.objects.get(email=request.POST['email'])
-        if sub.is_active:
-            messages.warning(request, 'This address is already subscribed!')
-        elif not re.match(r"^\w+([-+.']\w+)*@\w+([-.]\w+)*\.\w+([-.]\w+)*$", sub.email):
-            messages.error(request, 'This address is not valid!')
-        else:
+        email = request.POST['email']
+        try:
+            sub = Subscriber.objects.get(email=email)
+            if sub.is_active:
+                messages.warning(request, 'This address is already subscribed!')
+            elif not re.match(r"^\w+([-+.']\w+)*@\w+([-.]\w+)*\.\w+([-.]\w+)*$", email):
+                messages.error(request, 'This address is not valid!')
+            else:
+                sub.save()
+                send_user_subscribe_activation(request, sub)
+        except Subscriber.DoesNotExist:
+            sub = Subscriber(email=email)
             sub.save()
             send_user_subscribe_activation(request, sub)
 
     return SubscriberForm()
 
 def get_join_team_form(request: HttpRequest) -> ContactForm:
-    """ Returns form for Joining Team """
+    """ Handles ContactForm and returns it """
     if request.method == 'POST' and 'join_team' in request.POST:
         form = ContactForm(request.POST, request.FILES)
         if form.is_valid():

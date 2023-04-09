@@ -1,0 +1,65 @@
+{% extends "blog/base_generic.html" %}
+{% load i18n %}
+{% load static %}
+
+{% block content %}
+
+
+<div class="container">
+    <p></p>
+    <form class="d-flex gap-3" method="GET">
+        {{ filter_form.search }}
+        <div class="col">
+          {{ filter_form.year }}
+        </div>
+        <button class="btn btn-primary" style="width: 200px;" type="submit">{% trans "Search" %}</button>
+    </form>
+    <p>
+
+  <div class="row row-cols-1 row-cols-md-2 row-cols-lg-3 row-cols-xl-4 g-4">
+    {% if blog_posts %}
+    {% for cover in blog_posts %}
+    <div class="col">
+            <div class="image-container">
+                {% if user.is_authenticated %}
+                    {% if cover.type.type in others %}
+                        <a href="{{ cover.file.url }}" target="_blank">
+                    {% else %}
+                        <a href="{{ cover.get_absolute_url }}">
+                    {% endif %}
+                {% else %}
+                    <a href="#">
+                {% endif %}
+                        <img src="{{ cover.banner.url }}" alt="..." class="w-100" style="max-width: 170px;">
+                    </a>
+                <div class="overlay">
+                    {% if user.is_authenticated %}
+                        {% if cover.type.type in others %}
+                            <a href="{{ cover.file.url }}" target="_blank">
+                        {% else %}
+                            <a href="{{ cover.get_absolute_url }}">
+                        {% endif %}
+                    {% else %}
+                        <a href="#">
+                    {% endif %}
+                        <p class="text">
+                            {% if CURRENT_LANGUAGE == "uk" %}
+                                {{ cover.uk_title }}
+                            {% else %}
+                                {{ cover.en_title }}
+                            {% endif %}
+                        </p>
+                    </a>
+                </div>
+            </div>
+    </div>
+    {% endfor %}
+    {% else %}
+    <p>{% trans "There are no resources matching your request" %}</p>
+    {% endif %}
+  </div>
+
+    {% include 'include/pagination.html' %}
+
+</div>
+{% endblock %}

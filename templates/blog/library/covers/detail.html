@@ -1,0 +1,45 @@
+{% extends "blog/base_generic.html" %}
+{% load i18n %}
+{% load static %}
+
+{% block content %}
+
+
+<div class="container">
+
+  <div class="p-3"></div>
+    <p> 
+      {% if CURRENT_LANGUAGE == "uk" %}
+        {{ cover.uk_title }}
+      {% else %}
+        {{ cover.en_title }}
+      {% endif %}
+    </p>
+    {% if CURRENT_LANGUAGE == "uk" %}
+        {{ cover.uk_content | safe }}
+    {% else %}
+        {{ cover.en_content | safe }}
+    {% endif %}
+    <p></p>
+
+    {% if user.is_authenticated %}
+    <p>List of Volumes & Issues:</p>
+      {% for subresource in cover.subresources.all %}
+          <a href="{{ subresource.file.url }}">
+            <p>{{ subresource.topic }}</p>
+          </a>
+      {% endfor %}
+    {% else %}
+      <p>{% trans "Please, login to read and download resource" %}</p>
+      <a href="{% url 'login' %}" class="text-center">
+        <button type="submit" name='library_form' class="form-group btn btn-primary">
+            {% trans "Log in" %}
+        </button>
+      </a>
+    {% endif %}
+  <div class="p-3"></div>
+
+<div class="container">
+
+</div>
+{% endblock %}

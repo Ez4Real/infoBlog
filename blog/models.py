@@ -22,6 +22,14 @@ from .tokens import email_unsubscribe_token
 
 
 class NewsType(models.Model):
+    NEWS_TYPES = [
+        ('Opinion', 'Opinion'),
+        ('Events', 'Events'),
+        ('News', 'News'),
+        ('Op-eds', 'Op-eds'),
+        ('Analytics', 'Analytics'),
+    ]
+    
     class Meta:
         verbose_name_plural = _('News Types')
         
@@ -31,12 +39,13 @@ class NewsType(models.Model):
     def save(self, *args, **kwargs):
         self.slug = slugify(self.type.lower())
         super(NewsType, self).save(*args, **kwargs)
-        
     
     type = models.CharField(help_text='Enter news type',
                             max_length=25,
                             unique=True,
-                            verbose_name=_('News type'))
+                            verbose_name=_('News type'),
+                            choices=NEWS_TYPES)
+    
     slug = models.SlugField(help_text='Slug',
                             unique=True,)
     
@@ -363,7 +372,7 @@ class Video(models.Model):
                                             verbose_name=_('Date of creation'))
     
 
-class LibraryResource(Article):
+class ResourceType(models.Model):
     RESOURCE_TOPICS = [
         ('Journals', 'Journals'),
         ('Magazines', 'Magazines'),
@@ -380,14 +389,71 @@ class LibraryResource(Article):
                                )
     
     def __str__(self):
+        return f'{self.type}'
+    
+    def get_absolute_url(self):
+        if self.type == 'Books':
+            return reverse('book-list')
+        else: return reverse('cover-list', args=[self.type])
+    
+
+class LibraryAuthor(models.Model):
+    en_full_name = models.CharField(max_length=45,
+                                    help_text='Enter full name on english',
+                                    verbose_name=_('Full name on english'),
+                                    unique=True
+                                    )
+    uk_full_name = models.CharField(max_length=45,
+                                    help_text='Enter full name on ukrainian',
+                                    verbose_name=_('Full name on ukrainian')
+                                    )
+    
+    def __str__(self):
+        return f'{self.en_full_name}'
+
+
+class LibraryResource(Article):
+    type = models.ForeignKey(ResourceType,
+                             on_delete=models.CASCADE,
+                             related_name='resources',
+                             help_text='Choose resource type',
+                             verbose_name=_('Resource type'),
+                            )
+    banner = models.ImageField(upload_to='uploads/library_banners', 
+                               verbose_name=_('Resource banner')
+                               )
+    author = models.ForeignKey(LibraryAuthor,
+                               on_delete=models.CASCADE,
+                               related_name='books',
+                               help_text=_('Only for Books.'),
+                               verbose_name=_('Author'),
+                               blank=True,
+                               null=True
+                               )
+    file = models.FileField(upload_to='uploads/resources', 
+                            verbose_name=_('Resource file'),
+                            blank=True,
+                            null=True,
+                            help_text=_('Only for Books, Brochures and other.')
+                            )
+    pages = models.PositiveIntegerField(blank=True,
+                                        null=True,
+                                        help_text=_('Only for Books.')
+                                        )
+    date = models.DateField(default=now,
+                            verbose_name=_('Date of creation'))
+    
+    def __str__(self):
         return f'{self.type} - {self.en_title}'
     
     def get_absolute_url(self):
-        return reverse('resource-detail', args=[self.type]) 
-    
-class LibrarySubresource(models.Model):
-    file = models.FileField(upload_to='uploads/resources', 
-                            verbose_name=_('Resource file')
+        if self.type.type == 'Books':
+            return reverse('book-detail', args=[self.slug])
+        else: return reverse('cover-detail', args=[self.type, self.slug])
+
+class Subresource(models.Model):
+    file = models.FileField(upload_to='uploads/subresources', 
+                            verbose_name=_('Subresource file')
                             )
     date = models.DateField(default=now,
                             verbose_name=_('Date of creation'))
@@ -400,8 +466,4 @@ class LibrarySubresource(models.Model):
                                          related_name='subresources',
                                          help_text='Choose bounded resource',
                                          verbose_name=_('Bounded resource'),
-                                         )
-    cover = models.ImageField(upload_to='uploads/resource_covers', 
-                              verbose_name=_('Subresource cover'),
-                              blank=True,
-                              null=True)
+                                        )
