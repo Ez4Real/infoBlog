@@ -22,7 +22,7 @@
     <div class="col">
             <div class="image-container">
                 {% if user.is_authenticated %}
-                    {% if cover.type.type in others %}
+                    {% if cover.type.type == 'Brochures' or cover.type.type == 'Other papers' %}
                         <a href="{{ cover.file.url }}" target="_blank">
                     {% else %}
                         <a href="{{ cover.get_absolute_url }}">

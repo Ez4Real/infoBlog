@@ -189,7 +189,6 @@ def cover_list(request: HttpRequest,
         covers = apply_resource_filters(covers, form.cleaned_data)
             
     context['blog_posts'] = paginate(covers, request, settings.RES_PER_PAGE)
-    context['others'] = ("Brochures", "Other papers")
     return render(request, 'blog/library/covers/list.html', context)
     
 def cover_detail(request: HttpRequest,
