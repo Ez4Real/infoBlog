@@ -1,7 +1,8 @@
 from django.db.models import Q, QuerySet
 from django.utils.safestring import SafeText
 from ..models import News, Video, BlogScholar, \
-    Blog, TeamMember, LibraryResource
+    Blog, TeamMember, ResourceType, LibraryResource, \
+    LibraryAuthor
 
 
 def get_news_by_policy_area(policy_area: str) -> QuerySet:
@@ -51,9 +52,29 @@ def get_blog_search_results(query: str) -> QuerySet:
                                ).order_by('-date_of_creation')
     
 def get_all_library_resources() -> QuerySet:
-    """ Returns QuerySet of all LibraryResources """
-    return LibraryResource.objects.all()
+    """ Returns QuerySet of all ResourceTypes """
+    return ResourceType.objects.all().reverse()
 
 def get_resource_by_type(type: SafeText) -> QuerySet: 
-    """ Returns LibraryResource object by type """
-    return LibraryResource.objects.get(type=type)
+    """ Returns ResourceType object by type """
+    return ResourceType.objects.get(type=type)
+
+def get_all_library_books() -> QuerySet:
+    """ Returns all LibraryResources with `Books` type """
+    return LibraryResource.objects.filter(type__type='Books').order_by('-date')
+
+def get_books_by_author(author: str) -> QuerySet:
+    """ Returns LibraryResources with `Books` type by author """
+    return get_all_library_books().filter(author__en_full_name=author)
+
+def get_libresource_by_slug(slug: SafeText) -> LibraryResource: 
+    """ Returns LibraryResource object by slug """
+    return LibraryResource.objects.get(slug=slug)
+
+def get_author_by_name(name: str) -> LibraryAuthor:
+    """ Returns LibraryAuthor object by name """
+    return LibraryAuthor.objects.get(en_full_name=name)
+
+def get_resources_by_type(type: str) -> QuerySet:
+    """ Returns LibraryResource objects by type """
+    return LibraryResource.objects.filter(type__type=type)

@@ -8,7 +8,7 @@
 <div class="container">
 
 
-    {% if user.is_authenticated %}
+    <!-- {% if user.is_authenticated %} -->
 
     <div class="row row-cols-1 row-cols-md-2 row-cols-lg-3 row-cols-xl-4 g-4 mt-1">
         {% for resource in library_resources %}
@@ -17,7 +17,7 @@
                 <div class="image-container">
                     <img src="{{ resource.banner.url }}" alt="...">
                     <div class="overlay">
-                        <p class="text">{{ resource.en_title }}</p>
+                        <p class="text">{{ resource.type }}</p>
                     </div>
                 </div>
             </a>
@@ -25,7 +25,7 @@
         {% endfor %}
     </div>
 
-    {% else %}
+    <!-- {% else %}
     <div class="row row-col-2 lib-chouse">
         <div class="col-12 text-center login-text">
             {% if CURRENT_LANGUAGE == "uk" %}
@@ -53,7 +53,7 @@
             </a>
         </div>
     </div>
-    {% endif %}
+    {% endif %} -->
 
 <div class="p-3"></div>
 

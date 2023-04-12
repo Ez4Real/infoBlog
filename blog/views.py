@@ -9,18 +9,20 @@ from django.views.generic import TemplateView
 
 from .services.db_services import get_news_by_slug, get_blog_scholar_by_slug, \
     get_blog_search_results, get_posts_by_author_slug, get_blog_post_by_slug, \
-    get_member_by_slug, get_all_library_resources, get_resource_by_type
+    get_member_by_slug, get_all_library_resources, get_resource_by_type, \
+    get_all_library_books, get_libresource_by_slug, get_books_by_author, \
+    get_author_by_name, get_resources_by_type
 from .services.blog_services import paginate, \
     check_if_number_endswith_one, add_subscriber_form_to_context, \
     add_last_news_to_context, get_dynamic_page_title_by_language, \
-    add_page_title_to_context_by_language
+    add_page_title_to_context_by_language, apply_resource_filters
 from .services.context_services import get_static_page_context, \
     get_policy_area_context, get_news_type_context, get_media_views_context, \
     get_blog_scholars_page_context, get_team_page_context
 from .services.subscribe_services import get_join_team_form, get_volunteer_form
 from .services.auth import login_user
 from .models import Video
-from .forms import LibraryMemberForm, LoginForm
+from .forms import LibraryMemberForm, LoginForm, ResourcesFilterForm
 
 
 class ServiceWorkerView(TemplateView):
@@ -137,46 +139,71 @@ def library(request: HttpRequest) -> HttpResponse:
     context['library_resources'] = get_all_library_resources()
     return render(request, 'blog/library/library.html', context)
 
+def book_list(request: HttpRequest) -> HttpResponse:
+    context = get_static_page_context('Books', request)
+    books = get_all_library_books()
+    context['filter_form'] = form = ResourcesFilterForm(request.GET or None)
+    
+    if form.is_valid():
+        books = apply_resource_filters(books, form.cleaned_data)
+            
+    context['blog_posts'] = paginate(books, request, settings.RES_PER_PAGE)
+    return render(request, 'blog/library/books/list.html', context)
 
-from django.utils import timezone
-from datetime import timedelta
+def author_book_list(request: HttpRequest,
+                     author: str,
+                     context: dict = {}) -> HttpResponse:
+    add_subscriber_form_to_context(context, request)
+    context['blog_posts'] = paginate(get_books_by_author(author),
+                                     request,
+                                     settings.RES_PER_PAGE)
+    context['author'] = author = get_author_by_name(author)
+    add_page_title_to_context_by_language(
+        get_dynamic_page_title_by_language(request,
+                                           author.en_full_name,
+                                           author.uk_full_name),
+        context
+    )
+    return render(request, 'blog/library/books/author_list.html', context)
 
-def resource_detail(request: HttpRequest,
-                    type: str) -> HttpResponse:
+def book_detail(request: HttpRequest,
+                slug: SafeText,
+                context: dict = {}) -> HttpResponse:
+    add_subscriber_form_to_context(context, request)
+    context['book'] = book = get_libresource_by_slug(slug)
+    add_page_title_to_context_by_language(
+        get_dynamic_page_title_by_language(request,
+                                           book.en_title,
+                                           book.uk_title),
+        context
+    )
+    return render(request, 'blog/library/books/detail.html', context)
+
+def cover_list(request: HttpRequest,
+               type: str) -> HttpResponse:
     context = get_static_page_context(type, request)
-    context['resource'] = resource = get_resource_by_type(type)
+    covers = get_resources_by_type(type)
+    context['filter_form'] = form = ResourcesFilterForm(request.GET or None)
     
-    if request.method == 'GET':
-        topic = request.GET.get('topic', '')
-        date_range = request.GET.get('date_range', '')
-        
-        subresources = resource.subresources.all()
-        
-        if topic:
-            subresources = subresources.filter(topic__icontains=topic)
+    if form.is_valid():
+        covers = apply_resource_filters(covers, form.cleaned_data)
             
-        if date_range:
-            today = timezone.now().date()
-            delta = timedelta(days=int(date_range))
-            date_filter = today - delta
-            subresources = subresources.filter(date__gte=date_filter)
-            
-        context['subresources'] = subresources
+    context['blog_posts'] = paginate(covers, request, settings.RES_PER_PAGE)
+    return render(request, 'blog/library/covers/list.html', context)
     
-    return render(request, 'blog/library/resource_detail.html', context)
-
-from django.shortcuts import get_object_or_404
-from django.http import FileResponse
-from .models import LibrarySubresource
-from django.http import HttpResponse
-
-@login_required
-def subresource_view(request: HttpRequest,
-                     topic: str) -> FileResponse:
-    document = get_object_or_404(LibrarySubresource, topic=topic)
-    response = FileResponse(document.file, content_type='application/pdf')
-    response['Content-Disposition'] = f'inline; filename="{document.topic}.pdf"'
-    return response
+def cover_detail(request: HttpRequest,
+                 type,
+                 slug: SafeText,
+                 context: dict = {}) -> HttpResponse:
+    add_subscriber_form_to_context(context, request)
+    context['cover'] = cover = get_libresource_by_slug(slug)
+    add_page_title_to_context_by_language(
+        get_dynamic_page_title_by_language(request,
+                                           cover.en_title,
+                                           cover.uk_title),
+        context
+    )
+    return render(request, 'blog/library/covers/detail.html', context)
 
 def search(request: HttpRequest, context: dict = {}):
     add_page_title_to_context_by_language('Search Results', context)
@@ -188,7 +215,7 @@ def search(request: HttpRequest, context: dict = {}):
         
         context['posts_num'] = len_results = str(len(results))
         context['endswith1'] = check_if_number_endswith_one(len_results)
-        context['blog_posts'] = paginate(results, request)
+        context['blog_posts'] = paginate(results, request, settings.POSTS_PER_PAGE)
 
     return render(request, 'blog/search.html', context)
 

@@ -1,0 +1,40 @@
+{% extends "blog/base_generic.html" %}
+{% load i18n %}
+{% load static %}
+
+{% block content %}
+
+
+<div class="container">
+    {% if CURRENT_LANGUAGE == "uk" %}
+        {{ author.uk_full_name }}
+    {% else %}
+        By {{ author.en_full_name }}
+    {% endif %}
+  <div class="row row-cols-1 row-cols-md-2 row-cols-lg-3 row-cols-xl-4 g-4">
+    {% for book in blog_posts %}
+    <div class="col">
+            <div class="image-container">
+                <a href="{{ book.get_absolute_url }}">
+                    <img src="{{ book.banner.url }}" alt="..." class="w-100" style="max-width: 170px;">
+                </a>
+                <div class="overlay">
+                    <a href="{{ book.get_absolute_url }}">
+                        <p class="text">
+                            {% if CURRENT_LANGUAGE == "uk" %}
+                                {{ book.uk_title }}
+                            {% else %}
+                                {{ book.en_title }}
+                            {% endif %}
+                        </p>
+                    </a>
+                </div>
+            </div>
+    </div>
+    {% endfor %}
+  </div>
+
+    {% include 'include/pagination.html' %}
+
+</div>
+{% endblock %}

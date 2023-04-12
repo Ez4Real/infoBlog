@@ -2,7 +2,7 @@ from django.core.paginator import Paginator, Page
 from django.http import HttpRequest
 from django.utils.translation import gettext_lazy as _
 from django.utils.text import format_lazy
-from django.db.models import QuerySet
+from django.db.models import Q, QuerySet
 
 from .subscribe_services import get_subscriber_form
 from .db_services import get_all_team_members, get_news_by_policy_area, \
@@ -10,10 +10,12 @@ from .db_services import get_all_team_members, get_news_by_policy_area, \
 from django.conf import settings
 
 
-def paginate(queryset: QuerySet, request: HttpRequest) -> Page:
+def paginate(queryset: QuerySet,
+             request: HttpRequest,
+             per_page: int) -> Page:
     """ Returns Page object of queryset """
     return Paginator(queryset,
-                     settings.POSTS_PER_PAGE
+                     per_page
                      ).get_page(request.GET.get('page', 1))
 
 def get_dynamic_page_title_by_language(request: HttpRequest,
@@ -51,21 +53,24 @@ def add_posts_by_policy_area_to_context(context: dict,
                                         policy_area: str) -> None:
     """ Adds paginated blog posts by policy area """
     context['blog_posts'] = paginate(get_news_by_policy_area(policy_area), 
-                                     request)
+                                     request,
+                                     settings.POSTS_PER_PAGE)
     
 def add_videocontent_by_type_to_context(context: dict,
                                         request: HttpRequest,
                                         type: str) -> None:
     """ Adds paginated video posts by type """
     context['blog_videos'] = paginate(get_videocontent_by_type(type), 
-                                      request)
+                                      request,
+                                      settings.POSTS_PER_PAGE)
     
 def add_posts_by_type_to_context(context: dict,
                                  request: HttpRequest,
                                  type: str) -> None:
     """ Adds paginated blog posts by type """
     context['blog_posts'] = paginate(get_news_by_type(type), 
-                                     request)
+                                     request,
+                                     settings.POSTS_PER_PAGE)
     
 def add_blog_scholars_to_context(context: dict) -> None:
     """ Adds Blog Scholars to context """
@@ -75,3 +80,21 @@ def add_team_members_to_context(context: dict) -> None:
     """ Adds Team Members to context """
     context['team_members'] = get_all_team_members()
     
+def get_resource_search_results(resource: QuerySet,
+                                query: str) -> QuerySet:
+    """ Returns QuerySet of LibraryResources by query with given resource"""
+    return resource.filter(Q(en_title__icontains=query) | Q(uk_title__icontains=query) |
+                           Q(author__en_full_name__icontains=query) | 
+                           Q(author__uk_full_name__icontains=query)
+                           ).order_by('-date')
+    
+def apply_resource_filters(resource, cleaned_data):
+    query = cleaned_data.get('search')
+    year = cleaned_data.get('year')
+        
+    if query:
+        resource = get_resource_search_results(resource, query)
+    if year:
+        resource = resource.filter(date__year=year)
+        
+    return resource

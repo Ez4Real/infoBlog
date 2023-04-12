@@ -1,0 +1,61 @@
+{% extends "blog/base_generic.html" %}
+{% load i18n %}
+{% load static %}
+
+{% block content %}
+
+
+<div class="container">
+    <p></p>
+    <form class="d-flex justify-content-center gap-2" method="GET">
+        <div class="col-4">
+            {{ filter_form.search }}
+        </div>
+        <div class="col-1">
+          {{ filter_form.year }}
+        </div>
+        <button class="btn btn-primary" style="width: 200px;" type="submit">{% trans "Search" %}</button>
+    </form>
+    <p>
+
+  <div class="row row-cols-1 row-cols-md-2 row-cols-lg-3 row-cols-xl-4 g-4">
+    {% if blog_posts %}
+    {% for book in blog_posts %}
+    <div class="col d-flex align-content-center flex-column flex-wrap">
+            <div class="book-title fs-3 text-center">
+                <a class="text-decoration-none text-dark" href="{{ book.get_absolute_url }}">
+                        {% if CURRENT_LANGUAGE == "uk" %}
+                            {{ book.uk_title }}
+                        {% else %}
+                            {{ book.en_title }}
+                        {% endif %}
+                </a>
+            </div>
+            <div class="image-container text-center">
+                <a href="{{ book.get_absolute_url }}">
+                    <img src="{{ book.banner.url }}" alt="..." class="w-100" style="max-width: 170px;">
+                </a>
+            </div>
+            <div class="book-autor fs-6 text-center">
+
+                <a class="text-decoration-none text-muted" href="{% url 'author-list' author=book.author %}">
+                    <p class="text">
+                        {% if CURRENT_LANGUAGE == "uk" %}
+                            {{ book.author.uk_full_name }}
+                        {% else %}
+                            By {{ book.author.en_full_name }}
+                        {% endif %}
+                    </p>
+                </a>
+            </div>
+    </div>
+    {% endfor %}
+    {% else %}
+    <p>{% trans "There are no resources matching your request" %}</p>
+    {% endif %}
+  </div>
+
+    {% include 'include/pagination.html' %}
+
+</div>
+{% endblock %}

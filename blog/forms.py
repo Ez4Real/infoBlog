@@ -1,3 +1,5 @@
+import datetime
+
 from django import forms
 from django.utils.translation import gettext_lazy as _
 from django.contrib.auth import get_user_model
@@ -163,3 +165,29 @@ class LoginForm(forms.Form):
                              widget=EmailWidget)
     password = forms.CharField(label=_('Password'),
                                widget=forms.PasswordInput(attrs={'class': 'form-control'}))
+    
+    
+class ResourcesFilterForm(forms.Form):
+    search = forms.CharField(
+        max_length=255,
+        required=False,
+        widget=forms.TextInput(attrs={
+            'class': 'form-control',
+            'style': 'max-width: 100%',
+            'placeholder': _('Title or Author'),
+            'aria-label': 'Search'
+        })
+    )
+    year = forms.ChoiceField(
+        choices=[],
+        required=False,
+        widget=forms.Select(attrs={
+            'class': 'form-control',
+        })
+    ) 
+
+    def __init__(self, *args, **kwargs):
+        super(ResourcesFilterForm, self).__init__(*args, **kwargs)
+        current_year = datetime.date.today().year
+        year_choices = [(str(year), str(year)) for year in range(current_year, current_year-80, -1)]
+        self.fields['year'].choices = [('', 'All time')] + year_choices

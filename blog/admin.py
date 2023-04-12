@@ -1,8 +1,8 @@
 from django.contrib import admin
 
 from .models import NewsType, PolicyArea, News, Subscriber, Video, \
-    BlogScholar, Blog, TeamMember, LibraryMember, LibraryResource, \
-    LibrarySubresource
+    BlogScholar, Blog, TeamMember, LibraryMember, ResourceType, \
+    Subresource, LibraryResource, LibraryAuthor
 
 
 def send_newsletter(modeladmin, request, queryset):
@@ -92,19 +92,30 @@ class Video(admin.ModelAdmin):
     list_display = ('en_title', 'uk_title', 'date_of_creation')
     list_filter = ('type', 'en_title', 'uk_title', 'date_of_creation')
     
+@admin.register(ResourceType)
+class ResourceTypeAdmin(admin.ModelAdmin):
+    list_display = ('type',)
+    fields = [('type', 'banner')]
+
+@admin.register(LibraryAuthor)
+class LibraryAuthorAdmin(admin.ModelAdmin):
+    list_display = ('en_full_name', 'uk_full_name')
+    fields = [('en_full_name', 'uk_full_name')]
+    
 @admin.register(LibraryResource)
 class LibraryResourceAdmin(admin.ModelAdmin):
-    list_display = ('type', 'en_title')
-    fields = [('type', 'banner'), 
+    list_display = ('en_title', 'type', 'date')
+    fields = [('type', 'banner'),
+              ('author', 'pages'),
               ('en_title', 'uk_title'),
-              ('en_content', 'uk_content')]
+              ('en_content', 'uk_content'),
+              ('date', 'file')]
     
-@admin.register(LibrarySubresource)
-class LibrarySubresourceAdmin(admin.ModelAdmin):
+@admin.register(Subresource)
+class SubresourceAdmin(admin.ModelAdmin):
     list_display = ('topic', 'date', 'bounded_resource')
     list_filter = ('topic', 'date', 'bounded_resource')
-    fields = [('topic', 'date'), 
-              ('bounded_resource', 'file',),
-              ('cover')]
+    fields = [('topic', 'bounded_resource'), 
+              ('file', 'date')]
     
 
