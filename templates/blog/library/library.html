@@ -8,9 +8,7 @@
 <div class="container">
 
 
-    <!-- {% if user.is_authenticated %} -->
-
-    <div class="row row-cols-1 row-cols-md-2 row-cols-lg-3 row-cols-xl-4 g-4 mt-1">
+    <div class="row row-cols-1 row-cols-md-2 row-cols-lg-3 row-cols-xl-4 g-4">
         {% for resource in library_resources %}
         <div class="col">
             <a href="{{ resource.get_absolute_url }}">
@@ -24,36 +22,6 @@
         </div>
         {% endfor %}
     </div>
-
-    <!-- {% else %}
-    <div class="row row-col-2 lib-chouse">
-        <div class="col-12 text-center login-text">
-            {% if CURRENT_LANGUAGE == "uk" %}
-
-                <h1>Увійдіть у свій профіль або зареєструйтеся для того щоб бачити бібліотеку сайту</h1>
-
-            {% else %}
-
-                <h1>Please log in to your profile or register to access the site's library.</h1>
-            {% endif %}
-        </div>
-        <div class="p-4"></div>
-        <div class="col-6 d-flex justify-content-center">
-            <a href="{% url 'login' %}" class="text-center">
-                <button type="submit" name='library_form' class="form-group btn btn-primary">
-                    {% trans "Log in" %}
-                </button>
-            </a>
-        </div>
-        <div class="col-6 d-flex justify-content-center">
-            <a href="{% url 'register' %}" class="text-center">
-                <button type="submit" name='library_form' class="form-group btn btn-primary">
-                    {% trans "Sign up" %}
-                </button>
-            </a>
-        </div>
-    </div>
-    {% endif %} -->
 
 <div class="p-3"></div>
 

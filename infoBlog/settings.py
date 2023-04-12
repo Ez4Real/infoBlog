@@ -189,10 +189,10 @@ PASSWORD_RESET_TIMEOUT = 14400
 
 # Cloudinary
 CLOUDINARY_STORAGE = {
-             'CLOUD_NAME': os.getenv('CLOUD_NAME'),
-             'API_KEY': os.getenv('API_KEY'),
-             'API_SECRET': os.getenv('API_SECRET')
-            }
+    'CLOUD_NAME': os.getenv('CLOUD_NAME'),
+    'API_KEY': os.getenv('API_KEY'),
+    'API_SECRET': os.getenv('API_SECRET')
+}
 
 DEFAULT_FILE_STORAGE = 'cloudinary_storage.storage.MediaCloudinaryStorage'
 
@@ -206,6 +206,7 @@ CSRF_COOKIE_SECURE = bool(os.getenv('CSRF_COOKIE_SECURE'))
 
 # blog underhood settings
 POSTS_PER_PAGE = 15
+RES_PER_PAGE = 16
 TITLE = _('European Research Group Of Support for Ukrainian Membership – ERGOSUM')
 HOMEPAGE_CONTENT = (
     (5, 'News', 'last_news'),
