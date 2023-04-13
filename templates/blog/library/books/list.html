@@ -7,9 +7,11 @@
 
 <div class="container">
     <p></p>
-    <form class="d-flex gap-3" method="GET">
-        {{ filter_form.search }}
-        <div class="col">
+    <form class="d-flex justify-content-center gap-2" method="GET">
+        <div class="col-4">
+            {{ filter_form.search }}
+        </div>
+        <div class="col-1">
           {{ filter_form.year }}
         </div>
         <button class="btn btn-primary" style="width: 200px;" type="submit">{% trans "Search" %}</button>
@@ -19,31 +21,32 @@
   <div class="row row-cols-1 row-cols-md-2 row-cols-lg-3 row-cols-xl-4 g-4">
     {% if blog_posts %}
     {% for book in blog_posts %}
-    <div class="col">
-            <div class="image-container">
+    <div class="col d-flex align-content-center flex-column flex-wrap">
+            <div class="book-title fs-3 text-center">
+                <a class="text-decoration-none text-dark" href="{{ book.get_absolute_url }}">
+                        {% if CURRENT_LANGUAGE == "uk" %}
+                            {{ book.uk_title }}
+                        {% else %}
+                            {{ book.en_title }}
+                        {% endif %}
+                </a>
+            </div>
+            <div class="image-container text-center">
                 <a href="{{ book.get_absolute_url }}">
                     <img src="{{ book.banner.url }}" alt="..." class="w-100" style="max-width: 170px;">
                 </a>
-                <div class="overlay">
-                    <a href="{{ book.get_absolute_url }}">
-                        <p class="text">
-                            {% if CURRENT_LANGUAGE == "uk" %}
-                                {{ book.uk_title }}
-                            {% else %}
-                                {{ book.en_title }}
-                            {% endif %}
-                        </p>
-                    </a>
-                    <a href="{% url 'author-list' slug=book.author.slug %}">
-                        <p class="text">
-                            {% if CURRENT_LANGUAGE == "uk" %}
-                                {{ book.author.uk_full_name }}
-                            {% else %}
-                                By {{ book.author.en_full_name }}
-                            {% endif %}
-                        </p>
-                    </a>
-                </div>
+            </div>
+            <div class="book-autor fs-6 text-center">
+
+                <a class="text-decoration-none text-muted" href="{% url 'author-list' slug=book.author.slug %}">
+                    <p class="text">
+                        {% if CURRENT_LANGUAGE == "uk" %}
+                            {{ book.author.uk_full_name }}
+                        {% else %}
+                            By {{ book.author.en_full_name }}
+                        {% endif %}
+                    </p>
+                </a>
             </div>
     </div>
     {% endfor %}

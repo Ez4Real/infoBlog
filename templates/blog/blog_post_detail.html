@@ -7,30 +7,48 @@
     <div class="container text-break text-center container-for-hr-blog">
 
     {% if CURRENT_LANGUAGE == "uk" %}
+
         <h1 class="card-title">
             {{ post.uk_title }}
         </h1>
-        <div class="p-1"></div>
-        <hr>
-        <h4 class="text-end "><a class="text-primary hr-blog" style="text-decoration: none" href={{ post.author.link }}>{{ post.author.uk_full_name }}</a></h4><br>
+
+        <div class="w-100" >
+            <div class="d-flex justify-items-center mx-auto" style="width: 85%;">
+                <div class="post-date text-muted">
+                    <small>{{ post.date_of_creation }}</small>
+                </div>
+                <div class="post-poicy-area ms-auto">
+                    {{ post.author.uk_full_name }}
+                </div>
+            </div>
+            
+            <hr class="mb-4" style="margin: 0 auto; width: 85%;">
+        </div>
+
         <div class="body-cronis-post ">
             {{ post.uk_content | safe }}
         </div>
     {% else %}
         <h1 class="card-title">
-            {{ post.en_title }}
+            {{ post.uk_title }}
         </h1>
-        <div class="p-1"></div>
-        <hr>
-        <h4 class="text-end "><a class="text-primary hr-blog" style="text-decoration: none" href={{ post.author.link }}>{{ post.author.en_full_name }}</a></h4><br>
+
+        <div class="w-100" >
+            <div class="d-flex justify-items-center mx-auto" style="width: 85%;">
+                <div class="post-date text-muted">
+                    <small>{{ post.date_of_creation }}</small>
+                </div>
+                <div class="post-poicy-area ms-auto">
+                    {{ post.author.uk_full_name }}
+                </div>
+            </div>
+            
+            <hr class="mb-4" style="margin: 0 auto; width: 85%;">
+        </div>
         <div class="body-cronis-post ">
             {{ post.en_content | safe }}
         </div>
     {% endif %}
-    <div class="p-4"></div>
-    <div class="row bg-gray">
-        <div class="col text-end">{{ post.date_of_creation }}</div>
-    </div>
     <hr>
 </div>
 

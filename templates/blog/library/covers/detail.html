@@ -8,27 +8,37 @@
 <div class="container">
 
   <div class="p-3"></div>
-    <p> 
+  <div class="lib-journals-image">
+    <img src="{{ cover.banner.url }}" alt="...">
+    <div class="lib-journals-overlay">
+        <p class="lib-journals-text">{{ cover.type }}</p>
+    </div>
+  </div>
+    <p class="pt-4 text-blue card-title fs-1" > 
       {% if CURRENT_LANGUAGE == "uk" %}
         {{ cover.uk_title }}
       {% else %}
         {{ cover.en_title }}
       {% endif %}
     </p>
-    {% if CURRENT_LANGUAGE == "uk" %}
+    <div class="">
+      {% if CURRENT_LANGUAGE == "uk" %}
         {{ cover.uk_content | safe }}
-    {% else %}
-        {{ cover.en_content | safe }}
-    {% endif %}
+      {% else %}
+          {{ cover.en_content | safe }}
+      {% endif %}
+    </div>
     <p></p>
 
     {% if user.is_authenticated %}
     <p>List of Volumes & Issues:</p>
-      {% for subresource in cover.subresources.all %}
+      <ul>
+        {% for subresource in cover.subresources.all %}
           <a href="{{ subresource.file.url }}">
-            <p>{{ subresource.topic }}</p>
+            <li>{{ subresource.topic }}</li>
           </a>
-      {% endfor %}
+        {% endfor %}
+      </ul>
     {% else %}
       <p>{% trans "Please, login to read and download resource" %}</p>
       <a href="{% url 'login' %}" class="text-center">

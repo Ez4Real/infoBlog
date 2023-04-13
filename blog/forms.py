@@ -173,7 +173,7 @@ class ResourcesFilterForm(forms.Form):
         required=False,
         widget=forms.TextInput(attrs={
             'class': 'form-control',
-            'style': 'max-width: 200px',
+            'style': 'max-width: 100%',
             'placeholder': _('Title or Author'),
             'aria-label': 'Search'
         })
