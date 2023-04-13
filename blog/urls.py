@@ -34,7 +34,7 @@ urlpatterns = [
     path('logout/', views.logout_view, name='logout'),
     path('library/', views.library, name='library'),
     path('library/book/<slug:slug>/', views.book_detail, name='book-detail'),
-    path('library/author/<str:author>/', views.author_book_list, name='author-list'),
+    path('library/author/<slug:slug>/', views.author_book_list, name='author-list'),
     path('library/<str:type>/<slug:slug>/', views.cover_detail, name='cover-detail'),
     
     # Donate

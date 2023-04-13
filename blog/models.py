@@ -398,6 +398,9 @@ class ResourceType(models.Model):
     
 
 class LibraryAuthor(models.Model):
+    slug = models.SlugField(help_text='Slug',
+                            unique=True,
+                            validators=[MaxLengthValidator(50)])
     en_full_name = models.CharField(max_length=45,
                                     help_text='Enter full name on english',
                                     verbose_name=_('Full name on english'),
@@ -410,6 +413,10 @@ class LibraryAuthor(models.Model):
     
     def __str__(self):
         return f'{self.en_full_name}'
+    
+    def save(self, *args, **kwargs):
+        self.slug = slugify(self.en_full_name.lower())[:50]
+        super(LibraryAuthor, self).save(*args, **kwargs)
 
 
 class LibraryResource(Article):

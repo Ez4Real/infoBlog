@@ -11,7 +11,7 @@ from .services.db_services import get_news_by_slug, get_blog_scholar_by_slug, \
     get_blog_search_results, get_posts_by_author_slug, get_blog_post_by_slug, \
     get_member_by_slug, get_all_library_resources, get_resource_by_type, \
     get_all_library_books, get_libresource_by_slug, get_books_by_author, \
-    get_author_by_name, get_resources_by_type
+    get_author_by_slug, get_resources_by_type
 from .services.blog_services import paginate, \
     check_if_number_endswith_one, add_subscriber_form_to_context, \
     add_last_news_to_context, get_dynamic_page_title_by_language, \
@@ -151,13 +151,13 @@ def book_list(request: HttpRequest) -> HttpResponse:
     return render(request, 'blog/library/books/list.html', context)
 
 def author_book_list(request: HttpRequest,
-                     author: str,
+                     slug: SafeText,
                      context: dict = {}) -> HttpResponse:
     add_subscriber_form_to_context(context, request)
+    context['author'] = author = get_author_by_slug(slug)
     context['blog_posts'] = paginate(get_books_by_author(author),
                                      request,
                                      settings.RES_PER_PAGE)
-    context['author'] = author = get_author_by_name(author)
     add_page_title_to_context_by_language(
         get_dynamic_page_title_by_language(request,
                                            author.en_full_name,

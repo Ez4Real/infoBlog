@@ -34,7 +34,7 @@
                             {% endif %}
                         </p>
                     </a>
-                    <a href="{% url 'author-list' author=book.author %}">
+                    <a href="{% url 'author-list' slug=book.author.slug %}">
                         <p class="text">
                             {% if CURRENT_LANGUAGE == "uk" %}
                                 {{ book.author.uk_full_name }}
