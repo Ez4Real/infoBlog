@@ -33,12 +33,12 @@
             </div>
             <div class="image-container text-center">
                 <a href="{{ book.get_absolute_url }}">
-                    <img src="{{ book.banner.url }}" alt="..." class="w-100" style="max-width: 170px;">
+                    <img src="{{ book.banner.url }}" alt="..." style="width: 170px; height: 270px;">
                 </a>
             </div>
             <div class="book-autor fs-6 text-center">
 
-                <a class="text-decoration-none text-muted" href="{% url 'author-list' author=book.author %}">
+                <a class="text-decoration-none text-muted" href="{% url 'author-list' slug=book.author.slug %}">
                     <p class="text">
                         {% if CURRENT_LANGUAGE == "uk" %}
                             {{ book.author.uk_full_name }}

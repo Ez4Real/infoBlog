@@ -63,17 +63,17 @@ def get_all_library_books() -> QuerySet:
     """ Returns all LibraryResources with `Books` type """
     return LibraryResource.objects.filter(type__type='Books').order_by('-date')
 
-def get_books_by_author(author: str) -> QuerySet:
+def get_books_by_author(author_id: int) -> QuerySet:
     """ Returns LibraryResources with `Books` type by author """
-    return get_all_library_books().filter(author__en_full_name=author)
+    return get_all_library_books().filter(author=author_id)
 
 def get_libresource_by_slug(slug: SafeText) -> LibraryResource: 
     """ Returns LibraryResource object by slug """
     return LibraryResource.objects.get(slug=slug)
 
-def get_author_by_name(name: str) -> LibraryAuthor:
+def get_author_by_slug(slug: str) -> LibraryAuthor:
     """ Returns LibraryAuthor object by name """
-    return LibraryAuthor.objects.get(en_full_name=name)
+    return LibraryAuthor.objects.get(slug=slug)
 
 def get_resources_by_type(type: str) -> QuerySet:
     """ Returns LibraryResource objects by type """
