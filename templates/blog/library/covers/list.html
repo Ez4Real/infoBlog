@@ -23,7 +23,7 @@
     {% if blog_posts %}
     {% for cover in blog_posts %}
     <div class="col d-flex justify-content-center flex-wrap">
-            <div class="image-container">
+            <div class="image-container text-center">
                 {% if user.is_authenticated %}
                     {% if cover.type.type == 'Brochures' or cover.type.type == 'Other papers' %}
                         <a href="{{ cover.file.url }}" target="_blank">
