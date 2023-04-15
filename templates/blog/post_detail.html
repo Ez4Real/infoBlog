@@ -83,6 +83,29 @@
     
     {% endif %}
 
+    <aside class="col-md-3">
+        <div class="card">
+          <div class="card-header">
+            {% trans "Last News" %}
+          </div>
+          <ul class="list-group list-group-flush">
+            {% for post in last_news %}
+            
+              {{ post.date_of_creation|time }}
+              <li class="list-group-item">
+                <a href="{{ post.get_absolute_url }}">
+                  {% if CURRENT_LANGUAGE == "uk" %}
+                    {{ post.uk_title }}
+                  {% else %}
+                    {{ post.en_title }}
+                  {% endif %}
+                </a>
+              </li>
+            {% endfor %}
+          </ul>
+        </div>
+      </aside>
+
 </div>
 
 {% endblock %}

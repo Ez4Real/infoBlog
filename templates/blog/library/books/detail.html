@@ -22,14 +22,14 @@
       <div class="col">
         <h4>{% trans "Book Details" %}</h4>
         <p>{% trans "Pages" %}: {{ book.pages }}</p>
-        <p>
+        <a class="text-decoration-none" href="{% url 'author-list' slug=book.author.slug %}">
           {% if CURRENT_LANGUAGE == "uk" %}
             {{ book.author.uk_full_name }}
           {% else %}
             {{ book.author.en_full_name }}
           {% endif %}
+        </a>
             , {{ book.date }}
-        </p>
       </div>
       <div class="col text-end">
         {% if user.is_authenticated %}

@@ -2,8 +2,8 @@ import datetime
 
 from django import forms
 from django.utils.translation import gettext_lazy as _
-from django.contrib.auth import get_user_model
 from django.contrib.auth.forms import UserCreationForm
+from django.core.validators import MinValueValidator
 
 from .models import Subscriber, LibraryMember
 from .services.validators import validate_password
@@ -105,6 +105,7 @@ class LibraryMemberForm(UserCreationForm, BaseMemberForm):
     def save(self, commit=True):
         member = super(LibraryMemberForm, self).save(commit=False)
         member.set_password(self.cleaned_data['password1'])
+        member.specialization_code = self.cleaned_data['specialization_code']
         
         if commit:
             member.save()
@@ -140,6 +141,12 @@ class LibraryMemberForm(UserCreationForm, BaseMemberForm):
     specialization = forms.CharField(label=_('Scientific Specialization'),
                                      max_length=200,
                                      widget=TextInputWidget)
+    specialization_code = forms.IntegerField(validators=[MinValueValidator(100), ],
+                                             widget=forms.TextInput(attrs={
+                                                 'class': 'form-control',
+                                                 'placeholder': _('Code')
+                                                 })
+                                             )
     education_level = forms.ChoiceField(label = _('Level of education'),
                                         choices=EDUCATION_LEVELS,
                                         widget=SelectWidget)
@@ -154,9 +161,6 @@ class LibraryMemberForm(UserCreationForm, BaseMemberForm):
                                      required=False,
                                      max_length=200,
                                      widget=TextInputWidget)
-    resume = forms.FileField(label=_('Academic CV'),
-                             required=False,
-                             widget=FileInputWidget)
 
 
 class LoginForm(forms.Form):

@@ -8,7 +8,7 @@ from django.contrib.sites.shortcuts import get_current_site
 from django.contrib.auth.models import AbstractBaseUser, BaseUserManager
 from django.contrib.auth.hashers import check_password
 from django.core.mail import EmailMessage
-from django.core.validators import MaxLengthValidator
+from django.core.validators import MaxLengthValidator, MinValueValidator
 from django.db import models
 from django.template.loader import get_template
 from django.urls import reverse
@@ -173,6 +173,7 @@ class LibraryMember(AbstractBaseUser):
                                   max_length=200)
     specialization = models.CharField(verbose_name=_('Scientific Specialization'),
                                       max_length=200)
+    specialization_code = models.PositiveIntegerField(validators=[MinValueValidator(100)])
     education_level = models.CharField(verbose_name = _('Level of education'),
                                        choices=EDUCATION_LEVELS,
                                        max_length=1)
@@ -356,10 +357,10 @@ class Video(models.Model):
         super(Video, self).save(*args, **kwargs)
 
     
-    en_title = models.CharField(max_length=45,
+    en_title = models.CharField(max_length=100,
                                 help_text='Enter video title',
                                 verbose_name=_('English title'))
-    uk_title = models.CharField(max_length=45,
+    uk_title = models.CharField(max_length=100,
                                 help_text='Enter video title',
                                 verbose_name=_('Ukrainian title'))
     type = models.CharField(max_length=2,

@@ -9,9 +9,9 @@ from django.views.generic import TemplateView
 
 from .services.db_services import get_news_by_slug, get_blog_scholar_by_slug, \
     get_blog_search_results, get_posts_by_author_slug, get_blog_post_by_slug, \
-    get_member_by_slug, get_all_library_resources, get_resource_by_type, \
+    get_member_by_slug, get_all_library_resources, get_resources_by_type, \
     get_all_library_books, get_libresource_by_slug, get_books_by_author, \
-    get_author_by_slug, get_resources_by_type
+    get_author_by_slug, get_last_news
 from .services.blog_services import paginate, \
     check_if_number_endswith_one, add_subscriber_form_to_context, \
     add_last_news_to_context, get_dynamic_page_title_by_language, \
@@ -44,6 +44,7 @@ def homepage(request, context = {}) -> HttpResponse:
 def post_detail(request, type, slug, context = {}) -> HttpResponse:
     add_subscriber_form_to_context(context, request)
     context['post'] = post = get_news_by_slug(slug)
+    context['last_news'] = get_last_news()
     add_page_title_to_context_by_language(
         get_dynamic_page_title_by_language(request,
                                            post.en_title,

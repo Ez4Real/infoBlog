@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2023-03-02 20:10+0200\n"
+"POT-Creation-Date: 2023-04-14 22:54+0300\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -18,250 +18,291 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
 
-#: .\blog\forms.py:41 .\blog\models.py:150
+#: .\blog\forms.py:43 .\blog\models.py:160
 msgid "First name"
 msgstr ""
 
-#: .\blog\forms.py:44 .\blog\models.py:152
+#: .\blog\forms.py:46 .\blog\models.py:162
 msgid "Last name"
 msgstr ""
 
-#: .\blog\forms.py:54
+#: .\blog\forms.py:56
 msgid "Secondary"
 msgstr ""
 
-#: .\blog\forms.py:55
+#: .\blog\forms.py:57
 msgid "High"
 msgstr ""
 
-#: .\blog\forms.py:56 .\blog\forms.py:88 .\blog\models.py:139
+#: .\blog\forms.py:58 .\blog\forms.py:90 .\blog\models.py:149
 msgid "Doctor or PhD"
 msgstr ""
 
-#: .\blog\forms.py:57
+#: .\blog\forms.py:59
 msgid "Other"
 msgstr ""
 
-#: .\blog\forms.py:59 .\blog\forms.py:137 .\blog\models.py:166
+#: .\blog\forms.py:61 .\blog\forms.py:143 .\blog\models.py:176
 msgid "Level of education"
 msgstr ""
 
-#: .\blog\forms.py:62
+#: .\blog\forms.py:64
 msgid "Briefly describe your area of expertise"
 msgstr ""
 
-#: .\blog\forms.py:65
+#: .\blog\forms.py:67
 msgid "What do you expect from cooperation with us?"
 msgstr ""
 
-#: .\blog\forms.py:68
+#: .\blog\forms.py:70
 msgid "Resume"
 msgstr ""
 
-#: .\blog\forms.py:73
+#: .\blog\forms.py:75
 msgid "Date of Birth"
 msgstr ""
 
-#: .\blog\forms.py:75
+#: .\blog\forms.py:77
 msgid "City"
 msgstr ""
 
-#: .\blog\forms.py:78 .\blog\forms.py:123
+#: .\blog\forms.py:80 .\blog\forms.py:125
 msgid "Phone"
 msgstr ""
 
-#: .\blog\forms.py:80
+#: .\blog\forms.py:82
 msgid "What do you do in life?"
 msgstr ""
 
-#: .\blog\forms.py:87 .\blog\models.py:138
+#: .\blog\forms.py:89 .\blog\models.py:148
 msgid "Master"
 msgstr ""
 
-#: .\blog\forms.py:89 .\blog\models.py:140
+#: .\blog\forms.py:91 .\blog\models.py:150
 msgid "Postgraduate"
 msgstr ""
 
-#: .\blog\forms.py:90 .\blog\models.py:141
+#: .\blog\forms.py:92 .\blog\models.py:151
 msgid "Doctorate"
 msgstr ""
 
-#: .\blog\forms.py:116
+#: .\blog\forms.py:118
 msgid ""
 "This field is required for education levels 'Postgraduate' and 'Doctorate'."
 msgstr ""
 
-#: .\blog\forms.py:121
+#: .\blog\forms.py:123
 msgid "Resume file size must be under 5MB."
 msgstr ""
 
-#: .\blog\forms.py:125
-msgid "Show password"
-msgstr ""
-
-#: .\blog\forms.py:128 .\blog\models.py:160
-msgid "Higher Education or Research Institution"
-msgstr ""
-
-#: .\blog\forms.py:131 .\blog\models.py:162
-msgid "Research Unit/Department/Chair"
-msgstr ""
-
-#: .\blog\forms.py:134 .\blog\models.py:164
-msgid "Scientific Specialization"
-msgstr ""
-
-#: .\blog\forms.py:140 .\blog\models.py:169
-msgid "Academic Supervisor/Consultant"
-msgstr ""
-
-#: .\blog\forms.py:144
-msgid "How do you plan to use the sources of ERGOSUM European Library?"
-msgstr ""
-
-#: .\blog\forms.py:151 .\blog\models.py:177
-msgid "Academic CV"
-msgstr ""
-
-#: .\blog\forms.py:160
+#: .\blog\forms.py:127 .\blog\forms.py:166
 msgid "Password"
 msgstr ""
 
-#: .\blog\models.py:25
+#: .\blog\forms.py:129
+msgid "Password confirmation"
+msgstr ""
+
+#: .\blog\forms.py:131
+msgid "Show password"
+msgstr ""
+
+#: .\blog\forms.py:134 .\blog\models.py:170
+msgid "Higher Education or Research Institution"
+msgstr ""
+
+#: .\blog\forms.py:137 .\blog\models.py:172
+msgid "Research Unit/Department/Chair"
+msgstr ""
+
+#: .\blog\forms.py:140 .\blog\models.py:174
+msgid "Scientific Specialization"
+msgstr ""
+
+#: .\blog\forms.py:146 .\blog\models.py:179
+msgid "Academic Supervisor/Consultant"
+msgstr ""
+
+#: .\blog\forms.py:150
+msgid "How do you plan to use the sources of ERGOSUM European Library?"
+msgstr ""
+
+#: .\blog\forms.py:157 .\blog\models.py:187
+msgid "Academic CV"
+msgstr ""
+
+#: .\blog\forms.py:177
+msgid "Title or Author"
+msgstr ""
+
+#: .\blog\models.py:34
 msgid "News Types"
 msgstr ""
 
-#: .\blog\models.py:38
+#: .\blog\models.py:46
 msgid "News type"
 msgstr ""
 
-#: .\blog\models.py:45 .\templates\include\header\header_bottom.html:22
+#: .\blog\models.py:55 .\templates\include\header\header_bottom.html:22
 msgid "Policy areas"
 msgstr ""
 
-#: .\blog\models.py:53
+#: .\blog\models.py:63
 msgid "Policy area name"
 msgstr ""
 
-#: .\blog\models.py:71
+#: .\blog\models.py:81
 msgid "Photo of the represent"
 msgstr ""
 
-#: .\blog\models.py:75
+#: .\blog\models.py:85 .\blog\models.py:406
 msgid "Full name on english"
 msgstr ""
 
-#: .\blog\models.py:79
+#: .\blog\models.py:89 .\blog\models.py:411
 msgid "Full name on ukrainian"
 msgstr ""
 
-#: .\blog\models.py:83
+#: .\blog\models.py:93
 msgid "English position"
 msgstr ""
 
-#: .\blog\models.py:87
+#: .\blog\models.py:97
 msgid "Ukrainian position"
 msgstr ""
 
-#: .\blog\models.py:92 .\blog\models.py:183 .\blog\models.py:223
-#: .\blog\models.py:328 .\blog\models.py:362
+#: .\blog\models.py:102 .\blog\models.py:193 .\blog\models.py:233
+#: .\blog\models.py:338 .\blog\models.py:372 .\blog\models.py:451
+#: .\blog\models.py:466
 msgid "Date of creation"
 msgstr ""
 
-#: .\blog\models.py:97
+#: .\blog\models.py:107
 msgid "Blog Scholars"
 msgstr ""
 
-#: .\blog\models.py:104
+#: .\blog\models.py:114
 msgid "University link"
 msgstr ""
 
-#: .\blog\models.py:109
+#: .\blog\models.py:119
 msgid "Team Members"
 msgstr ""
 
-#: .\blog\models.py:115 .\blog\models.py:217
+#: .\blog\models.py:125 .\blog\models.py:227
 msgid "English content"
 msgstr ""
 
-#: .\blog\models.py:118 .\blog\models.py:220
+#: .\blog\models.py:128 .\blog\models.py:230
 msgid "Ukrainian content"
 msgstr ""
 
-#: .\blog\models.py:134
+#: .\blog\models.py:144
 msgid "Library members"
 msgstr ""
 
-#: .\blog\models.py:158
+#: .\blog\models.py:168
 msgid "Phone number"
 msgstr ""
 
-#: .\blog\models.py:181
+#: .\blog\models.py:191
 msgid "Resource Plans"
 msgstr ""
 
-#: .\blog\models.py:210 .\blog\models.py:351
+#: .\blog\models.py:220 .\blog\models.py:361
 msgid "English title"
 msgstr ""
 
-#: .\blog\models.py:214 .\blog\models.py:354
+#: .\blog\models.py:224 .\blog\models.py:364
 msgid "Ukrainian title"
 msgstr ""
 
-#: .\blog\models.py:228
+#: .\blog\models.py:238
 msgid "Blog Articles"
 msgstr ""
 
-#: .\blog\models.py:236 .\blog\models.py:273
+#: .\blog\models.py:246 .\blog\models.py:283 .\blog\models.py:436
 msgid "Author"
 msgstr ""
 
-#: .\blog\models.py:242 .\templates\blog\news.html:10
+#: .\blog\models.py:252 .\templates\blog\news.html:10
 #: .\templates\include\header\header_bottom.html:4
 msgid "News"
 msgstr ""
 
-#: .\blog\models.py:248
+#: .\blog\models.py:258
 msgid "News banner"
 msgstr ""
 
-#: .\blog\models.py:253
+#: .\blog\models.py:263
 msgid "English subtitle"
 msgstr ""
 
-#: .\blog\models.py:257
+#: .\blog\models.py:267
 msgid "Ukrainian subtitle"
 msgstr ""
 
-#: .\blog\models.py:263
+#: .\blog\models.py:273
 msgid "Type"
 msgstr ""
 
-#: .\blog\models.py:268
+#: .\blog\models.py:278
 msgid "Policy area"
 msgstr ""
 
-#: .\blog\models.py:313
+#: .\blog\models.py:323
 msgid "Subscribers"
 msgstr ""
 
-#: .\blog\models.py:323
+#: .\blog\models.py:333
 msgid "Is Active"
 msgstr ""
 
-#: .\blog\models.py:325 .\infoBlog\settings.py:141
+#: .\blog\models.py:335 .\infoBlog\settings.py:141
 msgid "English"
 msgstr ""
 
-#: .\blog\models.py:326 .\infoBlog\settings.py:140
+#: .\blog\models.py:336 .\infoBlog\settings.py:140
 msgid "Ukrainian"
 msgstr ""
 
-#: .\blog\models.py:338
+#: .\blog\models.py:348
 msgid "Video content"
 msgstr ""
 
-#: .\infoBlog\settings.py:209
+#: .\blog\models.py:388 .\blog\models.py:430
+msgid "Resource banner"
+msgstr ""
+
+#: .\blog\models.py:427
+msgid "Resource type"
+msgstr ""
+
+#: .\blog\models.py:435 .\blog\models.py:448
+msgid "Only for Books."
+msgstr ""
+
+#: .\blog\models.py:441
+msgid "Resource file"
+msgstr ""
+
+#: .\blog\models.py:444
+msgid "Only for Books, Brochures and other."
+msgstr ""
+
+#: .\blog\models.py:463
+msgid "Subresource file"
+msgstr ""
+
+#: .\blog\models.py:469
+msgid "Topic"
+msgstr ""
+
+#: .\blog\models.py:475
+msgid "Bounded resource"
+msgstr ""
+
+#: .\infoBlog\settings.py:210
 msgid "European Research Group Of Support for Ukrainian Membership – ERGOSUM"
 msgstr ""
 
@@ -279,7 +320,7 @@ msgstr ""
 msgid "Mission"
 msgstr ""
 
-#: .\templates\blog\about\team.html:9
+#: .\templates\blog\about\team.html:8
 msgid "Our team"
 msgstr ""
 
@@ -288,7 +329,9 @@ msgstr ""
 msgid "Vision"
 msgstr ""
 
-#: .\templates\blog\base_generic.html:61 .\templates\blog\base_generic.html:100
+#: .\templates\blog\base_generic.html:61 .\templates\blog\base_generic.html:101
+#: .\templates\blog\library\books\list.html:17
+#: .\templates\blog\library\covers\list.html:18
 #: .\templates\include\header\search.html:4
 msgid "Search"
 msgstr ""
@@ -316,7 +359,7 @@ msgid "Analytics"
 msgstr ""
 
 #: .\templates\blog\homepage.html:88 .\templates\blog\op_eds.html:10
-#: .\templates\include\header\header_bottom.html:18
+#: .\templates\include\header\header_bottom.html:13
 msgid "Op-eds"
 msgstr ""
 
@@ -347,20 +390,39 @@ msgstr ""
 msgid "Volunteer"
 msgstr ""
 
-#: .\templates\blog\library\library.html:12
-msgid "Log out"
+#: .\templates\blog\library\books\detail.html:23
+msgid "Book Details"
 msgstr ""
 
-#: .\templates\blog\library\library.html:14
-msgid "Please"
+#: .\templates\blog\library\books\detail.html:24
+msgid "Pages"
 msgstr ""
 
-#: .\templates\blog\library\library.html:15
+#: .\templates\blog\library\books\detail.html:36
+msgid "Read"
+msgstr ""
+
+#: .\templates\blog\library\books\detail.html:38
+#: .\templates\blog\library\covers\detail.html:43
+msgid "Please, login to read and download resource"
+msgstr ""
+
+#: .\templates\blog\library\books\detail.html:41
+#: .\templates\blog\library\covers\detail.html:46
+#: .\templates\blog\library\login.html:35
+#: .\templates\blog\library\register.html:152
+#: .\templates\include\library\Books.html:22
+#: .\templates\include\library\Magazines.html:22
 msgid "Log in"
 msgstr ""
 
-#: .\templates\blog\library\library.html:17
-#: .\templates\blog\library\register.html:121
+#: .\templates\blog\library\books\list.html:54
+#: .\templates\blog\library\covers\list.html:61
+msgid "There are no resources matching your request"
+msgstr ""
+
+#: .\templates\blog\library\login.html:51
+#: .\templates\blog\library\register.html:131
 msgid "Sign up"
 msgstr ""
 
@@ -405,12 +467,12 @@ msgid "Security"
 msgstr ""
 
 #: .\templates\blog\research\annual_report.html:9
-#: .\templates\include\header\header_bottom.html:14
+#: .\templates\include\header\header_bottom.html:15
 msgid "Annual report"
 msgstr ""
 
 #: .\templates\blog\research\index_ergosum.html:11
-#: .\templates\include\header\header_bottom.html:13
+#: .\templates\include\header\header_bottom.html:14
 msgid "Index ERGOSUM"
 msgstr ""
 
@@ -459,7 +521,7 @@ msgstr ""
 msgid "Research"
 msgstr ""
 
-#: .\templates\include\header\header_bottom.html:17
+#: .\templates\include\header\header_bottom.html:18
 msgid "Blog"
 msgstr ""
 

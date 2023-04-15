@@ -55,10 +55,11 @@ class LibraryMemberAdmin(admin.ModelAdmin):
     fields = [('first_name', 'last_name'), 
               ('email', 'phone_number'),
               ('education_level', 'institution'),
-              ('department', 'specialization'),
+              ('department'),
+              ('specialization_code', 'specialization'),
               ('supervisor', 'google_scholar'),
               ('resource_plans'),
-              ('resume', 'date_of_creation')]
+              ('date_of_creation')]
     
 @admin.register(News)
 class NewsAdmin(admin.ModelAdmin):
