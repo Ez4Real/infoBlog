@@ -23,7 +23,7 @@
     {% if blog_posts %}
     {% for cover in blog_posts %}
     <div class="col d-flex justify-content-center flex-wrap">
-            <div class="image-container text-center">
+            <div class="image-container text-center" style="width: 170px; height: 255;" >
                 {% if user.is_authenticated %}
                     {% if cover.type.type == 'Brochures' or cover.type.type == 'Other papers' %}
                         <a href="{{ cover.file.url }}" target="_blank">
@@ -33,7 +33,7 @@
                 {% else %}
                     <a href="#">
                 {% endif %}
-                        <img src="{{ cover.banner.url }}" alt="..." class="w-100" style="max-width: 170px;">
+                        <img src="{{ cover.banner.url }}" alt="..." class="w-100" ">
                     </a>
                 <div class="overlay text-center">
                     {% if user.is_authenticated %}
