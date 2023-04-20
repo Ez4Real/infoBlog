@@ -23,7 +23,7 @@
     {% if blog_posts %}
     {% for cover in blog_posts %}
     <div class="col d-flex justify-content-center flex-wrap">
-            <div class="image-container text-center" style="width: 170px; height: 255;" >
+            <div class="image-container text-center" style="width: 170px; height: 255px;" >
                 {% if user.is_authenticated %}
                     {% if cover.type.type == 'Brochures' or cover.type.type == 'Other papers' %}
                         <a href="{{ cover.file.url }}" target="_blank">
@@ -33,27 +33,27 @@
                 {% else %}
                     <a href="#">
                 {% endif %}
-                        <img src="{{ cover.banner.url }}" alt="..." class="w-100" ">
+                        <img src="{{ cover.banner.url }}" alt="..." >
                     </a>
-                <div class="overlay text-center">
-                    {% if user.is_authenticated %}
-                        {% if cover.type.type in others %}
-                            <a class="text-decoration-none" href="{{ cover.file.url }}" target="_blank">
-                        {% else %}
-                            <a class="text-decoration-none" href="{{ cover.get_absolute_url }}">
-                        {% endif %}
+            </div>
+            <div class="text-center">
+                {% if user.is_authenticated %}
+                    {% if cover.type.type in others %}
+                        <a class="text-decoration-none" href="{{ cover.file.url }}" target="_blank">
                     {% else %}
-                        <a class="text-decoration-none" href="#">
+                        <a class="text-decoration-none" href="{{ cover.get_absolute_url }}">
                     {% endif %}
-                        <p class="text">
-                            {% if CURRENT_LANGUAGE == "uk" %}
-                                {{ cover.uk_title }}
-                            {% else %}
-                                {{ cover.en_title }}
-                            {% endif %}
-                        </p>
-                    </a>
-                </div>
+                {% else %}
+                    <a class="text-decoration-none" href="#">
+                {% endif %}
+                    <p class="text">
+                        {% if CURRENT_LANGUAGE == "uk" %}
+                            {{ cover.uk_title }}
+                        {% else %}
+                            {{ cover.en_title }}
+                        {% endif %}
+                    </p>
+                </a>
             </div>
     </div>
     {% endfor %}

@@ -852,3 +852,9 @@ header a{
     height: 150px;
 
 }
+
+.image-container img{
+    width: 170px; 
+    height: 255px;
+    object-fit: contain;
+}
