@@ -120,25 +120,19 @@
                         </div>
                     </div>
 
-    
-                    <div class="row">
-                        <div class="col-md-6 group-control">
-                            <label for="{{ library_form.resume.id_for_label }}">{{ library_form.resume.label }}</label>
-                            {{ library_form.resume }}
-                        </div>
-                        
-                        <div class="col-md-6 group-control align-self-end text-end mt-1">
-                            <button type="submit" name='library_form' class="form-group btn btn-primary">
-                                {% trans 'Sign up' %}
-                            </button>
-                        </div>
-                    </div>
 
                 </div>
 
             </div>
             
+            <div class="col-md-6 group-control mt-1">
+                <button type="submit" name='library_form' class="form-group btn btn-primary">
+                    {% trans 'Sign up' %}
+                </button>
+            </div>
         </form>
+
+        
         {% if CURRENT_LANGUAGE == "uk" %}
 
             Вже зареєстровані?
