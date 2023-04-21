@@ -2,7 +2,9 @@
 {% for news in blog_posts %}
 
     {% if forloop.first %}
-        {% include 'include/cards_res/card_big.html' %}
+        <div class="col-12">
+            {% include 'include/cards_res/card_big.html' %}
+        </div>
     {% else %}
 
         {% include 'include/cards_res/card_small.html' %}
