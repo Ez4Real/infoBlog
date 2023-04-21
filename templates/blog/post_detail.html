@@ -3,109 +3,128 @@
 
 {% block content %}
 
-    <div class="m-5"></div>
-<div class="container text-break">
-
+    <!-- <h1 class="card-title mt-3">
     {% if CURRENT_LANGUAGE == "uk" %}
-        <h1 class="card-title">
-            <b>{{ post.uk_title }}</b>
-        </h1>
-        
-        <div class="p-3"></div>
-
-        <div class="w-100" >
-            <div class="d-flex justify-items-center mx-auto" style="width: 85%;">
-                <div class="post-author pe-3">
-                    <b>{{ post.author.uk_full_name }}</b>
-                </div>
-                <div class="post-date text-muted">
-                    <small>{{ post.date_of_creation }}</small>
-                </div>
-                {% if post.policy_area %}
-                <div class="post-poicy-area ms-auto">
-                    {% if post.policy_area == "Human rights" %}
-                        <a href="{% url 'human_rights' %}">
-                            {{ post.policy_area }}
-                        </a>
-                    {% endif %}
-                    {{ post.policy_area }}
-                </div>
-                {% endif %}
-            </div>
-            
-            <hr class="mb-4" style="margin: 0 auto; width: 85%;">
-        </div>
-        
-        <div class="text-center post-foto d-flex align-items-center justify-content-center">
-            <img src="{{ post.banner.url }}" class="d-block mx-auto h-100 ob-cover" style="width: 85%;">
-        </div>
-        <div class="p-3"></div>
-        <div class="body-cronis-post fs-4 text-center">
-            {{ post.uk_content | safe }}
-        </div>
-        
-        {% else %}
-
-        <h1 class="card-title">
-            <b>{{ post.en_title }}</b>
-        </h1>
-        
-        <div class="p-3"></div>
-
-        <div class="d-flex">
-            <div class="post-author pe-3">
-                <b>{{ post.author.en_full_name }}</b>
-            </div>
-            <div class="post-date text-muted">
-                <small>{{ post.date_of_creation }}</small>
-            </div>
-            {% if post.policy_area %}
-            <div class="post-poicy-area ms-auto">
-                {% if post.policy_area == "Human rights" %}
-                    <a href="{% url 'human_rights' %}">
-                        {{ post.policy_area }}
-                    </a>
-                {% endif %}
-                {{ post.policy_area }}
-            </div>
-            {% endif %}
-        </div>
-        
-        <hr class="m-1 mb-4">
-        
-        <div class="text-center post-foto d-flex align-items-center justify-content-center">
-            <img src="{{ post.banner.url }}" class="d-block mx-auto h-100 ob-cover" style="width: 85%;">
-        </div>
-        <div class="p-3"></div>
-        <div class="body-cronis-post fs-4 text-center">
-            {{ post.en_content | safe }}
-        </div>
-    
+        <b>{{ post.uk_title }}</b>
+    {% else %}
+        <b>{{ post.en_title }}</b>
     {% endif %}
+    </h1> -->
+    <div class="post-body row justify-content-between" >
+        <!-- <div class="order-last order-xl-first col col-lg-3 bg-dark text-white ">time</div>
+        <div class="col col-lg-7 bg-dark text-white ">content</div>
+        <div class="col col-lg-2 bg-dark text-white ">huy</div> -->
+        <aside class="order-last order-xl-first d-flex col-12 col-xl-3 pt-5">
+            <div class="w-100">
+                <div class="l-news d-flex justify-content-center justify-content-xl-end w-100" >
+                    <div class="card" style="width: 70%;">
+                        <div class="card-header">
+                          {% trans "Last News" %}
+                        </div>
+                        <ul class="list-group list-group-flush">
+                          {% for post in last_news %}
+                          
+                              
+                              <li class="list-group-item d-flex justify-content-between align-content-center">
+                                  <a href="{{ post.get_absolute_url }}">
+                                      {% if CURRENT_LANGUAGE == "uk" %}
+                                      {{ post.uk_title }}
+                                      {% else %}
+                                      {{ post.en_title }}
+                                      {% endif %}
+                                  </a>
+                                  {{ post.date_of_creation|time }}
+                              </li>
+                          {% endfor %}
+                        </ul>
+                      </div>
+                </div>
+            </div>
+        </aside>
 
-    <aside class="col-md-3">
-        <div class="card">
-          <div class="card-header">
-            {% trans "Last News" %}
-          </div>
-          <ul class="list-group list-group-flush">
-            {% for post in last_news %}
+        <div class="text-break d-flex justify-content-center col-12 col-xl-7 mt-3">
+
+            <div class="post-content">
+                {% if CURRENT_LANGUAGE == "uk" %}
+
+                <h1 class="card-title">
+                    <b>{{ post.uk_title }}</b>
+                </h1>
+                    
+                <div class="w-100" >
+                    <div class="d-flex justify-items-center mx-auto" style="width: 95%;">
+                        <div class="post-author pe-3">
+                            <b>{{ post.author.uk_full_name }}</b>
+                        </div>
+                        <div class="post-date text-muted">
+                            <small>{{ post.date_of_creation }}</small>
+                        </div>
+                        {% if post.policy_area %}
+                        <div class="post-poicy-area ms-auto">
+                            {% if post.policy_area == "Human rights" %}
+                                <a href="{% url 'human_rights' %}">
+                                    {{ post.policy_area }}
+                                </a>
+                            {% endif %}
+                            {{ post.policy_area }}
+                        </div>
+                        {% endif %}
+                    </div>
+                    
+                    <hr class="mb-4" style="margin: 0 auto; width: 95%; ">
+                </div>
+                
+                <div class="text-center post-foto d-flex align-items-center justify-content-center">
+                    <img src="{{ post.banner.url }}" class="d-block mx-auto h-100 ob-cover " style="width: 95%;">
+                </div>
+                <div class="p-3"></div>
+                <div class="body-cronis-post fs-4 text-center">
+                    {{ post.uk_content | safe }}
+                </div>
+                
+                {% else %}
+    
+                <h1 class="card-title">
+                    <b>{{ post.en_title }}</b>
+                </h1>
+    
+                <div class="d-flex">
+                    <div class="post-author pe-3">
+                        <b>{{ post.author.en_full_name }}</b>
+                    </div>
+                    <div class="post-date text-muted">
+                        <small>{{ post.date_of_creation }}</small>
+                    </div>
+                    {% if post.policy_area %}
+                    <div class="post-poicy-area ms-auto">
+                        {% if post.policy_area == "Human rights" %}
+                            <a href="{% url 'human_rights' %}">
+                                {{ post.policy_area }}
+                            </a>
+                        {% endif %}
+                        {{ post.policy_area }}
+                    </div>
+                    {% endif %}
+                </div>
+                
+                <hr class="m-1 mb-4">
+                
+                <div class="text-center post-foto d-flex align-items-center justify-content-center">
+                    <img src="{{ post.banner.url }}" class="d-block mx-auto h-100 ob-cover" style="width: 85%;">
+                </div>
+                <div class="p-3"></div>
+                <div class="body-cronis-post fs-4 text-center">
+                    {{ post.en_content | safe }}
+                </div>
             
-              {{ post.date_of_creation|time }}
-              <li class="list-group-item">
-                <a href="{{ post.get_absolute_url }}">
-                  {% if CURRENT_LANGUAGE == "uk" %}
-                    {{ post.uk_title }}
-                  {% else %}
-                    {{ post.en_title }}
-                  {% endif %}
-                </a>
-              </li>
-            {% endfor %}
-          </ul>
+            {% endif %} 
+            </div>
         </div>
-      </aside>
 
-</div>
+        <div class="col col-lg-2"> </div>
+
+    </div>
+
+    
 
 {% endblock %}
