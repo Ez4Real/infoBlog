@@ -22,15 +22,15 @@
             {% trans "Policy areas" %}
         </a>
         <ul class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
-            <li><a class="dropdown-item" href="{% url 'policy_area' type='Foreign policy' %}">{% trans "Foreign policy" %}</a></li>
-            <li><a class="dropdown-item" href="{% url 'policy_area' type='Internal policy' %}">{% trans "Internal policy" %}</a>
+            <li><a class="dropdown-item" href="{% url 'policy_area' slug='foreign-policy' %}">{% trans "Foreign policy" %}</a></li>
+            <li><a class="dropdown-item" href="{% url 'policy_area' slug='internal-policy' %}">{% trans "Internal policy" %}</a>
             </li>
-            <li><a class="dropdown-item" href="{% url 'policy_area' type='Economics' %}">{% trans "Economics" %}</a></li>
-            <li><a class="dropdown-item" href="{% url 'policy_area' type='Security' %}">{% trans "Security" %}</a></li>
-            <li><a class="dropdown-item" href="{% url 'policy_area' type='Education' %}">{% trans "Education" %}</a></li>
-            <li><a class="dropdown-item" href="{% url 'policy_area' type='Democracy' %}">{% trans "Democracy" %}</a></li>
-            <li><a class="dropdown-item" href="{% url 'policy_area' type='Human rights' %}">{% trans "Human rights" %}</a></li>
-            <li><a class="dropdown-item" href="{% url 'policy_area' type='Culture' %}">{% trans "Culture" %}</a></li>
+            <li><a class="dropdown-item" href="{% url 'policy_area' slug='economics' %}">{% trans "Economics" %}</a></li>
+            <li><a class="dropdown-item" href="{% url 'policy_area' slug='security' %}">{% trans "Security" %}</a></li>
+            <li><a class="dropdown-item" href="{% url 'policy_area' slug='education' %}">{% trans "Education" %}</a></li>
+            <li><a class="dropdown-item" href="{% url 'policy_area' slug='democracy' %}">{% trans "Democracy" %}</a></li>
+            <li><a class="dropdown-item" href="{% url 'policy_area' slug='human-rights' %}">{% trans "Human rights" %}</a></li>
+            <li><a class="dropdown-item" href="{% url 'policy_area' slug='culture' %}">{% trans "Culture" %}</a></li>
         </ul>
     </li>
     <li class="nav-item dropdown ">

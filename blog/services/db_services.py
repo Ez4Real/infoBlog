@@ -2,7 +2,7 @@ from django.db.models import Q, QuerySet
 from django.utils.safestring import SafeText
 from ..models import News, Video, BlogScholar, \
     Blog, TeamMember, ResourceType, LibraryResource, \
-    LibraryAuthor
+    LibraryAuthor, PolicyArea
 
 
 def get_last_news() -> QuerySet:
@@ -11,7 +11,11 @@ def get_last_news() -> QuerySet:
     
 def get_news_by_policy_area(policy_area: str) -> QuerySet:
     """ Returns QuerySet of News by policy_area """
-    return News.objects.filter(policy_area__name=policy_area).order_by('-date_of_creation')   
+    return News.objects.filter(policy_area__name=policy_area).order_by('-date_of_creation')
+
+def get_policy_area_by_slug(slug: SafeText) -> str:
+    """ Returns PolicyArea object name by slug """
+    return PolicyArea.objects.get(slug=slug).name
 
 def get_news_by_type(type: str) -> QuerySet:
     """ Returns QuerySet of News by type """

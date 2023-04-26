@@ -3,7 +3,6 @@ from django.http import HttpResponse, HttpRequest
 from django.shortcuts import render, redirect
 from django.contrib import messages
 from django.contrib.auth import logout
-from django.contrib.auth.decorators import login_required
 from django.utils.safestring import SafeText
 from django.views.generic import TemplateView
 
@@ -11,7 +10,8 @@ from .services.db_services import get_news_by_slug, get_blog_scholar_by_slug, \
     get_blog_search_results, get_posts_by_author_slug, get_blog_post_by_slug, \
     get_member_by_slug, get_all_library_resources, get_resources_by_type, \
     get_all_library_books, get_libresource_by_slug, get_books_by_author, \
-    get_author_by_slug, get_last_news
+    get_author_by_slug, get_last_news, get_news_by_policy_area, \
+    get_policy_area_by_slug
 from .services.blog_services import paginate, \
     check_if_number_endswith_one, add_subscriber_form_to_context, \
     add_last_news_to_context, get_dynamic_page_title_by_language, \
@@ -309,8 +309,10 @@ def videos(request) -> HttpResponse:
                                                   request)
                   )
 
-def policy_area(request: HttpRequest, type: str) -> HttpRequest:
-    context =  get_policy_area_context(type, request)
+def policy_area(request: HttpRequest, slug: str) -> HttpRequest:
+    context =  get_policy_area_context(slug, request)
+    context['blog_posts'] = get_news_by_policy_area(slug)
+    context['policy_area'] = get_policy_area_by_slug(slug)
     return render(request, 'blog/policy_area.html', context)
 
 

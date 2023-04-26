@@ -33,7 +33,9 @@
             </div>
             <div class="d-flex justify-content-between card-footer bg-transparent border-secondary">
                 <!-- <small class="text-muted fs-6" style="margin-right: 10px;">{{ news.date_of_creation }}</small> -->
-                <small class="text-muted fs-6" style="margin-right: 10px;">{{ news.policy_area }}</small>
+                <a href="{% url 'policy_area' slug=news.policy_area.slug %}" class="text-decoration-none">
+                    <small class="text-muted fs-6" style="margin-right: 10px;">{{ news.policy_area }}</small>
+                </a>
                 <!-- {% if news.author %}
                     <small class="text-muted text-end fs-6">
                         {% if CURRENT_LANGUAGE == "uk" %}

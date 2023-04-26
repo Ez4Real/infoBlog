@@ -51,7 +51,7 @@ urlpatterns = [
          views.volunteer,
          name='volunteer'),
     
-    path('policy-areas/<str:type>', views.policy_area, name='policy_area'),
+    path('policy-area/<slug:slug>', views.policy_area, name='policy_area'),
     
     # Media
     path('media/podcast', views.podcast, name='podcast'),
