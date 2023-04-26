@@ -2,18 +2,19 @@
 {% load i18n %}
 
 {% block content %}
-<div class="p-1"></div>
 
 <div class="container">
 
-    <div class="text-center">
+    <div class="text-center pt-3">
         <h1>{% trans "Personal blog" %}</h1>
     </div>
 
-    <div class="row row-cols-1 row-cols-lg-3 g-4">
-        {% for scholar in blog_scholars %}
-            {% include 'include/cards_blogs/card_home_page.html' %}
-        {% endfor %}
+    <div class="mx-auto" style="width: 750px;">
+        <div class="row row-cols-1 row-cols-lg-3">
+            {% for scholar in blog_scholars %}
+                {% include 'include/cards_blogs/card_home_page.html' %}
+            {% endfor %}
+        </div>
     </div>
 
 </div>

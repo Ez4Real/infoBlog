@@ -75,6 +75,11 @@ nav{
     .cronis-nav-anime{
         gap: 5px !important;
     }
+
+    .post-body{
+        flex-direction: column;
+    }
+
 }
 
 @media (max-width: 1024px) {
@@ -852,3 +857,10 @@ header a{
     height: 150px;
 
 }
+
+.image-container img{
+    width: 170px; 
+    height: 255px;
+    object-fit: contain;
+}
+
