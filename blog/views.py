@@ -309,55 +309,9 @@ def videos(request) -> HttpResponse:
                                                   request)
                   )
 
-'''\Policy areas views/'''
-def foreign_policy(request) -> HttpResponse:
-    return render(request, 
-                  template_name='blog/policy_areas/foreign_policy.html', 
-                  context=get_policy_area_context('Foreign policy', request)
-                  )
-
-def internal_policy(request) -> HttpResponse:
-    return render(request, 
-                  template_name='blog/policy_areas/internal_policy.html', 
-                  context=get_policy_area_context('Internal policy', request)
-                  )
-
-def economics(request) -> HttpResponse:
-    return render(request, 
-                  template_name='blog/policy_areas/economics.html', 
-                  context=get_policy_area_context('Economics', request)
-                  )
-
-
-def security(request) -> HttpResponse:
-    return render(request, 
-                  template_name='blog/policy_areas/security.html',
-                  context=get_policy_area_context('Security', request)
-                  )
-
-def education(request) -> HttpResponse:
-    return render(request,
-                  template_name='blog/policy_areas/education.html',
-                  context=get_policy_area_context('Education', request)
-                  )
-
-def democracy(request) -> HttpResponse:
-    return render(request, 
-                  template_name='blog/policy_areas/democracy.html',
-                  context=get_policy_area_context('Democracy', request)
-                  )
-
-def human_rights(request) -> HttpResponse:
-    return render(request,
-                  template_name='blog/policy_areas/human_rights.html',
-                  context=get_policy_area_context('Human rights', request)
-                  )
-
-def culture(request) -> HttpResponse:
-    return render(request, 
-                  template_name='blog/policy_areas/culture.html',
-                  context=get_policy_area_context('Culture', request)
-                  )
+def policy_area(request: HttpRequest, type: str) -> HttpRequest:
+    context =  get_policy_area_context(type, request)
+    return render(request, 'blog/policy_area.html', context)
 
 
 '''\Research views/'''

@@ -51,19 +51,7 @@ urlpatterns = [
          views.volunteer,
          name='volunteer'),
     
-    # Policy areas
-    path('policy-areas/foreign-policy',
-         views.foreign_policy,
-         name='foreign_policy'),
-    path('policy-areas/internal-policy',
-         views.internal_policy,
-         name='internal_policy'),
-    path('policy-areas/economics', views.economics, name='economics'),
-    path('policy-areas/security', views.security, name='security'),
-    path('policy-areas/education', views.education, name='education'),
-    path('policy-areas/democracy', views.democracy, name='democracy'),
-    path('policy-areas/human-rights', views.human_rights, name='human_rights'),
-    path('policy-areas/culture', views.culture, name='culture'),
+    path('policy-areas/<str:type>', views.policy_area, name='policy_area'),
     
     # Media
     path('media/podcast', views.podcast, name='podcast'),
