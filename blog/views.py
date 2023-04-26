@@ -317,13 +317,6 @@ def policy_area(request: HttpRequest, slug: str) -> HttpRequest:
 
 
 '''\Research views/'''
-def analytics(request) -> HttpResponse:
-    return render(request,
-                  template_name='blog/research/analytics.html',
-                  context=get_news_type_context('Analytics',
-                                                request)
-                  )
-
 def annual_report(request) -> HttpResponse:
     return render(request,
                   template_name='blog/research/annual_report.html',
@@ -339,12 +332,7 @@ def index_ergosum(request) -> HttpResponse:
                                                    request)
                   )
 
-def opinion(request) -> HttpResponse:
-    return render(request,
-                  template_name='blog/research/opinion.html',
-                  context=get_news_type_context('Opinion', 
-                                                request)
-                  )
+
 
 
 '''\Main views/'''
@@ -354,23 +342,44 @@ def blog(request) -> HttpResponse:
                   context=get_blog_scholars_page_context(request)
                   )
 
-def events(request) -> HttpResponse:
+def news_type_view(request: HttpRequest, type: str):
     return render(request,
-                  template_name='blog/events.html',
-                  context=get_news_type_context('Events',
-                                                request)
+                  template_name='blog/news_type_page.html',
+                  context=get_news_type_context(type, request)
                   )
 
-def news(request) -> HttpResponse:
-    return render(request,
-                  template_name='blog/news.html',
-                  context=get_news_type_context('News',
-                                                request)
-                  )
 
-def op_eds(request) -> HttpResponse:
-    return render(request,
-                  template_name='blog/op_eds.html',
-                  context=get_news_type_context('Op-eds',
-                                                request)
-                  )
+# def opinion(request) -> HttpResponse:
+#     return render(request,
+#                   template_name='blog/research/opinion.html',
+#                   context=get_news_type_context('Opinion', 
+#                                                 request)
+#                   )
+    
+# def analytics(request) -> HttpResponse:
+#     return render(request,
+#                   template_name='blog/research/analytics.html',
+#                   context=get_news_type_context('Analytics',
+#                                                 request)
+#                   )
+
+# def events(request) -> HttpResponse:
+#     return render(request,
+#                   template_name='blog/events.html',
+#                   context=get_news_type_context('Events',
+#                                                 request)
+#                   )
+
+# def news(request) -> HttpResponse:
+#     return render(request,
+#                   template_name='blog/news.html',
+#                   context=get_news_type_context('News',
+#                                                 request)
+#                   )
+
+# def op_eds(request) -> HttpResponse:
+#     return render(request,
+#                   template_name='blog/op_eds.html',
+#                   context=get_news_type_context('Op-eds',
+#                                                 request)
+#                   )

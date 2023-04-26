@@ -21,6 +21,8 @@ urlpatterns = [
     path('search/', views.search, name='search'),
     path("sw.js", views.ServiceWorkerView.as_view(), name="sw.js"),
     
+    path('<str:type>/', views.news_type_view, name='news-type'),
+    
     # About
     path('about/board', views.board, name='board'),
     path('about/key-docs', views.key_doc, name='key_documents'),
@@ -58,14 +60,14 @@ urlpatterns = [
     path('media/videos', views.videos, name='videos'),
     
     # Research
-    path('research/analytics', views.analytics, name='analytics'),
+#     path('research/analytics', views.analytics, name='analytics'),
     path('research/annual-report', views.annual_report, name='annual_report'),
     path('research/index-ergosum', views.index_ergosum, name='index_ergosum'),
-    path('research/opinion', views.opinion, name='opinion'),
+#     path('research/opinion', views.opinion, name='opinion'),
     
     # Else
     path('blog/', views.blog, name='blog'),
-    path('events/', views.events, name='events'),
-    path('news/', views.news, name='news'),
-    path('op_eds/', views.op_eds, name='op_eds'),
+#     path('events/', views.events, name='events'),
+#     path('news/', views.news, name='news'),
+#     path('op_eds/', views.op_eds, name='op_eds'),
 ]
