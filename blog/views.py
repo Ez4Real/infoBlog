@@ -347,39 +347,3 @@ def news_type_view(request: HttpRequest, type: str):
                   template_name='blog/news_type_page.html',
                   context=get_news_type_context(type, request)
                   )
-
-
-# def opinion(request) -> HttpResponse:
-#     return render(request,
-#                   template_name='blog/research/opinion.html',
-#                   context=get_news_type_context('Opinion', 
-#                                                 request)
-#                   )
-    
-# def analytics(request) -> HttpResponse:
-#     return render(request,
-#                   template_name='blog/research/analytics.html',
-#                   context=get_news_type_context('Analytics',
-#                                                 request)
-#                   )
-
-# def events(request) -> HttpResponse:
-#     return render(request,
-#                   template_name='blog/events.html',
-#                   context=get_news_type_context('Events',
-#                                                 request)
-#                   )
-
-# def news(request) -> HttpResponse:
-#     return render(request,
-#                   template_name='blog/news.html',
-#                   context=get_news_type_context('News',
-#                                                 request)
-#                   )
-
-# def op_eds(request) -> HttpResponse:
-#     return render(request,
-#                   template_name='blog/op_eds.html',
-#                   context=get_news_type_context('Op-eds',
-#                                                 request)
-#                   )

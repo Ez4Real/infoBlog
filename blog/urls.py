@@ -60,14 +60,9 @@ urlpatterns = [
     path('media/videos', views.videos, name='videos'),
     
     # Research
-#     path('research/analytics', views.analytics, name='analytics'),
     path('research/annual-report', views.annual_report, name='annual_report'),
     path('research/index-ergosum', views.index_ergosum, name='index_ergosum'),
-#     path('research/opinion', views.opinion, name='opinion'),
     
     # Else
     path('blog/', views.blog, name='blog'),
-#     path('events/', views.events, name='events'),
-#     path('news/', views.news, name='news'),
-#     path('op_eds/', views.op_eds, name='op_eds'),
 ]
