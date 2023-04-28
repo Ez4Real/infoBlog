@@ -1,0 +1,29 @@
+{% extends "blog/base_generic.html" %}
+{% load i18n %}
+
+{% block content %}
+<div class="p-1"></div>
+
+<div class="container">
+    
+    {% if blog_posts %}
+
+        {% for news in blog_posts %}
+
+        <div class="text-center">
+            <h1>{{ news.type }}</h1>
+        </div>
+
+        
+        {% endfor %}
+
+        <div class="row row-cols-1 row-cols-lg-3 g-4">
+            {% include 'include/cards_news.html' %}
+        </div>
+    {% endif %}
+
+    {% include 'include/pagination.html' %}
+
+</div>
+
+{% endblock content %}

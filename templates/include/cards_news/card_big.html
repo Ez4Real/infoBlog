@@ -28,7 +28,9 @@
                 <small class="text-muted fs-5">{{ news.date_of_creation }}</small>
             {% endif %}
 
-            <small class="text-primary fs-5">{{ news.policy_area }}</small>
+            <a href="{% url 'policy_area' slug=news.policy_area.slug %}" class="text-decoration-none">
+                <small class="text-muted fs-6" style="margin-right: 10px;">{{ news.policy_area }}</small>
+            </a>
         </div>
     </a>
 </div>
