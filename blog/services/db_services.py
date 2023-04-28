@@ -11,7 +11,7 @@ def get_last_news() -> QuerySet:
     
 def get_news_by_policy_area(policy_area: str) -> QuerySet:
     """ Returns QuerySet of News by policy_area """
-    return News.objects.filter(policy_area__name=policy_area).order_by('-date_of_creation')
+    return News.objects.filter(policy_area__slug=policy_area).order_by('-date_of_creation')
 
 def get_policy_area_by_slug(slug: SafeText) -> str:
     """ Returns PolicyArea object name by slug """
