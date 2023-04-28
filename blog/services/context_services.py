@@ -42,6 +42,7 @@ def get_news_type_context(type: str,
     add_page_title_to_context_by_language(type, context)
     add_subscriber_form_to_context(context, request)
     add_posts_by_type_to_context(context, request, type)
+    context['news_type'] = type
     return context
 
 def get_blog_scholars_page_context(request: HttpRequest) -> dict:
