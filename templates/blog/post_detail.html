@@ -3,20 +3,10 @@
 
 {% block content %}
 
-    <!-- <h1 class="card-title mt-3">
-    {% if CURRENT_LANGUAGE == "uk" %}
-        <b>{{ post.uk_title }}</b>
-    {% else %}
-        <b>{{ post.en_title }}</b>
-    {% endif %}
-    </h1> -->
-    <div class="post-body row justify-content-between" >
-        <!-- <div class="order-last order-xl-first col col-lg-3 bg-dark text-white ">time</div>
-        <div class="col col-lg-7 bg-dark text-white ">content</div>
-        <div class="col col-lg-2 bg-dark text-white ">huy</div> -->
+    <div class="post-body row justify-content-between">
         <aside class="order-last order-xl-first d-flex col-12 col-xl-3 pt-5">
-            <div class="w-100">
-                <div class="l-news d-flex justify-content-center justify-content-xl-end w-100" >
+            <div class="w-100 position-relative">
+                <div class="l-news d-flex justify-content-center justify-content-xl-end w-100 position-sticky top-0 end-0" >
                     <div class="card" style="width: 70%;">
                         <div class="card-header">
                           {% trans "Last News" %}

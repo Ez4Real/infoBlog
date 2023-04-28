@@ -21,6 +21,8 @@ urlpatterns = [
     path('search/', views.search, name='search'),
     path("sw.js", views.ServiceWorkerView.as_view(), name="sw.js"),
     
+    path('<str:type>/', views.news_type_view, name='news-type'),
+    
     # About
     path('about/board', views.board, name='board'),
     path('about/key-docs', views.key_doc, name='key_documents'),
@@ -51,33 +53,16 @@ urlpatterns = [
          views.volunteer,
          name='volunteer'),
     
-    # Policy areas
-    path('policy-areas/foreign-policy',
-         views.foreign_policy,
-         name='foreign_policy'),
-    path('policy-areas/internal-policy',
-         views.internal_policy,
-         name='internal_policy'),
-    path('policy-areas/economics', views.economics, name='economics'),
-    path('policy-areas/security', views.security, name='security'),
-    path('policy-areas/education', views.education, name='education'),
-    path('policy-areas/democracy', views.democracy, name='democracy'),
-    path('policy-areas/human-rights', views.human_rights, name='human_rights'),
-    path('policy-areas/culture', views.culture, name='culture'),
+    path('policy-area/<slug:slug>', views.policy_area, name='policy_area'),
     
     # Media
     path('media/podcast', views.podcast, name='podcast'),
     path('media/videos', views.videos, name='videos'),
     
     # Research
-    path('research/analytics', views.analytics, name='analytics'),
     path('research/annual-report', views.annual_report, name='annual_report'),
     path('research/index-ergosum', views.index_ergosum, name='index_ergosum'),
-    path('research/opinion', views.opinion, name='opinion'),
     
     # Else
     path('blog/', views.blog, name='blog'),
-    path('events/', views.events, name='events'),
-    path('news/', views.news, name='news'),
-    path('op_eds/', views.op_eds, name='op_eds'),
 ]

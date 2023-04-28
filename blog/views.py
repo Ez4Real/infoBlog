@@ -3,7 +3,6 @@ from django.http import HttpResponse, HttpRequest
 from django.shortcuts import render, redirect
 from django.contrib import messages
 from django.contrib.auth import logout
-from django.contrib.auth.decorators import login_required
 from django.utils.safestring import SafeText
 from django.views.generic import TemplateView
 
@@ -11,7 +10,8 @@ from .services.db_services import get_news_by_slug, get_blog_scholar_by_slug, \
     get_blog_search_results, get_posts_by_author_slug, get_blog_post_by_slug, \
     get_member_by_slug, get_all_library_resources, get_resources_by_type, \
     get_all_library_books, get_libresource_by_slug, get_books_by_author, \
-    get_author_by_slug, get_last_news
+    get_author_by_slug, get_last_news, get_news_by_policy_area, \
+    get_policy_area_by_slug
 from .services.blog_services import paginate, \
     check_if_number_endswith_one, add_subscriber_form_to_context, \
     add_last_news_to_context, get_dynamic_page_title_by_language, \
@@ -309,65 +309,14 @@ def videos(request) -> HttpResponse:
                                                   request)
                   )
 
-'''\Policy areas views/'''
-def foreign_policy(request) -> HttpResponse:
-    return render(request, 
-                  template_name='blog/policy_areas/foreign_policy.html', 
-                  context=get_policy_area_context('Foreign policy', request)
-                  )
-
-def internal_policy(request) -> HttpResponse:
-    return render(request, 
-                  template_name='blog/policy_areas/internal_policy.html', 
-                  context=get_policy_area_context('Internal policy', request)
-                  )
-
-def economics(request) -> HttpResponse:
-    return render(request, 
-                  template_name='blog/policy_areas/economics.html', 
-                  context=get_policy_area_context('Economics', request)
-                  )
-
-
-def security(request) -> HttpResponse:
-    return render(request, 
-                  template_name='blog/policy_areas/security.html',
-                  context=get_policy_area_context('Security', request)
-                  )
-
-def education(request) -> HttpResponse:
-    return render(request,
-                  template_name='blog/policy_areas/education.html',
-                  context=get_policy_area_context('Education', request)
-                  )
-
-def democracy(request) -> HttpResponse:
-    return render(request, 
-                  template_name='blog/policy_areas/democracy.html',
-                  context=get_policy_area_context('Democracy', request)
-                  )
-
-def human_rights(request) -> HttpResponse:
-    return render(request,
-                  template_name='blog/policy_areas/human_rights.html',
-                  context=get_policy_area_context('Human rights', request)
-                  )
-
-def culture(request) -> HttpResponse:
-    return render(request, 
-                  template_name='blog/policy_areas/culture.html',
-                  context=get_policy_area_context('Culture', request)
-                  )
+def policy_area(request: HttpRequest, slug: str) -> HttpRequest:
+    context =  get_policy_area_context(slug, request)
+    context['blog_posts'] = get_news_by_policy_area(slug)
+    context['policy_area'] = get_policy_area_by_slug(slug)
+    return render(request, 'blog/policy_area.html', context)
 
 
 '''\Research views/'''
-def analytics(request) -> HttpResponse:
-    return render(request,
-                  template_name='blog/research/analytics.html',
-                  context=get_news_type_context('Analytics',
-                                                request)
-                  )
-
 def annual_report(request) -> HttpResponse:
     return render(request,
                   template_name='blog/research/annual_report.html',
@@ -383,12 +332,7 @@ def index_ergosum(request) -> HttpResponse:
                                                    request)
                   )
 
-def opinion(request) -> HttpResponse:
-    return render(request,
-                  template_name='blog/research/opinion.html',
-                  context=get_news_type_context('Opinion', 
-                                                request)
-                  )
+
 
 
 '''\Main views/'''
@@ -398,23 +342,8 @@ def blog(request) -> HttpResponse:
                   context=get_blog_scholars_page_context(request)
                   )
 
-def events(request) -> HttpResponse:
+def news_type_view(request: HttpRequest, type: str):
     return render(request,
-                  template_name='blog/events.html',
-                  context=get_news_type_context('Events',
-                                                request)
-                  )
-
-def news(request) -> HttpResponse:
-    return render(request,
-                  template_name='blog/news.html',
-                  context=get_news_type_context('News',
-                                                request)
-                  )
-
-def op_eds(request) -> HttpResponse:
-    return render(request,
-                  template_name='blog/op_eds.html',
-                  context=get_news_type_context('Op-eds',
-                                                request)
+                  template_name='blog/news_type_page.html',
+                  context=get_news_type_context(type, request)
                   )

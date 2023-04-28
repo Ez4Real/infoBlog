@@ -2,15 +2,16 @@
 {% load i18n %}
 
 {% block content %}
+<div class="p-1"></div>
 
 <div class="container">
 
     <div class="text-center">
-        <h1>{% trans "News" %}</h1>
+        <h1>{% trans policy_area %}</h1>
     </div>
 
     <div class="row row-cols-1 row-cols-lg-3 g-4">
-        {% include 'include/cards_news.html' %}
+        {% include 'include/cards_policy_areas.html' %}
     </div>
 
     {% include 'include/pagination.html' %}

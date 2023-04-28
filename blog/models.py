@@ -57,10 +57,16 @@ class PolicyArea(models.Model):
     def __str__(self):
         return self.name
     
+    def save(self, *args, **kwargs):
+        self.slug = slugify(self.name.lower())
+        super(PolicyArea, self).save(*args, **kwargs)
+    
     name = models.CharField(help_text='Enter policy area name',
                             max_length=25,
                             unique=True,
                             verbose_name=_('Policy area name'))
+    
+    slug = models.SlugField(unique=True)
 
 
 class Person(models.Model):
@@ -96,8 +102,7 @@ class Person(models.Model):
                                    help_text='Enter position',
                                    verbose_name=_('Ukrainian position')
                                    )
-    slug = models.SlugField(help_text='Slug',
-                            unique=True)
+    slug = models.SlugField(unique=True)
     date_of_creation = models.DateTimeField(auto_now_add=True,
                                             verbose_name=_('Date of creation'))
         
