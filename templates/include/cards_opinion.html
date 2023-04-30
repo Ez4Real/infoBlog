@@ -1,14 +1,13 @@
 {% if blog_posts %}
-{% for news in blog_posts %}
-
-    {% if forloop.first %}
-        <div class="col-12">
-            {% include 'include/cards_res/card_big.html' %}
-        </div>
-    {% else %}
-
-        {% include 'include/cards_res/card_small.html' %}
-
-    {% endif %}
-{% endfor %}
+<div class="row row-cols-1 row-cols-md-2 g-4">
+    {% for news in blog_posts %}
+        {% if forloop.first %}
+            <div class="col-12">
+                {% include 'include/cards_res/card_big.html' %}
+            </div>
+        {% else %}
+            {% include 'include/cards_res/card_small.html' %}
+        {% endif %}
+    {% endfor %}
+</div>
 {% endif %}

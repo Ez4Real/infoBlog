@@ -7,19 +7,34 @@
 <div class="container">
     
     {% if blog_posts %}
-
-        {% for news in blog_posts %}
-
-        <div class="text-center">
-            <h1>{{ news.type }}</h1>
-        </div>
-
         
-        {% endfor %}
-
-        <div class="row row-cols-1 row-cols-lg-3 g-4">
+        {% if news_type == 'News' %}
+            <div class="text-center pt-3">
+                <h1>{% trans "News" %}</h1>
+            </div>
             {% include 'include/cards_news.html' %}
-        </div>
+        {% elif news_type == 'Analytics' %}
+            <div class="text-center pt-3">
+                <h1>{% trans "Analytics" %}</h1>
+            </div>
+            {% include 'include/cards_analytics.html' %}
+        {% elif news_type == 'Opinion' %}
+            <div class="text-center pt-3">
+                <h1>{% trans "Opinion" %}</h1>
+            </div>
+            {% include 'include/cards_opinion.html' %}
+        {% elif news_type == 'Events' %}
+            <div class="text-center pt-3">
+                <h1>{% trans "Events" %}</h1>
+            </div>
+            {% include 'include/cards_news.html' %}
+        {% elif news_type == 'Op-eds' %}
+            <div class="text-center pt-3">
+                <h1>{% trans "Op-eds" %}</h1>
+            </div>
+            {% include 'include/cards_op_eds.html' %}
+        {% endif %}
+
     {% endif %}
 
     {% include 'include/pagination.html' %}
