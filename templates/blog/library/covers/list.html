@@ -22,8 +22,8 @@
   <div class="row row-cols-1 row-cols-md-2 row-cols-lg-3 row-cols-xl-4 g-4">
     {% if blog_posts %}
     {% for cover in blog_posts %}
-    <div class="col d-flex justify-content-center flex-wrap">
-            <div class="image-container text-center" style="width: 170px; height: 255px;" >
+    <div class="col d-flex justify-content-center flex-wrap flex-column">
+            <div class="image-container text-center mx-auto" style="width: 170px; height: 255px;" >
                 {% if user.is_authenticated %}
                     {% if cover.type.type == 'Brochures' or cover.type.type == 'Other papers' %}
                         <a href="{{ cover.file.url }}" target="_blank">
