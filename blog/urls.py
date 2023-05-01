@@ -12,6 +12,10 @@ urlpatterns = [
          activate_user_subscription,
          name='activate'),
     
+    path('blog/', views.blog, name='blog'),
+    path('library/', views.library, name='library'),
+    path('<str:type>/', views.news_type_view, name='news-type'),
+    
     path('library/books/', views.book_list, name='book-list'),
     path('library/<str:type>/', views.cover_list, name='cover-list'),
     path('<type>/<slug:slug>/', views.post_detail, name='post-detail'),
@@ -20,8 +24,6 @@ urlpatterns = [
     path('about/team/<slug:slug>/', views.team_member_detail, name='team-member-detail'),
     path('search/', views.search, name='search'),
     path("sw.js", views.ServiceWorkerView.as_view(), name="sw.js"),
-    
-    path('<str:type>/', views.news_type_view, name='news-type'),
     
     # About
     path('about/board', views.board, name='board'),
@@ -34,7 +36,6 @@ urlpatterns = [
     path('register/', views.register, name='register'),
     path('login/', views.login_view, name='login'),
     path('logout/', views.logout_view, name='logout'),
-    path('library/', views.library, name='library'),
     path('library/book/<slug:slug>/', views.book_detail, name='book-detail'),
     path('library/author/<slug:slug>/', views.author_book_list, name='author-list'),
     path('library/<str:type>/<slug:slug>/', views.cover_detail, name='cover-detail'),
@@ -62,7 +63,4 @@ urlpatterns = [
     # Research
     path('research/annual-report', views.annual_report, name='annual_report'),
     path('research/index-ergosum', views.index_ergosum, name='index_ergosum'),
-    
-    # Else
-    path('blog/', views.blog, name='blog'),
 ]
