@@ -31,7 +31,9 @@
     <p></p>
 
     {% if user.is_authenticated %}
+    {% if cover.subresources.all %}
     <p>List of Volumes & Issues:</p>
+    {% endif %}
       <ul>
         {% for subresource in cover.subresources.all %}
           <a href="{{ subresource.file.url }}">

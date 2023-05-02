@@ -30,7 +30,7 @@
                             {% endif %}    
                         </small>
                     {% endif %}
-                    <a href="{% url 'policy_area' policy_area=news.policy_area %}" class="text-decoration-none">
+                    <a href="{% url 'policy_area' slug=news.policy_area.slug %}" class="text-decoration-none">
                         <small class="text-primary fs-5">{{ news.policy_area }}</small>
                     </a>
                 </div>

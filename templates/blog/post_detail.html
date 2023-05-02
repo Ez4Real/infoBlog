@@ -7,8 +7,8 @@
         <aside class="order-last order-xl-first d-flex col-12 col-xl-3 pt-5">
             <div class="w-100 position-relative">
                 <div class="l-news d-flex justify-content-center justify-content-xl-end w-100 position-sticky top-0 end-0" >
-                    <div class="card" style="width: 70%;">
-                        <div class="card-header">
+                    <div class="card last-news-aside" style="width: 70%;">
+                        <div class="text-center">
                           {% trans "Last News" %}
                         </div>
                         <ul class="list-group list-group-flush">
@@ -16,14 +16,14 @@
                           
                               
                               <li class="list-group-item d-flex justify-content-between align-content-center">
-                                  <a href="{{ post.get_absolute_url }}">
+                                  <a href="{{ post.get_absolute_url }}" class="text-decoration-none">
                                       {% if CURRENT_LANGUAGE == "uk" %}
                                       {{ post.uk_title }}
                                       {% else %}
                                       {{ post.en_title }}
                                       {% endif %}
                                   </a>
-                                  {{ post.date_of_creation|time }}
+                                  <small class="text-muted">{{ post.date_of_creation|time:"H:i" }}</small>
                               </li>
                           {% endfor %}
                         </ul>

@@ -31,7 +31,7 @@
                         <a href="{{ cover.get_absolute_url }}">
                     {% endif %}
                 {% else %}
-                    <a href="#">
+                    <a href="{{ cover.get_absolute_url }}">
                 {% endif %}
                         <img src="{{ cover.banner.url }}" alt="..." >
                     </a>
@@ -44,7 +44,7 @@
                         <a class="text-decoration-none" href="{{ cover.get_absolute_url }}">
                     {% endif %}
                 {% else %}
-                    <a class="text-decoration-none" href="#">
+                    <a class="text-decoration-none" href="{{ cover.get_absolute_url }}">
                 {% endif %}
                     <p class="text">
                         {% if CURRENT_LANGUAGE == "uk" %}

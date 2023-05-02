@@ -311,7 +311,9 @@ def videos(request) -> HttpResponse:
 
 def policy_area(request: HttpRequest, slug: str) -> HttpRequest:
     context =  get_policy_area_context(slug, request)
-    context['blog_posts'] = get_news_by_policy_area(slug)
+    context['blog_posts'] = paginate(get_news_by_policy_area(slug),
+                                     request,
+                                     settings.RES_PER_PAGE)
     context['policy_area'] = get_policy_area_by_slug(slug)
     return render(request, 'blog/policy_area.html', context)
 

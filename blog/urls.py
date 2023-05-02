@@ -14,7 +14,6 @@ urlpatterns = [
     
     path('blog/', views.blog, name='blog'),
     path('library/', views.library, name='library'),
-    path('<str:type>/', views.news_type_view, name='news-type'),
     
     path('library/books/', views.book_list, name='book-list'),
     path('library/<str:type>/', views.cover_list, name='cover-list'),
@@ -63,4 +62,5 @@ urlpatterns = [
     # Research
     path('research/annual-report', views.annual_report, name='annual_report'),
     path('research/index-ergosum', views.index_ergosum, name='index_ergosum'),
+    path('<str:type>/', views.news_type_view, name='news-type'),
 ]

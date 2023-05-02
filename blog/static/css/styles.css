@@ -864,3 +864,6 @@ header a{
     object-fit: contain;
 }
 
+.last-news-aside{
+    border: 0 solid rgba(0,0,0,.125);
+}
