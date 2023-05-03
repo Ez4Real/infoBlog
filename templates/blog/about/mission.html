@@ -22,9 +22,20 @@
             </p>
         </div>
         <div class="col">
-            <div class="misio-img" >
-                {% include 'include/media/bg_photo_mission.html' %}
-            </div>
+            {% if CURRENT_LANGUAGE == "uk" %}
+
+                <div class="misio-img misio-img-uk" >
+                    {% include 'include/media/bg_photo_mission.html' %}
+                </div>
+
+            {% else %}
+
+                <div class="misio-img misio-img-en" >
+                    {% include 'include/media/bg_photo_mission.html' %}
+                </div>
+
+            {% endif %}
+            
         </div>
     </div>
 </div>

@@ -85,10 +85,10 @@
     <div class="cronis-analitics">
         <hr>
         <div class="h2">
-            {% trans 'Op-eds' %}
+            {% trans 'Opinion' %}
         </div>
-        <div class="row row-cols-1 row-cols-lg-3 g-4">
-            {% for news in last_opeds %}
+        <div class="row row-cols-1 row-cols-md-3 g-4">
+            {% for news in last_opinions %}
 
             {% include 'include/cards/card_home_page.html' %}
 
@@ -96,14 +96,27 @@
         </div>
     </div>
 
+    <div class="cronis-analitics">
+        <hr>
+        <div class="h2">
+            {% trans 'Analytics' %}
+        </div>
+        <div class="row row-cols-1 row-cols-lg-3 g-4">
+            {% for news in last_analytics %}
+
+            {% include 'include/cards/card_home_page.html' %}
+
+            {% endfor %}
+        </div>
+    </div>
 
     <div class="cronis-analitics">
         <hr>
         <div class="h2">
-            {% trans 'Opinion' %}
+            {% trans 'Op-eds' %}
         </div>
-        <div class="row row-cols-1 row-cols-md-3 g-4">
-            {% for news in last_opinions %}
+        <div class="row row-cols-1 row-cols-lg-3 g-4">
+            {% for news in last_opeds %}
 
             {% include 'include/cards/card_home_page.html' %}
 

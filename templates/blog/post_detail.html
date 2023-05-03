@@ -11,20 +11,21 @@
                         <div class="text-center">
                           {% trans "Last News" %}
                         </div>
-                        <ul class="list-group list-group-flush">
+                        <ul class="list-group">
                           {% for post in last_news %}
                           
                               
-                              <li class="list-group-item d-flex justify-content-between align-content-center">
-                                  <a href="{{ post.get_absolute_url }}" class="text-decoration-none">
+                              <li class="last-news-aside list-group-item d-flex flex-column justify-content-between align-content-center">
+                                  <a href="{{ post.get_absolute_url }}" class="text-decoration-none text-dark">
                                       {% if CURRENT_LANGUAGE == "uk" %}
                                       {{ post.uk_title }}
                                       {% else %}
                                       {{ post.en_title }}
                                       {% endif %}
                                   </a>
-                                  <small class="text-muted">{{ post.date_of_creation|time:"H:i" }}</small>
+                                  <small class="text-muted">{{ post.date_of_creation|date:"H:i, Y-m-d" }}</small>
                               </li>
+                              <hr style="margin: 0 auto; width: 90%; ">
                           {% endfor %}
                         </ul>
                       </div>
@@ -51,12 +52,9 @@
                         </div>
                         {% if post.policy_area %}
                         <div class="post-poicy-area ms-auto">
-                            {% if post.policy_area == "Human rights" %}
-                                <a href="{% url 'human_rights' %}">
-                                    {{ post.policy_area }}
-                                </a>
-                            {% endif %}
-                            {{ post.policy_area }}
+                            <a href="{% url 'policy_area' slug=post.policy_area.slug %}" class="text-decoration-none">
+                                <small class="text-muted fs-6" style="margin-right: 10px;">{{ post.policy_area }}</small>
+                            </a>
                         </div>
                         {% endif %}
                     </div>
@@ -87,12 +85,9 @@
                     </div>
                     {% if post.policy_area %}
                     <div class="post-poicy-area ms-auto">
-                        {% if post.policy_area == "Human rights" %}
-                            <a href="{% url 'human_rights' %}">
-                                {{ post.policy_area }}
-                            </a>
-                        {% endif %}
-                        {{ post.policy_area }}
+                        <a href="{% url 'policy_area' slug=post.policy_area.slug %}" class="text-decoration-none">
+                            <small class="text-muted fs-6" style="margin-right: 10px;">{{ post.policy_area }}</small>
+                        </a>
                     </div>
                     {% endif %}
                 </div>

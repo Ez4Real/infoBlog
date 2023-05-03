@@ -24,9 +24,19 @@
             </p>
         </div>
         <div class="col">
-            <div class="visio-img">
-                {% include 'include/media/bg_photo_vision.html' %}
-            </div>
+            {% if CURRENT_LANGUAGE == "uk" %}
+
+                <div class="visio-img visio-img-uk" >
+                    {% include 'include/media/bg_photo_vision.html' %}
+                </div>
+
+            {% else %}
+
+                <div class="visio-img visio-img-en" >
+                    {% include 'include/media/bg_photo_vision.html' %}
+                </div>
+
+            {% endif %}
         </div>
     </div>
 </div>

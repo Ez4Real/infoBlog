@@ -7,15 +7,25 @@
 
 <div class="container pt-3">
 
-    {% if CURRENT_LANGUAGE == "uk" %}
-        <h3 class="card-title">{{ book.uk_title }}</h3>
-        {{ book.uk_content | safe }}
+    <div class="book-ditale-card">
+	{% if CURRENT_LANGUAGE == "uk" %}
+    
+		<h3 class="card-title">{{ book.uk_title }}</h3>
+    	<div class="book-body d-flex gap-3">
+        	<img class="book-banner pt-2" src="{{ book.banner.url }}" alt="Book cover">
+        	<div class="book-content">{{ book.uk_content | safe }}</div>    
+    	</div>
 
     {% else %}
-        <h3 class="card-title">{{ book.en_title }}</h3>
-        {{ book.en_content | safe }}
-
+	
+		<h3 class="card-title">{{ book.en_title }}</h3>
+    	<div class="book-body d-flex gap-3">
+        	<img class="book-banner pt-2" src="{{ book.banner.url }}" alt="Book cover">
+        	<div class="book-content">{{ book.en_content | safe }}</div>    
+    	</div>
+	
     {% endif %}
+    </div>
 
     <hr>
     <div class="row row-col-2">

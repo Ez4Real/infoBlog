@@ -92,8 +92,12 @@
                     <div class="row">
                         <div class="col-md-6 group-control">
                           <label for="{{library_form.specialization.id_for_label }}">{{library_form.specialization.label }}</label>
-                          {{library_form.specialization_code }}
-                          {{library_form.specialization }}
+                          <div class="d-flex">
+                            <div class="specialzation-code" style="width: 94px;">
+                                {{library_form.specialization_code }}
+                            </div>
+                            {{library_form.specialization }}
+                          </div>
                         </div>
                   
                         <div class="col-md-6 group-control">

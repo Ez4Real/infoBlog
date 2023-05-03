@@ -140,7 +140,12 @@ class LibraryMemberForm(UserCreationForm, BaseMemberForm):
                                  widget=TextInputWidget)
     specialization = forms.CharField(label=_('Scientific Specialization'),
                                      max_length=200,
-                                     widget=TextInputWidget)
+                                     widget=forms.TextInput(attrs={
+                                         'type': 'text', 
+                                         'class': 'form-control',
+                                         'placeholder': _('Specialty name')
+                                         }),
+                                     )
     specialization_code = forms.IntegerField(validators=[MinValueValidator(100), ],
                                              widget=forms.TextInput(attrs={
                                                  'class': 'form-control',
