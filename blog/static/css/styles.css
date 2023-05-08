@@ -151,6 +151,10 @@ nav{
     .card-custom-blog{
         height: 300px !important;
     }
+    .post-container{
+        margin-inline: 0 0;
+    }
+
 
 }
 
