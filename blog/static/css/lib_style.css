@@ -2,6 +2,7 @@
     position: relative;
     width: 255px;
     height: 255px;
+    margin: auto;
 }
   
   .image-container img {

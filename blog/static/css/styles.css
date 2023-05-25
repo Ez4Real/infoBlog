@@ -145,11 +145,11 @@ nav{
         height: 100% !important;
         width: 100% !important;
     }
-    .card-custom{
-        height: 300px !important;
+    .card-castom{
+        height: 270px !important;
     }
     .card-custom-blog{
-        height: 300px !important;
+        height: 270px !important;
     }
     .post-container{
         margin-inline: 0 0;
@@ -163,7 +163,7 @@ nav{
         width: 205px !important;
     }
     header{
-        height: 270px!important;
+        height: 290px!important;
     }
     .card-custom{
         height: 150px !important;
@@ -179,8 +179,22 @@ nav{
         margin-bottom: 10px!important;
     }
     .body-cronis-post{
-        width: 696px !important;
+        width: auto !important;
     }
+    .card-castom{
+        height: auto !important;
+    }
+    .personal-blog-card{
+        width: auto !important;
+    }
+    .misio-img-uk,
+    .misio-img-en,
+    .visio-img-uk,
+    .visio-img-en{
+        width: auto !important; 
+        height: auto !important;
+    }
+    
 }
 
 @media (max-width: 426px) {
@@ -213,6 +227,7 @@ nav{
     .body-cronis-post{
         width: 402px !important;
     }
+
 }
 
 
