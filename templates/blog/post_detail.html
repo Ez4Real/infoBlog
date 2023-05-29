@@ -3,8 +3,8 @@
 
 {% block content %}
 
-    <div class="post-body post-container row justify-content-between">
-        <aside class="order-last order-xl-first d-flex col-12 col-xl-3 pt-5">
+    <div class="post-body post-container row row-cols-3 justify-content-between">
+        <aside class="order-last aside-hide order-xl-first d-flex col-12 col-xl-3 pt-5">
             <div class="w-100 position-relative">
                 <div class="l-news d-flex justify-content-center justify-content-xl-end w-100 position-sticky top-0 end-0" >
                     <div class="card last-news-aside" style="width: 70%;">
@@ -43,7 +43,7 @@
                 </h1>
                     
                 <div class="w-100" >
-                    <div class="d-flex justify-items-center mx-auto" style="width: 95%;">
+                    <div class="d-flex justify-items-center mx-auto">
                         <div class="post-author pe-3">
                             <b>{{ post.author.uk_full_name }}</b>
                         </div>

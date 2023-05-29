@@ -78,6 +78,10 @@ nav{
 
     .post-body{
         flex-direction: column;
+        align-items: center;
+    }
+    .aside-hide {
+        display: none !important;
     }
 
 }
@@ -227,6 +231,9 @@ nav{
     .body-cronis-post{
         width: 402px !important;
     }
+    .post-foto > img {
+        width: 100% !important;
+    }
 
 }
 
@@ -356,6 +363,8 @@ footer{
     width: 100%;
     position: relative;
 }
+
+ 
 
 .card-title{
     text-align: center;
