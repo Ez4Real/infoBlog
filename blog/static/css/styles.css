@@ -364,7 +364,9 @@ footer{
     position: relative;
 }
 
- 
+.post-foto > img {
+    width: 95% !important;
+} 
 
 .card-title{
     text-align: center;
