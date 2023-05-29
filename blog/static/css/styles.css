@@ -234,6 +234,9 @@ nav{
     .post-foto > img {
         width: 100% !important;
     }
+    .hide-date-author-pa {
+        display: none;
+    }
 
 }
 
@@ -287,6 +290,9 @@ nav{
     }
     .sub-butt{
         width: 272px !important;
+    }
+    .hide-date-author {
+        display: none !important;
     }
 }
 

@@ -18,7 +18,7 @@
     </a>
     <div class="d-flex justify-content-between card-footer bg-transparent border-secondary">
         {% if news.author %}
-            <small class="text-muted fs-5">
+            <small class="text-muted hide-date-author fs-5">
                 {% if CURRENT_LANGUAGE == "uk" %}
                     {{ news.author.uk_full_name }}
                 {% else %}
@@ -26,7 +26,7 @@
                 {% endif %}    
             </small>
         {% else %}
-            <small class="text-muted fs-5">{{ news.date_of_creation }}</small>
+            <small class="text-muted hide-date-author fs-5">{{ news.date_of_creation }}</small>
         {% endif %}
         <a href="{% url 'policy_area' slug=news.policy_area.slug %}" class="text-decoration-none">
             <small class="text-muted fs-6" style="margin-right: 10px;">{{ news.policy_area }}</small>

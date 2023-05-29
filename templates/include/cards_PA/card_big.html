@@ -17,15 +17,16 @@
         </div>
     </a>
     <div class="d-flex justify-content-between card-footer bg-transparent border-secondary">
-        <small class="text-muted fs-5">{{ news.date_of_creation }}</small>
+        <small class="text-muted hide-date-author-pa fs-5">{{ news.date_of_creation }}</small>
         {% if news.author %}
-            <small class="text-muted fs-5" style="padding-right: 70px;">
+            <small class="text-muted hide-date-author-pa fs-5" style="padding-right: 70px;">
                 {% if CURRENT_LANGUAGE == "uk" %}
                     {{ news.author.uk_full_name }}
                 {% else %}
                     {{ news.author.en_full_name }}
                 {% endif %}    
             </small>
+            
         {% endif %}
         <a href="{% url 'news-type' type=news.type %}" class="text-decoration-none">
             <small class="text-muted fs-6" style="margin-right: 10px;">{{ news.type }}</small>
