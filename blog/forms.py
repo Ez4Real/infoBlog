@@ -124,7 +124,7 @@ class LibraryMemberForm(UserCreationForm, BaseMemberForm):
                 self.add_error('resume', _('Resume file size must be under 5MB.'))
     
     phone_number = PhoneNumberField(label=_('Phone'),
-                             widget=PhoneNumberWidget)
+                                    widget=PhoneNumberWidget)
     password1 = forms.CharField(label=_('Password'),
                                 widget=forms.PasswordInput(attrs={'class': 'form-control', 'id': 'password_field', 'type': 'password'}))
     password2 = forms.CharField(label=_('Password confirmation'),

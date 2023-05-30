@@ -1,6 +1,7 @@
 {% extends "blog/base_generic.html" %}
 {% load i18n %}
 {% load static %}
+{% load custom_filters %}
 
 
 {% block content %}
@@ -28,26 +29,26 @@
 
                     <div class="row">
                         <div class="col-md-6 group-control">
-                          <label for="{{library_form.first_name.id_for_label }}">{{library_form.first_name.label }}</label>
+                          {{ library_form.first_name|add_red_star }}
                           {{library_form.first_name }}
                         </div>
                   
                         <div class="col-md-6 group-control">
-                            <label for="{{library_form.last_name.id_for_label }}">{{library_form.last_name.label }}</label>
+                            {{ library_form.last_name|add_red_star }}
                             {{library_form.last_name }}
                         </div>
                         
                     </div>
                     <div class="row">
                         <div class="col-md-6 group-control align-self-center" style="height: 84px;">
-                            <label for="{{ library_form.phone_number.id_for_label }}">{{ library_form.phone_number.label }}</label>
+                            {{ library_form.phone_number|add_red_star }}
                             <div class="row row-cols-2 phone-volunteer" style="padding: 7px 12px 0;">
                             {{ library_form.phone_number }}
                             </div>
                         </div>
     
                         <div class="col-md-6 group-control align-self-center" style="height: 84px;">
-                            <label for="{{ library_form.email.id_for_label }}">{{ library_form.email.label }}</label>
+                            {{ library_form.email|add_red_star }}
                             <div class="row row-cols-2" style="padding: 7px 12px 0;">
                             {{ library_form.email }}
                             </div>
@@ -57,7 +58,7 @@
                 
                     <div class="row">
                         <div class="col-md-6 group-control">
-                            <label for="{{ library_form.password.id_for_label }}">{{ library_form.password1.label }}</label>
+                            {{ library_form.password1|add_red_star }}
                             <div class="input-group" id="show_hide_password">
                                 {{ library_form.password1 }}
                                 <div class="eye-pass d-flex justify-content-center align-items-center input-group-addon" id="pass">
@@ -67,7 +68,7 @@
                         </div>
 
                         <div class="col-md-6 group-control">
-                            <label for="{{ library_form.password.id_for_label }}">{{ library_form.password2.label }}</label>
+                            {{ library_form.password2|add_red_star }}
                             <div class="input-group" id="show_hide_conf_password">
                                 {{ library_form.password2 }}
                                 <div class="eye-pass d-flex justify-content-center align-items-center input-group-addon" id="re-pass">
@@ -79,19 +80,19 @@
     
                     <div class="row">
                         <div class="col-md-6 group-control">
-                          <label for="{{library_form.institution.id_for_label }}">{{library_form.institution.label }}</label>
+                          {{ library_form.institution|add_red_star }}
                           {{library_form.institution }}
                         </div>
                   
                         <div class="col-md-6 group-control">
-                          <label for="{{library_form.department.id_for_label }}">{{library_form.department.label }}</label>
+                          {{ library_form.department|add_red_star }}
                           {{library_form.department }}
                         </div>
                     </div>
     
                     <div class="row">
                         <div class="col-md-6 group-control">
-                          <label for="{{library_form.specialization.id_for_label }}">{{library_form.specialization.label }}</label>
+                          {{ library_form.specialization|add_red_star }}
                           <div class="d-flex">
                             <div class="specialzation-code" style="width: 94px;">
                                 {{library_form.specialization_code }}
@@ -101,7 +102,7 @@
                         </div>
                   
                         <div class="col-md-6 group-control">
-                          <label for="{{library_form.education_level.id_for_label }}">{{library_form.education_level.label }}</label>
+                          {{ library_form.education_level|add_red_star }}
                           {{library_form.education_level }}
                         </div>
                     </div>
@@ -109,17 +110,17 @@
                     <div class="row">
 
                         <div class="col-md-6 group-control">
-                            <label for="{{library_form.resource_plans.id_for_label }}">{{library_form.resource_plans.label }}</label>
+                            {{ library_form.resource_plans|add_red_star }}
                             {{library_form.resource_plans }}
                         </div>
 
                         <div class="col-md-6 group-control" id="supervisor" style="display: none;">
-                            <label for="{{library_form.supervisor.id_for_label }}" style="padding-bottom: 25px;">{{library_form.supervisor.label }}</label>
+                            {{ library_form.supervisor|add_red_star }}
                             {{library_form.supervisor }}
                         </div>
                         
                         <div class="col-md-6 group-control" id="google_scholar" style="display: none;">
-                            <label for="{{library_form.google_scholar.id_for_label }}" style="padding-bottom: 25px;">{{library_form.google_scholar.label }}</label>
+                            {{ library_form.google_scholar|add_red_star }}
                             {{library_form.google_scholar }}
                         </div>
                     </div>

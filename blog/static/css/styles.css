@@ -945,3 +945,8 @@ header a{
 .fix-resume-form {
     max-width: 50%;
 }
+
+.required-field::before {
+    content: "*";
+    color: red;
+}
