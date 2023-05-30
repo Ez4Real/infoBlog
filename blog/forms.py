@@ -14,7 +14,7 @@ from phonenumber_field.widgets import PhoneNumberPrefixWidget
 
 TextInputWidget = forms.TextInput(attrs={'type': 'text', 'class': 'form-control'})
 SelectWidget = forms.Select(attrs={'class': 'form-control'})
-FileInputWidget = forms.FileInput(attrs={'class': 'form-control', 'style': 'max-width: 50%'})
+FileInputWidget = forms.FileInput(attrs={'class': 'form-control'})
 PhoneNumberWidget = PhoneNumberPrefixWidget(initial='UA', attrs={'class': 'form-control'})
 EmailWidget = forms.EmailInput(attrs={'type': 'email', 'class': 'form-control'})
 MAX_RESUME_SIZE = 5242880

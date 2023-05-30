@@ -150,7 +150,7 @@ nav{
         width: 100% !important;
     }
     .card-castom{
-        height: 300px !important;
+        height: 330px !important;
     }
     .card-custom-blog{
         height: 270px !important;
@@ -158,7 +158,9 @@ nav{
     .post-container{
         margin-inline: 0 0;
     }
-
+    .fix-resume-form {
+        max-width: 70% !important;
+    }
 
 }
 
@@ -198,6 +200,9 @@ nav{
         width: auto !important; 
         height: auto !important;
     }
+    .fix-resume-form {
+        max-width: 95% !important;
+    }
     
 }
 
@@ -236,6 +241,9 @@ nav{
     }
     .hide-date-author-pa {
         display: none;
+    }
+    .fix-resume-form {
+        max-width: 100% !important;
     }
 
 }
@@ -932,4 +940,8 @@ header a{
 
 .card-castom{
     height: 225px;
+}
+
+.fix-resume-form {
+    max-width: 50%;
 }
