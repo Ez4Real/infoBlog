@@ -1,3 +1,4 @@
+{% load i18n %}
 <a href="{{ news.get_absolute_url }}" class="text-dark text-decoration-none">
     <div class="card mb-5">
         <div class="row g-0">
@@ -31,7 +32,7 @@
                         </small>
                     {% endif %}
                     <a href="{% url 'policy_area' slug=news.policy_area.slug %}" class="text-decoration-none">
-                        <small class="text-primary fs-5">{{ news.policy_area }}</small>
+                        <small class="text-primary fs-5">{% trans news.policy_area.name %}</small>
                     </a>
                 </div>
             </div>

@@ -1,5 +1,6 @@
 {% extends "blog/base_generic.html" %}
 {% load i18n %}
+{% load custom_filters %}
 
 {% block content %}
 <!--  <div class="text-center join-us-foto d-flex align-items-center justify-content-center">-->
@@ -32,30 +33,30 @@
       {% csrf_token %}
       <div class="row">
         <div class="col-md-6 form-group">
-          <label for="{{ volunteer_form.first_name.id_for_label }}">{{ volunteer_form.first_name.label }}</label>
+          {{ volunteer_form.first_name|add_red_star }}
           {{ volunteer_form.first_name }}
         </div>
 
         <div class="col-md-6 form-group">
-          <label for="{{ volunteer_form.last_name.id_for_label }}">{{ volunteer_form.last_name.label }}</label>
+          {{ volunteer_form.last_name|add_red_star }}
           {{ volunteer_form.last_name }}
         </div>
       </div>
       <div class="row">
         <div class="col-md-6 group-control">
-          <label for="{{ volunteer_form.dob.id_for_label }}">{{ volunteer_form.dob.label }}</label>
+          {{ volunteer_form.dob|add_red_star }}
           {{ volunteer_form.dob }}
         </div>
 
         <div class="col-md-6 group-control">
-          <label for="{{ volunteer_form.city.id_for_label }}">{{ volunteer_form.city.label }}</label>
+          {{ volunteer_form.city|add_red_star }}
           {{ volunteer_form.city }}
         </div>
       </div>
 
       <div class="row">
         <div class="col-md-6 group-control align-self-center" style="height: 84px;">
-          <label for="{{ volunteer_form.email.id_for_label }}">{{ volunteer_form.email.label }}</label>
+          {{ volunteer_form.email|add_red_star }}
           <div class="row row-cols-2" style="padding: 7px 12px 0;">
           {{ volunteer_form.email }}
           </div>
@@ -63,7 +64,7 @@
 
 
         <div class="col-md-6 group-control">
-          <label for="{{ volunteer_form.phone.id_for_label }}">{{ volunteer_form.phone.label }}</label>
+          {{ volunteer_form.phone|add_red_star }}
           <div class="row row-cols-2 phone-volunteer" style="padding: 7px 12px 0;">
           {{ volunteer_form.phone }}
           </div>
@@ -71,7 +72,7 @@
       </div>
 
       <div class="col-md-12 group-control">
-        <label for="{{ volunteer_form.employment.id_for_label }}">{{ volunteer_form.employment.label }}</label>
+        {{ volunteer_form.employment|add_red_star }}
         {{ volunteer_form.employment }}
       </div>
 

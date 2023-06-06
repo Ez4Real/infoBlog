@@ -1,5 +1,6 @@
 {% extends "blog/base_generic.html" %}
 {% load i18n %}
+{% load custom_filters %}
 
 {% block content %}
   <!-- <div class="text-center join-us-foto d-flex align-items-center justify-content-center">
@@ -18,40 +19,40 @@
           {% csrf_token %}
           <div class="row">
             <div class="col-md-6 form-group">
-              <label for="{{ join_form.first_name.id_for_label }}">{{ join_form.first_name.label }}</label>
+              {{ join_form.first_name|add_red_star }}
               {{ join_form.first_name }}
             </div>
       
             <div class="col-md-6 form-group">
-              <label for="{{ join_form.last_name.id_for_label }}">{{ join_form.last_name.label }}</label>
+              {{ join_form.last_name|add_red_star }}
               {{ join_form.last_name }}
             </div>
           </div>
           <div class="row">
             <div class="col-md-6 group-control">
-              <label for="{{ join_form.email.id_for_label }}">{{ join_form.email.label }}</label>
+              {{ join_form.email|add_red_star }}
               {{ join_form.email }}
             </div>
       
             <div class="col-md-6 group-control">
-                <label for="{{ join_form.education_level.id_for_label }}">{{ join_form.education_level.label }}</label>
+                {{ join_form.education_level|add_red_star }}
                 {{ join_form.education_level }}
             </div>
           </div>
       
           <div class="group-control">
-            <label for="{{ join_form.expertise_area.id_for_label }}">{{ join_form.expertise_area.label }}</label>
+            {{ join_form.expertise_area|add_red_star }}
             {{ join_form.expertise_area }}
           </div>
 
           <div class="group-control">
-            <label for="{{ join_form.expectations.id_for_label }}">{{ join_form.expectations.label }}</label>
+            {{ join_form.expectations|add_red_star }}
             {{ join_form.expectations }}
           </div>
 
           <div class="row">
             <div class="col-md-6 group-control">
-                <label for="{{ join_form.resume.id_for_label }}">{{ join_form.resume.label }}</label>
+                {{ join_form.resume|add_red_star }}
                 <div class="fix-resume-form">
                   {{ join_form.resume }}
                 </div>
