@@ -5,28 +5,27 @@
 {% block content %}
 <div class="p-3"></div>
 <div class="container">
-    <div class="row  row-cols-lg-2 row-cols-1">
-        <div class="col">
-            <h1>
-                {% trans "Index ERGOSUM" %}
-            </h1>
+    <div class="row">
+        <div class="col-md-6 order-md-2">
+            {% if CURRENT_LANGUAGE == "uk" %}
+                <div class="index-img">
+                    {% include 'include/media/bg_photo_index.html' %}
+                </div>
+            {% else %}
+                <div class="index-img">
+                    {% include 'include/media/bg_photo_index.html' %}
+                </div>
+            {% endif %}
+        </div>
+        <div class="col-md-6 order-md-1">
+            <h1>{% trans "Index ERGOSUM" %}</h1>
             <p class="card-text">
-
                 {% if CURRENT_LANGUAGE == "uk" %}
-
                     {% include 'translates/uk/index_ergosum.html' %}
-
                 {% else %}
-
                     {% include 'translates/en/index_ergosum.html' %}
-
                 {% endif %}
             </p>
-        </div>
-        <div class="col">
-            <div class="index-img">
-                {% include 'include/media/bg_photo_index.html' %}
-            </div>
         </div>
     </div>
 </div>

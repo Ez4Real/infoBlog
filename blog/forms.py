@@ -143,7 +143,7 @@ class LibraryMemberForm(UserCreationForm, BaseMemberForm):
                                      widget=forms.TextInput(attrs={
                                          'type': 'text', 
                                          'class': 'form-control',
-                                         'placeholder': _('Specialty name')
+                                         'placeholder': _('Speciality name')
                                          }),
                                      )
     specialization_code = forms.IntegerField(validators=[MinValueValidator(100), ],

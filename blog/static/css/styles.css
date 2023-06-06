@@ -12,6 +12,10 @@ body{
     font-family: "MacPawFixel", Georgia !important;
 }
 
+body header .lang_butt {
+    display: none;
+}
+
 .sidebar-nav {
     margin-top: 20px;
     padding: 0;
@@ -67,9 +71,9 @@ nav{
     }
 
     .lang_butt{
-        margin-left: 130px!important;
-        margin-top: -5px!important;
-        margin-bottom: -5px!important;
+        margin-left: 130px !important;
+        margin-top: -5px !important;
+        margin-bottom: -5px !important;
     }
 
     .cronis-nav-anime{
@@ -98,9 +102,9 @@ nav{
     }
 
     .lang_butt{
-        margin-left: 110px!important;
-        margin-top: -5px!important;
-        margin-bottom: -5px!important;
+        margin-left: 110px !important;
+        margin-top: -5px !important;
+        margin-bottom: -5px !important;
     }
 
     .phone-volunteer input{
@@ -135,9 +139,9 @@ nav{
 
     .lang_butt{
         justify-content: center!important;
-        margin-left: 0px!important;
-        margin-top: 0px!important;
-        margin-bottom: 0px!important;
+        margin-left: 0px !important;
+        margin-top: 0px !important;
+        margin-bottom: 0px !important;
         order:1!important;
     }
 
@@ -165,12 +169,81 @@ nav{
 }
 
 @media (max-width: 768px) {
+    .navbar-dark .navbar-brand {
+        width: 100%;
+        height: 100%;
+        display: block;
+        text-align: center;
+    }
+
+    .sub-butt {
+    width: 345px!important;
+}
+    
+    body .navbar-brand svg {
+        position: unset;
+        height: 130px;
+        width: 150px;
+    }
+    
+    body .text-logo {
+        color: white;
+        position: unset;
+    }
+    
+    body .card {
+        border-top: 1px solid rgba(0,0,0,.125);
+        border-bottom: 1px solid rgba(0,0,0,.125);
+        border-right: none;
+        border-left: none;
+    }
+
+    body header .lang_butt {
+        display: block;
+    }
+
+    .container .row-cols-1 col h1 {
+        text-align: center;
+    }
+
+    .container .text-muted {
+        font-size: 16px !important;
+    }
+
+    .container .card-text {
+        font-size: 16px;
+    }
+
+    .container .col {
+        padding: 0 !important;
+    }
+    .container .card-img-top {
+        padding: 0;
+    }
+    .container .col, .col-12 {
+        padding: 0;
+    }
+
+    .container .anual-img,.container .visio-img,.container .misio-img,.container .index-img {
+        padding-top: 0;
+        padding-bottom: 10px;
+    }
+
     .phone-volunteer input{
         width: 205px !important;
     }
+
     header{
-        height: 290px!important;
+        height: 290px !important;
     }
+    header .lang_butt {
+        float: left;
+        width: 93px;
+        position: relative;
+        top: -47px;
+        left: 8px;
+    }
+    
     .card-custom{
         height: 150px !important;
     }
@@ -182,7 +255,7 @@ nav{
         width: 335px !important;
     }
     .form-control{
-        margin-bottom: 10px!important;
+        margin-bottom: 10px !important;
     }
     .body-cronis-post{
         width: auto !important;
@@ -203,10 +276,39 @@ nav{
     .fix-resume-form {
         max-width: 95% !important;
     }
-    
+
+    .lang_butt {
+        position: absolute;
+        right: 0;
+        left: 9px;
+        width: 90px;
+        top: 19px;
+    }
+
+    li .dropdown-item {
+        font-size: 20px;
+        padding: 0.25rem 1.1rem;
+    }
+
+    .navbar-toggler {
+        position: relative;
+        top: 18px;
+    }
+
+    footer form .row .col-auto {
+        width: 100% !important;
+    }
+
+    .col-auto .btn {
+        width: 100% !important;
+    }
 }
 
 @media (max-width: 426px) {
+
+    body .sub-butt {
+        width: unset !important;
+    }
     .card-video{
         width:100%!important;
     }
@@ -222,10 +324,7 @@ nav{
         width: 271px !important;;
     }
     .form-control{
-        margin-bottom: 10px!important;
-    }
-    .sub-butt{
-        width: 378px!important;
+        margin-bottom: 10px !important;
     }
     .card-custom{
         height: 225px !important;
@@ -261,9 +360,9 @@ nav{
     .phone-volunteer input{
         width: 224px !important;;
     }
-    .sub-butt{
+    /* .sub-butt{
         width: 328px !important;
-    }
+    } */
     .card-custom{
         height: 255px !important;
     }
@@ -296,9 +395,9 @@ nav{
     .body-cronis-post{
         width: 296px !important;
     }
-    .sub-butt{
+    /* .sub-butt{
         width: 272px !important;
-    }
+    } */
     .hide-date-author {
         display: none !important;
     }
@@ -341,38 +440,38 @@ nav{
   font-weight: bold;
 }
 
-footer{
+footer {
     margin-top: 10%;
 }
 
-.our-team-foto{
+.our-team-foto {
     justify-content: center;
 }
 
-.join-us-foto{
+.join-us-foto {
     height: 500px;
     width: 100%;
     position: relative;
 }
-.join-us-text{
+.join-us-text {
     position: absolute;
 }
 
-.card-foto{
+.card-foto {
     height: 400px;
 }
 
-.body-cronis-post{
+.body-cronis-post {
     margin: auto;
     width: 850px;
 }
 
-.body-cronis-post p{
+.body-cronis-post p {
     text-align: justify;
     margin-bottom: 21px;
 }
 
-.post-foto{
+.post-foto {
     height: 570px;
     width: 100%;
     position: relative;
@@ -382,11 +481,11 @@ footer{
     width: 95% !important;
 } 
 
-.card-title{
+.card-title {
     text-align: center;
 }
 
-.body-cronis-post img{
+.body-cronis-post img {
     display: block;
     margin-left: auto;
     margin-right: auto;
@@ -398,7 +497,7 @@ footer{
 }*/
 
 
-.lang_butt{
+.lang_butt {
     justify-content: flex-end;
     margin-left: 130px;
     margin-bottom: 25px;
@@ -424,19 +523,19 @@ footer{
     align-items: start !important;
 }
 
-.sidebar-home{
+.sidebar-home {
     align-items: end !important;
 }
 .nav-link{
     color: #fff;
     transition: all .3s ease;
 }
-.nav-link:hover{
+.nav-link:hover {
     color: #fcff55 !important;
     transform: translate(0px,-7px);
 }
 
-.nav-link:focus{
+.nav-link:focus {
     color: #fcff55 !important;
 }
 
@@ -458,12 +557,12 @@ footer{
   padding: 2px 20px;
 }
 
-.close-sidebar{
+.close-sidebar {
     cursor:pointer;
     transition: box-shadow .15s ease-in-out;
 }
 
-.site-dark:after{
+.site-dark:after {
   content: '';
   position: absolute;
   top: 0;
@@ -474,7 +573,7 @@ footer{
   z-index: 2;
 }
 
-.card{
+.card {
     margin: 20px 0px;
 }
 
@@ -517,6 +616,8 @@ footer{
 
 .card-title, main h1,main h3 {
     color:#004494;
+    display: flex;
+    justify-content: center;
 }
 
 /* header a{
@@ -528,7 +629,7 @@ footer{
 } */
 
 .header-bg{
-    background-color: #576fad;
+    background-color: #072461;
 
 }
 
@@ -762,7 +863,7 @@ header a{
 }
 
 .blog-person-card{
-    height: 95px!important;
+    height: 95px !important;
 }
 
 .text-align-justify{

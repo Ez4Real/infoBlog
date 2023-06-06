@@ -26,36 +26,6 @@
         
         <div class="m-4 p-0"></div>
 
-
-
-        {% get_current_language as CURRENT_LANGUAGE %}
-        {% get_available_languages as AVAILABLE_LANGUAGES %}
-        {% get_language_info_list for AVAILABLE_LANGUAGES as languages %}
-
-        <ul class="col-12 text-end nav lang_butt mx-3 mb-lg-0 me-lg-3">
-            <li class="nav-item w-100 dropdown">
-                <a class="nav-link dropdown-toggle text-white" href="#" id="navbarDropdownMenuLink"
-                   role="button" data-bs-toggle="dropdown" aria-expanded="false">
-                    <span style="text-transform:uppercase">{{ CURRENT_LANGUAGE }}</span>
-                </a>
-                <ul class="dropdown-menu " aria-labelledby="navbarDropdownMenuLink">
-                    {% for language in languages %}
-                    <li>
-                        <a class="dropdown-item"
-                           href="/{{ language.code }}/{{ request.get_full_path|slice:" 4:" }}"
-                        {% if language.code == CURRENT_LANGUAGE %} class="active"{% endif %}>
-                        {% if language.name_local == "Українська" %}
-                        Українська
-                        {% else %}
-                        English
-                        {% endif %}
-                        </a>
-                    </li>
-                    {% endfor %}
-                </ul>
-            </li>
-        </ul>
-
         <form name="search" method="GET" action="{% url 'search' %}" class="col-12 order-1 col-xl-3 mb-3 mb-xl-0 me-xl-3">
             <input type="text" name="search" class="form-control form-control-dark"
                    placeholder="{% trans 'Search' %}..."
@@ -79,6 +49,7 @@
         <img src="https://res.cloudinary.com/infoblog567/image/upload/v1674668099/static/header_logo/%D1%88%D0%B0%D0%BF%D0%BA%D0%B02_q8abpg.jpg">
     </div>
     <nav class="navbar navbar-expand-xl navbar-dark">
+
         <a class="navbar-brand position-absolute top-0 start-0 p-0" href="{% url 'homepage' %}">
             <!-- <p class="text-logo-ergs">ERGOSUM</p> -->
             {% include 'include/media/logo.html' %}
@@ -140,6 +111,35 @@
         </div>
         </div>
     </nav>
+
+    {% get_current_language as CURRENT_LANGUAGE %}
+    {% get_available_languages as AVAILABLE_LANGUAGES %}
+    {% get_language_info_list for AVAILABLE_LANGUAGES as languages %}
+
+    <ul class="col-12 text-end nav lang_butt mx-3 mb-lg-0 me-lg-3">
+        <li class="nav-item w-100 dropdown">
+            <a class="nav-link dropdown-toggle text-white" href="#" id="navbarDropdownMenuLink"
+                role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                <span style="text-transform:uppercase">{{ CURRENT_LANGUAGE }}</span>
+            </a>
+            <ul class="dropdown-menu " aria-labelledby="navbarDropdownMenuLink">
+                {% for language in languages %}
+                <li>
+                    <a class="dropdown-item"
+                        href="/{{ language.code }}/{{ request.get_full_path|slice:" 4:" }}"
+                    {% if language.code == CURRENT_LANGUAGE %} class="active"{% endif %}>
+                    {% if language.name_local == "Українська" %}
+                    Українська
+                    {% else %}
+                    English
+                    {% endif %}
+                    </a>
+                </li>
+                {% endfor %}
+            </ul>
+        </li>
+    </ul>
+
 </header>
 <main>
 
