@@ -1,11 +1,11 @@
-<div class="col" style="margin-bottom: 50px;">
+<div class="col" style="margin-bottom: 20px;">
     <a href="{{ post.get_absolute_url }}"
        class="text-dark text-decoration-none">
        <div class="blog-card">
-            <div class="blog-date text-muted mb-3">
+            <div class="blog-date text-muted" style="font-size: 16px;">
                 {{ post.date_of_creation }}
             </div>
-            <div class="blog-title mb-3">
+            <div class="blog-title">
                 {% if CURRENT_LANGUAGE == "uk" %}
                     <h5 class="card-title text-start fs-2 blog-card-text">
                         {{ post.uk_title }}
@@ -16,18 +16,24 @@
                     </h5>
                 {% endif %}
             </div>
-            <!-- <div class="blog-body mb-4">
-                <p>
-                    {{ post.en_content }}
+            <div class="blog-body mb-2 blog-card-content">
+                <p class="">
+                    {% if CURRENT_LANGUAGE == "uk" %}
+                        {{ post.uk_content|striptags|truncatewords:25|safe }}
+                    {% else %}
+                        {{ post.en_content|striptags|truncatewords:25|safe }}
+                    {% endif %}
                 </p>  
-            </div> -->
-            <div class="blog-author fw-bolder">
-                {% if CURRENT_LANGUAGE == "uk" %}
-                    <strong>Автор:</strong> {{ post.author.uk_full_name }}
-                {% else %}
-                    <strong>Author:</strong> {{ post.author.en_full_name }}
-                {% endif %}
+
+                <div class="blog-author fw-bolder">
+                    {% if CURRENT_LANGUAGE == "uk" %}
+                        {{ post.author.uk_full_name }}
+                    {% else %}
+                        {{ post.author.en_full_name }}
+                    {% endif %}
+                </div>
             </div>
+            
         </div>
     </a>
 </div>

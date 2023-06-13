@@ -27,14 +27,14 @@
                                         {{ member.uk_full_name }}
                                     </div>
                                     <div class="card-text">
-                                        {{ member.uk_position }}
+                                        {{ member.uk_position|safe }}
                                     </div>
                                 {% else %}
                                     <div class="card-title">
                                         {{ member.en_full_name }}
                                     </div>
                                     <div class="card-text">
-                                        {{ member.en_position }}
+                                        {{ member.en_position|linebreaks|safe }}
                                     </div>
                                 {% endif %}    
                             </div>

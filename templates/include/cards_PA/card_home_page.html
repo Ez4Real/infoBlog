@@ -30,6 +30,7 @@
     </a>
 
             <div class="d-flex justify-content-between card-footer bg-transparent border-secondary">
+                <small class="text-muted fs-6">{{ news.date_of_creation }}</small>
                 <a href="{% url 'news-type' type=news.type %}" class="text-decoration-none">
                     <small class="text-muted fs-6" style="margin-right: 10px;">{% trans news.type.type %}</small>
                 </a>

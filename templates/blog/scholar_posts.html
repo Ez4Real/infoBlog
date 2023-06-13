@@ -38,17 +38,16 @@
         </div>
     </div>
 
-    <p class="text-center card-title fs-1">
-        {% if CURRENT_LANGUAGE == "uk" %}
-                Статті
-        {% else %}
-                Blogs
-        {% endif %}   
+    <!-- <p class="text-sides-decor"> -->
+    <p class="text-sides-decor">
+        <span class="span-underline fs-3">{% trans 'Blogs' %}</span>
     </p>
 
-    <div class="row row-cols-1 g-4">
+    <div class="row row-cols-1 row-cols-md-2 g-4">
         {% for post in blog_posts %}
-            {% include 'include/cards_blogs/card_blogs.html' %}
+            <div class="col">
+                {% include 'include/cards_blogs/card_blogs.html' %}
+            </div>
         {% endfor %}
     </div>
 </div>

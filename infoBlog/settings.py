@@ -209,7 +209,8 @@ POSTS_PER_PAGE = 15
 RES_PER_PAGE = 16
 TITLE = _('European Research Group Of Support for Ukrainian Membership – ERGOSUM')
 HOMEPAGE_CONTENT = (
-    (5, 'News', 'last_news'),
+    (5, 'News', 'carousel_news'),
+    (3, 'News', 'last_news'),
     (3, 'Op-eds', 'last_opeds'),
     (3, 'Analytics', 'last_analytics'),
     (3, 'Opinion', 'last_opinions'),

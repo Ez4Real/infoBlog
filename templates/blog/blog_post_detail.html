@@ -30,7 +30,7 @@
         </div>
     {% else %}
         <h1 class="card-title">
-            {{ post.uk_title }}
+            {{ post.en_title }}
         </h1>
 
         <div class="w-100" >
@@ -39,7 +39,7 @@
                     <small>{{ post.date_of_creation }}</small>
                 </div>
                 <div class="post-poicy-area ms-auto">
-                    {{ post.author.uk_full_name }}
+                    {{ post.author.en_full_name }}
                 </div>
             </div>
             
@@ -49,7 +49,6 @@
             {{ post.en_content | safe }}
         </div>
     {% endif %}
-    <hr>
 </div>
 
 {% endblock %}
