@@ -394,6 +394,9 @@ class ResourceType(models.Model):
                                verbose_name=_('Resource banner')
                                )
     
+    class Meta:
+        verbose_name_plural = _('Resource types')
+    
     def __str__(self):
         return f'{self.type}'
     
@@ -416,6 +419,9 @@ class LibraryAuthor(models.Model):
                                     help_text='Enter full name on ukrainian',
                                     verbose_name=_('Full name on ukrainian')
                                     )
+    
+    class Meta:
+        verbose_name_plural = _('Library authors')
     
     def __str__(self):
         return f'{self.en_full_name}'
@@ -456,6 +462,9 @@ class LibraryResource(Article):
     date = models.DateField(default=now,
                             verbose_name=_('Date of creation'))
     
+    class Meta:
+        verbose_name_plural = _('Library resources')
+    
     def __str__(self):
         return f'{self.type} - {self.en_title}'
     
@@ -480,3 +489,6 @@ class Subresource(models.Model):
                                          help_text='Choose bounded resource',
                                          verbose_name=_('Bounded resource'),
                                         )
+    
+    class Meta:
+        verbose_name_plural = _('Subresources')
