@@ -16,16 +16,17 @@
                     </h5>
                 {% endif %}
             </div>
-            <div class="blog-body mb-2 blog-card-content">
-                <p class="">
+            <div class="blog-body mb-2">
+                <p class="blog-card-content">
                     {% if CURRENT_LANGUAGE == "uk" %}
-                        {{ post.uk_content|striptags|truncatewords:25|safe }}
+                        {{ post.uk_content|striptags|truncatewords:50|safe }}
                     {% else %}
-                        {{ post.en_content|striptags|truncatewords:25|safe }}
+                        {{ post.en_content|striptags|truncatewords:50|safe }}
                     {% endif %}
                 </p>  
 
-                <div class="blog-author fw-bolder">
+                <div class="blog-author fw-bolder blog-card-author">
+                    By 
                     {% if CURRENT_LANGUAGE == "uk" %}
                         {{ post.author.uk_full_name }}
                     {% else %}

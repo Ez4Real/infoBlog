@@ -14,26 +14,27 @@
             <div class="author-blog-image col-12 col-lg-3">
                 <img src="{{author.image.url}}" alt="" class="w-100">
             </div>
-            <div class="author-blog-body col-12 col-lg-9 fs-3 mt-4 mt-lg-0">
+            <div class="author-blog-body col-12 col-lg-9">
+                <a href="{% url 'blog' %}" class="blog-link">BLOG SCHOLARS</a href="{ url 'blog' }">
                 <div class="author-blog-name">
                     {% if CURRENT_LANGUAGE == "uk" %}
-                        <h1>
+                        <div>
                             {{ author.uk_full_name }}
-                        </h1>
+                        </div>
                     {% else %}
-                        <h1>
-                            by {{ author.en_full_name }}
-                        </h1>
+                        <div>
+                            {{ author.en_full_name }}
+                        </div>
                     {% endif %}   
                 </div>
-                <hr>
-                <div class="author-blog-pos">
+                <div class="blog-card-author text-muted">
                     {% if CURRENT_LANGUAGE == "uk" %}
                         {{ author.uk_position }}
                     {% else %}
                             {{ author.en_position }}
                     {% endif %}
                 </div>
+                <hr>
             </div>    
         </div>
     </div>

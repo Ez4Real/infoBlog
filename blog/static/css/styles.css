@@ -86,7 +86,33 @@ nav{
 
 .blog-card-content {
     font-size: 15px;
-    width: 45%;
+    width: 85%;
+    color: #898989;
+}
+
+.blog-card-author {
+    font-size: 14px;
+}
+
+.author-blog-body { 
+    padding-left: 4rem;
+}
+.author-blog-name {
+    font-size: 50px;
+    max-width: 50%;
+    line-height: 60px;
+}
+
+.blog-link {
+    font-size: 15px;
+    font-weight: 700;
+    text-decoration: none;
+    color:#004494;
+}
+
+.blog-link:hover {
+    text-decoration: underline;
+    color:#004494;
 }
 
 @media (max-width: 1440px) {
