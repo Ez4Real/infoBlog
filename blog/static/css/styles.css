@@ -234,7 +234,7 @@ nav{
     
     body .navbar-brand svg {
         position: unset;
-        height: 130px;
+        height: 100px;
         width: 150px;
     }
     
@@ -286,7 +286,7 @@ nav{
     }
 
     header{
-        height: 202px !important;
+        height: 175px !important;
     }
     header .lang_butt {
         float: left;
