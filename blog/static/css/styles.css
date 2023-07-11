@@ -1,7 +1,28 @@
 @font-face {
-    font-family: "MacPawFixel";
-    src: url('./font/MacPawFixel-VF.ttf') format('truetype');
-    font-weight: normal;
+    font-family: "Mercury A";
+    src: url("{% static 'fonts/MercuryA.woff2' %}");
+    font-weight: 400;
+    font-style: normal;
+}
+
+@font-face {
+    font-family: "Mercury B";
+    src: url("{% static 'fonts/MercuryB.woff2' %}");
+    font-weight: 400;
+    font-style: normal;
+}
+
+@font-face {
+    font-family: "Whitney A";
+    src: url("{% static 'fonts/WhitneyA.woff2' %}");
+    font-weight: 400;
+    font-style: normal;
+}
+
+@font-face {
+    font-family: "Whitney B";
+    src: url("{% static 'fonts/WhitneyB.woff2' %}");
+    font-weight: 400;
     font-style: normal;
 }
 
@@ -9,11 +30,16 @@ body{
     min-height: 100vh;
     background: #f4f4f4;
     font-size: 19px;
-    font-family: "MacPawFixel", Georgia !important;
+    font-family: Whitney A,Whitney B,Arial,Helvetica,sans-serif;
 }
 
 body header .lang_butt {
     display: none;
+}
+
+body .type-header {
+    font-weight: 700;
+    letter-spacing: 1px;
 }
 
 .sidebar-nav {
@@ -27,6 +53,8 @@ body header .lang_butt {
 
 nav{
     padding: 0px !important;
+    font-weight: 700;
+    letter-spacing: 1px;
 }
 
 .nav-div{
@@ -85,9 +113,10 @@ nav{
 }
 
 .blog-card-content {
-    font-size: 15px;
+    font-size: 16px;
     width: 85%;
     color: #898989;
+    font-family: Mercury A,Mercury B,Times New Roman,Times,serif;
 }
 
 .blog-card-author {
@@ -554,6 +583,7 @@ footer {
 
 .card-title {
     text-align: center;
+    letter-spacing: -.5px;
 }
 
 .body-cronis-post img {
@@ -678,7 +708,14 @@ footer {
 
 .card-text{
     text-align: justify;
-    word-spacing: -1px
+    word-spacing: -1px;
+    font-family: Mercury A,Mercury B,Times New Roman,Times,serif;
+}
+
+.card-policy-area {
+    margin-right: 10px;
+    font-weight: 700;
+    letter-spacing: 1px;
 }
 
 .card-img-top{
@@ -868,7 +905,7 @@ header a{
 .text-logo{
     position: absolute;
     top: 80%;
-    left: 10%;
+    left: 5%;
     color: #ffcd00;
 }
 

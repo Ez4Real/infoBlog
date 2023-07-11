@@ -27,12 +27,12 @@
                     {% endif %}    
                 </small>
             {% else %}
-                <small class="text-muted fs-6">{{ news.date_of_creation }}</small>
+                <small class="text-muted card-policy-area" style="line-height: 1.7rem;">{{ news.date_of_creation }}</small>
             {% endif %}
             </div>
 
-            <a href="{% url 'policy_area' slug=news.policy_area.slug %}" class="text-decoration-none">
-                <small class="text-muted fs-6" style="margin-right: 10px;">{% trans news.policy_area.name %}</small>
+            <a href="{% url 'policy_area' slug=news.policy_area.slug %}" class="text-decoration-none card-policy-area">
+                <small class="text-muted" style="margin-right: 10px;">{% trans news.policy_area.name %}</small>
             </a>
         </div>
     </a>

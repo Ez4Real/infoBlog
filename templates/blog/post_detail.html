@@ -23,7 +23,7 @@
                                       {{ post.en_title }}
                                       {% endif %}
                                   </a>
-                                  <small class="text-muted">{{ post.date_of_creation|date:"H:i, Y-m-d" }}</small>
+                                  <small class="text-muted card-policy-area">{{ post.date_of_creation|date:"H:i, Y-m-d" }}</small>
                               </li>
                               <hr style="margin: 0 auto; width: 90%; ">
                           {% endfor %}
@@ -72,20 +72,20 @@
                 {% else %}
     
                 <h1 class="card-title">
-                    <b>{{ post.en_title }}</b>
+                    <b style="font-family: Mercury A,Mercury B,Times New Roman,Times,serif;">{{ post.en_title }}</b>
                 </h1>
     
                 <div class="d-flex">
                     <div class="post-author pe-3">
                         <b>{{ post.author.en_full_name }}</b>
                     </div>
-                    <div class="post-date text-muted">
+                    <div class="post-date text-muted card-policy-area">
                         <small>{{ post.date_of_creation }}</small>
                     </div>
                     {% if post.policy_area %}
                     <div class="post-poicy-area ms-auto">
                         <a href="{% url 'policy_area' slug=post.policy_area.slug %}" class="text-decoration-none">
-                            <small class="text-muted fs-6" style="margin-right: 10px;">{{ post.policy_area }}</small>
+                            <small class="text-muted card-policy-area" style="margin-right: 10px;">{{ post.policy_area }}</small>
                         </a>
                     </div>
                     {% endif %}
@@ -97,7 +97,7 @@
                     <img src="{{ post.banner.url }}" class="d-block mx-auto h-100 ob-cover">
                 </div>
                 <div class="p-3"></div>
-                <div class="body-cronis-post fs-4 text-center">
+                <div class="body-cronis-post fs-4 text-center card-text">
                     {{ post.en_content | safe }}
                 </div>
             

@@ -8,10 +8,6 @@
                      class="img-fluid rounded-start d-block mx-auto w-100 h-100 ob-cover"
                      alt="...">
             </div>
-            <small class="text-muted fs-6">
-                {% if news.policy_area == "Human rights" %}
-                {% endif %}
-            </small>
 
             <div class="card-body card-castom d-flex align-content-top justify-content-center flex-wrap" style="height: 215px;">
 
@@ -35,9 +31,9 @@
 
                 </a>
             <div class="d-flex justify-content-between card-footer bg-transparent border-secondary">
-                <small class="text-muted fs-6" style="margin-right: 10px;">{{ news.date_of_creation }}</small>
+                <small class="text-muted card-policy-area" style="margin-right: 10px; line-height: 1.7rem;">{{ news.date_of_creation }}</small>
                 <a href="{% url 'policy_area' slug=news.policy_area.slug %}" class="text-decoration-none">
-                    <small class="text-muted fs-6" style="margin-right: 10px;">{% trans news.policy_area.name %}</small>
+                    <small class="text-muted card-policy-area" style="margin-right: 10px;">{% trans news.policy_area.name %}</small>
                 </a>
 
             </div>
