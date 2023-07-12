@@ -1,32 +1,4 @@
 @font-face {
-    font-family: "Mercury A";
-    src: url("../fonts/MercuryA.woff2");
-    font-weight: 400;
-    font-style: normal;
-}
-
-@font-face {
-    font-family: "Mercury B";
-    src: url("../fonts/MercuryB.woff2");
-    font-weight: 400;
-    font-style: normal;
-}
-
-@font-face {
-    font-family: "Whitney A";
-    src: url("../fonts/WhitneyA.woff2");
-    font-weight: 400;
-    font-style: normal;
-}
-
-@font-face {
-    font-family: "Whitney B";
-    src: url("../fonts/WhitneyB.woff2");
-    font-weight: 400;
-    font-style: normal;
-}
-
-@font-face {
     font-family: "lemonde-journal";
     src: url("../fonts/lemonde-journal.woff2");
     font-weight: 400;
@@ -35,18 +7,30 @@
 
 @font-face {
     font-family: "Larsseit";
-    src: url("fonts/Larsseit.woff2");
+    src: url("../fonts/Larsseit.woff2");
     font-weight: normal;
     font-style: normal;
 }
 
+@font-face {
+    font-family: "GTAmerica";
+    src: url("../fonts/gt-america.woff2");
+    font-weight: normal;
+    font-style: normal;
+}
 
+@font-face {
+    font-family: "Haarlemmer";
+    src: url("../fonts/haarlemmer.woff2");
+    font-weight: normal;
+    font-style: normal;
+}
 
 body{
     min-height: 100vh;
     background: #f4f4f4;
     font-size: 19px;
-    font-family: Whitney A,Whitney B,Arial,Helvetica,sans-serif;
+    font-family: "lemonde-journal",serif;
 }
 
 body header .lang_butt {
@@ -54,8 +38,9 @@ body header .lang_butt {
 }
 
 body .type-header {
-    font-weight: 700;
-    letter-spacing: 1px;
+    letter-spacing: 0.02em;
+    font-family: "Larsseit","Arial",serif;
+    font-size: 30px;
 }
 
 .sidebar-nav {
@@ -67,11 +52,9 @@ body .type-header {
     height: 200px;
 } */
 
-nav{
-    padding: 0px !important;
-    font-weight: 700;
-    letter-spacing: 1px;
-    text-transform: uppercase;
+nav {
+    letter-spacing: 0.02em;
+    font-size: 18px;
 }
 
 .nav-div{
@@ -133,7 +116,8 @@ nav{
     font-size: 16px;
     width: 85%;
     color: #898989;
-    font-family: Mercury A,Mercury B,Times New Roman,Times,serif;
+    font-family: "Haarlemmer","Georgia",serif;
+    line-height: 1.2em;
 }
 
 .blog-card-author {
@@ -600,7 +584,9 @@ footer {
 
 .card-title {
     text-align: center;
-    letter-spacing: -.5px;
+    font-family: "GT America Condensed","Arial",sans-serif !important;
+    font-weight: bold !important;
+    line-height: 1em; 
 }
 
 .body-cronis-post img {
@@ -725,8 +711,8 @@ footer {
 
 .card-text{
     text-align: justify;
-    word-spacing: -1px;
-    font-family: Mercury A,Mercury B,Times New Roman,Times,serif;
+    font-family: "Haarlemmer","Georgia",serif;
+    line-height: 1.2em;
 }
 
 .card-policy-area {
