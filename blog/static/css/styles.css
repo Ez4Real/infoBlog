@@ -316,7 +316,7 @@ nav {
     }
 
     header{
-        height: 175px !important;
+        height: 178px !important;
     }
     header .lang_butt {
         float: left;
@@ -569,7 +569,7 @@ footer {
 
 .body-cronis-post p {
     text-align: justify;
-    margin-bottom: 21px;
+    font-family: "Haarlemmer","Georgia",serif;
 }
 
 .post-foto {
@@ -1006,8 +1006,7 @@ header a{
 }
 
 .misio-img img{
-    width: 100%; 
-    height: 100%;
+    height: 68%;
 }
 
 .visio-img-uk{
@@ -1023,8 +1022,7 @@ header a{
 }
 
 .visio-img img{
-    width: 100%; 
-    height: 100%;
+    height: 68%;
 }
 
 /* .index-img{
@@ -1160,4 +1158,9 @@ header a{
 .required-field::before {
     content: "*";
     color: red;
+}
+
+.team-position p {
+    margin-bottom: 0;
+    text-align: center;
 }
