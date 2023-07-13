@@ -141,3 +141,6 @@ GitHub.sublime-settings
 *.png
 *.svg
 *.gif
+
+# Exclude ignoring logo ico
+!blog/static/images/*.png
