@@ -145,6 +145,10 @@ nav {
     color:#004494;
 }
 
+.footer-form {
+    margin-left: 100px;
+}
+
 @media (max-width: 1440px) {
     .logo,
     .logo-side{
@@ -169,10 +173,13 @@ nav {
     .aside-hide {
         display: none !important;
     }
-
 }
 
 @media (max-width: 1024px) {
+    .footer-form {
+        margin-left: 66px;
+    }
+
     .fs-4{
         font-size: calc(1.275rem + .1vw)!important;
     }
@@ -403,6 +410,10 @@ nav {
 }
 
 @media (max-width: 426px) {
+
+    .footer-form {
+        margin-left: unset;
+    }
 
     body .sub-butt {
         width: unset !important;
