@@ -56,7 +56,8 @@ def get_blog_search_results(query: str) -> QuerySet:
     """ Returns QuerySet of News by query """
     return News.objects.filter(Q(en_title__icontains=query) | Q(uk_title__icontains=query) |
                                Q(en_subtitle__icontains=query) | Q(uk_subtitle__icontains=query) |
-                               Q(en_content__icontains=query) | Q(uk_content__icontains=query)
+                               Q(en_content__icontains=query) | Q(uk_content__icontains=query) |
+                               Q(author__en_full_name__icontains=query) | Q(author__uk_full_name__icontains=query)
                                ).order_by('-date_of_creation')
     
 def get_all_library_resources() -> QuerySet:

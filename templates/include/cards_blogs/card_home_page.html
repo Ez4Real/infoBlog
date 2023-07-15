@@ -10,17 +10,17 @@
             <div class=" d-flex flex-column  text-align-justify align-items-center">
 
                 {% if CURRENT_LANGUAGE == "uk" %}
-                    <h5 class="text-start w-100 pt-2" style="color: #004494;">
+                    <h5 class="text-center w-100 pt-2" style="color: #004494;">
                         {{ scholar.uk_full_name }}
                     </h5>
-                    <p class="card-text text-start text-muted fs-6">
+                    <p class="card-text text-center text-muted fs-6">
                         {{ scholar.uk_position }}
                     </p>
                 {% else %}
-                    <h5 class="text-start w-100 pt-2" style="color: #004494;">
+                    <h5 class="text-center w-100 pt-2" style="color: #004494;">
                         {{ scholar.en_full_name }}
                     </h5>
-                    <p class="card-text text-start text-muted fs-6">
+                    <p class="card-text text-center text-muted fs-6">
                         {{ scholar.en_position }}
                     </p>
                 {% endif %}

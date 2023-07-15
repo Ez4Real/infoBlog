@@ -1,36 +1,26 @@
 @font-face {
-    font-family: "lemonde-journal";
-    src: url("../fonts/lemonde-journal.woff2");
+    font-family: "lemonde";
+    src: url("../fonts/le-monde-journal.otf");
     font-weight: 400;
-    font-style: normal;
 }
 
 @font-face {
     font-family: "Larsseit";
     src: url("../fonts/Larsseit.woff2");
     font-weight: normal;
-    font-style: normal;
-}
-
-@font-face {
-    font-family: "GTAmerica";
-    src: url("../fonts/gt-america.woff2");
-    font-weight: normal;
-    font-style: normal;
 }
 
 @font-face {
     font-family: "Haarlemmer";
     src: url("../fonts/haarlemmer.woff2");
     font-weight: normal;
-    font-style: normal;
 }
 
 body{
     min-height: 100vh;
     background: #f4f4f4;
     font-size: 19px;
-    font-family: "lemonde-journal",serif;
+    font-family: "lemonde",serif;
 }
 
 body header .lang_butt {
@@ -147,6 +137,16 @@ nav {
 
 .footer-form {
     margin-left: 100px;
+}
+
+.container {
+    margin-bottom: 50px;
+}
+
+.subresources-list {
+    display: flex;
+    list-style-type: none;
+    flex-direction: column;
 }
 
 @media (max-width: 1440px) {
@@ -552,10 +552,6 @@ nav {
   font-weight: bold;
 }
 
-footer {
-    margin-top: 10%;
-}
-
 .our-team-foto {
     justify-content: center;
 }
@@ -603,7 +599,6 @@ footer {
 
 .card-title {
     text-align: center;
-    font-family: "GT America Condensed","Arial",sans-serif !important;
     font-weight: bold !important;
     line-height: 1em; 
 }
@@ -740,9 +735,6 @@ footer {
     letter-spacing: 1px;
 }
 
-.card-img-top{
-    padding: 10px;
-}
 
 .card-title, main h1,main h3 {
     color:#004494;

@@ -16,24 +16,28 @@
             </div>
             <div class="author-blog-body col-12 col-lg-9">
                 <a href="{% url 'blog' %}" class="blog-link">BLOG SCHOLARS</a href="{ url 'blog' }">
-                <div class="author-blog-name">
-                    {% if CURRENT_LANGUAGE == "uk" %}
-                        <div>
-                            {{ author.uk_full_name }}
-                        </div>
-                    {% else %}
-                        <div>
-                            {{ author.en_full_name }}
-                        </div>
-                    {% endif %}   
-                </div>
-                <div class="blog-card-author text-muted">
-                    {% if CURRENT_LANGUAGE == "uk" %}
-                        {{ author.uk_position }}
-                    {% else %}
-                            {{ author.en_position }}
-                    {% endif %}
-                </div>
+            
+                <a href="{{ author.link }}" class="text-decoration-none">
+                    
+                    <div class="author-blog-name" style="color:black !important">
+                        {% if CURRENT_LANGUAGE == "uk" %}
+                            <div>
+                                {{ author.uk_full_name }}
+                            </div>
+                        {% else %}
+                            <div>
+                                {{ author.en_full_name }}
+                            </div>
+                        {% endif %}   
+                    </div>
+                    <div class="blog-card-author text-muted">
+                        {% if CURRENT_LANGUAGE == "uk" %}
+                            {{ author.uk_position }}
+                        {% else %}
+                                {{ author.en_position }}
+                        {% endif %}
+                    </div>
+                </a>
                 <hr>
             </div>    
         </div>

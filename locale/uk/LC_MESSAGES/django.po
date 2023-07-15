@@ -496,7 +496,7 @@ msgid "Security"
 msgstr "Безпека"
 
 #: .\templates\blog\post_detail.html:12
-msgid "Last News"
+msgid "Latest News"
 msgstr "Останні новини"
 
 #: .\templates\blog\research\annual_report.html:19

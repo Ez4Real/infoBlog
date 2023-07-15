@@ -13,7 +13,7 @@ from phonenumber_field.widgets import PhoneNumberPrefixWidget
 
 
 TextInputWidget = forms.TextInput(attrs={'type': 'text', 'class': 'form-control'})
-SelectWidget = forms.Select(attrs={'class': 'form-control'})
+SelectWidget = forms.Select(attrs={'class': 'form-select'})
 FileInputWidget = forms.FileInput(attrs={'class': 'form-control'})
 PhoneNumberWidget = PhoneNumberPrefixWidget(initial='UA', attrs={'class': 'form-control'})
 EmailWidget = forms.EmailInput(attrs={'type': 'email', 'class': 'form-control'})
