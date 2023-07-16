@@ -1,4 +1,5 @@
 from django.contrib import admin
+from ordered_model.admin import OrderedModelAdmin
 
 from .models import NewsType, PolicyArea, News, Subscriber, Video, \
     BlogScholar, Blog, TeamMember, LibraryMember, ResourceType, \
@@ -32,8 +33,8 @@ class SubscriberAdmin(admin.ModelAdmin):
     readonly_fields = ['email']
     
 @admin.register(TeamMember)
-class TeamMemberAdmin(admin.ModelAdmin):
-    list_display = ('en_full_name', 'uk_full_name', 'en_position', 'uk_position')
+class TeamMemberAdmin(OrderedModelAdmin):
+    list_display = ('en_full_name', 'move_up_down_links', 'uk_full_name', 'en_position', 'uk_position')
     list_filter = ('date_of_creation', 'en_full_name', 'uk_full_name', 'en_position', 'uk_position')
     fields = [('image',), 
               ('en_full_name', 'uk_full_name'),

@@ -17,6 +17,7 @@ from django.utils.http import urlsafe_base64_encode
 from django.utils.text import slugify 
 from django.utils.translation import gettext_lazy as _
 from django.utils.timezone import now
+from ordered_model.models import OrderedModel
 
 from .tokens import email_unsubscribe_token
 
@@ -119,8 +120,8 @@ class BlogScholar(Person):
                            verbose_name=_('University link'))
 
 
-class TeamMember(Person):
-    class Meta:
+class TeamMember(OrderedModel, Person):
+    class Meta(OrderedModel.Meta):
         verbose_name_plural = _('Team Members')
         
     def get_absolute_url(self):

@@ -51,6 +51,7 @@ INSTALLED_APPS = [
     'cloudinary_storage',
     'cloudinary',
     'phonenumber_field',
+    'ordered_model',
 ]
 
 MIDDLEWARE = [
