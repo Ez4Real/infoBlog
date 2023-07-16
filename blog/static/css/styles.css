@@ -130,6 +130,11 @@ nav {
     color:#004494;
 }
 
+.blogart-title {
+    font-weight: bold !important;
+    line-height: 1em;
+}
+
 .blog-link:hover {
     text-decoration: underline;
     color:#004494;
