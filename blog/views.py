@@ -11,7 +11,7 @@ from .services.db_services import get_news_by_slug, get_blog_scholar_by_slug, \
     get_member_by_slug, get_all_library_resources, get_resources_by_type, \
     get_all_library_books, get_libresource_by_slug, get_books_by_author, \
     get_author_by_slug, get_last_news, get_news_by_policy_area, \
-    get_policy_area_by_slug
+    get_policy_area_by_slug, get_all_general_members
 from .services.blog_services import paginate, \
     check_if_number_endswith_one, add_subscriber_form_to_context, \
     add_last_news_to_context, get_dynamic_page_title_by_language, \
@@ -272,11 +272,11 @@ def all_donate(request) -> HttpResponse:
 
 '''\Join us views/'''
 def general_members(request) -> HttpResponse:
+    context = get_static_page_context('General members', request)
+    context['members'] = get_all_general_members()
     return render(request,
                   template_name='blog/join_us/general_members.html',
-                  context=get_static_page_context('General members',
-                                                   request)
-                  )
+                  context=context)
 
 def join_team(request) -> HttpResponse:
     context=get_static_page_context('Join team', request)

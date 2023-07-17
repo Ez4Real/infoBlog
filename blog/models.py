@@ -10,6 +10,7 @@ from django.contrib.auth.hashers import check_password
 from django.core.mail import EmailMessage
 from django.core.validators import MaxLengthValidator, MinValueValidator
 from django.db import models
+from django.db.models import Max
 from django.template.loader import get_template
 from django.urls import reverse
 from django.utils.encoding import force_bytes
@@ -77,10 +78,6 @@ class Person(models.Model):
     def __str__(self):
         return f'{self.en_full_name} - {self.uk_full_name}'
     
-    def save(self, *args, **kwargs):
-        self.slug = slugify(self.en_full_name.lower())
-        super(Person, self).save(*args, **kwargs)
-    
     def get_all_objects(self):
         return self._meta.model.objects.all()
     
@@ -103,17 +100,22 @@ class Person(models.Model):
                                    help_text='Enter position',
                                    verbose_name=_('Ukrainian position')
                                    )
-    slug = models.SlugField(unique=True)
     date_of_creation = models.DateTimeField(auto_now_add=True,
                                             verbose_name=_('Date of creation'))
         
 
-class BlogScholar(Person):
-    class Meta:
+class BlogScholar(OrderedModel, Person):
+    class Meta(OrderedModel.Meta):
         verbose_name_plural = _('Blog Scholars')
         
     def get_scholar_posts(self):
         return reverse('scholar-posts', args=[self.slug])
+    
+    def save(self, *args, **kwargs):
+        self.slug = slugify(self.en_full_name.lower())
+        super(BlogScholar, self).save(*args, **kwargs)
+    
+    slug = models.SlugField(unique=True)
     
     link = models.URLField(help_text='Enter link',
                            max_length = 200,
@@ -126,6 +128,16 @@ class TeamMember(OrderedModel, Person):
         
     def get_absolute_url(self):
         return reverse('team-member-detail', args=[self.slug])
+    
+    def save(self, *args, **kwargs):
+        self.slug = slugify(self.en_full_name.lower())
+        super(TeamMember, self).save(*args, **kwargs)
+        
+    email = models.EmailField(unique=True,
+                              verbose_name='E-mail',
+                              max_length=100)
+    
+    slug = models.SlugField(unique=True)
     
     en_content = RichTextUploadingField(help_text='Enter news content',
                                         verbose_name=_('English content')
@@ -493,3 +505,26 @@ class Subresource(models.Model):
     
     class Meta:
         verbose_name_plural = _('Subresources')
+        
+class GeneralMember(OrderedModel, Person):
+    class Meta(OrderedModel.Meta):
+        verbose_name_plural = _('General Members')
+        
+    en_name = models.CharField(max_length=100,
+                               help_text='Enter name',
+                               verbose_name=_('English name')
+                               )
+    uk_name = models.CharField(max_length=100,
+                               help_text='Enter name',
+                               verbose_name=_('Ukrainian name')
+                               )
+    banner = models.ImageField(upload_to='uploads/general-members', 
+                               verbose_name=_('Member banner')
+                               )
+    link = models.URLField(help_text='Enter link',
+                           max_length = 200,
+                           verbose_name=_('Member link'))
+    date = models.DateField(default=now,
+                            verbose_name=_('Date of creation'))
+    is_rounded = models.BooleanField(default=False)
+        

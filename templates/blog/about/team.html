@@ -21,13 +21,13 @@
                                      alt="Team photo">
                             </div>
 
-                            <div class="card-body text-dark">
+                            <div class="card-body text-dark team-members-align" style="height: 130px;">
                                 {% if CURRENT_LANGUAGE == "uk" %}
                                     <div class="card-title">
                                         {{ member.uk_full_name }}
                                     </div>
-                                    <div class="card-text">
-                                        {{ member.uk_position|safe }}
+                                    <div class="card-text team-position">
+                                        {{ member.uk_position|linebreaks }}
                                     </div>
                                 {% else %}
                                     <div class="card-title">

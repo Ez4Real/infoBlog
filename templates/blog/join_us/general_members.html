@@ -8,234 +8,33 @@
             <h3>{% trans "General members" %}</h3>
         </div>
     <div class="p-2"></div>
-        <div class="row row-cols-xl-4 row-cols-lg-3 row-cols-md-2">
+    <div class="row row-cols-xl-4 row-cols-lg-3 row-cols-md-2">
 
-            <a href="https://www.iee-ulb.eu/en/" class="text-decoration-none text-dark" target="_blank">
-                <div class="col">
-                    <div class="card mb-4 card-gm">
-                        <img class="card-img-top" alt="Team foto" style="height: 203px; width: 100%; display: block; padding:5px 55px 5px 55px;"
-                             src="https://res.cloudinary.com/infoblog567/image/upload/v1673712520/static/general_members/Universit%C3%A9_libre_de_Bruxelles_seal.svg_bakwsf.png">
-                        <div class="card-body p-0">
-                            <p class="">
-                                {% if CURRENT_LANGUAGE == "uk" %}
+        {% for member in members %}
+        <a href="{{ member.link }}" class="text-decoration-none text-dark" target="_blank">
+            <div class="col">
+                <div class="card mb-4 card-gm">
+                    <div>
+                        <img class="card-img-top gm-image" alt="Team foto" src="{{ member.banner.url }}"
+                        style="width: {% if member.is_rounded %}70%{% else %}100%{% endif %};">
+                    </div>
+                    <div class="card-body p-0 gm-text">
+                        <p class="">
+                            {% if CURRENT_LANGUAGE == "uk" %}
 
-                                    ВІЛЬНИЙ УНІВЕРСИТЕТ БРЮССЕЛЯ, Брюссель, Бельгія
+                                {{ member.uk_name }}
 
-                                {% else %}
+                            {% else %}
 
-                                    UNIVERSITE LIBRE DE BRUXELLES, Brussels, Belgium
+                                {{ member.en_name }}
 
-                                {% endif %}
-                            </p>
-                        </div>
+                            {% endif %}
+                        </p>
                     </div>
                 </div>
-            </a>
-
-            <a href="https://www.gssi.it/research-area/social-science-gssi-cities-research/about" class="text-decoration-none text-dark" target="_blank">
-                <div class="col">
-                    <div class="card mb-4 card-gm">
-                        <img class="card-img-top" alt="Team foto" style="height: 203px; width: 100%; display: block;"
-                             src="https://res.cloudinary.com/infoblog567/image/upload/v1673712519/static/general_members/gssi_twt18r.png">
-                        <div class="card-body p-0">
-                            <p class="">
-                                {% if CURRENT_LANGUAGE == "uk" %}
-
-                                    НАУКОВИЙ ІНСТИТУТ ГРАН САССО, Л’Аквілла, Італія
-
-                                {% else %}
-
-                                    GRAN SASSO SCIENCE INSTITUTE, L’Aqula, Italy
-
-                                {% endif %}
-                            </p>
-                        </div>
-                    </div>
-                </div>
-            </a>
-
-            <a href="https://www.spgi.unipd.it/en/" class="text-decoration-none text-dark" target="_blank">
-                <div class="col">
-                    <div class="card mb-4 card-gm">
-                        <img class="card-img-top" alt="Team foto" style="height: 203px; width: 100%; display: block; padding:5px 55px 5px 55px;"
-                             src="https://res.cloudinary.com/infoblog567/image/upload/v1673712519/static/general_members/Logo_Universit%C3%A0_Padova.svg_bbx85e.png">
-                        <div class="card-body p-0">
-                            <p class="">
-                                {% if CURRENT_LANGUAGE == "uk" %}
-
-                                    ПАДУАНСЬКИЙ УНІВЕРСИТЕТ, Падуя, Італія
-
-                                {% else %}
-
-                                    UNIVERSITY OF PADOVA, Padova, Italy
-
-                                {% endif %}
-                            </p>
-                        </div>
-                    </div>
-                </div>
-            </a>
-
-            <a href="https://www.fu-berlin.de/en/einrichtungen/fachbereiche/fb/pol-soz/index.html" class="text-decoration-none text-dark" target="_blank">
-                <div class="col">
-                    <div class="card mb-4 card-gm">
-                        <img class="card-img-top" alt="Team foto" style="height: 203px; width: 100%; display: block; padding:5px 55px 5px 55px;"
-                             src="https://res.cloudinary.com/infoblog567/image/upload/v1673712519/static/general_members/Frei_BErlin_qd8o31.png">
-                        <div class="card-body p-0">
-                            <p class="">
-                                {% if CURRENT_LANGUAGE == "uk" %}
-
-                                    ВІЛЬНИЙ УНІВЕРСИТЕТ БЕРЛІНА, Берлін, Німеччина
-
-                                {% else %}
-
-                                    FREIE INIVERSITÄT BERLIN, Berlin, Germany
-
-                                {% endif %}
-                            </p>
-                        </div>
-                    </div>
-                </div>
-            </a>
-
-            <a href="https://hias-hamburg.de/en/about-us/institution/" class="text-decoration-none text-dark" target="_blank">
-                <div class="col">
-                    <div class="card mb-4 card-gm">
-                        <img class="card-img-top" alt="Team foto" style="height: 203px; width: 100%; display: block;"
-                             src="https://res.cloudinary.com/infoblog567/image/upload/v1673712519/static/general_members/hias_bambcq.png">
-                        <div class="card-body p-0">
-                            <p class="">
-                                {% if CURRENT_LANGUAGE == "uk" %}
-
-                                    ГАМБУРГЗЬКИЙ ІНСТИТУТ ПРИКЛАДНИХ ДОСЛІДЖЕНЬ, Гамбург, Німеччина
-
-                                {% else %}
-
-                                    HAMBURG INSTITUTE FOR ANVANCED STUDY, Hamburg, Germany
-
-                                {% endif %}
-                            </p>
-                        </div>
-                    </div>
-                </div>
-            </a>
-
-            <a href="https://www.polver.uni-konstanz.de/en/" class="text-decoration-none text-dark" target="_blank">
-                <div class="col">
-                    <div class="card mb-4 card-gm">
-                        <img class="card-img-top" alt="Team foto" style="height: 203px; width: 100%; display: block; padding:30px 0px 30px 0px;"
-                             src="https://res.cloudinary.com/infoblog567/image/upload/v1673712520/static/general_members/UniKonstanz_Logo_Optimum_sRGB_k8kw7l.jpg">
-                        <div class="card-body p-0">
-                            <p class="">
-                                {% if CURRENT_LANGUAGE == "uk" %}
-
-                                    УНІВЕРСИТЕТ КОНСТАНЦА, Констанц, Німеччина
-
-                                {% else %}
-
-                                    UNIVERSITY OF KONSTANZ, Konstanz, Germany
-
-                                {% endif %}
-                            </p>
-                        </div>
-                    </div>
-                </div>
-            </a>
-
-            <a href="https://wwwen.uni.lu/research/robert_schuman_initiative_for_european_affairs" class="text-decoration-none text-dark" target="_blank">
-                <div class="col">
-                    <div class="card mb-4 card-gm">
-                        <img class="card-img-top" alt="Team foto" style="height: 203px; width: 100%; display: block; padding:10px 45px 10px 45px;"
-                             src="https://res.cloudinary.com/infoblog567/image/upload/v1673712520/static/general_members/University_of_Luxembourg_logo__fr_.svg_l9gpi2.png">
-                        <div class="card-body p-0">
-                            <p class="">
-                                {% if CURRENT_LANGUAGE == "uk" %}
-
-                                    УНІВЕРСИТЕТ ЛЮКСЕМБУРГУ, Люксембург
-
-                                {% else %}
-
-                                    UNIVERSITY OF LUXEMBOURG, Luxembourg
-
-                                {% endif %}
-                            </p>
-                        </div>
-                    </div>
-                </div>
-            </a>
-
-            <a href="https://lnu.se/en/meet-linnaeus-university/Organisation/faculty-of-and-social-sciences/meet-the-faculty-of-social-sciences/political-science/" class="text-decoration-none text-dark" target="_blank">
-                <div class="col">
-                    <div class="card mb-4 card-gm">
-                        <img class="card-img-top" alt="Team foto" style="height: 203px; width: 100%; display: block;"
-                             src="https://res.cloudinary.com/infoblog567/image/upload/v1673712519/static/general_members/Linnaeus_x9z5kb.jpg">
-                        <div class="card-body p-0">
-                            <p class="">
-                                {% if CURRENT_LANGUAGE == "uk" %}
-
-                                    УНІВЕРСИТЕТ ЛІННЕЯ, Кальмар та Векше, Швеція
-
-                                {% else %}
-
-                                    LINNAEUS UNIVERSITY, Kalmar and Växjö, Sweden
-
-                                {% endif %}
-                            </p>
-                        </div>
-                    </div>
-                </div>
-            </a>
-
-            <a href="https://mve.fss.muni.cz/en" class="text-decoration-none text-dark" target="_blank">
-                <div class="col">
-                    <div class="card mb-4 card-gm">
-                        <img class="card-img-top" alt="Team foto" style="height: 203px; display: block; padding:5px 25px 5px 25px;"
-                             src="https://res.cloudinary.com/infoblog567/image/upload/v1673712710/static/general_members/1200px-Logo_Masaryk_University.svg_gwcati.png">
-                        <div class="card-body p-0">
-                            <p class="">
-                                {% if CURRENT_LANGUAGE == "uk" %}
-
-                                    УНІВЕРСИТЕТ МАСАРИКА, Брно, Чехія
-
-                                {% else %}
-
-                                    MASARYK UNIVERSITY, Brno, Czech Republic
-
-                                {% endif %}
-                            </p>
-                        </div>
-                    </div>
-                </div>
-            </a>
-
-            <a href="https://civitas.edu.pl/en/research/institute-of-political-sciences-and-international-relations/institute-of-political-sciences-and-international-relations" class="text-decoration-none text-dark" target="_blank">
-                <div class="col">
-                    <div class="card mb-4 card-gm">
-                        <img class="card-img-top" alt="Team foto" style="height: 203px; width: 100%; display: block; padding:27px 0px 27px 0px;"
-                             src="https://res.cloudinary.com/infoblog567/image/upload/v1673718702/static/general_members/collegium-civitas-logo-withe-study-in-poland-thinknew_erxcyt.png">
-                        <div class="card-body p-0">
-                            <p class="">
-                                {% if CURRENT_LANGUAGE == "uk" %}
-
-                                    КОЛЛЕГІУМ ЦИВІТАС, Варшава, Польща
-
-                                {% else %}
-
-                                    COLLEGIUM CIVITAS, Warsaw, Poland
-
-                                {% endif %}
-                            </p>
-                        </div>
-                    </div>
-                </div>
-            </a>
-
-
-
-
-
-
-
-        </div>
+            </div>
+        </a>
+        {% endfor %}
+    </div>
 </div>
 {% endblock content %}

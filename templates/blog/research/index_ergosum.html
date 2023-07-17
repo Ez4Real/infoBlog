@@ -7,19 +7,13 @@
 <div class="container">
     <div class="row">
         <div class="col-md-6 order-md-2">
-            {% if CURRENT_LANGUAGE == "uk" %}
-                <div class="index-img">
-                    {% include 'include/media/bg_photo_index.html' %}
-                </div>
-            {% else %}
-                <div class="index-img">
-                    {% include 'include/media/bg_photo_index.html' %}
-                </div>
-            {% endif %}
+            <div class="index-img">
+                {% include 'include/media/bg_photo_index.html' %}
+            </div>
         </div>
         <div class="col-md-6 order-md-1">
             <h1>{% trans "Index ERGOSUM" %}</h1>
-            <p class="card-text">
+            <p class="card-text" style="padding-top: 55px">
                 {% if CURRENT_LANGUAGE == "uk" %}
                     {% include 'translates/uk/index_ergosum.html' %}
                 {% else %}

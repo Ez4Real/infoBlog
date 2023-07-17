@@ -2,7 +2,7 @@ from django.db.models import Q, QuerySet
 from django.utils.safestring import SafeText
 from ..models import News, Video, BlogScholar, \
     Blog, TeamMember, ResourceType, LibraryResource, \
-    LibraryAuthor, PolicyArea
+    LibraryAuthor, PolicyArea, GeneralMember
 
 
 def get_last_news() -> QuerySet:
@@ -43,6 +43,10 @@ def get_all_blog_scholars() -> QuerySet:
 def get_all_team_members():
     """ Returns QuerySet of all Team Members """
     return TeamMember().get_all_objects()
+
+def get_all_general_members():
+    """ Returns QuerySet of all General Members by -date """
+    return GeneralMember().get_all_objects().order_by('order')
 
 def get_member_by_slug(slug: SafeText) -> TeamMember:
     """ Returns Team Member object by slug """

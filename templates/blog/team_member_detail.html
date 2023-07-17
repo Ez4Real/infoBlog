@@ -8,27 +8,39 @@
         <div class="row row-cols-md-2 row-cols-1 justify-content-center">
             <div class="col text-center team_member_photo d-flex align-items-center flex-column">
                 <img src="{{ post.image.url }}" class="d-block mx-auto ob-cover pb-2">
-                {% if CURRENT_LANGUAGE == "uk" %}
-                    <h1 class="card-title text-dark fs-2">
-                        <b>{{ post.uk_full_name }}</b>
-                    </h1>
-                {% else %}
+                <div class="team-member-desc">
                     <h5 class="card-title text-dark fs-2">
-                        <b>{{ post.en_full_name }}</b>
+                        <b>
+                            {% if CURRENT_LANGUAGE == "uk" %}
+                                {{ post.uk_full_name }}
+                            {% else %}
+                                {{ post.en_full_name }}
+                            {% endif %}
+                        </b>
                     </h5>
-                {% endif %}
+                    <div class="team-position">
+                        {% if CURRENT_LANGUAGE == "uk" %}
+                            {{ post.uk_position|linebreaks }}
+                        {% else %}
+                            {{ post.en_position|linebreaks }}
+                        {% endif %}
+                    </div>
+                    <div>
+                        <a href="mailto:{{ post.email }}" style="text-decoration: none;">{{ post.email }}</a>
+                    </div>
+                </div>
+                
             </div>
     
             <div class="col  team-member-text">
-                {% if CURRENT_LANGUAGE == "uk" %}
-                    <div class="body-text-member">
+                <div class="body-text-member">
+                    {% if CURRENT_LANGUAGE == "uk" %}
                         {{ post.uk_content | safe }}
-                    </div>
-                {% else %}
-                    <div class="body-text-member">
+                    {% else %}
                         {{ post.en_content | safe }}
-                    </div>
-                {% endif %}
+                    {% endif %}
+                </div>
+                
             </div>
         </div>
 </div>

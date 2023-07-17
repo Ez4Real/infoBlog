@@ -148,6 +148,13 @@ nav {
     margin-bottom: 50px;
 }
 
+.team-members-align {
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+    justify-content: center;
+}
+
 .subresources-list {
     display: flex;
     list-style-type: none;
@@ -836,6 +843,15 @@ header{
     height:288px;
     text-align: center;
     word-spacing: -1px;
+}
+
+.gm-image {
+    height: 100%;
+}
+
+.gm-text {
+    display: flex;
+    align-items: end;
 }
 
 .key-doc img{

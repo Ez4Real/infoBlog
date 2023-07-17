@@ -3,7 +3,7 @@ from ordered_model.admin import OrderedModelAdmin
 
 from .models import NewsType, PolicyArea, News, Subscriber, Video, \
     BlogScholar, Blog, TeamMember, LibraryMember, ResourceType, \
-    Subresource, LibraryResource, LibraryAuthor
+    Subresource, LibraryResource, LibraryAuthor, GeneralMember
 
 
 def send_newsletter(modeladmin, request, queryset):
@@ -34,10 +34,10 @@ class SubscriberAdmin(admin.ModelAdmin):
     
 @admin.register(TeamMember)
 class TeamMemberAdmin(OrderedModelAdmin):
-    list_display = ('en_full_name', 'move_up_down_links', 'uk_full_name', 'en_position', 'uk_position')
+    list_display = ('en_full_name', 'move_up_down_links', 'en_position')
     list_filter = ('date_of_creation', 'en_full_name', 'uk_full_name', 'en_position', 'uk_position')
-    fields = [('image',), 
-              ('en_full_name', 'uk_full_name'),
+    fields = [('en_full_name', 'uk_full_name'),
+              ('image', 'email'),
               ('en_position', 'uk_position'),
               ('en_content', 'uk_content')]
 
@@ -73,8 +73,8 @@ class NewsAdmin(admin.ModelAdmin):
     actions = [send_newsletter]
     
 @admin.register(BlogScholar)
-class BlogScholarAdmin(admin.ModelAdmin):
-    list_display = ('en_full_name', 'uk_full_name', 'en_position', 'uk_position')
+class BlogScholarAdmin(OrderedModelAdmin):
+    list_display = ('en_full_name', 'move_up_down_links', 'en_position')
     list_filter = ('date_of_creation', 'en_full_name', 'uk_full_name', 'en_position', 'uk_position')
     fields = [('image',), 
               ('en_full_name', 'uk_full_name'),
@@ -120,4 +120,10 @@ class SubresourceAdmin(admin.ModelAdmin):
     fields = [('topic', 'bounded_resource'), 
               ('file', 'date')]
     
-
+@admin.register(GeneralMember)
+class GeneralMemberAdmin(OrderedModelAdmin):
+    list_display = ('en_name', 'move_up_down_links', 'uk_name')
+    list_filter = ('date', 'en_name', 'uk_name')
+    fields = [('en_name', 'uk_name'),
+              ('banner', 'link'), 
+              ('date', 'is_rounded')]
