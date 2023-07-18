@@ -14,14 +14,14 @@
                         {{ scholar.uk_full_name }}
                     </h5>
                     <p class="card-text text-center text-muted fs-6">
-                        {{ scholar.uk_position }}
+                        {{ scholar.uk_position|linebreaks }}
                     </p>
                 {% else %}
                     <h5 class="text-center w-100 pt-2" style="color: #004494;">
                         {{ scholar.en_full_name }}
                     </h5>
                     <p class="card-text text-center text-muted fs-6">
-                        {{ scholar.en_position }}
+                        {{ scholar.en_position|linebreaks }}
                     </p>
                 {% endif %}
 
