@@ -852,6 +852,7 @@ header{
 .gm-text {
     display: flex;
     align-items: end;
+    justify-content: center;
 }
 
 .key-doc img{
