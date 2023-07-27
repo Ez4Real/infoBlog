@@ -15,7 +15,13 @@
                 <div class="image-container">
                     <img src="{{ resource.banner.url }}" alt="...">
                     <div class="overlay">
-                        <p class="text">{% trans resource.type %}</p>
+                        <p class="text">
+                            {% if CURRENT_LANGUAGE == "uk" %}
+                                {{ resource.uk_name }}
+                            {% else %}
+                                {{ resource.en_name }}
+                            {% endif %}
+                        </p>
                     </div>
                 </div>
             </a>

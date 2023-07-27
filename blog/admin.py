@@ -96,8 +96,9 @@ class Video(admin.ModelAdmin):
     
 @admin.register(ResourceType)
 class ResourceTypeAdmin(admin.ModelAdmin):
-    list_display = ('type',)
-    fields = [('type', 'banner')]
+    list_display = ('en_name', 'uk_name')
+    fields = [('banner'),
+              ('en_name', 'uk_name')]
 
 @admin.register(LibraryAuthor)
 class LibraryAuthorAdmin(admin.ModelAdmin):

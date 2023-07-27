@@ -74,7 +74,7 @@ def get_resource_by_type(type: SafeText) -> QuerySet:
 
 def get_all_library_books() -> QuerySet:
     """ Returns all LibraryResources with `Books` type """
-    return LibraryResource.objects.filter(type__type='Books').order_by('-date')
+    return LibraryResource.objects.filter(type__en_name='Books').order_by('-date')
 
 def get_books_by_author(author_id: int) -> QuerySet:
     """ Returns LibraryResources with `Books` type by author """

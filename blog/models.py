@@ -10,7 +10,6 @@ from django.contrib.auth.hashers import check_password
 from django.core.mail import EmailMessage
 from django.core.validators import MaxLengthValidator, MinValueValidator
 from django.db import models
-from django.db.models import Max
 from django.template.loader import get_template
 from django.urls import reverse
 from django.utils.encoding import force_bytes
@@ -392,17 +391,14 @@ class Video(models.Model):
     
 
 class ResourceType(models.Model):
-    RESOURCE_TOPICS = [
-        ('Journals', 'Journals'),
-        ('Magazines', 'Magazines'),
-        ('Books', 'Books'),
-        ('Newspapers', 'Newspapers'),
-        ('Brochures', 'Brochures'),
-        ('Other papers', 'Other papers'),
-    ]
-    
-    type = models.CharField(max_length=20, choices=RESOURCE_TOPICS, default='Journals')
-    
+    en_name = models.CharField(max_length=50,
+                               help_text='Enter English name',
+                               verbose_name=_('English name'),
+                               default='Books')
+    uk_name = models.CharField(max_length=50,
+                               help_text='Enter Ukrainian name',
+                               verbose_name=_('Ukrainian name'),
+                               default='Книги')
     banner = models.ImageField(upload_to='uploads/library_banners', 
                                verbose_name=_('Resource banner')
                                )
@@ -411,12 +407,12 @@ class ResourceType(models.Model):
         verbose_name_plural = _('Resource types')
     
     def __str__(self):
-        return f'{self.type}'
+        return f'{self.en_name}'
     
     def get_absolute_url(self):
-        if self.type == 'Books':
+        if self.en_name == 'Books':
             return reverse('book-list')
-        else: return reverse('cover-list', args=[self.type])
+        else: return reverse('cover-list', args=[self.en_name])
     
 
 class LibraryAuthor(models.Model):
@@ -482,7 +478,7 @@ class LibraryResource(Article):
         return f'{self.type} - {self.en_title}'
     
     def get_absolute_url(self):
-        if self.type.type == 'Books':
+        if self.type.en_name == 'Books':
             return reverse('book-detail', args=[self.slug])
         else: return reverse('cover-detail', args=[self.type, self.slug])
 
