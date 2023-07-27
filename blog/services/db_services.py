@@ -90,4 +90,4 @@ def get_author_by_slug(slug: str) -> LibraryAuthor:
 
 def get_resources_by_type(type: str) -> QuerySet:
     """ Returns LibraryResource objects by type """
-    return LibraryResource.objects.filter(type__type=type)
+    return LibraryResource.objects.filter(type__en_name=type)
