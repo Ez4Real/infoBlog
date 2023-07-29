@@ -6,15 +6,7 @@
 
 
 <div class="container">
-
-  <div class="p-3"></div>
-  <div class="lib-journals-image">
-    <img src="{{ cover.banner.url }}" alt="...">
-    <div class="lib-journals-overlay">
-        <p class="lib-journals-text">{{ cover.type }}</p>
-    </div>
-  </div>
-    <p class="pt-4 text-blue card-title fs-1" > 
+    <p class="text-blue card-title fs-1" style="padding: 30px 0px;"> 
       {% if CURRENT_LANGUAGE == "uk" %}
         {{ cover.uk_title }}
       {% else %}
@@ -35,10 +27,18 @@
     <p>List of Volumes & Issues:</p>
     {% endif %}
       <ul class="subresources-list">
-        {% for subresource in cover.subresources.all %}
-          <a href="{{ subresource.file.url }}">
-            <li>{{ subresource.topic }}</li>
-          </a>
+        {% for subresource in cover.subresources.all reversed %}
+          {% if forloop.counter0|divisibleby:4 %}
+            <div class="row">
+          {% endif %}
+          <div class="col-md-3">
+            <a href="{{ subresource.file.url }}">
+              <li>{{ subresource.topic }}</li>
+            </a>
+          </div>
+          {% if forloop.counter|divisibleby:4 or forloop.last %}
+            </div>
+          {% endif %}
         {% endfor %}
       </ul>
     {% else %}

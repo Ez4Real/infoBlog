@@ -1,4 +1,4 @@
-from django.db.models import Q, QuerySet
+from django.db.models import Q, QuerySet, F
 from django.utils.safestring import SafeText
 from ..models import News, Video, BlogScholar, \
     Blog, TeamMember, ResourceType, LibraryResource, \
@@ -73,8 +73,10 @@ def get_resource_by_type(type: SafeText) -> QuerySet:
     return ResourceType.objects.get(type=type)
 
 def get_all_library_books() -> QuerySet:
-    """ Returns all LibraryResources with `Books` type """
-    return LibraryResource.objects.filter(type__en_name='Books').order_by('-date')
+    """Returns all LibraryResources with `Books` type, sorted by author's name."""
+    return LibraryResource.objects.filter(type__en_name='Books').annotate(
+        author_name=F('author__en_full_name') 
+    ).order_by('author_name')
 
 def get_books_by_author(author_id: int) -> QuerySet:
     """ Returns LibraryResources with `Books` type by author """
@@ -90,4 +92,6 @@ def get_author_by_slug(slug: str) -> LibraryAuthor:
 
 def get_resources_by_type(type: str) -> QuerySet:
     """ Returns LibraryResource objects by type """
-    return LibraryResource.objects.filter(type__en_name=type)
+    return LibraryResource.objects.filter(type__en_name=type).annotate(
+        title_name=F('en_title')
+    ).order_by('title_name')

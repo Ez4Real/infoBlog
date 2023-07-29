@@ -8,23 +8,24 @@
 <div class="container pt-3">
 
     <div class="book-ditale-card">
-	{% if CURRENT_LANGUAGE == "uk" %}
     
-		<h3 class="card-title">{{ book.uk_title }}</h3>
+		<h3 class="card-title" style="padding: 30px 0px;">
+      {% if CURRENT_LANGUAGE == "uk" %}
+        {{ book.uk_title }}
+      {% else %}
+        {{ book.en_title }}
+      {% endif %}
+    </h3>
     	<div class="book-body d-flex row justify-content-center gap-3">
-        	<img class="book-banner col-2  pt-2" src="{{ book.banner.url }}" alt="Book cover">
-        	<div class="book-content col-12 col-xl-10 p-0">{{ book.uk_content | safe }}</div>    
+        	<img class="book-banner col-2" src="{{ book.banner.url }}" alt="Book cover">
+        	<div class="book-content col-12 col-xl-10 p-0">
+            {% if CURRENT_LANGUAGE == "uk" %}
+              {{ book.uk_content | safe }}
+            {% else %}
+              {{ book.en_content | safe }}
+            {% endif %}
+          </div>    
     	</div>
-
-    {% else %}
-	
-		<h3 class="card-title">{{ book.en_title }}</h3>
-    	<div class="book-body d-flex row justify-content-center gap-3">
-        	<img class="book-banner col-2  pt-2" src="{{ book.banner.url }}" alt="Book cover">
-        	<div class="book-content col-12 col-xl-10 p-0">{{ book.en_content | safe }}</div>    
-    	</div>
-	
-    {% endif %}
     </div>
 
     <hr>

@@ -1172,9 +1172,15 @@ header a{
     border: 0 solid rgba(0,0,0,.125);
 }
 
+.book-title{
+    min-height: 90px;
+    display: flex;
+    align-content: center;
+    justify-content: center;
+    flex-wrap: wrap;
+}
 .book-banner{
-    height: 255px;
-    width: 170px;
+    width: 204px;
 }
 .book-content{
     text-align: justify;

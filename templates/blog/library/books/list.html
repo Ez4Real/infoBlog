@@ -24,7 +24,7 @@
     {% if blog_posts %}
     {% for book in blog_posts %}
     <div class="col d-flex align-content-center flex-column flex-wrap">
-            <div class="book-title fs-3 text-center">
+            <div class="book-title fs-5 text-center">
                 <a class="text-decoration-none text-dark" href="{{ book.get_absolute_url }}">
                         {% if CURRENT_LANGUAGE == "uk" %}
                             {{ book.uk_title }}
