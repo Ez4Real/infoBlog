@@ -199,4 +199,4 @@ class ResourcesFilterForm(forms.Form):
         super(ResourcesFilterForm, self).__init__(*args, **kwargs)
         current_year = datetime.date.today().year
         year_choices = [(str(year), str(year)) for year in range(current_year, current_year-80, -1)]
-        self.fields['year'].choices = [('', 'All time')] + year_choices
+        self.fields['year'].choices = [('', _('All time'))] + year_choices

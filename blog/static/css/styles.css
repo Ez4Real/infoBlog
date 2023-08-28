@@ -145,7 +145,7 @@ nav {
 }
 
 .container {
-    margin-bottom: 50px;
+    margin-bottom: 32px;
 }
 
 .team-members-align {
@@ -159,6 +159,10 @@ nav {
     display: flex;
     list-style-type: none;
     flex-direction: column;
+}
+
+.annual-text {
+    padding-top: 30px
 }
 
 @media (max-width: 1440px) {
@@ -419,10 +423,27 @@ nav {
     .post-content .body-cronis-post {
         padding: 0 10px;
     }
+    body .anual-img img{
+        width: 100%;
+    }
+    .annual-text {
+        padding-top: 10px
+    }
+    body .card-gm {
+        height: 325px;
+    }
+    .book-content {
+        padding: 0 12px !important;
+    }
+    .book-detail {
+        padding: 0 12px;
+    }
+    .body-text-member {
+        padding: 0 12px;
+    }
 }
 
 @media (max-width: 426px) {
-
     .footer-form {
         margin-left: unset;
     }
@@ -1026,42 +1047,14 @@ header a{
     position: relative;
 }
 
-.misio-img-uk{
+.misvis-img {
     padding-top: 60px;
-    width: 640px; 
-    height: 1052px;
+    width: 100%; 
+    height: 100%;
 }
-
-.misio-img-en{
-    padding-top: 60px;
-    width: 640px; 
-    height: 825px;
+.misvis-img img{
+    height: 100%;
 }
-
-.misio-img img{
-    height: 68%;
-}
-
-.visio-img-uk{
-    padding-top: 60px;
-    width: 640px; 
-    height: 654px;
-}
-
-.visio-img-en{
-    padding-top: 60px;
-    height: 597px; 
-    width: 640px;
-}
-
-.visio-img img{
-    height: 68%;
-}
-
-/* .index-img{
-    padding-top: 60px;
-
-} */
 
 .index-img img{
     width: 100%; 
