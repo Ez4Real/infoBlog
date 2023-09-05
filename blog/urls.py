@@ -12,14 +12,14 @@ urlpatterns = [
          activate_user_subscription,
          name='activate'),
     
-    path('blog/', views.blog, name='blog'),
+    path('experts-league/', views.blog, name='blog'),
     path('library/', views.library, name='library'),
     
     path('library/books/', views.book_list, name='book-list'),
     path('library/<str:type>/', views.cover_list, name='cover-list'),
     path('<type>/<slug:slug>/', views.post_detail, name='post-detail'),
-    path('blog/scholar-posts/<slug:slug>/', views.scholar_posts, name='scholar-posts'),
-    path('blog/<author_slug>/<slug:slug>/', views.blog_post_detail, name='blog-post-detail'),
+    path('experts-league/scholar-posts/<slug:slug>/', views.scholar_posts, name='scholar-posts'),
+    path('experts-league/<author_slug>/<slug:slug>/', views.blog_post_detail, name='blog-post-detail'),
     path('about/team/<slug:slug>/', views.team_member_detail, name='team-member-detail'),
     path('search/', views.search, name='search'),
     path("sw.js", views.ServiceWorkerView.as_view(), name="sw.js"),
@@ -43,7 +43,7 @@ urlpatterns = [
     path('donate/', views.all_donate, name='all_donate'),
     
     # Join us
-    path('join-us/general-members',
+    path('join-us/our-partners',
          views.general_members,
          name='general_members'),
     path('join-us/join-team',

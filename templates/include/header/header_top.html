@@ -6,12 +6,11 @@
             {% trans "About" %}
         </a>
         <ul class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
+            <li><a class="dropdown-item" href="{% url 'team' %}">{% trans "Team" %}</a></li>
+            <li><a class="dropdown-item" href="{% url 'general_members' %}">{% trans "Our partners" %}</a></li>
             <li><a class="dropdown-item" href="{% url 'mission' %}">{% trans "Mission" %}</a></li>
             <li><a class="dropdown-item" href="{% url 'vision' %}">{% trans "Vision" %}</a></li>
             <li><a class="dropdown-item" href="{% url 'key_documents' %}">{% trans "Key-documents" %}</a></li>
-            <li><a class="dropdown-item" href="{% url 'team' %}">{% trans "Team" %}</a></li>
-            <li><a class="dropdown-item" href="{% url 'general_members' %}">{% trans "General members" %}</a></li>
-<!--            <li><a class="dropdown-item" href="{% url 'board' %}">{% trans "Board" %}</a></li>-->
         </ul>
     </li>
     <li class="nav-item dropdown ">

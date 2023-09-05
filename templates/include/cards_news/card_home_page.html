@@ -14,22 +14,20 @@
             </small>
 
             <div class="card-body card-castom d-flex align-content-top justify-content-center flex-wrap" style="height: 215px;">
-
-                {% if CURRENT_LANGUAGE == "uk" %}
-                <h5 class="card-title pb-1">
-                    {{ news.uk_title }}
+                <h5 class="card-title pb-2"> 
+                    {% if CURRENT_LANGUAGE == "uk" %}
+                        {{ news.uk_title }}
+                    {% else %}
+                        {{ news.en_title }}
+                    {% endif %}
                 </h5>
-                <p class="card-text">
-                    {{ news.uk_subtitle }}
+                <p class="card-text fs-6">
+                    {% if CURRENT_LANGUAGE == "uk" %}
+                        {{ news.uk_subtitle }}
+                    {% else %}
+                        {{ news.en_subtitle }}
+                    {% endif %}
                 </p>
-                {% else %}
-                <h5 class="card-title align-self-center pb-2">
-                    {{ news.en_title }}
-                </h5>
-                <p class="card-text align-self-end">
-                    {{ news.en_subtitle }}
-                </p>
-                {% endif %}
 
             </div>
 

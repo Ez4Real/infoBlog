@@ -414,10 +414,8 @@ msgstr "Статті"
 
 #: .\templates\blog\join_us\general_members.html:8
 #: .\templates\include\header\header_top.html:13
-msgid "General members"
-msgstr "Організації-члени"
-msgid "General Members"
-msgstr "Організації-члени"
+msgid "Our partners"
+msgstr "Наші партнери"
 
 #: .\templates\blog\join_us\join_team.html:9
 #: .\templates\blog\join_us\join_team.html:18
@@ -527,8 +525,8 @@ msgid "Index ERGOSUM"
 msgstr "ERGOSUM індекс"
 
 #: .\templates\blog\scholar_posts.html:48
-msgid "Blog"
-msgstr "Блог"
+msgid "Expert's League"
+msgstr "Ліга Експертів"
 msgid "Blogs"
 msgstr "Блог"
 
