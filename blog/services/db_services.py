@@ -7,7 +7,7 @@ from ..models import News, Video, BlogScholar, \
 
 def get_last_news() -> QuerySet:
     """ Returns QuerySet of 5 last News objects """
-    return News.objects.order_by('-date_of_creation')[:5]
+    return News.objects.order_by('-date_of_creation')[:10]
     
 def get_news_by_policy_area(policy_area: str) -> QuerySet:
     """ Returns QuerySet of News by policy_area """

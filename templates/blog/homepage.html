@@ -71,7 +71,7 @@
     <div class="p-3"></div>
     <div class="">
         <div class="h2">
-            {% trans "News" %}
+            <a class="news-section-link" href="{% url 'news-type' type='News' %}">{% trans "News" %}</a>
         </div>
         <div class="row row-cols-1 row-cols-lg-3 g-4">
             {% for news in last_news %}
@@ -85,7 +85,7 @@
     <div class="cronis-analitics">
         <hr>
         <div class="h2">
-            {% trans 'Opinion' %}
+            <a class="news-section-link" href="{% url 'news-type' type='Opinion' %}">{% trans 'Opinion' %}</a>
         </div>
         <div class="row row-cols-1 row-cols-lg-3 g-4">
             {% for news in last_opinions %}
@@ -99,7 +99,7 @@
     <div class="cronis-analitics">
         <hr>
         <div class="h2">
-            {% trans 'Analytics' %}
+            <a class="news-section-link" href="{% url 'news-type' type='Analytics' %}">{% trans 'Analytics' %}</a>
         </div>
         <div class="row row-cols-1 row-cols-lg-3 g-4">
             {% for news in last_analytics %}
@@ -113,7 +113,7 @@
     <div class="cronis-analitics">
         <hr>
         <div class="h2">
-            {% trans 'Op-eds' %}
+            <a class="news-section-link" href="{% url 'news-type' type='Op-eds' %}">{% trans 'Op-eds' %}</a>
         </div>
         <div class="row row-cols-1 row-cols-lg-3 g-4">
             {% for news in last_opeds %}

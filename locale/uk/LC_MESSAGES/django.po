@@ -525,7 +525,7 @@ msgid "Index ERGOSUM"
 msgstr "ERGOSUM індекс"
 
 #: .\templates\blog\scholar_posts.html:48
-msgid "Expert's League"
+msgid "Expert League"
 msgstr "Ліга Експертів"
 msgid "Blogs"
 msgstr "Блог"

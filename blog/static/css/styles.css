@@ -1196,3 +1196,9 @@ header a{
     margin-bottom: 0;
     text-align: center;
 }
+
+.news-section-link {
+    border-radius: 30px;
+    padding: 0.25rem 1rem;
+    text-decoration: none;
+}
