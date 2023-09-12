@@ -757,7 +757,7 @@ nav {
 }
 
 .card-text{
-    text-align: justify;
+    text-align: center;
     font-family: "Haarlemmer","Georgia",serif;
     line-height: 1.2em;
 }
