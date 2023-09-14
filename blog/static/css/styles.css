@@ -643,11 +643,6 @@ nav {
 
 }
 
-/*.beam-cronis{
-    height: 207px;
-}*/
-
-
 .lang_butt {
     justify-content: flex-end;
     margin-left: 130px;
@@ -757,7 +752,6 @@ nav {
 }
 
 .card-text{
-    text-align: center;
     font-family: "Haarlemmer","Georgia",serif;
     line-height: 1.2em;
 }
