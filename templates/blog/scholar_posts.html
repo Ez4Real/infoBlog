@@ -11,32 +11,35 @@
 
     <div class="container-custom-blog-author pt-4 pb-3">
         <div class="author-blog row row-cols-2 d-flex">
-            <div class="author-blog-image col-12 col-lg-3">
+            <div class="author-blog-image col-12 col-lg-5">
                 <img src="{{author.image.url}}" alt="" class="w-100">
             </div>
-            <div class="author-blog-body col-12 col-lg-9">
+            <div class="author-blog-body col-12 col-lg-7">
                 <a href="{% url 'blog' %}" class="blog-link">{% trans "Expert's League" %}</a href="{ url 'blog' }">
             
                 <a href="{{ author.link }}" class="text-decoration-none">
                     
-                    <div class="author-blog-name" style="color:black !important">
-                        {% if CURRENT_LANGUAGE == "uk" %}
-                            <div>
-                                {{ author.uk_full_name }}
-                            </div>
-                        {% else %}
-                            <div>
-                                {{ author.en_full_name }}
-                            </div>
-                        {% endif %}   
+                    <div class="scholar-left-border">
+                        <div class="author-blog-name" style="color:black !important">
+                            {% if CURRENT_LANGUAGE == "uk" %}
+                                <div>
+                                    {{ author.uk_full_name }}
+                                </div>
+                            {% else %}
+                                <div>
+                                    {{ author.en_full_name }}
+                                </div>
+                            {% endif %}   
+                        </div>
+                        <div class="blog-card-author text-muted">
+                            {% if CURRENT_LANGUAGE == "uk" %}
+                                {{ author.uk_position }}
+                            {% else %}
+                                    {{ author.en_position }}
+                            {% endif %}
+                        </div>
                     </div>
-                    <div class="blog-card-author text-muted">
-                        {% if CURRENT_LANGUAGE == "uk" %}
-                            {{ author.uk_position }}
-                        {% else %}
-                                {{ author.en_position }}
-                        {% endif %}
-                    </div>
+                    
                 </a>
                 <hr>
             </div>    
