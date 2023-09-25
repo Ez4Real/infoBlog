@@ -15,21 +15,19 @@
                 <img src="{{author.image.url}}" alt="" class="w-100">
             </div>
             <div class="author-blog-body col-12 col-lg-7">
-                <a href="{% url 'blog' %}" class="blog-link">{% trans "Expert's League" %}</a href="{ url 'blog' }">
+                <a href="{% url 'blog' %}" class="blog-link">{% trans "Expert League" %}</a href="{ url 'blog' }">
             
                 <a href="{{ author.link }}" class="text-decoration-none">
                     
                     <div class="scholar-left-border">
                         <div class="author-blog-name" style="color:black !important">
-                            {% if CURRENT_LANGUAGE == "uk" %}
-                                <div>
+                            <div>
+                                {% if CURRENT_LANGUAGE == "uk" %}
                                     {{ author.uk_full_name }}
-                                </div>
-                            {% else %}
-                                <div>
+                                {% else %}
                                     {{ author.en_full_name }}
-                                </div>
-                            {% endif %}   
+                                {% endif %}   
+                            </div>
                         </div>
                         <div class="blog-card-author text-muted">
                             {% if CURRENT_LANGUAGE == "uk" %}
