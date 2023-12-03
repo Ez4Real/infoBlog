@@ -6,7 +6,6 @@
 <div class="container pt-1">
     
     {% if blog_posts %}
-        
         {% if news_type == 'News' %}
             <div class="text-center pt-3">
                 <h1>{% trans "News" %}</h1>
@@ -33,7 +32,6 @@
             </div>
             {% include 'include/cards_op_eds.html' %}
         {% endif %}
-
     {% endif %}
 
     {% include 'include/pagination.html' %}
