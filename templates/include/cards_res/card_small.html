@@ -9,8 +9,8 @@
         </div>
         <div class="col-md-8">
             <a href="{{ news.get_absolute_url }}" class="text-dark text-decoration-none">
-                <div class="card-body d-flex justify-content-center flex-wrap" style="height: 235px;">
-                    <h5 class="card-title">
+                <div class="card-body d-flex justify-content-center align-content-center flex-wrap" style="height: 235px;">
+                    <h5 class="card-title mb-4">
                         {% if CURRENT_LANGUAGE == "uk" %}
                             {{ news.uk_title }}
                         {% else %}
@@ -40,7 +40,9 @@
                 {% else %}
                     <small class="text-muted fs-6">{{ news.date_of_creation }}</small>
                 {% endif %}
+                <a href="{% url 'policy_area' slug=news.policy_area.slug %}" class="text-decoration-none">
                     <small class="text-muted fs-6">{{ news.policy_area }}</small>
+                </a>
             </div>
         </div>
     </div>
