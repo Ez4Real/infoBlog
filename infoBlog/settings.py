@@ -150,7 +150,8 @@ LOCALE_PATHS = [
 # https://docs.djangoproject.com/en/4.0/howto/static-files/
 
 STATIC_URL = '/static/'
-STATIC_ROOT = '/home/ergosum/ergosum-europa.eu/public/static/'
+STATIC_ROOT = BASE_DIR / 'blog/static'
+
 
 # Ckeditor Code Snippet
 CKEDITOR_UPLOAD_PATH = 'uploads'
