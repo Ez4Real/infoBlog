@@ -19,21 +19,22 @@ def get_subscriber_form(request: HttpRequest) -> SubscriberForm:
     """ Handles SubscriberForm and returns it """
     if 'subscribe' in request.POST:
         email = request.POST['email']
-        try:
-            sub = Subscriber.objects.get(email=email)
-            if sub.is_active:
-                messages.warning(request, 'This address is already subscribed!')
-            elif not re.match(r"^\w+([-+.']\w+)*@\w+([-.]\w+)*\.\w+([-.]\w+)*$", email):
-                messages.error(request, 'This address is not valid!')
-            else:
-                sub.save()
+        if not re.match(r"^\w+([-+.']\w+)*@\w+([-.]\w+)*\.\w+([-.]\w+)*$", email):
+            messages.error(request, 'Invalid email address!')
+        else:
+            try:
+                sub = Subscriber.objects.get(email=email)
+                if sub.is_active:
+                    messages.warning(request, 'This address is already subscribed!')
+                else:
+                    send_user_subscribe_activation(request, sub)
+            except Subscriber.DoesNotExist:
+                sub = Subscriber(email=email)
                 send_user_subscribe_activation(request, sub)
-        except Subscriber.DoesNotExist:
-            sub = Subscriber(email=email)
-            sub.save()
-            send_user_subscribe_activation(request, sub)
+                sub.save()
 
     return SubscriberForm()
+
 
 def get_join_team_form(request: HttpRequest) -> ContactForm:
     """ Handles ContactForm and returns it """

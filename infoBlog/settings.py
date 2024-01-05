@@ -177,14 +177,15 @@ DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 
 
 # Emailing settings
-EMAIL_BACKEND = 'django_smtp_ssl.SSLEmailBackend'
-EMAIL_HOST = 'smtp.dreamhost.com'
+EMAIL_BACKEND = os.getenv('EMAIL_BACKEND')
+EMAIL_HOST = os.getenv('EMAIL_HOST')
 DEFAULT_FROM_EMAIL = os.getenv('EMAIL_FROM')
 EMAIL_FROM = os.getenv('EMAIL_FROM')
 EMAIL_HOST_USER = os.getenv('EMAIL_FROM')
 EMAIL_HOST_PASSWORD = os.getenv('EMAIL_HOST_PASSWORD')
-EMAIL_PORT = 465
-EMAIL_USE_TLS = True
+EMAIL_PORT = os.getenv('EMAIL_PORT')
+EMAIL_USE_TLS = bool(os.getenv('EMAIL_USE_TLS', True))
+
 
 PASSWORD_RESET_TIMEOUT = 14400
 
