@@ -1,5 +1,5 @@
 {% load i18n %}
-<ul class="navbar-nav sb-1 col order-2 justify-content-around align-items-center cronis-nav-anime" style="padding-left: 100px;">
+<ul class="navbar-nav sb-1 col order-2 justify-content-around align-items-center cronis-nav-anime">
     <li class="nav-item dropdown ">
         <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownMenuLink"
            role="button" data-bs-toggle="dropdown" aria-expanded="false">
@@ -13,7 +13,7 @@
             <li><a class="dropdown-item" href="{% url 'key_documents' %}">{% trans "Key-documents" %}</a></li>
         </ul>
     </li>
-    <li class="nav-item dropdown ">
+    <li class="nav-item dropdown">
         <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownMenuLink"
            role="button" data-bs-toggle="dropdown" aria-expanded="false">
             {% trans "Join us" %}
@@ -27,4 +27,43 @@
     </li>
     <li><a href="{% url 'library' %}" class="nav-link">{% trans "Library" %}</a></li>
     <li><a href="{% url 'all_donate' %}" class="nav-link" style="color: #ffcd00;">{% trans "Donate" %}</a></li>
+    <li>
+        <div class="header-search-container">
+            <form class="w-100" name="search" method="GET" action="{% url 'search' %}"
+                    class="col-12 order-2 col-lg-3 mb-3 mb-lg-0 me-lg-3 d-flex align-self-center" >
+                <input type="text" name="search" class="form-control form-control-dark"
+                        placeholder="{% trans 'Search' %}..."
+                        aria-label="Search">
+            </form>
+        </div>
+    </li>
+    <li>
+        {% get_current_language as CURRENT_LANGUAGE %}
+        {% get_available_languages as AVAILABLE_LANGUAGES %}
+        {% get_language_info_list for AVAILABLE_LANGUAGES as languages %}
+
+        <ul class="col-12 order-0 text-end nav justify-content-end align-self-center">
+            <li class="nav-item dropstart">
+                <a class="special-link dropdown-toggle text-white" href="#" id="navbarDropdownMenuLink"
+                    role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                    <span style="text-transform:uppercase; color: #ffcd00;">{{ CURRENT_LANGUAGE }}</span>
+                </a>
+                <ul class="dropdown-menu " aria-labelledby="navbarDropdownMenuLink">
+                    {% for language in languages %}
+                    <li>
+                        <a class="dropdown-item"
+                            href="/{{ language.code }}/{{ request.get_full_path|slice:" 4:" }}"
+                        {% if language.code == CURRENT_LANGUAGE %} class="active"{% endif %}>
+                        {% if language.name_local == "Українська" %}
+                        Українська
+                        {% else %}
+                        English
+                        {% endif %}
+                        </a>
+                    </li>
+                    {% endfor %}
+                </ul>
+            </li>
+        </ul>
+    </li>
 </ul>

@@ -2,7 +2,6 @@ const CACHE_NAME = 'Cache-v' + new Date().getTime();;
 const urlsToCache = [
 	"{{ static_url }}css/styles.css",
 	"{{ static_url }}js/index.js",
-  "{{ static_url }}css/font/MacPawFixel-VF.ttf"
 ];
 
 self.addEventListener('install', function(event) {

@@ -1,0 +1,165 @@
+{% load i18n %}
+{% load static %}
+
+<header>
+    <nav class="navbar navbar-expand-xl navbar-dark">
+        <div class="w-25 px-3 mb-4">
+            <a href="{% url 'homepage' %}">
+                <img class="w-100" src="{% static '/images/logo.png' %}" alt="ERGOSUM Logo">
+            </a>
+        </div>
+        <div class="d-flex align-items-end justify-content-end text-cronis w-75">
+        <button class="navbar-toggler" type="button" id="menu-btn-open" style="margin:2%;">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse justify-content-end h-100" id="navbarNav">
+            <div class="row me-0" style="height: 300px;">
+                <div class="row cronis-item-1">
+                    
+                    <ul class="navbar-nav sb-1 col order-2 justify-content-around align-items-center cronis-nav-anime" style="padding-left: 100px;">
+                        <li class="nav-item dropdown ">
+                            <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownMenuLink"
+                            role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                                {% trans "About" %}
+                            </a>
+                            <ul class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
+                                <li><a class="dropdown-item" href="{% url 'team' %}">{% trans "Team" %}</a></li>
+                                <li><a class="dropdown-item" href="{% url 'general_members' %}">{% trans "Our partners" %}</a></li>
+                                <li><a class="dropdown-item" href="{% url 'mission' %}">{% trans "Mission" %}</a></li>
+                                <li><a class="dropdown-item" href="{% url 'vision' %}">{% trans "Vision" %}</a></li>
+                                <li><a class="dropdown-item" href="{% url 'key_documents' %}">{% trans "Key-documents" %}</a></li>
+                            </ul>
+                        </li>
+                        <li class="nav-item dropdown">
+                            <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownMenuLink"
+                            role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                                {% trans "Join us" %}
+                            </a>
+                            <ul class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
+                                <li><a class="dropdown-item" href="{% url 'join_team' %}">{% trans "Join team" %}</a>
+                                </li>
+                                <li><a class="dropdown-item" href="{% url 'volunteer' %}">{% trans "Volunteer" %}</a>
+                                </li> 
+                            </ul>
+                        </li>
+                        <li><a href="{% url 'library' %}" class="nav-link">{% trans "Library" %}</a></li>
+                        <li><a href="{% url 'all_donate' %}" class="nav-link" style="color: #ffcd00;">{% trans "Donate" %}</a></li>
+                    </ul>
+
+                    <form name="search" method="GET" action="{% url 'search' %}"
+                            class="col-12 order-2 col-lg-3 mb-3 mb-lg-0 me-lg-3 d-flex align-self-center" >
+                        <input type="text" name="search" class="form-control form-control-dark"
+                                placeholder="{% trans 'Search' %}..."
+                                aria-label="Search">
+                    </form>
+
+                    {% get_current_language as CURRENT_LANGUAGE %}
+                    {% get_available_languages as AVAILABLE_LANGUAGES %}
+                    {% get_language_info_list for AVAILABLE_LANGUAGES as languages %}
+
+                    <ul class="col-12 order-0 text-end nav justify-content-end align-self-center">
+                        <li class="nav-item dropstart">
+                            <a class="special-link dropdown-toggle text-white" href="#" id="navbarDropdownMenuLink"
+                                role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                                <span style="text-transform:uppercase; color: #ffcd00;">{{ CURRENT_LANGUAGE }}</span>
+                            </a>
+                            <ul class="dropdown-menu " aria-labelledby="navbarDropdownMenuLink">
+                                {% for language in languages %}
+                                <li>
+                                    <a class="dropdown-item"
+                                        href="/{{ language.code }}/{{ request.get_full_path|slice:" 4:" }}"
+                                    {% if language.code == CURRENT_LANGUAGE %} class="active"{% endif %}>
+                                    {% if language.name_local == "Українська" %}
+                                    Українська
+                                    {% else %}
+                                    English
+                                    {% endif %}
+                                    </a>
+                                </li>
+                                {% endfor %}
+                            </ul>
+                        </li>
+                    </ul>
+
+                </div>
+                <div class="row cronis-item-2 fs-4">
+                    <ul class="navbar-nav sb-2 order-1 col justify-content-between align-items-center" style="padding-right:20px;">
+                        <li><a href="{% url 'news-type' type='Events' %}" class="nav-link">{% trans "Events" %}</a></li>
+                        <li><a href="{% url 'news-type' type='News' %}" class="nav-link">{% trans "News" %}</a></li>
+                        <li class="nav-item dropdown ">
+                            <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownMenuLink"
+                            role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                                {% trans "Research" %}
+                            </a>
+                            <ul class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
+                                <li><a class="dropdown-item" href="{% url 'news-type' type='Analytics' %}">{% trans "Analytics" %}</a></li>
+                                <li><a class="dropdown-item" href="{% url 'news-type' type='Opinion' %}">{% trans "Opinion" %}</a></li>
+                                <li><a class="dropdown-item" href="{% url 'news-type' type='Op-eds' %}">{% trans "Op-eds" %}</a></li>
+                                <li><a class="dropdown-item" href="{% url 'index_ergosum'%}">{% trans "Index ERGOSUM" %}</a></li>
+                                <li><a class="dropdown-item" href="{% url 'annual_report'%}">{% trans "Annual report" %}</a></li>
+                            </ul>
+                        </li>
+                        <li><a href="{% url 'blog' %}" class="nav-link">{% trans "Expert League" %}</a></li>
+                        <li class="nav-item dropdown ">
+                            <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownMenuLink"
+                            role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                                {% trans "Policy areas" %}
+                            </a>
+                            <ul class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
+                                <li><a class="dropdown-item" href="{% url 'policy_area' slug='foreign-policy' %}">{% trans "Foreign policy" %}</a></li>
+                                <li><a class="dropdown-item" href="{% url 'policy_area' slug='internal-policy' %}">{% trans "Internal policy" %}</a>
+                                </li>
+                                <li><a class="dropdown-item" href="{% url 'policy_area' slug='economics' %}">{% trans "Economics" %}</a></li>
+                                <li><a class="dropdown-item" href="{% url 'policy_area' slug='security' %}">{% trans "Security" %}</a></li>
+                                <li><a class="dropdown-item" href="{% url 'policy_area' slug='education' %}">{% trans "Education" %}</a></li>
+                                <li><a class="dropdown-item" href="{% url 'policy_area' slug='democracy' %}">{% trans "Democracy" %}</a></li>
+                                <li><a class="dropdown-item" href="{% url 'policy_area' slug='human-rights' %}">{% trans "Human rights" %}</a></li>
+                                <li><a class="dropdown-item" href="{% url 'policy_area' slug='culture' %}">{% trans "Culture" %}</a></li>
+                            </ul>
+                        </li>
+                        <li class="nav-item dropdown ">
+                            <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownMenuLink"
+                            role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                                {% trans "Media" %}
+                            </a>
+                            <ul class="dropdown-menu dropdown-menu-media" aria-labelledby="navbarDropdownMenuLink">
+                                <li><a class="dropdown-item" href="{% url 'podcast' %}">{% trans "Podcasts" %}</a></li>
+                                <li><a class="dropdown-item" href="{% url 'videos' %}">{% trans "Videos" %}</a></li>
+                            </ul>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+        </div>
+    </nav>
+
+    {% get_current_language as CURRENT_LANGUAGE %}
+    {% get_available_languages as AVAILABLE_LANGUAGES %}
+    {% get_language_info_list for AVAILABLE_LANGUAGES as languages %}
+
+    <ul class="col-12 text-end nav lang_butt mx-3 mb-lg-0 me-lg-3">
+        <li class="nav-item w-100 dropdown">
+            <a class="nav-link dropdown-toggle text-white" href="#" id="navbarDropdownMenuLink"
+                role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                <span style="text-transform:uppercase">{{ CURRENT_LANGUAGE }}</span>
+            </a>
+            <ul class="dropdown-menu " aria-labelledby="navbarDropdownMenuLink">
+                {% for language in languages %}
+                <li>
+                    <a class="dropdown-item"
+                        href="/{{ language.code }}/{{ request.get_full_path|slice:" 4:" }}"
+                    {% if language.code == CURRENT_LANGUAGE %} class="active"{% endif %}>
+                    {% if language.name_local == "Українська" %}
+                    Українська
+                    {% else %}
+                    English
+                    {% endif %}
+                    </a>
+                </li>
+                {% endfor %}
+            </ul>
+        </li>
+    </ul>
+
+</header>

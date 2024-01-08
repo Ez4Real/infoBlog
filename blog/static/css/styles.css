@@ -45,6 +45,16 @@ body .type-header {
 nav {
     letter-spacing: 0.02em;
     font-size: 18px;
+    background: #263A75;
+    height: 200px;
+}
+
+nav .logo-container {
+    width: 25%;
+}
+
+nav .navlinks-container {
+    width: 75%;
 }
 
 .nav-div{
@@ -277,7 +287,7 @@ nav {
 }
 
 @media (max-width: 768px) {
-    .navbar-dark .navbar-brand {
+    .navbar-dark {
         width: 100%;
         height: 100%;
         display: block;
@@ -285,19 +295,9 @@ nav {
     }
 
     .sub-butt {
-    width: 345px!important;
-}
-    
-    body .navbar-brand svg {
-        position: unset;
-        height: 100px;
-        width: 150px;
+        width: 345px!important;
     }
-    
-    body .text-logo {
-        color: white;
-        position: unset;
-    }
+
     
     body .card {
         border-top: 1px solid rgba(0,0,0,.125);
@@ -342,14 +342,11 @@ nav {
     }
 
     header{
-        height: 178px !important;
+        height: 200px !important;
     }
     header .lang_butt {
-        float: left;
-        width: 93px;
         position: relative;
-        top: -47px;
-        left: 8px;
+        top: -60px;
     }
     
     .header-logo-text {
@@ -401,10 +398,18 @@ nav {
         font-size: 20px;
         padding: 0.25rem 1.1rem;
     }
+    
+    nav .logo-container {
+        width: 100%;
+        height: 115px;
+    }
 
-    .navbar-toggler {
-        position: relative;
-        top: 18px;
+    nav .navlinks-container {
+        width: 95%;
+    }
+
+    .header-search-container{ 
+        display: none;
     }
 
     footer form .row .col-auto {
@@ -508,9 +513,6 @@ nav {
     .phone-volunteer input{
         width: 224px !important;;
     }
-    /* .sub-butt{
-        width: 328px !important;
-    } */
     .card-custom{
         height: 255px !important;
     }
@@ -567,7 +569,6 @@ nav {
     width: 50px;
     background: #000;
     border-radius: 50%;
-    /* margin-left: -20px; */
 }
 
 .cronis-nav-donate-button-carousel {
@@ -696,7 +697,7 @@ nav {
   visibility: visible;
 }
 
-/* for main section */
+
 .active-cont {
   margin-left: 250px;
 }
@@ -772,14 +773,6 @@ nav {
     justify-content: center;
 }
 
-/* header a{
-    color: #fff !important;
-} */
-
-/* .side-navbar a{
-    color: #fff !important;
-} */
-
 .header-bg{
     background-color: #072461;
 
@@ -790,20 +783,12 @@ footer{
 }
 
 header{
-    /* background-color: #576fad00; */
-    /* backdrop-filter: blur(3px); */
-
     width: 100%;
 }
 
 .bg-header{
     width: 100%;
     height: 100%;
-    /* background: url("https://res.cloudinary.com/infoblog567/image/upload/v1674400490/static/header_logo/euro-flag-banner-bottom_w4rwpz.png") no-repeat center center fixed;
-    -webkit-background-size: cover;
-    -moz-background-size: cover;
-    -o-background-size: cover;
-    background-size: cover; */
     position: absolute;
 }
 
@@ -819,19 +804,8 @@ header{
     width: 100%;
     position: absolute;
     background-color: rgba(0,0,0,0.4);
-    /* background: linear-gradient(rgba(0, 0, 0, 0.45),rgba(255, 255, 255, 1)); */
 }
 
-/* .bg-header::after{
-    content: '';
-    height: 100%;
-    width: 100%;
-    top: 0;
-    left: 0;
-    position: absolute;
-    z-index: 300000;
-    background: linear-gradient(rgba(255, 255, 255, 0),rgba(255, 255, 255, 1));
-} */
 
 
 
@@ -844,7 +818,6 @@ header{
 }
 
 .bg-dark-for-photo{
-    /* background: rgba(0, 0, 0, 0.205); */
     position: absolute;
 }
 
@@ -897,59 +870,18 @@ header{
 
 header{
     position: relative;
-    height: 300px;
 }
 
 header a{
     font-size: 27px;
 }
 
-/* .navbar-brand::before{
-    content: 'European Research Group Of Support for Ukrainian Membership';
-    position: absolute;
-    top: 100%;
-    left: 0;
-} */
-
-.navbar-brand{
-    height: 160px;
-    width: 150px;
-}
-
-.navbar-brand svg{
-
-    height: 200px;
-    position: absolute;
-    top: -20%;
-    left: -2%;
-}
-
-/* .navbar-brand-side{
-    height: 160px;
-    width: 150px;
-}
-
-.navbar-brand-side svg{
-    height: 200px;
-    position: absolute;
-    top: -20%;
-    left: 10%;
-} */
 
 .donate-img{
     height: 250px;
     width: 250px;
 }
 
-/* .pay-pal::before{
-    content: '';
-    position: absolute;
-    height: 101%;
-    width: 101%;
-    background-color: #000;
-    border-radius: 590%;
-    z-index: -1;
-} */
 
 .pay{
     border: solid 3px black;
