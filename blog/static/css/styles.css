@@ -53,6 +53,11 @@ nav .logo-container {
     width: 25%;
 }
 
+nav .logo-image {
+    max-height: 125px;
+    object-fit: contain;
+}
+
 nav .navlinks-container {
     width: 75%;
 }
@@ -255,6 +260,11 @@ nav .navlinks-container {
         order: 0
     }
 
+    nav .navlinks-container {
+        width: unset;
+        margin-right: 50px;
+    }
+
     .lang_butt{
         justify-content: center!important;
         margin-left: 0px !important;
@@ -402,6 +412,10 @@ nav .navlinks-container {
     nav .logo-container {
         width: 100%;
         height: 115px;
+    }
+
+    nav .logo-image {
+        max-height: 125px;
     }
 
     nav .navlinks-container {
