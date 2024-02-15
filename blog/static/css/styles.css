@@ -183,6 +183,10 @@ nav .navlinks-container {
     font-family: "PT Serif", serif;
 }
 
+.carousel-height {
+    height: 1000px;
+}
+
 @media (max-width: 1440px) {
     .logo,
     .logo-side{
@@ -306,6 +310,10 @@ nav .navlinks-container {
 
     .sub-butt {
         width: 345px!important;
+    }
+    
+    .carousel-height { 
+        height: 650px;
     }
 
     

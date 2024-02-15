@@ -16,7 +16,7 @@
         {% for news in carousel_news %}
         <a href="{% url 'post-detail' type=news.type.slug slug=news.slug %}">
             {% if forloop.first %}
-                <div class="carousel-item active" style="height: 1000px;">
+                <div class="carousel-item active carousel-height" >
                     <div class="carousel-img d-block mx-auto w-100 h-100 ob-cover">
                         <img src="{{ news.banner.url }}"
                             alt=""
@@ -35,7 +35,7 @@
                     </div>
                 </div>
             {% else %}
-                <div class="carousel-item" style="height: 1000px;">
+                <div class="carousel-item carousel-height">
                     <div class="carousel-img d-block mx-auto w-100 h-100 ob-cover">
                         <img src="{{ news.banner.url }}"
                             alt=""

@@ -21,7 +21,7 @@
     <title>{{title}}</title>
     
 </head>
-<body>
+<body style="display: flex; flex-direction: column;">
 
 <div class="side-navbar header-bg d-flex justify-content-between flex-wrap flex-column" id="sidebar">
     <ul class="nav flex-column text-white w-100">
@@ -62,7 +62,7 @@
                 <span class="navbar-toggler-icon"></span>
             </button>
             <div class="collapse navbar-collapse justify-content-end h-100" id="navbarNav">
-                <div class="row me-0" style="height: 160px;">
+                <div class="row" style="height: 160px;">
                     <div class="row cronis-item-1">
 
                         {% include 'include/header/header_top.html' %}
@@ -109,7 +109,7 @@
     </ul>
 
 </header>
-<main>
+<main style="flex: 1">
 
     {% if messages %}
         {% for message in messages %}
