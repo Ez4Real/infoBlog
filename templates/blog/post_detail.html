@@ -54,7 +54,7 @@
                         {% if post.policy_area %}
                         <div class="post-poicy-area ms-auto">
                             <a href="{% url 'policy_area' slug=post.policy_area.slug %}" class="text-decoration-none">
-                                <small class="text-muted fs-6" style="margin-right: 10px;">{{ post.policy_area }}</small>
+                                <small class="text-muted fs-6" style="margin-right: 10px;">{% trans post.policy_area.name %}</small>
                             </a>
                         </div>
                         {% endif %}
@@ -89,7 +89,7 @@
                     {% if post.policy_area %}
                     <div class="post-poicy-area ms-auto">
                         <a href="{% url 'policy_area' slug=post.policy_area.slug %}" class="text-decoration-none">
-                            <small class="text-muted card-policy-area" style="margin-right: 10px;">{{ post.policy_area }}</small>
+                            <small class="text-muted card-policy-area" style="margin-right: 10px;">{% trans post.policy_area.name %}</small>
                         </a>
                     </div>
                     {% endif %}
