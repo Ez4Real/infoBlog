@@ -1,18 +1,6 @@
 @font-face {
-    font-family: "lemonde";
-    src: url("../fonts/le-monde-journal.otf");
-    font-weight: 400;
-}
-
-@font-face {
-    font-family: "Larsseit";
-    src: url("../fonts/Larsseit.woff2");
-    font-weight: normal;
-}
-
-@font-face {
-    font-family: "Haarlemmer";
-    src: url("../fonts/haarlemmer.woff2");
+    font-family: "TildaSans";
+    src: url("../fonts/TildaSans-VF.ttf");
     font-weight: normal;
 }
 
@@ -20,7 +8,7 @@ body{
     min-height: 100vh;
     background: #f4f4f4;
     font-size: 19px;
-    font-family: "lemonde",serif;
+    font-family: "TildaSans", serif;
 }
 
 body header .lang_butt {
@@ -29,7 +17,7 @@ body header .lang_butt {
 
 body .type-header {
     letter-spacing: 0.02em;
-    font-family: "Larsseit","Arial",serif;
+    font-family: "TildaSans", serif;
     font-size: 30px;
 }
 
@@ -121,7 +109,7 @@ nav .navlinks-container {
     font-size: 16px;
     width: 85%;
     color: #898989;
-    font-family: "Haarlemmer","Georgia",serif;
+    font-family: "TildaSans", serif;
     line-height: 1.2em;
 }
 
@@ -635,15 +623,15 @@ nav .navlinks-container {
 
 .body-cronis-post p {
     text-align: justify;
-    font-family: "Haarlemmer","Georgia",serif;
+    font-family: "TildaSans", serif;
 }
 
 .body-text-member {
-    font-family: "Haarlemmer","Georgia",serif;
+    font-family: "TildaSans", serif;
 }
 
 .book-content p {
-    font-family: "Haarlemmer","Georgia",serif;
+    font-family: "TildaSans", serif;
 }
 
 .post-foto {
@@ -778,7 +766,7 @@ nav .navlinks-container {
 }
 
 .card-text{
-    font-family: "Haarlemmer","Georgia",serif;
+    font-family: "TildaSans",serif;
     line-height: 1.2em;
 }
 

@@ -13,7 +13,6 @@
 
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Victor+Mono:wght@100&display=swap" rel="stylesheet">
     <link href="https://fonts.googleapis.com/css2?family=PT+Serif:wght@400;700&display=swap" rel="stylesheet">
     {% load static %}
     <link rel="shortcut icon" type="image/x-icon" href="{% static '/images/icon.png' %}">
@@ -57,20 +56,20 @@
                 <img class="w-100 logo-image" src="{% static '/images/logo.png' %}" alt="ERGOSUM Logo">
             </a>
         </div>
-        <div class="navlinks-container d-flex align-items-end justify-content-end text-cronis">
+        <div class="navlinks-container d-flex align-items-end justify-content-end text-cronis" style="padding-left: 40px">
             <button class="navbar-toggler" type="button" id="menu-btn-open">
                 <span class="navbar-toggler-icon"></span>
             </button>
             <div class="collapse navbar-collapse justify-content-end h-100" id="navbarNav">
                 <div class="row" style="height: 160px;">
-                    <div class="row cronis-item-1">
+                    <div class="row cronis-item-1 p-0">
 
                         {% include 'include/header/header_top.html' %}
                         
 
                     </div>
 
-                    <div class="row cronis-item-2 fs-4 px-5">
+                    <div class="row cronis-item-2 fs-4 p-0">
 
                         {% include 'include/header/header_bottom.html' %}
 
