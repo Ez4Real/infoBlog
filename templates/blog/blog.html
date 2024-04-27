@@ -5,12 +5,12 @@
 
 <div class="container">
     
-    <div class="text-center pt-3">
+    <div class="text-center py-3">
         <h1>{% trans "Expert League" %}</h1>
     </div>
 
     <div class="mx-auto personal-blog-card">
-        <div class="row row-cols-1 row-cols-md-2 row-cols-lg-3">
+        <div class="row row-cols-1 row-cols-md-2 row-cols-lg-3 gy-4">
             {% for scholar in blog_scholars %}
                 {% include 'include/cards_blogs/card_home_page.html' %}
             {% endfor %}

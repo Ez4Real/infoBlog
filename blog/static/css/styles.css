@@ -167,12 +167,8 @@ nav .navlinks-container {
     padding-top: 30px
 }
 
-.blogscholar-name {
-    font-family: "PT Serif", serif;
-}
-
 .carousel-height {
-    height: 1000px;
+    height: 995px;
 }
 
 @media (max-width: 1440px) {
@@ -448,7 +444,7 @@ nav .navlinks-container {
         padding-top: 10px
     }
     body .card-gm {
-        height: 325px;
+        height: 365px;
     }
     .book-content {
         padding: 0 12px !important;
@@ -841,7 +837,7 @@ header{
 
 .card-gm{
     min-width:250px; 
-    height:288px;
+    height:300px;
     text-align: center;
     word-spacing: -1px;
 }
