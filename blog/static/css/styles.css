@@ -37,17 +37,8 @@ nav {
     height: 200px;
 }
 
-nav .logo-container {
-    width: 25%;
-}
-
 nav .logo-image {
-    max-height: 125px;
-    object-fit: contain;
-}
-
-nav .navlinks-container {
-    width: 75%;
+    max-height: 160px;
 }
 
 .nav-div{

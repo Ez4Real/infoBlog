@@ -48,20 +48,19 @@
     </ul>
 
 </div>
-<!-- <header class="sticky-top"> -->
 <header>
     <nav class="navbar navbar-expand-xl navbar-dark">
-        <div class="logo-container px-3 mb-4">
+        <div class="px-3">
             <a href="{% url 'homepage' %}">
                 <img class="w-100 logo-image" src="{% static '/images/logo.png' %}" alt="ERGOSUM Logo">
             </a>
         </div>
-        <div class="navlinks-container d-flex align-items-end justify-content-end text-cronis" style="padding-left: 40px">
+        <div class="navlinks-container d-flex align-items-end justify-content-end text-cronis" style="padding-left: 30px">
             <button class="navbar-toggler" type="button" id="menu-btn-open">
                 <span class="navbar-toggler-icon"></span>
             </button>
             <div class="collapse navbar-collapse justify-content-end h-100" id="navbarNav">
-                <div class="row" style="height: 160px;">
+                <div class="row m-0" style="height: 160px;">
                     <div class="row cronis-item-1 p-0">
 
                         {% include 'include/header/header_top.html' %}
