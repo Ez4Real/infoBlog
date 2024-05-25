@@ -5,14 +5,11 @@
 <div class="p-1"></div>
 
 <div class="container">
-    <div class="text-center">
- 
-    </div>
 
     <div class="container-custom-blog-author pt-4 pb-3">
         <div class="author-blog row row-cols-2 d-flex">
-            <div class="author-blog-image col-12 col-lg-5">
-                <img src="{{author.image.url}}" alt="" class="w-100">
+            <div class="col-12 col-lg-5">
+                <img src="{{author.image.url}}" alt="" class="author-blog-image">
             </div>
             <div class="author-blog-body col-12 col-lg-7">
                 <a href="{% url 'blog' %}" class="blog-link">{% trans "Expert League" %}</a href="{ url 'blog' }">
@@ -40,21 +37,29 @@
                     
                 </a>
                 <hr>
+
+                {% if blog_posts %}
+                    <div>
+                        {% include 'include/cards_blogs/card_blogs.html' with post=blog_posts.0 %}
+                    </div>
+                {% endif %}
+
             </div>    
         </div>
     </div>
 
     
     {% if blog_posts %}
-        <p class="text-sides-decor"></p>
+        {% comment %} <p class="text-sides-decor"></p> {% endcomment %}
+
+        <div class="row row-cols-1 row-cols-md-2 g-4">
+            {% for post in blog_posts|slice:"1:" %}
+                <div class="col">
+                    {% include 'include/cards_blogs/card_blogs.html' %}
+                </div>
+            {% endfor %}
+        </div>
     {% endif %}
 
-    <div class="row row-cols-1 row-cols-md-2 g-4">
-        {% for post in blog_posts %}
-            <div class="col">
-                {% include 'include/cards_blogs/card_blogs.html' %}
-            </div>
-        {% endfor %}
-    </div>
 </div>
 {% endblock content %}
