@@ -98,10 +98,10 @@ nav .logo-image {
 
 .blog-card-content {
     font-size: 16px;
-    width: 85%;
     color: #898989;
     font-family: "TildaSans", serif;
     line-height: 1.2em;
+    text-align: justify;
 }
 
 .blog-card-author {
@@ -110,8 +110,6 @@ nav .logo-image {
 
 .author-blog-body { 
     padding-left: 4rem;
-    overflow: hidden;
-    max-height: 400px;
 }
 .author-blog-name {
     font-size: 50px;
@@ -120,6 +118,7 @@ nav .logo-image {
 
 .author-blog-image {
     width: 100%;
+    border-radius: 50%;
     height: 400px;
     object-fit: cover;
 }
@@ -281,6 +280,12 @@ nav .logo-image {
         max-width: 70% !important;
     }
 
+}
+
+@media (max-width: 990px) {
+    .author-blog-body {
+        padding-left: 0.75rem;
+    }
 }
 
 @media (max-width: 768px) {
@@ -453,6 +458,27 @@ nav .logo-image {
     }
     .body-text-member {
         padding: 0 12px;
+    }
+    .blog-card {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+    }
+    .blog-body {
+        display: flex;
+        align-items: center;
+        flex-direction: column;
+    }
+    .author-blog-name {
+        font-size: 35px;
+        line-height: 40px;
+    }
+    .author-blog-body { 
+        text-align: center;
+    }
+    .blog-card-content {
+        padding-right: .5rem;
+        padding-left: .5rem;
     }
 }
 
@@ -1137,8 +1163,7 @@ header a{
     text-decoration: none;
 }
 
-
-.scholar-left-border {
+/* .scholar-left-border {
     border-left: 3px solid #3077c9;
     padding-left: 10px;
-}
+} */

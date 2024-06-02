@@ -26,11 +26,10 @@
                 </p>  
 
                 <div class="blog-author fw-bolder blog-card-author">
-                    By 
                     {% if CURRENT_LANGUAGE == "uk" %}
                         {{ post.author.uk_full_name }}
                     {% else %}
-                        {{ post.author.en_full_name }}
+                        By {{ post.author.en_full_name }}
                     {% endif %}
                 </div>
             </div>

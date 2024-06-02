@@ -5,17 +5,24 @@
             <img src="{{ news.banner.url }}"
                  class="d-block mx-auto w-100 h-100 ob-cover" alt="...">
         </div>
+
         <div class="card-body">
-
-                    {% if CURRENT_LANGUAGE == "uk" %}
-                        <h5 class="card-title">{{ news.uk_title }}</h5>
-                        <p class="card-text">{{ news.uk_subtitle }}...</p>
-                    {% else %}
-                        <h5 class="card-title">{{ news.en_title }}</h5>
-                        <p class="card-text">{{ news.en_subtitle }}...</p>
-                    {% endif %}
-
+            <h5 class="card-title">
+                {% if CURRENT_LANGUAGE == "uk" %}
+                    {{ news.uk_title }}
+                {% else %}
+                    {{ news.en_title }}
+                {% endif %}
+            </h5>
+            <p class="card-text" style="text-align: center;">
+                {% if CURRENT_LANGUAGE == "uk" %}
+                    {{ news.uk_subtitle }}
+                {% else %}
+                    {{ news.en_subtitle }}
+                {% endif %}
+            </p>
         </div>
+
     </a>
     <div class="d-flex justify-content-between card-footer bg-transparent border-secondary align-items-center">
         <small class="text-muted hide-date-author-pa fs-6">{{ news.date_of_creation }}</small>
