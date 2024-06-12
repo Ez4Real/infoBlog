@@ -5,7 +5,7 @@ from django.utils.translation import gettext_lazy as _
 from django.contrib.auth.forms import UserCreationForm
 from django.core.validators import MinValueValidator
 
-from .models import Subscriber, LibraryMember
+from .models import Subscriber, LibraryMember, BlogScholar, GeneralMember
 from .services.validators import validate_password
 
 from phonenumber_field.formfields import PhoneNumberField
@@ -200,3 +200,25 @@ class ResourcesFilterForm(forms.Form):
         current_year = datetime.date.today().year
         year_choices = [(str(year), str(year)) for year in range(current_year, current_year-80, -1)]
         self.fields['year'].choices = [('', _('All time'))] + year_choices
+        
+
+class GeneralMemberAdminForm(forms.ModelForm):
+    x = forms.FloatField(widget=forms.HiddenInput(), required=False)
+    y = forms.FloatField(widget=forms.HiddenInput(), required=False)
+    width = forms.FloatField(widget=forms.HiddenInput(), required=False)
+    height = forms.FloatField(widget=forms.HiddenInput(), required=False)
+
+    class Meta:
+        model = GeneralMember
+        fields = ('banner', 'x', 'y', 'width', 'height')
+        
+
+class BlogScholarAdminForm(forms.ModelForm):
+    x = forms.FloatField(widget=forms.HiddenInput(), required=False)
+    y = forms.FloatField(widget=forms.HiddenInput(), required=False)
+    width = forms.FloatField(widget=forms.HiddenInput(), required=False)
+    height = forms.FloatField(widget=forms.HiddenInput(), required=False)
+
+    class Meta:
+        model = BlogScholar
+        fields = ('image', 'x', 'y', 'width', 'height')

@@ -1,9 +1,15 @@
 from django.contrib import admin
+from django.core.files.base import ContentFile
+
+from PIL import Image
+from io import BytesIO
+
 from ordered_model.admin import OrderedModelAdmin
 
 from .models import NewsType, PolicyArea, News, Subscriber, Video, \
     BlogScholar, Blog, TeamMember, LibraryMember, ResourceType, \
     Subresource, LibraryResource, LibraryAuthor, GeneralMember
+from .forms import GeneralMemberAdminForm, BlogScholarAdminForm
 
 
 def send_newsletter(modeladmin, request, queryset):
@@ -72,15 +78,6 @@ class NewsAdmin(admin.ModelAdmin):
               ('en_content', 'uk_content')]
     actions = [send_newsletter]
     
-@admin.register(BlogScholar)
-class BlogScholarAdmin(OrderedModelAdmin):
-    list_display = ('en_full_name', 'move_up_down_links', 'en_position')
-    list_filter = ('date_of_creation', 'en_full_name', 'uk_full_name', 'en_position', 'uk_position')
-    fields = [('image',), 
-              ('en_full_name', 'uk_full_name'),
-              ('en_position', 'uk_position'),
-              ('link')]
-    
 @admin.register(Blog)
 class BlogAdmin(admin.ModelAdmin):
     list_display = ('en_title', 'uk_title', 'author', 'date_of_creation')
@@ -121,10 +118,72 @@ class SubresourceAdmin(admin.ModelAdmin):
     fields = [('topic', 'bounded_resource'), 
               ('file', 'date')]
     
-@admin.register(GeneralMember)
+# @admin.register(GeneralMember)
+# class GeneralMemberAdmin(OrderedModelAdmin):
+#     list_display = ('en_name', 'move_up_down_links', 'uk_name')
+#     list_filter = ('date', 'en_name', 'uk_name')
+#     fields = [('en_name', 'uk_name'),
+#               ('banner', 'link'), 
+#               ('date', 'is_rounded')]
 class GeneralMemberAdmin(OrderedModelAdmin):
     list_display = ('en_name', 'move_up_down_links', 'uk_name')
     list_filter = ('date', 'en_name', 'uk_name')
     fields = [('en_name', 'uk_name'),
               ('banner', 'link'), 
-              ('date', 'is_rounded')]
+              ('date', 'is_rounded'),
+              ('x', 'y', 'width', 'height')]
+    
+    form = GeneralMemberAdminForm
+    
+    def save_model(self, request, obj, form, change):
+        x = form.cleaned_data.get('x')
+        y = form.cleaned_data.get('y')
+        width = form.cleaned_data.get('width')
+        height = form.cleaned_data.get('height')
+        
+        if x and y and width and height:
+            image = Image.open(obj.banner)
+            cropped_image = image.crop((x,y,width + x, height + y))
+            
+            img_io = BytesIO()
+            cropped_image.save(img_io, format=image.format)
+            img_content = ContentFile(img_io.getvalue(), name=obj.banner.name)
+            obj.banner.save(obj.banner.name, img_content)
+            
+admin.site.register(GeneralMember, GeneralMemberAdmin)
+
+# @admin.register(BlogScholar)
+# class BlogScholarAdmin(OrderedModelAdmin):
+#     list_display = ('en_full_name', 'move_up_down_links', 'en_position')
+#     list_filter = ('date_of_creation', 'en_full_name', 'uk_full_name', 'en_position', 'uk_position')
+#     fields = [('image',), 
+#               ('en_full_name', 'uk_full_name'),
+#               ('en_position', 'uk_position'),
+#               ('link')]
+class BlogScholarAdmin(OrderedModelAdmin):
+    list_display = ('en_full_name', 'move_up_down_links', 'en_position')
+    list_filter = ('date_of_creation', 'en_full_name', 'uk_full_name', 'en_position', 'uk_position')
+    fields = [('image',), 
+              ('en_full_name', 'uk_full_name'),
+              ('en_position', 'uk_position'),
+              ('link'),
+              ('x', 'y', 'width', 'height')]
+    
+    form = BlogScholarAdminForm
+    
+    def save_model(self, request, obj, form, change):
+        x = form.cleaned_data.get('x')
+        y = form.cleaned_data.get('y')
+        width = form.cleaned_data.get('width')
+        height = form.cleaned_data.get('height')
+        
+        if x and y and width and height:
+            image = Image.open(obj.image)
+            cropped_image = image.crop((x,y,width + x, height + y))
+            
+            img_io = BytesIO()
+            cropped_image.save(img_io, format=image.format)
+            img_content = ContentFile(img_io.getvalue(), name=obj.image.name)
+            obj.image.save(obj.image.name, img_content)
+            
+admin.site.register(BlogScholar, BlogScholarAdmin)
