@@ -7,11 +7,11 @@
 <div class="container">
 
     <div class="container-custom-blog-author pt-4 pb-3">
-        <div class="author-blog row row-cols-2 d-flex">
-            <div class="col-12 col-lg-5">
+        <div class="author-blog align-items-stretch row row-cols-2 d-flex">
+            <div class="author-blog-image-cont">
                 <img src="{{author.image.url}}" alt="" class="author-blog-image">
             </div>
-            <div class="author-blog-body col-12 col-lg-7">
+            <div class="author-blog-body">
                 <a href="{% url 'blog' %}" class="blog-link">{% trans "Expert League" %}</a href="{ url 'blog' }">
             
                 <a href="{{ author.link }}" class="text-decoration-none">

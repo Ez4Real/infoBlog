@@ -130,7 +130,7 @@ class GeneralMemberAdmin(OrderedModelAdmin):
     list_filter = ('date', 'en_name', 'uk_name')
     fields = [('en_name', 'uk_name'),
               ('banner', 'link'), 
-              ('date', 'is_rounded'),
+              ('date'),
               ('x', 'y', 'width', 'height')]
     
     form = GeneralMemberAdminForm

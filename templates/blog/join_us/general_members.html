@@ -8,31 +8,30 @@
             <h3>{% trans "Our partners" %}</h3>
         </div>
     <div class="p-2"></div>
-    <div class="row row-cols-xl-4 row-cols-lg-3 row-cols-md-2">
+    <div class="row row-cols-xl-4">
 
         {% for member in members %}
-        <a href="{{ member.link }}" class="text-decoration-none text-dark" target="_blank">
-            <div class="col">
-                <div class="card mb-4 card-gm">
-                    <div>
-                        <img class="card-img-top gm-image" alt="Team foto" src="{{ member.banner.url }}">
+        <div class="col d-flex justify-content-center mt-4 rounded">
+            <a href="{{ member.link }}"
+               class="text-dark text-decoration-none">
+                <div class="">
+                    <div class="d-flex align-items-center justify-content-center">
+                        <img src="{{ member.banner.url }}"
+                             class="w-100 h-100 rounded"
+                             alt="Our partner">
                     </div>
-                    <div class="card-body p-0 gm-text">
-                        <p class="">
+                    <div class=" d-flex flex-column  text-align-justify align-items-center">
+                        <h5 class="text-center w-100 pt-2 blogscholar-name" style="color: #004494;">
                             {% if CURRENT_LANGUAGE == "uk" %}
-
                                 {{ member.uk_name }}
-
                             {% else %}
-
                                 {{ member.en_name }}
-
                             {% endif %}
-                        </p>
+                        </h5>
                     </div>
                 </div>
-            </div>
-        </a>
+            </a>
+        </div>
         {% endfor %}
     </div>
 </div>
