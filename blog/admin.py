@@ -9,7 +9,8 @@ from ordered_model.admin import OrderedModelAdmin
 from .models import NewsType, PolicyArea, News, Subscriber, Video, \
     BlogScholar, Blog, TeamMember, LibraryMember, ResourceType, \
     Subresource, LibraryResource, LibraryAuthor, GeneralMember
-from .forms import GeneralMemberAdminForm, BlogScholarAdminForm
+from .forms import GeneralMemberAdminForm, BlogScholarAdminForm, \
+    TeamMemberAdminForm
 
 
 def send_newsletter(modeladmin, request, queryset):
@@ -38,14 +39,6 @@ class SubscriberAdmin(admin.ModelAdmin):
     fields = [('email', 'is_active'), 'mailing_language']
     readonly_fields = ['email']
     
-@admin.register(TeamMember)
-class TeamMemberAdmin(OrderedModelAdmin):
-    list_display = ('en_full_name', 'move_up_down_links', 'en_position')
-    list_filter = ('date_of_creation', 'en_full_name', 'uk_full_name', 'en_position', 'uk_position')
-    fields = [('en_full_name', 'uk_full_name'),
-              ('image', 'email'),
-              ('en_position', 'uk_position'),
-              ('en_content', 'uk_content')]
 
 @admin.register(LibraryMember)
 class LibraryMemberAdmin(admin.ModelAdmin):
@@ -163,13 +156,66 @@ admin.site.register(GeneralMember, GeneralMemberAdmin)
 class BlogScholarAdmin(OrderedModelAdmin):
     list_display = ('en_full_name', 'move_up_down_links', 'en_position')
     list_filter = ('date_of_creation', 'en_full_name', 'uk_full_name', 'en_position', 'uk_position')
-    fields = [('image',), 
+    fields = [('image', 'details_image'), 
               ('en_full_name', 'uk_full_name'),
               ('en_position', 'uk_position'),
               ('link'),
-              ('x', 'y', 'width', 'height')]
+              ('x', 'y', 'width', 'height'),
+              ('r_x', 'r_y', 'r_width', 'r_height')]
     
     form = BlogScholarAdminForm
+    
+    def save_model(self, request, obj, form, change):
+        x = form.cleaned_data.get('x')
+        y = form.cleaned_data.get('y')
+        width = form.cleaned_data.get('width')
+        height = form.cleaned_data.get('height')
+        
+        r_x = form.cleaned_data.get('r_x')
+        r_y = form.cleaned_data.get('r_y')
+        r_width = form.cleaned_data.get('r_width')
+        r_height = form.cleaned_data.get('r_height')
+        
+        if x and y and width and height:
+            image = Image.open(obj.image)
+            cropped_image = image.crop((x,y,width + x, height + y))
+            
+            img_io = BytesIO()
+            cropped_image.save(img_io, format=image.format)
+            img_content = ContentFile(img_io.getvalue(), name=obj.image.name)
+            obj.image.save(obj.image.name, img_content)
+        
+        if r_x and r_y and r_width and r_height:
+            image = Image.open(obj.details_image)
+            cropped_image = image.crop((r_x, r_y, r_width + r_x, r_height + r_y))
+            
+            img_io = BytesIO()
+            cropped_image.save(img_io, format=image.format)
+            img_content = ContentFile(img_io.getvalue(), name=obj.details_image.name)
+            obj.details_image.save(obj.details_image.name, img_content)
+            
+admin.site.register(BlogScholar, BlogScholarAdmin)
+
+
+# @admin.register(TeamMember)
+# class TeamMemberAdmin(OrderedModelAdmin):
+#     list_display = ('en_full_name', 'move_up_down_links', 'en_position')
+#     list_filter = ('date_of_creation', 'en_full_name', 'uk_full_name', 'en_position', 'uk_position')
+#     fields = [('en_full_name', 'uk_full_name'),
+#               ('image', 'email'),
+#               ('en_position', 'uk_position'),
+#               ('en_content', 'uk_content')]
+class TeamMemberAdmin(OrderedModelAdmin):
+    list_display = ('en_full_name', 'move_up_down_links', 'en_position')
+    list_filter = ('date_of_creation', 'en_full_name', 'uk_full_name', 'en_position', 'uk_position')
+    fields = [('image'),
+              ('email'),
+              ('en_full_name', 'uk_full_name'),
+              ('en_position', 'uk_position'),
+              ('en_content', 'uk_content'),
+              ('x', 'y', 'width', 'height')]
+    
+    form = TeamMemberAdminForm
     
     def save_model(self, request, obj, form, change):
         x = form.cleaned_data.get('x')
@@ -186,4 +232,4 @@ class BlogScholarAdmin(OrderedModelAdmin):
             img_content = ContentFile(img_io.getvalue(), name=obj.image.name)
             obj.image.save(obj.image.name, img_content)
             
-admin.site.register(BlogScholar, BlogScholarAdmin)
+admin.site.register(TeamMember, TeamMemberAdmin)

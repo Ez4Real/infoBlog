@@ -5,7 +5,8 @@ from django.utils.translation import gettext_lazy as _
 from django.contrib.auth.forms import UserCreationForm
 from django.core.validators import MinValueValidator
 
-from .models import Subscriber, LibraryMember, BlogScholar, GeneralMember
+from .models import Subscriber, LibraryMember, BlogScholar, \
+    GeneralMember, TeamMember
 from .services.validators import validate_password
 
 from phonenumber_field.formfields import PhoneNumberField
@@ -218,7 +219,24 @@ class BlogScholarAdminForm(forms.ModelForm):
     y = forms.FloatField(widget=forms.HiddenInput(), required=False)
     width = forms.FloatField(widget=forms.HiddenInput(), required=False)
     height = forms.FloatField(widget=forms.HiddenInput(), required=False)
+    
+    r_x = forms.FloatField(widget=forms.HiddenInput(), required=False)
+    r_y = forms.FloatField(widget=forms.HiddenInput(), required=False)
+    r_width = forms.FloatField(widget=forms.HiddenInput(), required=False)
+    r_height = forms.FloatField(widget=forms.HiddenInput(), required=False)
 
     class Meta:
         model = BlogScholar
+        fields = ('image', 'x', 'y', 'width', 'height',
+                  'details_image', 'r_x', 'r_y', 'r_width', 'r_height')
+        
+
+class TeamMemberAdminForm(forms.ModelForm):
+    x = forms.FloatField(widget=forms.HiddenInput(), required=False)
+    y = forms.FloatField(widget=forms.HiddenInput(), required=False)
+    width = forms.FloatField(widget=forms.HiddenInput(), required=False)
+    height = forms.FloatField(widget=forms.HiddenInput(), required=False)
+
+    class Meta:
+        model = TeamMember
         fields = ('image', 'x', 'y', 'width', 'height')

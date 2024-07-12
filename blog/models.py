@@ -114,6 +114,9 @@ class BlogScholar(OrderedModel, Person):
         self.slug = slugify(self.en_full_name.lower())
         super(BlogScholar, self).save(*args, **kwargs)
     
+    details_image = models.ImageField(upload_to='uploads/blog-scholars/details-images', 
+                                      verbose_name=_('Details page image'))
+    
     slug = models.SlugField(unique=True)
     
     link = models.URLField(help_text='Enter link',
