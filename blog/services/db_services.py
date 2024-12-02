@@ -19,6 +19,8 @@ def get_policy_area_by_slug(slug: SafeText) -> str:
 
 def get_news_by_type(type: str) -> QuerySet:
     """ Returns QuerySet of News by type """
+    if type == 'any':
+        return News.objects.all().order_by('-date_of_creation')
     return News.objects.filter(type__type=type).order_by('-date_of_creation')
 
 def get_videocontent_by_type(type: str) -> QuerySet:

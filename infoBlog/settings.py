@@ -211,9 +211,9 @@ CSRF_COOKIE_SECURE = bool(os.getenv('CSRF_COOKIE_SECURE'))
 # blog underhood settings
 POSTS_PER_PAGE = 16
 RES_PER_PAGE = 16
-TITLE = _('European Research Group Of Support for Ukrainian Membership – ERGOSUM')
+TITLE = _('European Research Group Of Support for Ukrainian Membership - ERGOSUM')
 HOMEPAGE_CONTENT = (
-    (5, 'News', 'carousel_news'),
+    (5, 'any', 'carousel_news'),
     (3, 'News', 'last_news'),
     (3, 'Op-eds', 'last_opeds'),
     (3, 'Analytics', 'last_analytics'),
