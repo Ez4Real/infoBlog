@@ -79,7 +79,7 @@ def send_subscribe_email_message(request: HttpRequest, email: EmailMessage) -> N
     """ Tryes to send email to user for subscribe """
     try:
         email.send()
-        messages.success(request, 'Please, сonfirm your subscription via email')
+        messages.success(request, 'Please, confirm your subscription via email')
     except:
         messages.error(request, 'Problem sending email to this adress, check if you typed it correctly')
 

@@ -30,8 +30,9 @@ def get_subscriber_form(request: HttpRequest) -> SubscriberForm:
                     send_user_subscribe_activation(request, sub)
             except Subscriber.DoesNotExist:
                 sub = Subscriber(email=email)
-                send_user_subscribe_activation(request, sub)
                 sub.save()
+                
+                send_user_subscribe_activation(request, sub)
 
     return SubscriberForm()
 
@@ -60,7 +61,7 @@ def get_volunteer_form(request: HttpRequest) -> VolunteerForm:
     
     return form
 
-def get_subscriber_by_uid(uidb64: str) -> Subscriber:
+def get_subscriber_by_uidb(uidb64: str) -> Subscriber:
     """ Returns Subcriber by uidb64 decoding """
     try: 
         uid = force_str(urlsafe_base64_decode(uidb64))
@@ -76,9 +77,9 @@ def check_subscriber_and_token(sub: Subscriber, token: str) -> bool:
 def activate_user_subscription(request: HttpRequest, uidb64: str, 
                                token: str, lang: str) -> redirect:
     """ Activates user newsletter subscription with chosen language """
-    sub = get_subscriber_by_uid(uidb64)
+    sub = get_subscriber_by_uidb(uidb64)
 
-    if check_subscriber_and_token(get_subscriber_by_uid(uidb64), 
+    if check_subscriber_and_token(get_subscriber_by_uidb(uidb64), 
                                   token):
         sub.is_active = True
         sub.mailing_language = lang
@@ -86,14 +87,14 @@ def activate_user_subscription(request: HttpRequest, uidb64: str,
         messages.success(request, 'Thank you for subscription.')
     else:
         messages.error(request, 'Activation link is invalid!')
-        
+    
     return redirect('homepage')
 
 def deactivate_user_subscription(request: HttpRequest, 
                                  uidb64: str, 
                                  token:str) -> redirect:
     """ Deactivates user newsletter subscription """
-    sub = get_subscriber_by_uid(uidb64)
+    sub = get_subscriber_by_uidb(uidb64)
 
     if check_subscriber_and_token(sub, token):
         sub.delete()

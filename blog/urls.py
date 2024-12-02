@@ -43,15 +43,9 @@ urlpatterns = [
     path('donate/', views.all_donate, name='all_donate'),
     
     # Join us
-    path('join-us/our-partners',
-         views.general_members,
-         name='general_members'),
-    path('join-us/join-team',
-         views.join_team,
-         name='join_team'),
-    path('join-us/volunteer',
-         views.volunteer,
-         name='volunteer'),
+    path('join-us/our-partners', views.general_members, name='general_members'),
+    path('join-us/join-team', views.join_team, name='join_team'),
+    path('join-us/volunteer', views.volunteer, name='volunteer'),
     
     path('policy-area/<slug:slug>', views.policy_area, name='policy_area'),
     
