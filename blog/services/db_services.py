@@ -34,6 +34,10 @@ def get_posts_by_author_slug(slug: SafeText) -> QuerySet:
     """ Returns QuerySet of Blog Posts by author """
     return Blog.objects.filter(author__slug=slug)
 
+def get_news_by_interviewer_slug(slug: SafeText) -> QuerySet:
+    """ Returns QuerySet of News by author """
+    return News.objects.filter(interviewer__slug=slug)
+
 def get_blog_post_by_slug(slug: SafeText) -> Blog:
     """ Returns Blog object by slug """
     return Blog.objects.get(slug=slug)

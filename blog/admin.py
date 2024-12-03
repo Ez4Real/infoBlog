@@ -64,9 +64,10 @@ class LibraryMemberAdmin(admin.ModelAdmin):
 @admin.register(News)
 class NewsAdmin(admin.ModelAdmin):
     list_display = ('en_title', 'uk_title', 'type', 'policy_area', 'author', 'date_of_creation')
-    list_filter = ('type', 'date_of_creation', 'en_title', 'uk_title', 'policy_area', 'author')
+    list_filter = ('type', 'date_of_creation', 'en_title', 'uk_title', 'policy_area', 'author', 'interviewer')
     fields = [('type', 'policy_area', 'banner'), 
-              ('en_title', 'uk_title', 'author'),
+              ('en_title', 'uk_title'),
+              ('author', 'interviewer'),
               ('en_subtitle', 'uk_subtitle'),
               ('en_content', 'uk_content')]
     actions = [send_newsletter]

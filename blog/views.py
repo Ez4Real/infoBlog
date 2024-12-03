@@ -11,7 +11,7 @@ from .services.db_services import get_news_by_slug, get_blog_scholar_by_slug, \
     get_member_by_slug, get_all_library_resources, get_resources_by_type, \
     get_all_library_books, get_libresource_by_slug, get_books_by_author, \
     get_author_by_slug, get_last_news, get_news_by_policy_area, \
-    get_policy_area_by_slug, get_all_general_members
+    get_policy_area_by_slug, get_all_general_members, get_news_by_interviewer_slug
 from .services.blog_services import paginate, \
     check_if_number_endswith_one, add_subscriber_form_to_context, \
     add_last_news_to_context, get_dynamic_page_title_by_language, \
@@ -85,7 +85,8 @@ def scholar_posts(request: HttpRequest,
                   context: dict = {}) -> HttpResponse:
     add_subscriber_form_to_context(context, request)
     context['author'] = get_blog_scholar_by_slug(slug)
-    context['blog_posts'] = get_posts_by_author_slug(slug)
+    related_posts = list(get_posts_by_author_slug(slug))+ list(get_news_by_interviewer_slug(slug))
+    context['blog_posts'] = related_posts
     add_page_title_to_context_by_language(
         get_dynamic_page_title_by_language(request,
                                            context['author'].en_full_name,

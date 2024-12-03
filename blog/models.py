@@ -304,6 +304,12 @@ class News(Article):
                                verbose_name=_('Author'),
                                blank=True,
                                null=True)
+    interviewer = models.ForeignKey(BlogScholar,
+                                    on_delete=models.PROTECT,
+                                    help_text='Select an interviewer if needed',
+                                    verbose_name=_('Interviewer'),
+                                    blank=True,
+                                    null=True)
     
     def send(self, request):
         context = {}

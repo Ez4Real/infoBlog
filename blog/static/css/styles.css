@@ -514,9 +514,9 @@ nav .logo-image {
     /* .body-cronis-post{
         width: 402px !important;
     } */
-    .post-foto > img {
+    /* .post-foto > img {
         width: 100% !important;
-    }
+    } */
     .hide-date-author-pa {
         display: none;
     }
@@ -647,6 +647,11 @@ nav .logo-image {
     width: 850px;
 }
 
+div.body-cronis-post img {
+    width: 100% !important;
+    height: auto !important;
+}
+
 .body-cronis-post p {
     text-align: justify;
     font-family: "TildaSans", serif;
@@ -661,14 +666,14 @@ nav .logo-image {
 }
 
 .post-foto {
-    height: 570px;
+    /* height: 570px; */
     width: 100%;
     position: relative;
 }
 
-.post-foto > img {
+/* .post-foto > img {
     width: 95% !important;
-} 
+}  */
 
 .card-title {
     text-align: center;
