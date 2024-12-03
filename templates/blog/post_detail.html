@@ -56,11 +56,13 @@
                             <a href="{% url 'policy_area' slug=post.policy_area.slug %}" class="text-decoration-none">
                                 <small class="text-muted">{% trans post.policy_area.name %}</small>
                             </a>
-                            <a href="{{ post.interviewer.get_scholar_posts }}" class="text-decoration-none">
-                                <small class="text-muted">
-                                    - {{ post.interviewer.uk_full_name }}
-                                </small>
-                            </a>
+                            {% if post.interviewer %}
+                                <a href="{{ post.interviewer.get_scholar_posts }}" class="text-decoration-none">
+                                    <small class="text-muted">
+                                        - {{ post.interviewer.uk_full_name }}
+                                    </small>
+                                </a>
+                            {% endif %}
                         </div>
                         {% endif %}
                     </div>
@@ -96,11 +98,13 @@
                         <a href="{% url 'policy_area' slug=post.policy_area.slug %}" class="text-decoration-none">
                             <small class="text-muted">{% trans post.policy_area.name %}</small>
                         </a>
-                        <a href="{{ post.interviewer.get_scholar_posts }}" class="text-decoration-none">
-                            <small class="text-muted fs-6">
-                                - {{ post.interviewer.en_full_name }}
-                            </small>
-                        </a>
+                        {% if post.interviewer %}
+                            <a href="{{ post.interviewer.get_scholar_posts }}" class="text-decoration-none">
+                                <small class="text-muted fs-6">
+                                    - {{ post.interviewer.en_full_name }}
+                                </small>
+                            </a>
+                        {% endif %}
                     </div>
                     {% endif %}
                 </div>
