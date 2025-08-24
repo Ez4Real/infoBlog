@@ -144,3 +144,5 @@ GitHub.sublime-settings
 
 # Exclude ignoring logo ico
 !blog/static/images/*.png
+
+LOCAL*
